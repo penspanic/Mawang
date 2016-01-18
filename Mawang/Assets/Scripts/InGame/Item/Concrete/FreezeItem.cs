@@ -1,0 +1,60 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class FreezeItem : ItemBase
+{
+    BattleManager battleMgr;
+    int duration = 5;
+    public static Color freezedColor = new Color(58f / 255f, 215f / 255f, 259f / 255f);
+    protected override void Awake()
+    {
+        base.Awake();
+        battleMgr = GameObject.FindObjectOfType<BattleManager>();
+        coolTime = 60;
+        message = "적 유닛의 이동을 막습니다.";
+    }
+
+    protected override void Useitem()
+    {
+        if(isUsing)
+        {
+            msgBox.PushMessage("아직 사용할 수 없습니다.");
+        }
+        else
+        {
+            isUsing = true;
+            amount--;
+            msgBox.PushMessage(message);
+            StartCoroutine(FreezeProcess());
+        }
+    }
+    IEnumerator FreezeProcess()
+    {
+        // 얼릴 적 찾기
+        Movable[] enemys = System.Array.FindAll<Movable>
+            (GameObject.FindObjectsOfType<Movable>(),(obj)=>{
+                return obj.CompareTag("Enemy");
+            });
+
+        for (int i = 0; i < enemys.Length;i++)
+            enemys[i].Freeze(true);
+
+        yield return new WaitForSeconds(duration);
+
+        // 죽은 것 골라내기 (null 이거나 isDestroyed가 참일 때)
+
+        enemys = System.Array.FindAll<Movable>(enemys, (obj) =>
+        {
+            if(obj == null)
+                return false;
+            else
+                return !obj.isDestroyed;
+        });
+
+        for (int i = 0; i < enemys.Length; i++)
+            enemys[i].Freeze(false);
+
+        yield return new WaitForSeconds(coolTime - duration);
+        isUsing = false;
+    }
+}

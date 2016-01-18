@@ -1,0 +1,4 @@
+﻿interface ITouchable
+{
+    void OnTouch();
+}

@@ -1,0 +1,49 @@
+﻿{
+    /* 아군 유닛 */
+    "Skeleton": {
+        "Joke": "골다공증에 대한 걱정을 살짝 시작했다.",
+        "Description": "자신의 공격속도 증가"
+    },
+    "Goblin": {
+        "Joke": "고블린이 뒤로 가면 백블린? 깔깔깔깔",
+        "Description": "3회의 데미지를 한 번에 입힌다"
+    },
+    "Dullahan": {
+        "Joke": "미용실에서 잘라준 머리가 마음에 드는 모양입니다.",
+        "Description": "돌진하며 적을 밀쳐낸다"
+    },
+    "Harpy": {
+
+        "Joke": "날개 손질은 아침 저녁에 두 번씩. 꼼꼼하게!",
+        "Description": "아군의 이동 속도 증가"
+    },
+    /* 적군 유닛 */
+
+    "pawn_sword": {
+        "Description": "국가를 지키는 듬직한 병사입니다."
+    },
+    "archer": {
+        "Description": "활을 잘 다루는 병사입니다."
+    },
+    "shielder": {
+        "Description": "방패를 들고 최전방에 서는 병사입니다"
+    },
+    "bandsman": {
+        "Description": "악기를 연주해 사기를 높이는 병사입니다"
+    },
+
+    /* 아이템 */
+
+    "Fix": {
+        "Description": "HP 10% 회복",
+        "Cost": 50
+    },
+    "Freeze": {
+        "Description": "적 유닛 5초간 정지",
+        "Cost": 40
+    },
+    "Defense": {
+        "Description": "1분간 방어력 20% 상승",
+        "Cost": 30
+    }
+}

@@ -1,0 +1,96 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+// ===========================
+// timeScale이 0일때 움직인다.
+// ===========================
+
+public class PrincessEvent : MonoBehaviour 
+{
+    private BgmManager  bgmMgr;
+    private Image       skillName;
+    private Image       illust;
+
+    [SerializeField]
+    float   moveTime;
+    [SerializeField]
+    Vector2 skillNamePos;
+    [SerializeField]
+    Vector2 illustPos;
+    
+
+
+    private Vector2     illustStartPos;
+    private Vector2     skillNameStartPos;
+
+    void Awake()
+    {
+        bgmMgr      = GameObject.FindGameObjectWithTag("Manager").GetComponent<BgmManager>();
+        skillName   = GameObject.Find("SkillName").GetComponent<Image>();
+        illust      = GameObject.Find("BigIllust").GetComponent<Image>();
+
+        illustStartPos = new Vector2(1000, illustPos.y);
+        skillNameStartPos = new Vector2(-1000, skillNamePos.y);
+    }
+    // 켜질때
+    void OnEnable()
+    {       
+        Time.timeScale      =   0;
+        bgmMgr.Pause();
+        StartCoroutine(EventProcess());
+    }
+
+
+    IEnumerator EventProcess()
+    {
+        // 들어오는부분
+        StartCoroutine(ImgWidthMove(illust, illustStartPos, illustPos));
+        yield return StartCoroutine(WaitForRealSeconds(moveTime + 0.2f));
+        StartCoroutine(ImgWidthMove(skillName, skillNameStartPos, skillNamePos));
+
+        // 멈추는 부분 
+        yield return StartCoroutine(WaitForRealSeconds(moveTime + 1f));
+
+        // 나가는 부분 
+        StartCoroutine(ImgWidthMove(illust, illustPos, illustStartPos));
+        yield return StartCoroutine(WaitForRealSeconds(moveTime + 0.2f));
+        StartCoroutine(ImgWidthMove(skillName, skillNamePos, skillNameStartPos));
+        yield return StartCoroutine(WaitForRealSeconds(moveTime + 0.2f));
+
+
+        // 비활성화
+        Time.timeScale  =   1;
+        bgmMgr.Resume();
+        gameObject.SetActive(false);
+
+    }
+
+
+    IEnumerator ImgWidthMove(Image img, Vector2 start, Vector2 end)
+    {
+        float beginTime = Time.unscaledTime;
+
+        while (Time.unscaledTime - beginTime <= moveTime )
+        {
+            float t =   (Time.unscaledTime - beginTime) / moveTime;
+
+            float x =   EasingUtil.easeOutCirc(start.x,end.x,t);
+
+            img.transform.localPosition = new Vector2(x,img.transform.localPosition.y);
+
+            yield return null;
+        }
+        // 보정
+        img.transform.localPosition = end;
+    }
+
+    public IEnumerator WaitForRealSeconds(float time)
+    {
+        float start = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup < start + time)
+        {
+            yield return null;
+        }
+    }
+}

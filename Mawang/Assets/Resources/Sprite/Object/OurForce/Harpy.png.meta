@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: 783985b19d86fb1459f02378e7b4c7f8
+timeCreated: 1446523123
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: wing_R_3
+    21300002: wing_R_1
+    21300004: body
+    21300006: head
+    21300008: face_normal
+    21300010: face_dead
+    21300012: wing_R_2
+    21300014: wing_L_2
+    21300016: wing_L_1
+    21300018: wing_L_3
+    21300020: leg_right
+    21300022: leg_left
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: wing_R_3
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 116
+        width: 70
+        height: 160
+      alignment: 9
+      pivot: {x: .767148674, y: .102616504}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wing_R_1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 288
+        width: 160
+        height: 70
+      alignment: 9
+      pivot: {x: .89404422, y: .225218847}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: body
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 266
+        width: 61
+        height: 94
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: head
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 258
+        width: 125
+        height: 103
+      alignment: 9
+      pivot: {x: .491451651, y: .188759223}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: face_normal
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 199
+        width: 54
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: face_dead
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 142
+        width: 52
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wing_R_2
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 134
+        width: 47
+        height: 105
+      alignment: 9
+      pivot: {x: .181695819, y: .851109505}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wing_L_2
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 142
+        width: 54
+        height: 105
+      alignment: 9
+      pivot: {x: .500000536, y: .891817927}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wing_L_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 138
+        width: 71
+        height: 131
+      alignment: 9
+      pivot: {x: .868740678, y: .0962181985}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wing_L_3
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 22
+        width: 112
+        height: 98
+      alignment: 9
+      pivot: {x: .113588877, y: .783504665}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: leg_right
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 8
+        width: 59
+        height: 108
+      alignment: 9
+      pivot: {x: .273603529, y: .851250768}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: leg_left
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 8
+        width: 75
+        height: 114
+      alignment: 9
+      pivot: {x: .393140465, y: .828077078}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
