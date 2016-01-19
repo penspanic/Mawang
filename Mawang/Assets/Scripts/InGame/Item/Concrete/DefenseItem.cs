@@ -12,7 +12,7 @@ public class DefenseItem : ItemBase
     {
         base.Awake();
         satanCastle = GameObject.FindObjectOfType<SatanCastle>();
-        message = "마왕성의 체력이 회복됩니다.";
+        message = "1분간 방어태세에 돌입합니다!";
     }
 
     protected override void Useitem()

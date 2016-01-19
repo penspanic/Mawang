@@ -4,19 +4,9 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    public int playerMoney
-    {
-        get;
-        set;
-    }
-    public int playerMaxMoney
-    {
-        get;
-        set;
-    }
-    
+
     private Text    playerMoneyText;
-    private bool    isOver              = false;
+    public bool    isOver              = false;
     [SerializeField]  // 얘는 나중에 플레이어 데이터에서 불러온 데이터로 여기에 대입
     private int     moneyIncreaseAmount = 10;
 
@@ -32,9 +22,6 @@ public class GameManager : MonoBehaviour
         playerMoneyText =   GameObject.Find("MoneyText").GetComponent<Text>();
         stageMgr        =   GameObject.FindGameObjectWithTag("Manager").GetComponent<StageManager>();
         tutorialMgr     =   GameObject.FindGameObjectWithTag("Manager").GetComponent<TutorialManager>();
-        // 얘도 플레이어데이터에서 대리고와서 해야됨.() 지금은 걍 박음
-        playerMaxMoney = 500;
-        playerMoney = 0;
     }
 
     void Start()
@@ -44,59 +31,16 @@ public class GameManager : MonoBehaviour
             tutorialMgr.Init();
             
         StartCoroutine(GameLoop());
-        StartCoroutine(IncreaseMoney());
     }
 
 
 
-    private IEnumerator GameLoop()
+    private IEnumerator GameLoop() // 삭제해도 될듯 : 1/19 근희
     {
         while (!isOver)
         {
-
-            // ShowMoney
-            ShowMoney();
-
-            // Princess
 
             yield return null;
         }
-    }
-
-
-    #region Money
-
-    private void ShowMoney()
-    {
-        playerMoneyText.text = ((int)playerMoney).ToString();
-    }
-    private IEnumerator IncreaseMoney()
-    {
-        while (!isOver)
-        {
-            if (playerMoney + moneyIncreaseAmount > playerMaxMoney)
-                playerMoney = playerMaxMoney;
-            else
-                playerMoney += moneyIncreaseAmount;
-            yield return new WaitForSeconds(1f);
-        }
-    }
-    #endregion
-
-
-
-
-    public void AddMoney(int addMoney)
-    {
-        if (addMoney + playerMoney >= playerMaxMoney)
-            playerMoney     =   playerMaxMoney;
-        else
-            playerMoney += addMoney;
-    }
-
-
-    public void AddMoneyIncrease(int add)
-    {
-        moneyIncreaseAmount += add;
     }
 }

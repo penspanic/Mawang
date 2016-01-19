@@ -86,7 +86,7 @@ public class PlayerData : MonoBehaviour
 
             itemStorage.Add("Fix", 1);
             itemStorage.Add("Freeze", 3);
-            itemStorage.Add("Defense", 1);
+            itemStorage.Add("Defense", 2);
             return;
         }
 

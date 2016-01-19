@@ -17,7 +17,7 @@ public class CastleUpgrade : MonoBehaviour
         100, 100, 10
     };
     public static readonly int[] originalValues = new int[3]{
-        2000, 50, 10
+        500, 100, 180
     };
     #endregion
     public Text remainingPointText; // 남은 포인트 텍스트

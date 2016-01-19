@@ -8,6 +8,7 @@ public class SpawnManager : MonoBehaviour
     public float randomY_Max;
 
     private GameManager gameMgr;
+    private GoldManager goldMgr;
     private SpriteOrderLayerManager orderMgr;
     private GameObject satanCastle;
 
@@ -18,6 +19,7 @@ public class SpawnManager : MonoBehaviour
     void Awake()
     {
         gameMgr     = FindObjectOfType<GameManager>();
+        goldMgr     = FindObjectOfType<GoldManager>();
         orderMgr    = FindObjectOfType<SpriteOrderLayerManager>();
         satanCastle = GameObject.Find("SatanCastle");
 
@@ -29,9 +31,9 @@ public class SpawnManager : MonoBehaviour
 
     public void TrySpawnOurForce(Movable obj, int line)
     {
-        if (gameMgr.playerMoney - obj.GetUnitCost() >= 0)
+        if (goldMgr.playerGold - obj.GetUnitCost() >= 0)
         {
-            gameMgr.playerMoney -= obj.GetUnitCost();
+            goldMgr.playerGold -= obj.GetUnitCost();
             SpawnOurForce(obj, line);
         }
     }

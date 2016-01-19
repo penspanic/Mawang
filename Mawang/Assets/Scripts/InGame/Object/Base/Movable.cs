@@ -63,7 +63,7 @@ public class Movable : ObjectBase
     #region Obj Variable
 
     protected SpawnManager              spawnMgr;
-    protected GameManager               gameMgr;
+    protected GoldManager               goldMgr;
     protected Animator                  animator;
     protected Collider2D                touchCollider;
     protected SpriteOrderLayerManager   orderMgr;
@@ -83,7 +83,7 @@ public class Movable : ObjectBase
     protected override void Awake()
     {
         base.Awake();
-        gameMgr             =   GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        goldMgr             =   GameObject.FindObjectOfType<GoldManager>();
         orderMgr            =   GameObject.FindGameObjectWithTag("Manager").GetComponent<SpriteOrderLayerManager>();
         spawnMgr            =   GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnManager>();
         princessMgr         =   GameObject.FindGameObjectWithTag("Manager").GetComponent<PrincessManager>();
@@ -313,7 +313,7 @@ public class Movable : ObjectBase
     public void OnDeathEnd()
     {
         if(!isOurForce)
-            gameMgr.AddMoney(deathReward);
+            goldMgr.AddGold(deathReward);
 
         battleMgr.RemoveObject(this);
         StartCoroutine(WaitForDissappear());

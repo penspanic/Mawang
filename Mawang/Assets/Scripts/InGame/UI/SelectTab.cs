@@ -11,20 +11,12 @@ public class SelectTab : MonoBehaviour
     private Button goldUpgBtn;
 
     private MessageBox msgBox;
-    private GameManager gameMgr;
+    private GoldManager goldMgr;
 
     [SerializeField]
     private float switchTime = 0.5f;
     private bool isMoving = false;
     private int switchFlag = 1;
-
-    [SerializeField]
-    private int goldUpgCost = 250;
-    [SerializeField]
-    private int goldUpgAddCost = 50;
-    [SerializeField]
-    private int goldIncreaseAmount = 20;
-
 
     private int prevIdx;
     private GameObject[] lines;
@@ -43,7 +35,7 @@ public class SelectTab : MonoBehaviour
     void Awake()
     {
         msgBox = FindObjectOfType<MessageBox>();
-        gameMgr = FindObjectOfType<GameManager>();
+        goldMgr = FindObjectOfType<GoldManager>();
         lever = transform.FindChild("Lever");
         unitButtonTrs = transform.FindChild("UnitsButton");
         upgButtonTrs = transform.FindChild("UpgradeButton");
@@ -105,7 +97,7 @@ public class SelectTab : MonoBehaviour
     void ClikcedUnitButton(int idx)
     {
         // 돈이 부족하면
-        if (gameMgr.playerMoney < unitPrefabs[idx].GetUnitCost())
+        if (goldMgr.playerGold < unitPrefabs[idx].GetUnitCost())
             return;
 
 
@@ -143,17 +135,16 @@ public class SelectTab : MonoBehaviour
 
     void ClickedGoldUpgButton()
     {
-        if (gameMgr.playerMoney < goldUpgCost)
+        if(goldMgr.CanGoldUpgrade())
         {
-            msgBox.PushMessage("골드가 " + (goldUpgCost - gameMgr.playerMoney) + "만큼 부족합니다! ");
+            msgBox.PushMessage("얻는 골드량이 증가합니다!");
+            goldMgr.GoldUpgrade();
+        }
+        else
+        {
+            msgBox.PushMessage("골드가 부족합니다!");
             return;
         }
-
-        gameMgr.playerMoney -= goldUpgCost;
-
-        gameMgr.AddMoneyIncrease(goldIncreaseAmount);
-
-        goldUpgCost += goldUpgAddCost;
     }
 
     void ClickedRoseButton()
