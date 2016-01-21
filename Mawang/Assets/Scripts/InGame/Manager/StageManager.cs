@@ -9,7 +9,7 @@ public class StageManager : MonoBehaviour
     private JsonData stageData;
     private TextAsset stageText;
     private PrincessManager princessMgr;
-
+    private SpriteOrderLayerManager orderMgr;
     private string stage;
 
 
@@ -20,6 +20,7 @@ public class StageManager : MonoBehaviour
     void Awake()
     {
         stageText = Resources.Load<TextAsset>("TextFile/NewStage Design");
+        orderMgr    =   GetComponent<SpriteOrderLayerManager>();
     }
 
     public void Init()
@@ -84,7 +85,7 @@ public class StageManager : MonoBehaviour
         // pattern
         rand    =   Random.Range(0,stagePatternList.Count);
 
-
+        // 3마리가 동시에 출현할때 앞에 1_을 붙인다.
         if (stagePatternList[rand].name[0] == '1')
             randLine        =   1;
         else
@@ -94,6 +95,7 @@ public class StageManager : MonoBehaviour
         float randPosY      =   (randLine - 1) * -1.2f;
 
         Instantiate(stagePatternList[rand],new Vector3(19,randPosY,0),new Quaternion());
+        orderMgr.UpdateOrder(randLine);
         //patternPrefabList.Add();
     }
 }

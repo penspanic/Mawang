@@ -53,8 +53,6 @@ public class ObjectBase : MonoBehaviour
 
     protected virtual void Awake()
     {
-        // 이거 성들로 빼셈 
-
         battleMgr = GameObject.FindGameObjectWithTag("Manager").GetComponent<BattleManager>();
 
         if (this.CompareTag("OurForce"))
@@ -62,7 +60,7 @@ public class ObjectBase : MonoBehaviour
         else
             isOurForce = false;
 
-        battleMgr.AddObject(this);
+        
 
         maxHP = hp;
     }

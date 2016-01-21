@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour
 
     private Text    playerMoneyText;
     public bool    isOver              = false;
-    [SerializeField]  // 얘는 나중에 플레이어 데이터에서 불러온 데이터로 여기에 대입
-    private int     moneyIncreaseAmount = 10;
+
 
     StageManager    stageMgr;
     TutorialManager tutorialMgr;
@@ -30,17 +29,5 @@ public class GameManager : MonoBehaviour
         if(PlayerData.instance.selectedStage == "C0S1")
             tutorialMgr.Init();
             
-        StartCoroutine(GameLoop());
-    }
-
-
-
-    private IEnumerator GameLoop() // 삭제해도 될듯 : 1/19 근희
-    {
-        while (!isOver)
-        {
-
-            yield return null;
-        }
     }
 }

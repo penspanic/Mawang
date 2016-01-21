@@ -117,7 +117,7 @@ public class PrincessManager : MonoBehaviour
     {
         ourList.Clear();
 
-        for (int i = 1; i < battleMgr.ourForceList.Count; i++)
+        for (int i = 0; i < battleMgr.ourForceList.Count; i++)
             ourList.Add(battleMgr.ourForceList[i].GetComponent<Movable>());
 
         for (int i = 0; i < ourList.Count; i++)

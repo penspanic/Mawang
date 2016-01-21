@@ -76,13 +76,14 @@ public class Movable : ObjectBase
     protected bool  isOneShotSound      = false;
     protected SpriteRenderer[] sprs;
     private   float disappearDuration   = 0.6f;
-    private   int   myOrder;
     #endregion 
 
 
     protected override void Awake()
     {
         base.Awake();
+        battleMgr.AddObject(this);
+
         goldMgr             =   GameObject.FindObjectOfType<GoldManager>();
         orderMgr            =   GameObject.FindGameObjectWithTag("Manager").GetComponent<SpriteOrderLayerManager>();
         spawnMgr            =   GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnManager>();
@@ -97,8 +98,6 @@ public class Movable : ObjectBase
         if (isOurForce)
             touchCollider   =   this.GetComponent<Collider2D>();
 
-
-        myOrder             =   orderMgr.SetSpriteOrder(sprs);
 
         SettingLine();
         StartCoroutine(UnitProcess());
@@ -211,7 +210,6 @@ public class Movable : ObjectBase
 
     protected void Death()
     {
-        orderMgr.AddDeathOrder(myOrder);
         animator.Play("Dead",0);
     }
 
@@ -364,6 +362,9 @@ public class Movable : ObjectBase
                     break;
             }
         }
+
+        transform.position += GetAdjustPos();
+        transform.position += new Vector3(0, Random.Range(0, 0.5f), 0);
     }
 
 
@@ -396,7 +397,7 @@ public class Movable : ObjectBase
         return this.unitCost;
     }
 
-    public Vector2 GetAdjustPos()
+    public Vector3 GetAdjustPos()
     {
         return this.adjustPos;
     }

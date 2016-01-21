@@ -40,10 +40,8 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnOurForce(Movable obj, int line)
     {
-        
-        Instantiate(obj, ourForceLinePos[line - 1] + obj.GetAdjustPos() + randomY, new Quaternion());
-
-        orderMgr.SetSpriteOrder(obj.GetComponentsInChildren<SpriteRenderer>());
+        Instantiate(obj, ourForceLinePos[line - 1] + randomY, new Quaternion());
+        orderMgr.UpdateOrder(line);
     }
 
 }

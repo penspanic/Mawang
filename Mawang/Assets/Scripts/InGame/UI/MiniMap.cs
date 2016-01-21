@@ -64,12 +64,9 @@ public class MiniMap : MonoBehaviour
         Vector2 drawPos;
         for (int i = 0; i < objList.Count; i++)
         {
-            if(objList[i] is Movable)
-            {
                 drawPos     =   GetMiniMapPos(objList[i].transform.position,
                     objList[i].line);
                 miniMapPosList.Add(drawPos);
-            }
         }
     }
 

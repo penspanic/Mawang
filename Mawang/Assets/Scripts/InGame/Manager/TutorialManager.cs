@@ -139,12 +139,12 @@ public class TutorialManager : MonoBehaviour
 
             float y = EasingUtil.easeOutQuad(4.5f, 0, t);
 
-            battleMgr.ourForceList[1].transform.position = new Vector2(0, y);
+            battleMgr.ourForceList[0].transform.position = new Vector2(0, y);
 
             yield return null;
         }
 
-        battleMgr.ourForceList[1].transform.position = new Vector2(0, 0);
+        battleMgr.ourForceList[0].transform.position = new Vector2(0, 0);
 
         yield break;
     }
