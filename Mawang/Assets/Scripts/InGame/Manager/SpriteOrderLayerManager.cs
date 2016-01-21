@@ -17,20 +17,6 @@ public class SpriteOrderLayerManager : MonoBehaviour
         battleMgr = GetComponent<BattleManager>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            UpdateOrder(0);
-        }
-    }
-
-    public void AddLineList(int lineIdx, ObjectBase obj)
-    {
-    }
-
-
-
     /// <summary>
     /// 오더 정렬하는 함수 파라미터에 라인 넘버 넣어주면됨.
     /// 호출 할시기 : 유닛이 생성될때

@@ -3,11 +3,15 @@ using System.Collections;
 
 public class StageSelect : MonoBehaviour
 {
+    public string chapterName;
 
+    ChapterInfo chapterInfo;
     void Awake()
     {
         StartCoroutine(FadeIn());
         PlayerData.instance.CheckInstance();
+
+        chapterInfo = GameObject.FindObjectOfType<ChapterInfo>();
     }
 
     IEnumerator FadeIn()
@@ -30,6 +34,11 @@ public class StageSelect : MonoBehaviour
     {
         if (isChanging)
             return;
+        if(chapterInfo.isShowing)
+        {
+            chapterInfo.HideChapterInfo();
+            return;
+        }
         isChanging = true;
         ChangeScene("Main");
         ButtonSound.PlaySound(ButtonSound.SoundType.BackSound);
@@ -43,6 +52,13 @@ public class StageSelect : MonoBehaviour
         PlayerData.instance.selectedStage = stageName;
 
         ChangeScene("Ready");
+    }
+
+    public void ChapterButtonDown(string chapterName)
+    {
+        this.chapterName = chapterName;
+        chapterInfo.ShowChapterInfo();
+        
     }
 
     void ChangeScene(string sceneName)

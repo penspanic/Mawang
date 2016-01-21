@@ -7,6 +7,7 @@ public class JsonManager : MonoBehaviour
     TextAsset objectDataJson;
     TextAsset stageDataJson;
     TextAsset princessScriptJson;
+    TextAsset chapterDataJson;
 
     #region Singleton
     static JsonManager _instance;
@@ -35,6 +36,8 @@ public class JsonManager : MonoBehaviour
         objectDataJson = Resources.Load<TextAsset>("TextFile/Object Data");
         stageDataJson = Resources.Load<TextAsset>("TextFile/Stage Data");
         princessScriptJson = Resources.Load<TextAsset>("TextFile/Princess Script");
+        chapterDataJson = Resources.Load<TextAsset>("TextFile/Chapter Data");
+
     }
 
     public string GetDescription(string name) // 유닛 설명 리턴
@@ -84,5 +87,19 @@ public class JsonManager : MonoBehaviour
             }
         }
         return scriptList.ToArray();
+    }
+    
+    public ChapterData GetChapterData(string chapterName)
+    {
+        JsonData chapterData = JsonMapper.ToObject(chapterDataJson.text)[chapterName];
+
+        ChapterData returnData = new ChapterData();
+
+        returnData.chapterName = chapterData["Chapter Name"].ToString();
+        returnData.chapterDescription = chapterData["Chapter Description"].ToString();
+        returnData.skillName = chapterData["Skill Name"].ToString();
+        returnData.skillDescription = chapterData["Skill Description"].ToString();
+
+        return returnData;
     }
 }
