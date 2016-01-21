@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//http://www.gizma.com/easing/
 
 public static class EasingUtil
 {

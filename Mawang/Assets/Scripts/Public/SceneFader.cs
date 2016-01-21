@@ -16,10 +16,9 @@ public class SceneFader : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = new GameObject("Scene Fader").AddComponent<SceneFader>();
-                GameObject newObj   =   Instantiate(Resources.Load<GameObject>("Prefabs/UI/Fade"));
-                newObj.transform.SetParent(GameObject.Find("Canvas").transform,false);
-                _instance.img       =   newObj.GetComponent<Image>();
+                _instance = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Fade")).AddComponent<SceneFader>();
+                _instance.transform.SetParent(GameObject.Find("Canvas").transform,false);
+                _instance.img       =   _instance.GetComponent<Image>();
             }
             return _instance;
         }

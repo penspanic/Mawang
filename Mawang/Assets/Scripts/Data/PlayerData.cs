@@ -67,7 +67,6 @@ public class PlayerData : MonoBehaviour
         }
 
         selectedStage = "C0S1"; // Temp
-        lastClearedStage = "C2S2";
         obsidian = 100; //Temp
     }
 
@@ -80,9 +79,9 @@ public class PlayerData : MonoBehaviour
             Debug.Log("First");
             isFirst = true;
 
-            upgradePoint.Add("Hp", 1);
-            upgradePoint.Add("Damage", 1);
-            upgradePoint.Add("Cool Time", 1);
+            upgradePoint.Add("Hp", 0);
+            upgradePoint.Add("Damage", 0);
+            upgradePoint.Add("Cool Time", 0);
 
             itemStorage.Add("Fix", 1);
             itemStorage.Add("Freeze", 3);
@@ -169,6 +168,20 @@ public class PlayerData : MonoBehaviour
         }
     }
 
+    public static string GetNextStageName(string stageName)
+    {
+        int chapter = int.Parse(stageName[1].ToString());
+        int stage = int.Parse(stageName[3].ToString());
+
+        if(stage == 3)
+        {
+            return "C" + (chapter+1).ToString() + "S0";
+        }
+        else
+        {
+            return "C" + chapter.ToString() + "S" + (stage + 1).ToString();
+        }
+    }
     public bool PurchaseItem(string name, int cost)
     {
         if (obsidian - cost >= 0)
