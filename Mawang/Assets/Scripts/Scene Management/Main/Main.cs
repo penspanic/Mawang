@@ -7,16 +7,18 @@ public class Main : MonoBehaviour
 
     public Button upgradeButton;
     public Button infoButton;
-    public Image blurImage;
 
     CastleUpgrade upgrade;
     CastleInfo info;
+
+    BlurControl blurCtrl;
 
     void Awake()
     {
         StartCoroutine(SceneFader.Instance.FadeIn(1f));
         upgrade = GameObject.FindObjectOfType<CastleUpgrade>();
         info = GameObject.FindObjectOfType<CastleInfo>();
+        blurCtrl = GameObject.FindObjectOfType<BlurControl>();
     }
 
 
@@ -52,28 +54,20 @@ public class Main : MonoBehaviour
 
     IEnumerator BlurProcess(bool isBlear)
     {
-        float blurAlpha = isBlear ? 0 : 1;
-        
-        if(isBlear)
+        float elapsedTime = 0f;
+        const float blurTime = 1f;
+        const float maxBlur = 3f;
+       
+        while (elapsedTime < blurTime)
         {
-            while(blurAlpha != 1)
-            {
-                blurAlpha = Mathf.MoveTowards(blurAlpha, 1, Time.deltaTime);
-                blurImage.color = new Color(1, 1, 1, blurAlpha);
-                yield return null;
-            }
-            blurImage.color = new Color(1, 1, 1, 1);
+            elapsedTime += Time.deltaTime;
+            float blurValue = isBlear ? EasingUtil.easeInOutQuint(0, maxBlur, elapsedTime / blurTime) : EasingUtil.easeInOutQuint(maxBlur, 0, elapsedTime / blurTime);
+
+            blurCtrl.SetValue(blurValue);
+
+            yield return null;
         }
-        else
-        {
-            while (blurAlpha != 0)
-            {
-                blurAlpha = Mathf.MoveTowards(blurAlpha, 0, Time.deltaTime);
-                blurImage.color = new Color(1, 1, 1, blurAlpha);
-                yield return null;
-            }
-            blurImage.color = new Color(1, 1, 1, 0);
-        }
+        blurCtrl.SetValue(isBlear ? maxBlur : 0);
     }
     bool isChanging = false;
     void ToBookScene()
