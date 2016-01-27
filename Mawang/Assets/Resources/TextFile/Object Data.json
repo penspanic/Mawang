@@ -2,20 +2,24 @@
     /* 아군 유닛 */
     "Skeleton": {
         "Joke": "골다공증에 대한 걱정을 살짝 시작했다.",
-        "Description": "자신의 공격속도 증가"
+        "Description": "자신의 공격속도 증가",
+        "Type": "근거리"
     },
     "Goblin": {
         "Joke": "고블린이 뒤로 가면 백블린? 깔깔깔깔",
-        "Description": "3회의 데미지를 한 번에 입힌다"
+        "Description": "3회의 데미지를 한 번에 입힌다",
+        "Type":  "원거리"
     },
     "Dullahan": {
         "Joke": "미용실에서 잘라준 머리가 마음에 드는 모양입니다.",
-        "Description": "돌진하며 적을 밀쳐낸다"
+        "Description": "돌진하며 적을 밀쳐낸다",
+        "Type": "근거리"
     },
     "Harpy": {
 
         "Joke": "날개 손질은 아침 저녁에 두 번씩. 꼼꼼하게!",
-        "Description": "아군의 이동 속도 증가"
+        "Description": "아군의 이동 속도 증가",
+        "Type": "원거리"
     },
     /* 적군 유닛 */
 

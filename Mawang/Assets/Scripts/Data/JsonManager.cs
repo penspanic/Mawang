@@ -57,6 +57,12 @@ public class JsonManager : MonoBehaviour
         JsonData objectData = JsonMapper.ToObject(objectDataJson.text);
         return (int)objectData[name]["Cost"];
     }
+
+    public string GetType(string name)
+    {
+        JsonData objectData = JsonMapper.ToObject(objectDataJson.text);
+        return objectData[name]["Type"].ToString();
+    }
     public string[] GetAppearEnemyName(string stageName) // 해당 스테이지에서 등장하는 적 이름 리턴
     {
         Debug.Log(stageName);

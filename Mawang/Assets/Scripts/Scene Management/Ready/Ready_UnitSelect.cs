@@ -20,6 +20,9 @@ public class Ready_UnitSelect : MonoBehaviour
     List<string> unitNameList = new List<string>();
     Button[] unitButtons;
     Image[] checkedImages;
+
+    NotifyBar notifyBar;
+
     void Awake()
     {
         ready = GameObject.FindObjectOfType<Ready>();
@@ -28,6 +31,8 @@ public class Ready_UnitSelect : MonoBehaviour
 
         unitNameList = PlayerData.instance.playerUnitList;
         SetUnitList();
+
+        notifyBar = GameObject.FindObjectOfType<NotifyBar>();
     }
 
     void SetUnitList()
@@ -67,7 +72,8 @@ public class Ready_UnitSelect : MonoBehaviour
     public void OnUnitButtonDown(int index) // 현재 유닛 설정
     {
         selectedUnitIndex = index;
-        unitDescription.text = JsonManager.instance.GetDescription(unitNameList[index]);
+        unitDescription.text = JsonManager.instance.GetType(unitNameList[index]) + "\n" +
+            JsonManager.instance.GetDescription(unitNameList[index]);
 
         SetSelectButtonText();
 
@@ -86,6 +92,7 @@ public class Ready_UnitSelect : MonoBehaviour
 
     public void OnUnitSelectButonDown()
     {
+        notifyBar.ShowMessage("dasdas");
         // 7개 초과인지 체크
         int selectedNum = 0;
         foreach (bool eachValue in isUnitChecked)
@@ -102,6 +109,7 @@ public class Ready_UnitSelect : MonoBehaviour
             //    ready.currWindow.CloseWindow();
             //    ready.currWindow = null;
             //});
+            notifyBar.ShowMessage("6종류만 선택할 수 있습니다!");
         }
         else
         {

@@ -44,7 +44,11 @@ public class MessageBox : MonoBehaviour
         ResetMessageBox();
         waitingTime += 2;
         if (waitingTime > 4)
+        {
+            if (elaspedTime > 2)
+                elaspedTime -= 2;
             waitingTime = 4;
+        }
     }
 
     void ResetMessageBox()
