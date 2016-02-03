@@ -33,7 +33,7 @@ public class CastleInfo : MonoBehaviour
     {
         hpText.text = "마왕성 체력 : 500 + " + (upgrade.allocatedPoints[0] * CastleUpgrade.upgradeIncreaseValues[0]).ToString();
         skillText.text = "마왕성 스킬 공격력 : 100 + " + (upgrade.allocatedPoints[1] * CastleUpgrade.upgradeIncreaseValues[1]).ToString();
-        coolTimeText.text = "마왕성 스킬 쿨타임 : 100 + " + (upgrade.allocatedPoints[2] * CastleUpgrade.upgradeIncreaseValues[2]).ToString();
+        coolTimeText.text = "마왕성 스킬 쿨타임 : 100 - " + (upgrade.allocatedPoints[2] * CastleUpgrade.upgradeIncreaseValues[2]).ToString();
         int upgradeValue = upgrade.usableMaxPoint - upgrade.usablePoint;
 
         int castleIndex = (upgradeValue - 1) / 6;

@@ -7,7 +7,6 @@ using LitJson;
 public struct UnitInfo
 {
     public Sprite portrait;
-    public string description;
     public Movable unit;
     
 }
@@ -39,7 +38,7 @@ public class Book : MonoBehaviour
             currUnit = Resources.Load<Movable>("Prefabs/OurForce/" + name);
             if (currUnit == null)
                 continue;
-            unitsData.Add(new UnitInfo() { portrait = portraits[i], description = "ASDAS", unit = currUnit });
+            unitsData.Add(new UnitInfo() { portrait = portraits[i], unit = currUnit });
         }
 
         SetPages();

@@ -16,7 +16,6 @@ public class Main_Princess : MonoBehaviour
 
     public void SetScripts(string[] scripts)
     {
-        Debug.Log(scripts);
         this.scripts = scripts;
     }
 

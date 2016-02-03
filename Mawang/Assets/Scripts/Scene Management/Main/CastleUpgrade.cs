@@ -53,7 +53,6 @@ public class CastleUpgrade : MonoBehaviour
         PlayerData.instance.CheckInstance();
 
         usableMaxPoint = PlayerData.instance.GetClearedStageCount();
-        Debug.Log(usableMaxPoint);
         usablePoint = usableMaxPoint;
 
 
