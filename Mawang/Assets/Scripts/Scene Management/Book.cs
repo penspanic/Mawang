@@ -81,6 +81,12 @@ public class Book : MonoBehaviour
             string unitType = currUnit is Launcher ? "원거리" : "근거리";
             descriptionList[i].text = string.Format("{0}\n\n생산 비용 : {1}\n체력 : {2}\n공격력 : {3}\n{4}\n{5}\n{6}",
                 currUnit.name, currUnit.GetUnitCost(), currUnit.GetHP(), currUnit.GetAttackDamage(), unitType, "스킬 정보", JsonManager.instance.GetJoke(currUnit.name));
+
+            Movable newUnit = Instantiate<Movable>(currUnit);
+            newUnit.transform.SetParent(bookView.GetItem(i).transform);
+            newUnit.transform.localPosition = new Vector2(-300, 0);
+            newUnit.transform.localScale *= 1.5f;
+            newUnit.SetSortingLayer("UI Over");
         }
         descriptions = descriptionList.ToArray();
     }

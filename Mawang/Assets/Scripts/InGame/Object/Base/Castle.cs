@@ -6,13 +6,16 @@ public class Castle : ObjectBase
 {
     private SpriteRenderer front;
     [SerializeField] private Image      hpBar;
-    
-    
+
+
+    GameManager gameMgr;
+
     protected SpriteRenderer spr;
 
     protected override void Awake()
     {
         base.Awake();
+        gameMgr = GameObject.FindObjectOfType<GameManager>();
         front   =   transform.FindChild("Front").GetComponent<SpriteRenderer>();
         spr     =   this.GetComponent<SpriteRenderer>();
         StartCoroutine(CastleProcess());
@@ -43,7 +46,7 @@ public class Castle : ObjectBase
         if (hp <= 0 && !isDestroyed)
         {
             isDestroyed = true;
-            // OnDestroyed();
+            gameMgr.CastleDestroyed(this);
         }
 
         if(!isBleed)

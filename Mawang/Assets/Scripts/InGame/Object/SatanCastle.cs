@@ -10,7 +10,6 @@ public class SatanCastle : Castle, ITouchable
     private int skillDamage;
     private Image      castlePortrait;
 
-
     protected override void Awake()
     {
         base.Awake();

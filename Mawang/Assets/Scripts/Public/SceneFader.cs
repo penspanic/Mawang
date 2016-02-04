@@ -2,10 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class SceneFader : MonoBehaviour
 {
-    Image img;
+
+    SpriteRenderer sprRenderer;
+    BoxCollider2D collider;
     Sprite black;
     Sprite white;
     #region Singleton
@@ -17,8 +20,9 @@ public class SceneFader : MonoBehaviour
             if (_instance == null)
             {
                 _instance = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Fade")).AddComponent<SceneFader>();
-                _instance.transform.SetParent(GameObject.Find("Canvas").transform,false);
-                _instance.img       =   _instance.GetComponent<Image>();
+                _instance.sprRenderer = _instance.GetComponent<SpriteRenderer>();
+                _instance.collider = _instance.GetComponent<BoxCollider2D>();
+                _instance.collider.enabled = false;
             }
             return _instance;
         }
@@ -34,28 +38,28 @@ public class SceneFader : MonoBehaviour
 
     public void FillColor(Color color)
     {
-        img.sprite = white;
-        img.color = color;
+        sprRenderer.sprite = white;
+        sprRenderer.color = color;
     }
 
     public IEnumerator FadeOut(float duration, string nextScene = null)
     {
         float fadeAlpha = 0;
 
-        img.enabled     =   true;
-        img.sprite      =   black;
-
+        sprRenderer.enabled     =   true;
+        sprRenderer.sprite      =   black;
+        collider.enabled        =   true;
         while (fadeAlpha != 1)
         {
             // 시작시간과 지나가는 시간의 차이 / 지속시간 
             fadeAlpha = Mathf.MoveTowards(fadeAlpha, 1, Time.unscaledDeltaTime * (1 / duration));
-            img.color = new Color(0, 0, 0, fadeAlpha);
+            sprRenderer.color = new Color(0, 0, 0, fadeAlpha);
             yield return null;
         }
 
         fadeAlpha = 1;
-        img.color = new Color(0, 0, 0, fadeAlpha);
-
+        sprRenderer.color = new Color(0, 0, 0, fadeAlpha);
+        collider.enabled = true;
         if (nextScene != null)
             Application.LoadLevel(nextScene);
     }
@@ -64,19 +68,20 @@ public class SceneFader : MonoBehaviour
     {
         float fadeAlpha = 1;
         
-        img.enabled     =   true;
-        img.sprite      =   black;
+        sprRenderer.enabled     =   true;
+        sprRenderer.sprite      =   black;
+        collider.enabled        =   true;
 
         while (fadeAlpha != 0)
         {
             // 시작시간과 지나가는 시간의 차이 / 지속시간 
             fadeAlpha = Mathf.MoveTowards(fadeAlpha, 0, Time.unscaledDeltaTime * (1 / duration));
-            img.color = new Color(0, 0, 0, fadeAlpha);
+            sprRenderer.color = new Color(0, 0, 0, fadeAlpha);
             yield return null;
         }
 
-        img.enabled = false;
-
+        sprRenderer.enabled = false;
+        collider.enabled = false;
         if (nextScene != null)
             Application.LoadLevel(nextScene);
     }

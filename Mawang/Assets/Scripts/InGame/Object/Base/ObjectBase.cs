@@ -43,6 +43,12 @@ public class ObjectBase : MonoBehaviour
         set;
     }
 
+    public bool forDecoration
+    {
+        get;
+        protected set;
+    }
+
     public int maxHP
     {
         get;
@@ -50,9 +56,13 @@ public class ObjectBase : MonoBehaviour
     }
     #endregion
 
-
     protected virtual void Awake()
     {
+        if (GameObject.FindObjectOfType<GameManager>() == null) // InGame 에서 유닛이 사용중이지 않을 때
+        {
+            forDecoration = true;
+            return;
+        }
         battleMgr = GameObject.FindGameObjectWithTag("Manager").GetComponent<BattleManager>();
 
         if (this.CompareTag("OurForce"))
@@ -111,6 +121,7 @@ public class ObjectBase : MonoBehaviour
             hp -= minusHP;
         else
             hp = 0;
+
     }
     public int GetHP()
     {

@@ -25,7 +25,7 @@ public class PrincessManager : MonoBehaviour
     private Image       illust;
     private Image       portrait;
     private Image       portrait_gray;
-    private Image       castleImg;
+    private Image       castlesprRenderer;
 
     private string currChapter;
 
@@ -49,7 +49,7 @@ public class PrincessManager : MonoBehaviour
         illust          =   princessUI.transform.FindChild("Event").FindChild("BigIllust").GetComponent<Image>();
         portrait        =   GameObject.Find("Princess Image").GetComponent<Image>();
         portrait_gray   =   GameObject.Find("Princess Gray").GetComponent<Image>();
-        castleImg       =   GameObject.Find("OutpostIcon").GetComponent<Image>();
+        castlesprRenderer       =   GameObject.Find("OutpostIcon").GetComponent<Image>();
 
 
         PlayerData.instance.CheckInstance();
@@ -64,7 +64,7 @@ public class PrincessManager : MonoBehaviour
         skillName.sprite        =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_SkillName");
         illust.sprite           =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_L");
         portrait.sprite         =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_Portait");
-        castleImg.sprite        =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_CastleImg");
+        castlesprRenderer.sprite        =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_CastlesprRenderer");
 
         portrait_gray.sprite    =   portrait.sprite;
 

@@ -13,6 +13,8 @@ public class Dullahan : Warrior, ITouchable
     protected override void Awake()
     {
         base.Awake();
+        if (forDecoration)
+            return;
         skillEffect     =   transform.FindChild("Effect").gameObject;
         canUseSkill     =   true;
     }

@@ -82,6 +82,10 @@ public class Movable : ObjectBase
     protected override void Awake()
     {
         base.Awake();
+        sprs                =   GetComponentsInChildren<SpriteRenderer>(true);
+        if (forDecoration)
+            return;
+
         battleMgr.AddObject(this);
 
         goldMgr             =   GameObject.FindObjectOfType<GoldManager>();
@@ -89,7 +93,6 @@ public class Movable : ObjectBase
         spawnMgr            =   GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnManager>();
         princessMgr         =   GameObject.FindGameObjectWithTag("Manager").GetComponent<PrincessManager>();
         animator            =   GetComponent<Animator>();
-        sprs                =   GetComponentsInChildren<SpriteRenderer>(true);
         audioSource         =   GetComponent<AudioSource>();
         attackInterval      =   (float)1f / attackSpeed;
         isMoveRight         =   isOurForce ? true : false;
@@ -347,26 +350,20 @@ public class Movable : ObjectBase
         else if (transform.position.y > -3)
             this.line = 3;
 
-        for (int i = 0; i < sprs.Length; i++)
-        {
-            switch (line)
-            {
-                case 1:
-                    sprs[i].sortingLayerName = "Line1 Object";
-                    break;
-                case 2:
-                    sprs[i].sortingLayerName = "Line2 Object";
-                    break;
-                case 3:
-                    sprs[i].sortingLayerName = "Line3 Object";
-                    break;
-            }
-        }
+        SetSortingLayer("Line" + line + " Object");
 
         transform.position += GetAdjustPos();
         transform.position += new Vector3(0, Random.Range(0, 0.5f), 0);
     }
 
+
+    public void SetSortingLayer(string layerName)
+    {
+        for(int i =0;i<sprs.Length;i++)
+        {
+            sprs[i].sortingLayerName = layerName;
+        }
+    }
 
     #region Skill Unit Func
 

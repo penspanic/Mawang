@@ -8,6 +8,7 @@ public class StageManager : MonoBehaviour
 
     private JsonData stageData;
     private TextAsset stageText;
+    private GameManager gameMgr;
     private PrincessManager princessMgr;
     private SpriteOrderLayerManager orderMgr;
     private string stage;

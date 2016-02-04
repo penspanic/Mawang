@@ -115,7 +115,6 @@ public class CastleUpgrade : MonoBehaviour
     //Event
     public void OnInitButtonDown()
     {
-        // 스택에 푸쉬 
 
         usablePoint = usableMaxPoint;
 

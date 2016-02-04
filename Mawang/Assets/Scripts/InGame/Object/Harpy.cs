@@ -20,6 +20,8 @@ public class Harpy : Launcher, ITouchable
     protected override void Awake()
     {
         base.Awake();
+        if (forDecoration)
+            return;
         skillEffect     =   transform.FindChild("Effect").gameObject;
         canUseSkill     =   true;
     }
@@ -42,13 +44,13 @@ public class Harpy : Launcher, ITouchable
             this.attackRange * battleMgr.fightDistance > Mathf.Abs(transform.position.x - e.transform.position.x));
 
         lineList.Remove(this);
-        AddBuffImg();
+        AddBuffsprRenderer();
         BuffSet(true);
         yield return new WaitForSeconds(buffDuration);
         BuffSet(false);
     }
 
-    void AddBuffImg()
+    void AddBuffsprRenderer()
     {
         for (int i = 0; i < lineList.Count; i++)
         {

@@ -46,7 +46,7 @@ public class GoldManager : MonoBehaviour
 
     IEnumerator UpdateGoldText()
     {
-        while(!gameMgr.isOver)
+        while(!gameMgr.isRun)
         {
             SetGoldText();
             yield return null;
@@ -54,7 +54,7 @@ public class GoldManager : MonoBehaviour
     }
     IEnumerator IncreaseGold()
     {
-        while (!gameMgr.isOver)
+        while (!gameMgr.isRun)
         {
             yield return new WaitForSeconds(1f);
             if (playerGold + goldIncreaseAmount > playerMaxGold)

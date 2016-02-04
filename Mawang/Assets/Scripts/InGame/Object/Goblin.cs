@@ -18,6 +18,8 @@ public class Goblin : Launcher, ITouchable
     protected override void Awake()
     {
         base.Awake();
+        if (forDecoration)
+            return;
         canUseSkill     =   true;
     }
 

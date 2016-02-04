@@ -17,8 +17,8 @@ public class TutorialManager : MonoBehaviour
     private BgmManager bgmMgr;
 
     private Movable skeleton;
-    private Image tutorialImg;
-    private Image effectImg;
+    private Image tutorialsprRenderer;
+    private Image effectsprRenderer;
 
     private int[] effectIdx = { 1, 5 };
     private int currIdx = -1;
@@ -62,8 +62,8 @@ public class TutorialManager : MonoBehaviour
 
 
 
-        tutorialImg = CreateImgObj("TutorialObj");
-        effectImg = CreateImgObj("TwinkleObj");
+        tutorialsprRenderer = CreatesprRendererObj("TutorialObj");
+        effectsprRenderer = CreatesprRendererObj("TwinkleObj");
 
         bgmMgr.Pause();
 
@@ -82,8 +82,8 @@ public class TutorialManager : MonoBehaviour
 
         // end Processing
 
-        Destroy(tutorialImg);
-        Destroy(effectImg);
+        Destroy(tutorialsprRenderer);
+        Destroy(effectsprRenderer);
         Time.timeScale = 1;
         yield break;
     }
@@ -108,12 +108,12 @@ public class TutorialManager : MonoBehaviour
 
         if (currIdx == 0 || currIdx == 4)
         {
-            effectImg.enabled = true;
+            effectsprRenderer.enabled = true;
             StartCoroutine(Twinkle(
                 effectSpriteList[EffectFindIdx], effectSpriteList[EffectFindIdx]));
         }
         else
-            effectImg.enabled = false;
+            effectsprRenderer.enabled = false;
 
         if (currIdx == 3)
         {
@@ -123,7 +123,7 @@ public class TutorialManager : MonoBehaviour
         if (currIdx == 7)
             StartCoroutine(selectTab.RotateSelectTab());
 
-        tutorialImg.sprite = tutorialSpriteList[currIdx];
+        tutorialsprRenderer.sprite = tutorialSpriteList[currIdx];
 
     }
 
@@ -153,13 +153,13 @@ public class TutorialManager : MonoBehaviour
     IEnumerator Twinkle(Sprite one, Sprite two)
     {
         bool sw = true;
-        effectImg.enabled = true;
+        effectsprRenderer.enabled = true;
         while (currIdx == 0 || currIdx == 4)
         {
             if (sw)
-                effectImg.sprite = one;
+                effectsprRenderer.sprite = one;
             else
-                effectImg.sprite = two;
+                effectsprRenderer.sprite = two;
             sw = !sw;
 
             yield return StartCoroutine(WaitForRealSeconds(twinkleDelay));
@@ -180,7 +180,7 @@ public class TutorialManager : MonoBehaviour
     }
 
 
-    Image CreateImgObj(string name)
+    Image CreatesprRendererObj(string name)
     {
         GameObject go = new GameObject(name);
         go.transform.SetParent(GameObject.Find("Canvas").transform);

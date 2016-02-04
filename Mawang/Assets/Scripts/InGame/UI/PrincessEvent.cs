@@ -45,17 +45,17 @@ public class PrincessEvent : MonoBehaviour
     IEnumerator EventProcess()
     {
         // 들어오는부분
-        StartCoroutine(ImgWidthMove(illust, illustStartPos, illustPos));
+        StartCoroutine(sprRendererWidthMove(illust, illustStartPos, illustPos));
         yield return StartCoroutine(WaitForRealSeconds(moveTime + 0.2f));
-        StartCoroutine(ImgWidthMove(skillName, skillNameStartPos, skillNamePos));
+        StartCoroutine(sprRendererWidthMove(skillName, skillNameStartPos, skillNamePos));
 
         // 멈추는 부분 
         yield return StartCoroutine(WaitForRealSeconds(moveTime + 1f));
 
         // 나가는 부분 
-        StartCoroutine(ImgWidthMove(illust, illustPos, illustStartPos));
+        StartCoroutine(sprRendererWidthMove(illust, illustPos, illustStartPos));
         yield return StartCoroutine(WaitForRealSeconds(moveTime + 0.2f));
-        StartCoroutine(ImgWidthMove(skillName, skillNamePos, skillNameStartPos));
+        StartCoroutine(sprRendererWidthMove(skillName, skillNamePos, skillNameStartPos));
         yield return StartCoroutine(WaitForRealSeconds(moveTime + 0.2f));
 
 
@@ -67,7 +67,7 @@ public class PrincessEvent : MonoBehaviour
     }
 
 
-    IEnumerator ImgWidthMove(Image img, Vector2 start, Vector2 end)
+    IEnumerator sprRendererWidthMove(Image sprRenderer, Vector2 start, Vector2 end)
     {
         float beginTime = Time.unscaledTime;
 
@@ -77,12 +77,12 @@ public class PrincessEvent : MonoBehaviour
 
             float x =   EasingUtil.easeOutCirc(start.x,end.x,t);
 
-            img.transform.localPosition = new Vector2(x,img.transform.localPosition.y);
+            sprRenderer.transform.localPosition = new Vector2(x,sprRenderer.transform.localPosition.y);
 
             yield return null;
         }
         // 보정
-        img.transform.localPosition = end;
+        sprRenderer.transform.localPosition = end;
     }
 
     public IEnumerator WaitForRealSeconds(float time)
