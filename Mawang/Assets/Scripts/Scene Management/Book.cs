@@ -85,6 +85,7 @@ public class Book : MonoBehaviour
             Movable newUnit = Instantiate<Movable>(currUnit);
             newUnit.transform.SetParent(bookView.GetItem(i).transform);
             newUnit.transform.localPosition = new Vector2(-300, 0);
+            newUnit.transform.Translate(newUnit.GetAdjustPos());
             newUnit.transform.localScale *= 1.5f;
             newUnit.SetSortingLayer("UI Over");
         }
