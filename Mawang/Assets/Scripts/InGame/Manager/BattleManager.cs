@@ -57,9 +57,11 @@ public class BattleManager : MonoBehaviour {
         }
 
         List<ObjectBase> returnList = new List<ObjectBase>();
-        for (int i = 0; i < canHitNum; i++)
+
+        for (int i = 0; i < oppositeList.Count; i++)
         {
-            returnList.Add(oppositeList[i]);
+            if (i < canHitNum)
+                returnList.Add(oppositeList[i]);
         }
         return returnList.ToArray();
     }

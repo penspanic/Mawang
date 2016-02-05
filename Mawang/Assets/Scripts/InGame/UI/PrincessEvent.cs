@@ -45,18 +45,15 @@ public class PrincessEvent : MonoBehaviour
     IEnumerator EventProcess()
     {
         // 들어오는부분
-        StartCoroutine(sprRendererWidthMove(illust, illustStartPos, illustPos));
-        yield return StartCoroutine(WaitForRealSeconds(moveTime + 0.2f));
-        StartCoroutine(sprRendererWidthMove(skillName, skillNameStartPos, skillNamePos));
+        yield return StartCoroutine(sprRendererWidthMove(illust, illustStartPos, illustPos));
+        yield return StartCoroutine(sprRendererWidthMove(skillName, skillNameStartPos, skillNamePos));
 
         // 멈추는 부분 
         yield return StartCoroutine(WaitForRealSeconds(moveTime + 1f));
 
         // 나가는 부분 
-        StartCoroutine(sprRendererWidthMove(illust, illustPos, illustStartPos));
-        yield return StartCoroutine(WaitForRealSeconds(moveTime + 0.2f));
-        StartCoroutine(sprRendererWidthMove(skillName, skillNamePos, skillNameStartPos));
-        yield return StartCoroutine(WaitForRealSeconds(moveTime + 0.2f));
+        yield return StartCoroutine(sprRendererWidthMove(illust, illustPos, illustStartPos));
+        yield return StartCoroutine(sprRendererWidthMove(skillName, skillNamePos, skillNameStartPos));
 
 
         // 비활성화

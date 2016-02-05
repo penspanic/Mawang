@@ -20,7 +20,7 @@ public class StageManager : MonoBehaviour
 
     void Awake()
     {
-        stageText = Resources.Load<TextAsset>("TextFile/NewStage Design");
+        stageText = Resources.Load<TextAsset>("TextFile/Stage Design");
         orderMgr    =   GetComponent<SpriteOrderLayerManager>();
     }
 
@@ -44,19 +44,9 @@ public class StageManager : MonoBehaviour
         stageData = JsonMapper.ToObject(stageText.text);
         JsonData patternArr = stageData[stage]["EnemyPattern"];
 
-        //#region Princess Init
-
-        //// 현재 공주
-        //princessMgr.currPrincss = stageData[stage]["Princess"].ToString();
-
-        //// princessMgr 이 string에 따라 INIT
-        //princessMgr.InitUI();
-
-        //#endregion
 
         double temp = (double)stageData[stage]["Interval"];
         unitSpawnInterval = (float)temp;
-        Debug.Log(temp);
         
 
         // 적군 패턴 갖고오기
@@ -97,6 +87,5 @@ public class StageManager : MonoBehaviour
 
         Instantiate(stagePatternList[rand],new Vector3(19,randPosY,0),new Quaternion());
         orderMgr.UpdateOrder(randLine);
-        //patternPrefabList.Add();
     }
 }

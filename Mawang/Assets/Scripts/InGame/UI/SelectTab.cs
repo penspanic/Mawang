@@ -48,7 +48,7 @@ public class SelectTab : MonoBehaviour
         PlayerData.instance.selectedUnitList.Add("Goblin");
         PlayerData.instance.selectedUnitList.Add("Dullahan");
         PlayerData.instance.selectedUnitList.Add("Harpy");
-
+        PlayerData.instance.selectedUnitList.Add("Orc");
 
 
         #region Load

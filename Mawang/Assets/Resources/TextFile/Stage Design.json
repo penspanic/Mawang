@@ -1,27 +1,52 @@
 ﻿{
     "C0S1": {
-      "Princess" : "Mina",
-      "Enemy" :
-      [1,2,3,2,3,4]
-    },
-    "C0S2": {
-      "Princess" : "Mina",
-      "Enemy" :
-      [1,2,3,2,3,4]
-    },
-	"C0S3": {
-      "Princess" : "Mina",
-      "Enemy" :
-      [1,2,3,2,3,4]
+      "Interval" : 9.5,
+      "EnemyPattern" :
+      ["Pawn1","Pawn2"]
     },
 	"C1S1": {
-      "Princess" : "Rose",
-      "Enemy" :
-      [1,2,3,2,3,4]
+      "Interval" : 4.0,
+      "EnemyPattern" :
+      ["A"]
     },
 	"C1S2": {
-      "Princess" : "Rose",
-      "Enemy" :
-      [1,2,3,2,3,4]
+      "Interval" : 4.0,
+      "EnemyPattern" :
+      ["A"]
+    },
+	"C1S3": {
+      "Interval" : 4.0,
+      "EnemyPattern" :
+      ["A"]
+    },
+	"C2S1": {
+      "Interval" : 4.0,
+      "EnemyPattern" :
+      ["A"]
+    },
+	"C2S2": {
+      "Interval" : 4.0,
+      "EnemyPattern" :
+      ["A"]
+    },
+	"C2S3": {
+      "Interval" : 4.0,
+      "EnemyPattern" :
+      ["A"]
+    },
+	"C3S1": {
+      "Interval" : 4.0,
+      "EnemyPattern" :
+      ["A"]
+    },
+	"C3S2": {
+      "Interval" : 4.0,
+      "EnemyPattern" :
+      ["A"]
+    },
+	"C3S3": {
+      "Interval" : 4.0,
+      "EnemyPattern" :
+      ["A"]
     }
 }
