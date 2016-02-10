@@ -2,7 +2,7 @@
     "C0S1": {
       "Interval" : 9.5,
       "EnemyPattern" :
-      ["Pawn1","Pawn2"]
+      ["Bandsman_test"]
     },
 	"C1S1": {
       "Interval" : 4.0,

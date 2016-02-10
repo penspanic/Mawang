@@ -15,7 +15,6 @@ public class Harpy : Launcher, ITouchable
     private List<ObjectBase> lineList = new List<ObjectBase>();
 
     private GameObject  skillEffect;
-    private float prevSpeed;
 
     protected override void Awake()
     {
@@ -80,6 +79,9 @@ public class Harpy : Launcher, ITouchable
     {
         for (int i = 0; i < lineList.Count; i++)
         {
+            if (lineList[i] == null)
+                continue;
+
             if(set)
                 lineList[i].GetComponent<Movable>().AddMoveSpeed(growthSpeed);
             else
