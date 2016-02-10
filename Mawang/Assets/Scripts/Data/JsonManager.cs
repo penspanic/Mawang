@@ -6,6 +6,7 @@ public class JsonManager : MonoBehaviour
 {
     TextAsset objectDataJson;
     TextAsset stageDataJson;
+    TextAsset stageDesignDataJson;
     TextAsset princessScriptJson;
     TextAsset chapterDataJson;
 
@@ -25,6 +26,14 @@ public class JsonManager : MonoBehaviour
     }
     #endregion
 
+
+    JsonData objectData;
+    JsonData stageData;
+    JsonData stageDesignData;
+    JsonData princessScript;
+    JsonData chapterData;
+
+
     public void CheckInstance()
     {
 
@@ -33,40 +42,44 @@ public class JsonManager : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        objectDataJson = Resources.Load<TextAsset>("TextFile/Object Data");
-        stageDataJson = Resources.Load<TextAsset>("TextFile/Stage Data");
-        princessScriptJson = Resources.Load<TextAsset>("TextFile/Princess Script");
-        chapterDataJson = Resources.Load<TextAsset>("TextFile/Chapter Data");
+        objectDataJson      = Resources.Load<TextAsset>("TextFile/Object Data");
+        stageDataJson       = Resources.Load<TextAsset>("TextFile/Stage Data");
+        stageDesignDataJson = Resources.Load<TextAsset>("TextFile/Stage Design");
+        princessScriptJson  = Resources.Load<TextAsset>("TextFile/Princess Script");
+        chapterDataJson     = Resources.Load<TextAsset>("TextFile/Chapter Data");
+
+
+        
+        stageData           =   JsonMapper.ToObject(stageDataJson.text);
+        stageDesignData     =   JsonMapper.ToObject(stageDesignDataJson.text);
+        objectData          =   JsonMapper.ToObject(objectDataJson.text);
+        princessScript      =   JsonMapper.ToObject(princessScriptJson.text);
+        chapterData         =   JsonMapper.ToObject(chapterDataJson.text);
 
     }
 
     public string GetDescription(string name) // 유닛 설명 리턴
     {
-        JsonData objectData = JsonMapper.ToObject(objectDataJson.text);
         return objectData[name]["Description"].ToString();
     }
 
     public string GetJoke(string name) // 유닛에 관한 농담 리턴
     {
-        JsonData objectData = JsonMapper.ToObject(objectDataJson.text);
         return objectData[name]["Joke"].ToString();
     }
 
     public int GetCost(string name) // 아이템 가격 리턴
     {
-        JsonData objectData = JsonMapper.ToObject(objectDataJson.text);
         return (int)objectData[name]["Cost"];
     }
 
     public string GetType(string name)
     {
-        JsonData objectData = JsonMapper.ToObject(objectDataJson.text);
         return objectData[name]["Type"].ToString();
     }
     public string[] GetAppearEnemyName(string stageName) // 해당 스테이지에서 등장하는 적 이름 리턴
     {
-        Debug.Log(stageName);
-        JsonData currStageData = JsonMapper.ToObject(stageDataJson.text)[stageName];
+        JsonData currStageData = stageData[stageName];
 
         List<string> enemyNameList = new List<string>();
         for (int i = 0; i < currStageData.Count; i++)
@@ -97,7 +110,6 @@ public class JsonManager : MonoBehaviour
     
     public ChapterData GetChapterData(string chapterName)
     {
-        JsonData chapterData = JsonMapper.ToObject(chapterDataJson.text)[chapterName];
 
         ChapterData returnData = new ChapterData();
 
