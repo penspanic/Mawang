@@ -50,7 +50,7 @@ public class Bandsman : Movable
             if(lineList[i] == null)
                 continue;
 
-            if (set)
+            if (set) 
                 lineList[i].GetComponent<ObjectBase>().SetAddAttackDmg(growthAttack);
             else
                 lineList[i].GetComponent<ObjectBase>().SetAddAttackDmg(-growthAttack);

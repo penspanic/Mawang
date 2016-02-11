@@ -14,7 +14,6 @@ public class CastleInfo : MonoBehaviour
     public Text coolTimeText;
 
     public Image[] castleIcons;
-    public Image[] castleIconCases;
 
     Animator animator;
     CastleUpgrade upgrade;
@@ -41,11 +40,9 @@ public class CastleInfo : MonoBehaviour
             castleIndex = 2;
         for (int i = 0; i < 3; i++)
         {
-            castleIcons[i].color = new Color(0.5f, 0.5f, 0.5f, 1f);
-            castleIconCases[i].color = new Color(0.5f, 0.5f, 0.5f, 1f);
+            castleIcons[i].color = new Color(0.3f, 0.3f, 0.3f, 1f);
         }
         castleIcons[castleIndex].color = new Color(1, 1, 1, 1);
-        castleIconCases[castleIndex].color = new Color(1, 1, 1, 1);
     }
 
     //Event

@@ -64,7 +64,7 @@ public class PrincessManager : MonoBehaviour
         skillName.sprite        =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_SkillName");
         illust.sprite           =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_L");
         portrait.sprite         =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_Portait");
-        castlesprRenderer.sprite        =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_CastlesprRenderer");
+        castlesprRenderer.sprite        =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_CastleImg");
 
         portrait_gray.sprite    =   portrait.sprite;
 

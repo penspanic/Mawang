@@ -7,7 +7,7 @@ public class StageSelect_CameraMove : MonoBehaviour
 {
     public bool isMoving;
 
-    float moveTime = 3f;
+    float moveTime = 2f;
 
     StageSelect stageSelect;
 
@@ -37,8 +37,8 @@ public class StageSelect_CameraMove : MonoBehaviour
         {
             elaspedTime += Time.deltaTime;
             Vector3 currPos;
-            currPos.x = EasingUtil.easeInOutQuart(moveStartPos.x, targetTransform.position.x, elaspedTime / moveTime);
-            currPos.y = EasingUtil.easeInOutQuart(moveStartPos.y, targetTransform.position.y, elaspedTime / moveTime);
+            currPos = EasingUtil.EaseVector2(
+                EasingUtil.easeInOutQuart, moveStartPos, targetTransform.position, elaspedTime / moveTime);
             currPos.z = -10;
             this.transform.position = currPos;
             yield return null;

@@ -110,7 +110,7 @@ public class JsonManager : MonoBehaviour
     
     public ChapterData GetChapterData(string chapterName)
     {
-
+        chapterData = JsonMapper.ToObject(chapterDataJson.text)[chapterName];
         ChapterData returnData = new ChapterData();
 
         returnData.chapterName = chapterData["Chapter Name"].ToString();
