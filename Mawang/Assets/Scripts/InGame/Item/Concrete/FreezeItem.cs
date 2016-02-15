@@ -28,6 +28,7 @@ public class FreezeItem : ItemBase
             StartCoroutine(FreezeProcess());
         }
     }
+    
     IEnumerator FreezeProcess()
     {
         // 얼릴 적 찾기
