@@ -201,7 +201,6 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
     protected virtual void Attack()
     {
-        animator.speed = attackSpeed;
         animator.Play("Attack",0);
 
         if (!isOneShotSound)
@@ -306,9 +305,10 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     // 공격모션 끝날때
     public virtual void AttackEnd()
     {
-        animator.speed  =       1;
         isOneShotSound  =   false;
     }
+
+
 
     // 죽는모션 끝날때
     public void OnDeathEnd()
