@@ -15,7 +15,7 @@ public enum MovableState
 /// <summary>
 /// 죽을땐 MovableState.Death 를바꾼다.
 /// </summary>
-public class Movable : ObjectBase
+public class Movable : ObjectBase, System.IComparable<Movable>
 {
     #region GameDesign
 
@@ -381,6 +381,7 @@ public class Movable : ObjectBase
 
     #endregion
 
+
     // gett
     #region Get
 
@@ -420,4 +421,13 @@ public class Movable : ObjectBase
     }
 
     #endregion
+
+    public int CompareTo(Movable other)
+    {
+        if (this.unitCost > other.unitCost)
+            return 1;
+        else if (this.unitCost < other.unitCost)
+            return -1;
+        return 0;
+    }
 }

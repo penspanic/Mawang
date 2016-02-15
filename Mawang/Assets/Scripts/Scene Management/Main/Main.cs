@@ -8,6 +8,7 @@ public class Main : MonoBehaviour
     public Button upgradeButton;
     public Button infoButton;
 
+    public Main_Book book;
     CastleUpgrade upgrade;
     CastleInfo info;
 
@@ -23,11 +24,6 @@ public class Main : MonoBehaviour
 
 
 
-    public void OnBookButtonDown()
-    {
-        if (!isChanging)
-            ToBookScene();
-    }
 
     public void OnStartButtonDown()
     {
@@ -45,6 +41,10 @@ public class Main : MonoBehaviour
     {
         if (!info.isShowing && !upgrade.isShowing)
             info.ShowInfo();
+    }
+    public void OnBookButtonDown()
+    {
+        book.gameObject.SetActive(true);
     }
 
     public void BlurBackground(bool isBlear)

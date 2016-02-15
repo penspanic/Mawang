@@ -1,39 +1,39 @@
 ﻿{
     "C0S1": [
-        "pawn_sword",
-        "archer"
+        "Pawn",
+        "Archer"
     ],
     "C0S2": [
-        "pawn_sword",
-        "archer"
+        "Pawn",
+        "Archer"
     ],
     "C0S3": [
-        "pawn_sword",
-        "archer"
+        "Pawn",
+        "Archer"
     ],
     "C1S1": [
-        "pawn_sword",
-        "archer"
+        "Pawn",
+        "Archer"
     ],
     "C1S2": [
-        "pawn_sword",
-        "archer"
+        "Pawn",
+        "Archer"
     ],
     "C1S3": [
-        "pawn_sword",
-        "archer"
+        "Pawn",
+        "Archer"
     ],
     "C2S1": [
-        "pawn_sword",
-        "archer"
+        "Pawn",
+        "Archer"
     ],
     "C2S2": [
-        "pawn_sword",
-        "archer"
+        "Pawn",
+        "Archer"
     ],
     "C2S3": [ 
-        "pawn_sword",
-        "archer"
+        "Pawn",
+        "Archer"
     ]
 
 }

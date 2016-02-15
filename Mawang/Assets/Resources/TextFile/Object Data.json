@@ -1,38 +1,51 @@
 ﻿{
     /* 아군 유닛 */
     "Skeleton": {
-        "Joke": "골다공증에 대한 걱정을 살짝 시작했다.",
+        "Joke": "Skeleton 농담",
         "Description": "자신의 공격속도 증가",
         "Type": "근거리"
     },
     "Goblin": {
-        "Joke": "고블린이 뒤로 가면 백블린? 깔깔깔깔",
+        "Joke": "Goblin 농담",
         "Description": "3회의 데미지를 한 번에 입힌다",
-        "Type":  "원거리"
+        "Type": "원거리"
     },
     "Dullahan": {
-        "Joke": "미용실에서 잘라준 머리가 마음에 드는 모양입니다.",
+        "Joke": "Dullahan 농담",
         "Description": "돌진하며 적을 밀쳐낸다",
         "Type": "근거리"
     },
     "Harpy": {
 
-        "Joke": "날개 손질은 아침 저녁에 두 번씩. 꼼꼼하게!",
+        "Joke": "Harpy 농담",
         "Description": "아군의 이동 속도 증가",
         "Type": "원거리"
     },
+    "Orc": {
+
+        "Joke": "Orc 농담",
+        "Description": "광역 피해",
+        "Type": "근거리"
+    },
+    "Grim": {
+
+        "Joke": "Grim 농담",
+        "Description": "낫을 던져 광역 피해",
+        "Type": "근거리"
+    },
+
     /* 적군 유닛 */
 
-    "pawn_sword": {
+    "Pawn": {
         "Description": "국가를 지키는 듬직한 병사입니다."
     },
-    "archer": {
+    "Archer": {
         "Description": "활을 잘 다루는 병사입니다."
     },
-    "shielder": {
+    "Shielder": {
         "Description": "방패를 들고 최전방에 서는 병사입니다"
     },
-    "bandsman": {
+    "Bandsman": {
         "Description": "악기를 연주해 사기를 높이는 병사입니다"
     },
 
