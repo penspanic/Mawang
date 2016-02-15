@@ -1,0 +1,170 @@
+fileFormatVersion: 2
+guid: d363e3720c9c84f49a4379e2a786f63d
+timeCreated: 1455508847
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Sickle
+    21300002: arm_left
+    21300004: arm_right
+    21300006: body
+    21300008: tail
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Sickle
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 47
+        width: 221
+        height: 304
+      alignment: 9
+      pivot: {x: 0.21269615, y: 0.34456754}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 156.99416, y: 145.25146}
+        - {x: 113.994156, y: 189.25146}
+        - {x: 71.994156, y: 199.25146}
+        - {x: -8.005848, y: 199.25146}
+        - {x: -19.005848, y: 193.25146}
+        - {x: -42.005848, y: 174.25146}
+        - {x: -47.005848, y: 159.25146}
+        - {x: -47.005848, y: 94.251465}
+        - {x: -20.005848, y: -94.748535}
+        - {x: -16.005848, y: -104.748535}
+        - {x: 31.994152, y: -104.748535}
+        - {x: 173.99416, y: 21.251465}
+        - {x: 173.99416, y: 100.251465}
+        - {x: 165.99416, y: 124.251465}
+    - name: arm_left
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 257
+        width: 62
+        height: 100
+      alignment: 9
+      pivot: {x: 0.3690107, y: 0.88391787}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32.121338, y: 1.6082153}
+        - {x: 11.121338, y: 11.608215}
+        - {x: -22.878662, y: 11.608215}
+        - {x: -22.878662, y: -33.391785}
+        - {x: 1.1213379, y: -88.391785}
+        - {x: 36.121338, y: -88.391785}
+        - {x: 39.121338, y: -84.391785}
+        - {x: 39.121338, y: -40.391785}
+        - {x: 37.121338, y: -26.391785}
+    - name: arm_right
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 21
+        width: 62
+        height: 127
+      alignment: 9
+      pivot: {x: 0.29756165, y: 0.7441632}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5.551178, y: 32.491272}
+        - {x: -18.448822, y: 15.491272}
+        - {x: -18.448822, y: -94.50873}
+        - {x: 3.551178, y: -94.50873}
+        - {x: 43.551178, y: -5.508728}
+        - {x: 43.551178, y: 31.491272}
+        - {x: 40.551178, y: 32.491272}
+    - name: body
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 148
+        width: 120
+        height: 182
+      alignment: 9
+      pivot: {x: 0.42616957, y: 0.45943376}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38.85965, y: -37.616943}
+        - {x: 68.85965, y: 24.383057}
+        - {x: 68.85965, y: 97.38306}
+        - {x: 61.85965, y: 98.38306}
+        - {x: -24.14035, y: 98.38306}
+        - {x: -48.14035, y: 71.38306}
+        - {x: -38.14035, y: 29.383057}
+        - {x: -46.14035, y: 11.383057}
+        - {x: -51.14035, y: -2.6169434}
+        - {x: -51.14035, y: -83.61694}
+        - {x: 51.85965, y: -83.61694}
+        - {x: 61.85965, y: -71.61694}
+        - {x: 52.85965, y: -36.616943}
+        - {x: 43.85965, y: -36.616943}
+    - name: tail
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 12
+        width: 75
+        height: 109
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 37.5, y: 49.5}
+        - {x: 36.5, y: 49.5}
+        - {x: 22.5, y: 54.5}
+        - {x: -37.5, y: 54.5}
+        - {x: -37.5, y: -54.5}
+        - {x: -15.5, y: -54.5}
+        - {x: -14.5, y: -51.5}
+        - {x: 28.5, y: -16.5}
+        - {x: 37.5, y: -5.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
