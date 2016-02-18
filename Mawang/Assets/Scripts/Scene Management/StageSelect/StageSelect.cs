@@ -48,6 +48,7 @@ public class StageSelect : MonoBehaviour
                 eachButton.interactable = false;
         }
 
+        
         if (PlayerData.instance.lastClearedStage == null) // 클리어 한게 아무것도 없을 경우
         {
             stageButtons[0][0].interactable = true;
@@ -64,9 +65,15 @@ public class StageSelect : MonoBehaviour
 
         for (int c = 0; c <= chapter; c++)
         {
-            for (int s = 0; s < stage; s++)
+            for (int s = 0; s < 3; s++)
             {
-                stageButtons[c][s].interactable = true;
+                if (c < chapter)
+                    stageButtons[c][s].interactable = true;
+                else
+                {
+                    if (s < stage)
+                        stageButtons[c][s].interactable = true;
+                }
             }
         }
     }

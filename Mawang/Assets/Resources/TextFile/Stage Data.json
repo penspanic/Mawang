@@ -31,7 +31,19 @@
         "Pawn",
         "Archer"
     ],
-    "C2S3": [ 
+    "C2S3": [
+        "Pawn",
+        "Archer"
+    ],
+    "C3S1": [
+        "Pawn",
+        "Archer"
+    ],
+    "C3S2": [
+        "Pawn",
+        "Archer"
+    ],
+    "C3S3": [
         "Pawn",
         "Archer"
     ]

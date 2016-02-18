@@ -64,6 +64,7 @@ public class SceneFader : MonoBehaviour
             Application.LoadLevel(nextScene);
     }
 
+
     public IEnumerator FadeIn(float duration, string nextScene = null)
     {
         float fadeAlpha = 1;

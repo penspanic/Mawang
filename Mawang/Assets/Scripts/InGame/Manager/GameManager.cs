@@ -7,7 +7,6 @@ using LitJson;
 public class GameManager : MonoBehaviour
 {
 
-    private Text    playerMoneyText;
     public bool isRun { get; set; }
 
     public GameObject gameOver;
@@ -28,7 +27,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        playerMoneyText =   GameObject.Find("MoneyText").GetComponent<Text>();
         tutorialMgr     =   GameObject.FindObjectOfType<TutorialManager>();
         orderMgr        =   FindObjectOfType<SpriteOrderLayerManager>();
         isRun           =   true;
@@ -103,7 +101,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-
+    
 
     void GameClear()
     {

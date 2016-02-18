@@ -21,7 +21,7 @@ public class SelectTab : MonoBehaviour
     private int prevIdx;
     private GameObject[] lines;
 
-
+    private AudioSource roseButtonEffectSource;
 
     private Transform lever;
     private Transform unitButtonTrs;
@@ -36,6 +36,7 @@ public class SelectTab : MonoBehaviour
     {
         msgBox = FindObjectOfType<MessageBox>();
         goldMgr = FindObjectOfType<GoldManager>();
+        roseButtonEffectSource = GetComponent<AudioSource>();
         lever = transform.FindChild("Lever");
         unitButtonTrs = transform.FindChild("UnitsButton");
         upgButtonTrs = transform.FindChild("UpgradeButton");
@@ -74,7 +75,10 @@ public class SelectTab : MonoBehaviour
             if (i > unitPortaitList.Count - 1)
                 unitButtonList[i].GetComponent<Button>().interactable = false;
             else
+            {
                 unitButtonList[i].sprite = unitPortaitList[i];
+                unitButtonList[i].GetComponentInChildren<Text>().text = unitPrefabs[i].GetUnitCost().ToString();
+            }
         }
 
         // Button Onclick 추가
@@ -153,7 +157,7 @@ public class SelectTab : MonoBehaviour
 
         if (isMoving)
             return;
-
+        roseButtonEffectSource.Play();
 
         StartCoroutine(RotateSelectTab());
     }

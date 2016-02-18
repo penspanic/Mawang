@@ -37,7 +37,7 @@ public class GoldManager : MonoBehaviour
     void Awake()
     {
         gameMgr = GameObject.FindObjectOfType<GameManager>();
-        playerGoldText = GameObject.Find("MoneyText").GetComponent<Text>();
+        playerGoldText = GameObject.Find("Gold Text").GetComponent<Text>();
         upgradeCostText = GameObject.Find("GoldUpgradeCost").GetComponent<Text>();
         StartCoroutine(UpdateGoldText());
         StartCoroutine(IncreaseGold());

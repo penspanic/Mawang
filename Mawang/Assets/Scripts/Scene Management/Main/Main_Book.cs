@@ -8,14 +8,17 @@ public class Main_Book : MonoBehaviour
     public GameObject pagePrefab;
 
     List<GameObject> pageList = new List<GameObject>();
+    AudioSource bookEffectSource;
 
     int selectedIndex = 0;
 
     void Awake()
     {
+        bookEffectSource = GetComponent<AudioSource>();
         SetBook();
         ShowPage(0);
 
+        this.gameObject.SetActive(false);
     }
 
     void SetBook()
@@ -24,7 +27,7 @@ public class Main_Book : MonoBehaviour
         List<Movable> unitList = new List<Movable>(Resources.LoadAll<Movable>("Prefabs/OurForce"));
         unitList.Sort();
 
-        foreach(Movable eachUnit in unitList)
+        foreach (Movable eachUnit in unitList)
         {
 
             GameObject currPage = Instantiate(pagePrefab);
@@ -50,6 +53,7 @@ public class Main_Book : MonoBehaviour
 
     void ShowPage(int index)
     {
+        bookEffectSource.Play();
         int i = 0;
         foreach (GameObject eachPage in pageList)
         {

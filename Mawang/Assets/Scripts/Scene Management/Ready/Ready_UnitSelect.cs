@@ -92,7 +92,6 @@ public class Ready_UnitSelect : MonoBehaviour
 
     public void OnUnitSelectButonDown()
     {
-        notifyBar.ShowMessage("dasdas");
         // 7개 초과인지 체크
         int selectedNum = 0;
         foreach (bool eachValue in isUnitChecked)

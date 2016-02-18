@@ -67,7 +67,7 @@ public class PlayerData : MonoBehaviour
         }
 
         selectedStage = "C0S1"; // Temp
-        lastClearedStage = "C3S3";
+        lastClearedStage = "C2S3";
         obsidian = 100; //Temp
     }
 
@@ -112,6 +112,13 @@ public class PlayerData : MonoBehaviour
         m = new MemoryStream(Convert.FromBase64String(data));
 
     }
+
+    public void OnApplicationQuit()
+    {
+        SaveData();
+    }
+
+    
     public void SaveData()
     {
 
@@ -176,7 +183,7 @@ public class PlayerData : MonoBehaviour
 
         if(stage == 3)
         {
-            return "C" + (chapter+1).ToString() + "S0";
+            return "C" + (chapter + 1).ToString() + "S1";
         }
         else
         {

@@ -68,7 +68,6 @@ public class StageSelect_CameraMove : MonoBehaviour
         Vector2 targetPos = target.transform.position;
 
         float distance = (cameraPos - targetPos).magnitude;
-        Debug.Log(distance);
         if (distance < 0.1f)
             return true;
         else
