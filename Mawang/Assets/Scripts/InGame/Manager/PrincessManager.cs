@@ -14,12 +14,8 @@ public class PrincessManager : MonoBehaviour
     //}
     private BattleManager   battleMgr;
 
-    [SerializeField]
     private float       coolTime;
-
-    [SerializeField]
     private float       buffDuration;
-
     
     private Image       skillName;
     private Image       illust;
@@ -55,7 +51,18 @@ public class PrincessManager : MonoBehaviour
         PlayerData.instance.CheckInstance();
         currChapter = "C" + PlayerData.instance.GetSelectedChapter().ToString();
 
+
+
+    }
+
+    void Start()
+    {
+        // 쿨타임 가져오기
+        coolTime        =   int.Parse(JsonManager.instance.GetCurrStage()["PrincessCoolTime"].ToString());
+        buffDuration    =   int.Parse(JsonManager.instance.GetCurrStage()["BuffDuration"].ToString());
+
         InitUI();
+        Debug.Log(coolTime);
 
     }
     // 이미지에 currPrincesse 받은걸로 대입하기

@@ -27,11 +27,11 @@ public class JsonManager : MonoBehaviour
     #endregion
 
 
-    JsonData objectData;
-    JsonData stageData;
-    JsonData stageDesignData;
-    JsonData princessScript;
-    JsonData chapterData;
+    public JsonData objectData { get; private set; }
+    public JsonData stageData { get; private set; }
+    public JsonData stageDesignData { get; private set; }
+    public JsonData princessScript { get; private set; }
+    public JsonData chapterData { get; private set; }
 
 
     public void CheckInstance()
@@ -71,6 +71,11 @@ public class JsonManager : MonoBehaviour
     public int GetCost(string name) // 아이템 가격 리턴
     {
         return (int)objectData[name]["Cost"];
+    }
+
+    public JsonData GetCurrStage()
+    {
+        return stageDesignData[PlayerData.instance.selectedStage];
     }
 
     public string GetType(string name)

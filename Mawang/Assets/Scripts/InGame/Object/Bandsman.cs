@@ -18,15 +18,11 @@ public class Bandsman : Movable
 
     protected override void Attack()
     {
-        Debug.Log(attackInterval);
-        
-
         animator.speed = 1;
         animator.Play("Attack", 0);
     }
     public override void AttackEnd()
     {
-        Debug.Log("attackEnd");
         canAttack = false;
         StartCoroutine(BuffRoutine());
     }

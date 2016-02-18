@@ -5,11 +5,12 @@ using System.Collections;
 public class GoldManager : MonoBehaviour
 {
     private int goldUpgradeCost = 200; 
-    private int goldUpgradeAddCost = 200;
+    private int goldUpgradeAddCost = 100;
 
     private int goldIncreaseAmount = 10; // 기본 초당 골드 습득량
-    private int goldUpgradeAddAmount = 5; // 업그레이드할 때마다 추가 골드 습득량
+    private int goldUpgradeAddAmount = 20; // 업그레이드할 때마다 추가 골드 습득량
     private int maxGoldAddAmount = 300; // 업그레이드할 때마다 추가 최대 골드량
+    private int playerMaxGold = 2000;
 
     public static readonly int MaxUpgradeStep = 5;
 
@@ -27,7 +28,6 @@ public class GoldManager : MonoBehaviour
     //};
 
     public int playerGold;
-    int playerMaxGold = 300;
 
     int goldUpgradeStep;
 
@@ -46,7 +46,7 @@ public class GoldManager : MonoBehaviour
 
     IEnumerator UpdateGoldText()
     {
-        while(!gameMgr.isRun)
+        while(gameMgr.isRun)
         {
             SetGoldText();
             yield return null;
@@ -54,7 +54,7 @@ public class GoldManager : MonoBehaviour
     }
     IEnumerator IncreaseGold()
     {
-        while (!gameMgr.isRun)
+        while (gameMgr.isRun)
         {
             yield return new WaitForSeconds(1f);
             if (playerGold + goldIncreaseAmount > playerMaxGold)

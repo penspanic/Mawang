@@ -84,7 +84,7 @@ public class TutorialManager : MonoBehaviour
 
         Destroy(tutorialsprRenderer);
         Destroy(effectsprRenderer);
-        Time.timeScale = 1;
+        Time.timeScale  =   1;
         yield break;
     }
 

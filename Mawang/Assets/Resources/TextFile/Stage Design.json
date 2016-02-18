@@ -2,51 +2,50 @@
     "C0S1": {
       "Interval" : 9.5,
       "EnemyPattern" :
-      ["Bandsman_test"]
+      ["Bandsman_test"],
+	  "PrincessCoolTime" : 50,
+	  "BuffDuration" : 8
+    },
+    "C0S2": {
+      "Interval" : 9.5,
+      "EnemyPattern" :
+      ["Bandsman_test"],
+	  "PrincessCoolTime" : 50,
+	  "BuffDuration" : 8
+    },
+    "C0S3": {
+      "Interval" : 9.5,
+      "EnemyPattern" :
+      ["Bandsman_test"],
+	  "PrincessCoolTime" : 50,
+	  "BuffDuration" : 8
     },
 	"C1S1": {
-      "Interval" : 4.0,
+      "Interval" : 9.5,
       "EnemyPattern" :
-      ["A"]
+      ["Bandsman_test"],
+	  "PrincessCoolTime" : 50,
+	  "BuffDuration" : 8
     },
 	"C1S2": {
-      "Interval" : 4.0,
+      "Interval" : 9.5,
       "EnemyPattern" :
-      ["A"]
+      ["Bandsman_test"],
+	  "PrincessCoolTime" : 50,
+	  "BuffDuration" : 8
     },
 	"C1S3": {
-      "Interval" : 4.0,
+      "Interval" : 9.5,
       "EnemyPattern" :
-      ["A"]
+      ["Bandsman_test"],
+	  "PrincessCoolTime" : 50,
+	  "BuffDuration" : 8
     },
 	"C2S1": {
-      "Interval" : 4.0,
+      "Interval" : 9.5,
       "EnemyPattern" :
-      ["A"]
-    },
-	"C2S2": {
-      "Interval" : 4.0,
-      "EnemyPattern" :
-      ["A"]
-    },
-	"C2S3": {
-      "Interval" : 4.0,
-      "EnemyPattern" :
-      ["A"]
-    },
-	"C3S1": {
-      "Interval" : 4.0,
-      "EnemyPattern" :
-      ["A"]
-    },
-	"C3S2": {
-      "Interval" : 4.0,
-      "EnemyPattern" :
-      ["A"]
-    },
-	"C3S3": {
-      "Interval" : 4.0,
-      "EnemyPattern" :
-      ["A"]
+      ["Bandsman_test"],
+	  "PrincessCoolTime" : 50,
+	  "BuffDuration" : 8
     }
 }
