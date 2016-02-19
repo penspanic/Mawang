@@ -43,7 +43,6 @@ public class StageSelect_CameraMove : MonoBehaviour
             this.transform.position = currPos;
             yield return null;
         }
-        Debug.Log(elaspedTime);
         isMoving = false;
     }
 

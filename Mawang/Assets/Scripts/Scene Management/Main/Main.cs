@@ -12,14 +12,15 @@ public class Main : MonoBehaviour
     CastleUpgrade upgrade;
     CastleInfo info;
 
-    BlurControl blurCtrl;
+    //BlurControl blurCtrl;
 
     void Awake()
     {
+
         StartCoroutine(SceneFader.Instance.FadeIn(1f));
         upgrade = GameObject.FindObjectOfType<CastleUpgrade>();
         info = GameObject.FindObjectOfType<CastleInfo>();
-        blurCtrl = GameObject.FindObjectOfType<BlurControl>();
+        //blurCtrl = GameObject.FindObjectOfType<BlurControl>();
     }
 
 
@@ -63,11 +64,11 @@ public class Main : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float blurValue = isBlear ? EasingUtil.easeInOutQuint(0, maxBlur, elapsedTime / blurTime) : EasingUtil.easeInOutQuint(maxBlur, 0, elapsedTime / blurTime);
 
-            blurCtrl.SetValue(blurValue);
+            //blurCtrl.SetValue(blurValue);
 
             yield return null;
         }
-        blurCtrl.SetValue(isBlear ? maxBlur : 0);
+        //blurCtrl.SetValue(isBlear ? maxBlur : 0);
     }
     bool isChanging = false;
     void ToBookScene()

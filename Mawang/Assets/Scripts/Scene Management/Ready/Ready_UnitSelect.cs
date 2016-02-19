@@ -30,6 +30,7 @@ public class Ready_UnitSelect : MonoBehaviour
         JsonManager.instance.CheckInstance();
 
         unitNameList = PlayerData.instance.playerUnitList;
+
         SetUnitList();
 
         notifyBar = GameObject.FindObjectOfType<NotifyBar>();
