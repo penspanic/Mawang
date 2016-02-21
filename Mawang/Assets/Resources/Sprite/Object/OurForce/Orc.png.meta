@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: cb42b7a648c086e46b3325cf6ee3e361
-timeCreated: 1452581271
+guid: 18a47fd7b19faa04397e919e397f7059
+timeCreated: 1455855257
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: arm_left
-    21300002: haed
+    21300002: head
     21300004: arm_right
-    21300006: hand
-    21300008: body
-    21300010: leg_left
-    21300012: leg_right
+    21300006: leg_left
+    21300008: leg_right
+    21300010: hand
+    21300012: body
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -24,32 +24,32 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: 0.25
+    heightScale: .25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
+  cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
-  compressionQuality: -1
+  compressionQuality: 50
   allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
@@ -65,17 +65,9 @@ TextureImporter:
         width: 80
         height: 126
       alignment: 9
-      pivot: {x: 0.6525283, y: 0.7237081}
+      pivot: {x: .64122808, y: .807435274}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -39.202263, y: 34.812775}
-        - {x: -52.202263, y: -5.1872253}
-        - {x: -52.202263, y: -86.187225}
-        - {x: -49.202263, y: -91.187225}
-        - {x: 17.797737, y: -91.187225}
-        - {x: 27.797737, y: -41.187225}
-        - {x: 27.797737, y: 34.812775}
-    - name: haed
+    - name: head
       rect:
         serializedVersion: 2
         x: 140
@@ -83,17 +75,8 @@ TextureImporter:
         width: 128
         height: 126
       alignment: 9
-      pivot: {x: 0.35204485, y: 0.21824181}
+      pivot: {x: .436951756, y: .115705825}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -41.061737, y: 98.501526}
-        - {x: -45.061737, y: 88.501526}
-        - {x: -45.061737, y: -18.498474}
-        - {x: -21.061737, y: -27.498474}
-        - {x: 79.93826, y: -27.498474}
-        - {x: 82.93826, y: -24.498474}
-        - {x: 82.93826, y: 50.501526}
-        - {x: 59.938263, y: 98.501526}
     - name: arm_right
       rect:
         serializedVersion: 2
@@ -102,56 +85,8 @@ TextureImporter:
         width: 156
         height: 62
       alignment: 9
-      pivot: {x: 0.20124446, y: 0.5701584}
+      pivot: {x: .184435531, y: .656196833}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24.394135, y: 26.650177}
-        - {x: -31.394135, y: 23.650177}
-        - {x: -31.394135, y: 0.650177}
-        - {x: -5.3941345, y: -28.349823}
-        - {x: 36.605865, y: -35.349823}
-        - {x: 106.605865, y: -35.349823}
-        - {x: 124.605865, y: -27.349823}
-        - {x: 124.605865, y: 26.650177}
-    - name: hand
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 61
-        width: 69
-        height: 92
-      alignment: 9
-      pivot: {x: 0.5540358, y: 0.8107058}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -38.22847, y: 17.41507}
-        - {x: -38.22847, y: -69.58493}
-        - {x: -28.22847, y: -74.58493}
-        - {x: 17.77153, y: -74.58493}
-        - {x: 22.77153, y: -73.58493}
-        - {x: 30.77153, y: -50.58493}
-        - {x: 30.77153, y: -0.5849304}
-        - {x: 18.77153, y: 17.41507}
-    - name: body
-      rect:
-        serializedVersion: 2
-        x: 114
-        y: 39
-        width: 168
-        height: 151
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -25, y: 75.5}
-        - {x: -75, y: 40.5}
-        - {x: -84, y: 16.5}
-        - {x: -84, y: -72.5}
-        - {x: -83, y: -75.5}
-        - {x: 82, y: -75.5}
-        - {x: 84, y: -65.5}
-        - {x: 84, y: 24.5}
-        - {x: 45, y: 75.5}
     - name: leg_left
       rect:
         serializedVersion: 2
@@ -160,23 +95,8 @@ TextureImporter:
         width: 108
         height: 148
       alignment: 9
-      pivot: {x: 0.49999973, y: 0.8946802}
+      pivot: {x: .537361979, y: .876244724}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -35.99997, y: -129.41267}
-        - {x: -35.99997, y: -132.41267}
-        - {x: -29.99997, y: -132.41267}
-        - {x: -29.99997, y: -129.41267}
-        - {x: -31.99997, y: -127.412674}
-        - {x: -33.99997, y: -127.412674}
-      - - {x: -32.99997, y: 15.587326}
-        - {x: -53.99997, y: 8.587326}
-        - {x: -53.99997, y: -102.412674}
-        - {x: -31.99997, y: -122.412674}
-        - {x: 40.00003, y: -122.412674}
-        - {x: 54.00003, y: -70.412674}
-        - {x: 54.00003, y: 12.587326}
-        - {x: 49.00003, y: 15.587326}
     - name: leg_right
       rect:
         serializedVersion: 2
@@ -185,17 +105,28 @@ TextureImporter:
         width: 78
         height: 124
       alignment: 9
-      pivot: {x: 0.50796664, y: 0.8758538}
+      pivot: {x: .479307115, y: .870967686}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -18.621399, y: 15.3941345}
-        - {x: -39.6214, y: 8.3941345}
-        - {x: -39.6214, y: -107.605865}
-        - {x: -35.6214, y: -108.605865}
-        - {x: 38.3786, y: -108.605865}
-        - {x: 38.3786, y: 9.3941345}
-        - {x: 27.378601, y: 15.3941345}
-    outline: []
+    - name: hand
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 61
+        width: 69
+        height: 92
+      alignment: 9
+      pivot: {x: .429824501, y: .807017446}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: body
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 39
+        width: 168
+        height: 151
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

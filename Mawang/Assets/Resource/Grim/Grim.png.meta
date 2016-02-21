@@ -1,15 +1,14 @@
 fileFormatVersion: 2
-guid: 2497b6fee6f7d7440a61d320e3de7086
-timeCreated: 1455861015
+guid: 6d9327d07054a3f4da65aeddc2d6ca55
+timeCreated: 1455859904
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: head
-    21300002: arm_left
-    21300004: leg_left
-    21300006: leg_right
-    21300008: arm_right
-    21300010: body
+    21300000: sickle
+    21300002: arm_right
+    21300004: arm_left
+    21300006: body
+    21300008: tail
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -56,65 +55,55 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: head
+    - name: sickle
       rect:
         serializedVersion: 2
-        x: 8
-        y: 273
-        width: 133
-        height: 127
+        x: 16
+        y: 47
+        width: 221
+        height: 304
       alignment: 9
-      pivot: {x: .468800664, y: .13592577}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: arm_left
-      rect:
-        serializedVersion: 2
-        x: 164
-        y: 252
-        width: 122
-        height: 100
-      alignment: 9
-      pivot: {x: .898430765, y: .357731014}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: leg_left
-      rect:
-        serializedVersion: 2
-        x: 13
-        y: 153
-        width: 49
-        height: 104
-      alignment: 9
-      pivot: {x: .778247118, y: .898991227}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: leg_right
-      rect:
-        serializedVersion: 2
-        x: 93
-        y: 153
-        width: 49
-        height: 104
-      alignment: 9
-      pivot: {x: .693563163, y: .870491922}
+      pivot: {x: .21269615, y: .337281674}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: arm_right
       rect:
         serializedVersion: 2
-        x: 184
-        y: 31
-        width: 66
-        height: 117
+        x: 273
+        y: 257
+        width: 62
+        height: 100
       alignment: 9
-      pivot: {x: .284441173, y: .895191312}
+      pivot: {x: .369010687, y: .861768782}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: arm_left
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 21
+        width: 62
+        height: 127
+      alignment: 9
+      pivot: {x: .285653383, y: .726723135}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: body
       rect:
         serializedVersion: 2
-        x: 39
-        y: 22
-        width: 58
-        height: 112
+        x: 359
+        y: 148
+        width: 120
+        height: 182
       alignment: 9
-      pivot: {x: .44889766, y: .589976609}
+      pivot: {x: .413864642, y: .362074971}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tail
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 12
+        width: 75
+        height: 109
+      alignment: 9
+      pivot: {x: .5, y: .818351388}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
