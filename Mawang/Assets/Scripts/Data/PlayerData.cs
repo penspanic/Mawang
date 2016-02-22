@@ -47,9 +47,7 @@ public class PlayerData : MonoBehaviour
 
     void Awake()
     {
-
         DontDestroyOnLoad(gameObject);
-        Debug.Log("First Data Init");
 
         // 1
         playerUnitList = new List<string>();
@@ -127,7 +125,6 @@ public class PlayerData : MonoBehaviour
 
     public void SaveData()
     {
-
         DataLoadSave.SetString("lastClearedStage", lastClearedStage);
         DataLoadSave.SetInt("isFirst", 1);
         DataLoadSave.SetInt("obsidian", obsidian);

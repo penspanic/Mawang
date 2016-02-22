@@ -27,22 +27,26 @@ public class Main_Book : MonoBehaviour
         List<Movable> unitList = new List<Movable>(Resources.LoadAll<Movable>("Prefabs/OurForce"));
         unitList.Sort();
 
+        Text nameText;
+        Text descriptionText;
         foreach (Movable eachUnit in unitList)
         {
 
             GameObject currPage = Instantiate(pagePrefab);
             currPage.transform.SetParent(this.transform, false);
-            currPage.transform.FindChild("Text").GetComponent<Text>().text = "qweqqweqw";
             currPage.transform.SetAsFirstSibling();
 
+            nameText = currPage.transform.Find("Name Text").GetComponent<Text>();
+            descriptionText = currPage.transform.Find("Description Text").GetComponent<Text>();
+            nameText.text = eachUnit.name;
             string unitType = eachUnit is Launcher ? "원거리" : "근거리";
-            currPage.transform.GetComponentInChildren<Text>().text = string.Format("{0}\n\n생산 비용 : {1}\n체력 : {2}\n공격력 : {3}\n{4}\n{5}\n{6}",
+            descriptionText.text = string.Format("{0}\n\n생산 비용 : {1}\n체력 : {2}\n공격력 : {3}\n{4}\n{5}\n{6}",
                 eachUnit.name, eachUnit.GetUnitCost(), eachUnit.GetHP(), eachUnit.GetAttackDamage(), unitType, "스킬 정보", JsonManager.instance.GetJoke(eachUnit.name));
             // Show Unit
 
             Movable newUnit = Instantiate(eachUnit);
             newUnit.transform.SetParent(currPage.transform);
-            newUnit.transform.localPosition = new Vector2(-300, 0);
+            newUnit.transform.localPosition = new Vector2(-250, 0);
             newUnit.transform.Translate(newUnit.GetAdjustPos());
             newUnit.transform.localScale *= 1.5f;
             newUnit.SetSortingLayer("UI Over");

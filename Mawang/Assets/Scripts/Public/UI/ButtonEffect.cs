@@ -5,8 +5,15 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum ButtonEffectType
+{
+    Expand,
+    BigAndSmall,
+}
 public class ButtonEffect : MonoBehaviour
 {
+    public ButtonEffectType type;
+
     Button targetButton;
     EventTrigger trigger;
     Vector2 originalSize;
@@ -38,11 +45,41 @@ public class ButtonEffect : MonoBehaviour
 
         Debug.Log("Pointer Enter");
         if (!isMoving)
-            StartCoroutine(ScaleMove(0.785f));
+        {
+            switch(type)
+            {
+                case ButtonEffectType.Expand:
+                    StartCoroutine(Expand(0.25f));
+                    break;
+                case ButtonEffectType.BigAndSmall:
+                    StartCoroutine(BigAndSmall(0.785f));
+                    break;
+            }
+        }
     }
 
     bool isMoving = false;
-    IEnumerator ScaleMove(float time)
+
+    IEnumerator Expand(float time)
+    {
+        isMoving = true;
+        float elapsedTime = 0f;
+
+        originalSize = GetComponent<RectTransform>().sizeDelta;
+
+        Vector2 startSize = originalSize / 2;
+        while(elapsedTime < time)
+        {
+            elapsedTime += Time.deltaTime;
+
+            rectTransform.sizeDelta = EasingUtil.EaseVector2(EasingUtil.smoothstep, startSize, originalSize, elapsedTime / time);
+
+            yield return null;
+        }
+        rectTransform.sizeDelta = originalSize;
+        isMoving = false;
+    }
+    IEnumerator BigAndSmall(float time)
     {
         float elapsedTime = 0f;
 
@@ -56,7 +93,7 @@ public class ButtonEffect : MonoBehaviour
 
             yield return null;
         }
-        isMoving = false;
         rectTransform.sizeDelta = originalSize;
+        isMoving = false;
     }
 }
