@@ -35,6 +35,11 @@ public class Warrior : Movable
     // 공격판정 이벤트
     public void OnJudgmentAttack()
     {
+        JudgmentAttack();
+    }
+
+    protected virtual void JudgmentAttack()
+    {
         ObjectBase[] targets = this.GetTargets();
 
         if (targets == null)

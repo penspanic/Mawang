@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-guid: 6d9327d07054a3f4da65aeddc2d6ca55
-timeCreated: 1455859904
+guid: 940bc37f46a8e6f43b2f346df129e125
+timeCreated: 1456120282
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: sickle
-    21300002: arm_right
-    21300004: arm_left
-    21300006: body
-    21300008: tail
+    21300000: Grim_SkillProj_0
+    21300002: Grim_SkillProj_1
+    21300004: Grim_SkillProj_2
+    21300006: Grim_SkillProj_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -34,7 +33,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 1
+    filterMode: -1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -55,55 +54,45 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: sickle
+    - name: Grim_SkillProj_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 47
-        width: 221
-        height: 304
-      alignment: 9
-      pivot: {x: .21269615, y: .337281674}
+        x: 0
+        y: 0
+        width: 394
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: arm_right
+    - name: Grim_SkillProj_1
       rect:
         serializedVersion: 2
-        x: 273
-        y: 257
-        width: 62
-        height: 100
-      alignment: 9
-      pivot: {x: .369010687, y: .861768782}
+        x: 394
+        y: 0
+        width: 394
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: arm_left
+    - name: Grim_SkillProj_2
       rect:
         serializedVersion: 2
-        x: 256
-        y: 21
-        width: 62
-        height: 127
-      alignment: 9
-      pivot: {x: .285653383, y: .726723135}
+        x: 788
+        y: 0
+        width: 394
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: body
+    - name: Grim_SkillProj_3
       rect:
         serializedVersion: 2
-        x: 359
-        y: 148
-        width: 120
-        height: 182
-      alignment: 9
-      pivot: {x: .413864642, y: .362074971}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tail
-      rect:
-        serializedVersion: 2
-        x: 366
-        y: 12
-        width: 75
-        height: 109
-      alignment: 9
-      pivot: {x: .5, y: .818351388}
+        x: 1182
+        y: 0
+        width: 394
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

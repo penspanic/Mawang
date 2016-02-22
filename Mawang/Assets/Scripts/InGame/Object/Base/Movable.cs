@@ -296,6 +296,9 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     {
         for (int i = 0; i < sprs.Length; i++)
         {
+            if(sprs[i].name.Contains("Effect"))
+                continue;
+
             sprs[i].color = color;
         }
     }
@@ -385,7 +388,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     // gett
     #region Get
 
-    protected override ObjectBase[] GetTargets()
+    public override ObjectBase[] GetTargets()
     {
         return battleMgr.GetTargets(this, this.GetAttackRange(), this.GetCanHitNum());
     }

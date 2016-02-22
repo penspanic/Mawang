@@ -7,11 +7,13 @@ public class Orc : Warrior, ITouchable
     [SerializeField]
     private int skillMultiplicationDmg;
 
+    private GameObject skillEffect;
+    
     protected override void Awake()
     {
         base.Awake();
         canUseSkill = true;
-
+        skillEffect = transform.FindChild("Effect").gameObject;
     }
 
 
@@ -40,5 +42,10 @@ public class Orc : Warrior, ITouchable
 
         SkillMotionEnd();
 
+    }
+
+    public void OnEffect()
+    {
+        skillEffect.SetActive(true);
     }
 }

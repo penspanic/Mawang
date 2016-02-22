@@ -8,14 +8,14 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private Vector2     adjustPos;
 
-    private Launcher    parent;
+    private Movable  parent;
     private bool        isMoveRight;
     private int         damage;
     private ObjectBase  target;
 
     void Awake()
     {
-        parent = transform.parent.GetComponent<Launcher>();
+        parent = transform.parent.GetComponent<Movable>();
 
         damage = parent.GetAttackDamage();
         isMoveRight = parent.isOurForce ? true : false;
@@ -23,7 +23,15 @@ public class Projectile : MonoBehaviour
 
     void OnEnable() // 유닛이 켜질떄
     {
-        target = parent.GetLauncherTargets(0);
+        target = null;
+
+        if (parent.GetComponent<Launcher>())
+            target = parent.GetComponent<Launcher>().GetLauncherTargets(0);
+        else
+        {
+            if(parent.GetTargets() != null)
+                target = parent.GetTargets()[0];
+        }
 
         if (target != null)
         {

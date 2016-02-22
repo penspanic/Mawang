@@ -134,6 +134,9 @@ public class PrincessManager : MonoBehaviour
 
             for (int j = 0; j < currSprs.Length; j++)
             {
+                if (currSprs[j].name.Contains("Effect"))
+                    continue;
+
                 if(set)
                     currSprs[j].color   =   buffColor;
                 else

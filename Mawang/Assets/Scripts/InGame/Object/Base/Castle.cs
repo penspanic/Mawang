@@ -29,7 +29,7 @@ public class Castle : ObjectBase
         }
     }
 
-    protected override ObjectBase[] GetTargets()
+    public override ObjectBase[] GetTargets()
     {
         return battleMgr.GetTargets(this, this.attackRange, this.canHitNum);
     }

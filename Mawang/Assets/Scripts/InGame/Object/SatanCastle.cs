@@ -96,7 +96,7 @@ public class SatanCastle : Castle, ITouchable
             hp += (int)healValue;
         }
     }
-    protected override ObjectBase[] GetTargets()
+    public override ObjectBase[] GetTargets()
     {
         List<ObjectBase> oppositeList = battleMgr.GetOpposite(true);
         oppositeList = battleMgr.SelectInRange(oppositeList, transform.position, this.attackRange);

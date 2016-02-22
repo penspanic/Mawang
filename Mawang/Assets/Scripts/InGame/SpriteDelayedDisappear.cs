@@ -5,7 +5,7 @@ public class SpriteDelayedDisappear : MonoBehaviour
 {
     public float delayedTime;
     private float duration;
-
+    public bool isDestory;
     SpriteRenderer spr;
 
     void Awake()
@@ -14,7 +14,7 @@ public class SpriteDelayedDisappear : MonoBehaviour
         duration    =   1;
     }
 
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(Disappear());
     }
@@ -34,7 +34,11 @@ public class SpriteDelayedDisappear : MonoBehaviour
         }
         
         spr.color       =   new Color(0, 0, 0, 0);
-        DestroyObject(this);
+
+        if(isDestory)
+            DestroyObject(this);
+        else
+            gameObject.SetActive(false);
         yield break;
 
     }

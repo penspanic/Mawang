@@ -65,6 +65,7 @@ public class Harpy : Launcher, ITouchable
 
             go.AddComponent<SpriteRenderer>().sprite = buff_AS;
             go.AddComponent<SpriteDelayedDisappear>().delayedTime = buffDuration;
+            go.GetComponent<SpriteDelayedDisappear>().isDestory = true;
             go.GetComponent<SpriteRenderer>().sortingLayerName = "Skill Effect";
 
             go.transform.SetParent(lineList[i].transform);

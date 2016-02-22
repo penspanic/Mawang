@@ -92,7 +92,7 @@ public class ObjectBase : MonoBehaviour
 
     public virtual void Attacked(int damage) { }
 
-    protected virtual ObjectBase[] GetTargets()
+    public virtual ObjectBase[] GetTargets()
     {
         return null;
     }
