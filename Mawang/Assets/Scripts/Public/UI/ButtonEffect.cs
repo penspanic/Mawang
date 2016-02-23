@@ -58,7 +58,18 @@ public class ButtonEffect : MonoBehaviour
         }
     }
 
+    void OnDisable()
+    {
+        if(isMoving)
+        {
+            isMoving = false;
+            rectTransform.sizeDelta = originalSize;
+            StopAllCoroutines();
+        }
+    }
+
     bool isMoving = false;
+
 
     IEnumerator Expand(float time)
     {
@@ -96,4 +107,7 @@ public class ButtonEffect : MonoBehaviour
         rectTransform.sizeDelta = originalSize;
         isMoving = false;
     }
+
+
+   
 }

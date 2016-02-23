@@ -102,13 +102,6 @@ public class Ready_UnitSelect : MonoBehaviour
         }
         if (selectedNum == 6 && isUnitChecked[selectedUnitIndex] == false)
         {
-            //ready.currWindow = Instantiate(unitMaxPopUp).GetComponent<Window>();
-            //ready.currWindow.transform.SetParent(GameObject.Find("Canvas").transform, false);
-            //ready.currWindow.okButton.onClick.AddListener(() =>
-            //{
-            //    ready.currWindow.CloseWindow();
-            //    ready.currWindow = null;
-            //});
             notifyBar.ShowMessage("6종류만 선택할 수 있습니다!");
         }
         else
@@ -129,13 +122,11 @@ public class Ready_UnitSelect : MonoBehaviour
     {
         PlayerData.instance.selectedUnitList.Clear();
 
-        int count = 0;
         for (int i = 0; i < unitButtons.Length; i++)
         {
             if (isUnitChecked[i])
             {
                 PlayerData.instance.selectedUnitList.Add(unitNameList[i]);
-                count++;
 
             }
         }

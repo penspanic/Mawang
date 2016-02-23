@@ -6,6 +6,8 @@ using System.Collections.Generic;
 public class Main_Book : MonoBehaviour
 {
     public GameObject pagePrefab;
+    public Image leftButtonImage;
+    public Image rightButtonImage;
 
     List<GameObject> pageList = new List<GameObject>();
     AudioSource bookEffectSource;
@@ -66,6 +68,21 @@ public class Main_Book : MonoBehaviour
                 eachPage.SetActive(true);
             i++;
         }
+
+        if(selectedIndex == 0)
+        {
+            leftButtonImage.color = new Color(1, 1, 1, 0.5f);
+        }
+        else if(selectedIndex == pageList.Count - 1)
+        {
+            rightButtonImage.color = new Color(1, 1, 1, 0.5f);
+        }
+        else
+        {
+            leftButtonImage.color = new Color(1, 1, 1, 1);
+            rightButtonImage.color = new Color(1, 1, 1, 1);
+        }
+            
     }
 
     public void OnLeftButtonDown()

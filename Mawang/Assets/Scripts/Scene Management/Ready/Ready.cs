@@ -3,12 +3,14 @@ using System.Collections;
 
 public class Ready : MonoBehaviour
 {
-
+    Ready_UnitSelect unitSelect;
 
     void Awake()
     {
         StartCoroutine(FadeIn());
         PlayerData.instance.CheckInstance();
+
+        unitSelect = GameObject.FindObjectOfType<Ready_UnitSelect>();
     }
 
     IEnumerator FadeIn()
@@ -41,6 +43,7 @@ public class Ready : MonoBehaviour
         if (isChanging)
             return;
         isChanging = true;
+        unitSelect.OnGameStart();
         ChangeScene("InGame");
 
     }

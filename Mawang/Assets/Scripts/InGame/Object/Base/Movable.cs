@@ -25,6 +25,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     [SerializeField]    private float           acCoolTime  =  0;
     [SerializeField]    private Vector2         adjustPos;
     [SerializeField]    protected AudioClip     attackSound;
+    [SerializeField]    protected AudioClip     skillSound;
     [SerializeField]    protected int           deathReward = 50;
 
     #endregion
@@ -82,7 +83,16 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     protected override void Awake()
     {
         base.Awake();
-        sprs                =   GetComponentsInChildren<SpriteRenderer>(true);
+        List<SpriteRenderer> sprList = new List<SpriteRenderer>(GetComponentsInChildren<SpriteRenderer>(true));
+        sprList.RemoveAll((obj) =>
+        {
+            if (obj.CompareTag("Skill Effect"))
+                return true;
+            else
+                return false;
+        });
+        sprs = sprList.ToArray();
+
         if (forDecoration)
             return;
 
@@ -372,9 +382,14 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
     protected void SkillMotionStart()
     {
+        AudioClip sound;
         isSkillMotion   =   true;
         canUseSkill     =   false;
-        PlaySound(attackSound);
+        if (skillSound == null)
+            sound = attackSound;
+        else
+            sound = skillSound;
+        PlaySound(sound);
     }
 
     protected void SkillMotionEnd()

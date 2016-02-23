@@ -45,12 +45,15 @@ public class SelectTab : MonoBehaviour
         lever.GetComponent<Button>().onClick.AddListener(ClickedRoseButton);
 
         // Temp
-        PlayerData.instance.selectedUnitList.Add("Skeleton");
-        PlayerData.instance.selectedUnitList.Add("Goblin");
-        PlayerData.instance.selectedUnitList.Add("Dullahan");
-        PlayerData.instance.selectedUnitList.Add("Harpy");
-        PlayerData.instance.selectedUnitList.Add("Orc");
-        PlayerData.instance.selectedUnitList.Add("Grim");
+        if (PlayerData.instance.selectedUnitList.Count == 0)
+        {
+            PlayerData.instance.selectedUnitList.Add("Skeleton");
+            PlayerData.instance.selectedUnitList.Add("Goblin");
+            PlayerData.instance.selectedUnitList.Add("Dullahan");
+            PlayerData.instance.selectedUnitList.Add("Harpy");
+            PlayerData.instance.selectedUnitList.Add("Orc");
+            PlayerData.instance.selectedUnitList.Add("Grim");
+        }
 
 
         #region Load
