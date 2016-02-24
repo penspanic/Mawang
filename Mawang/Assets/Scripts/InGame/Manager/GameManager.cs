@@ -49,11 +49,10 @@ public class GameManager : MonoBehaviour
     void LoadStage()
     {
         // TEMP 
-        PlayerData.instance.selectedStage = "C0S1";
+        PlayerData.instance.selectedStage = "C1S1";
 
 
         stage = PlayerData.instance.selectedStage;
-
         JsonData patternArr = JsonManager.instance.GetCurrStage()["EnemyPattern"];
 
         double temp = (double)JsonManager.instance.GetCurrStage()["Interval"];
@@ -64,7 +63,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < patternArr.Count; i++)
         {
             stagePatternList.Add(
-                Resources.Load<GameObject>("Prefabs/Enemy Pattern/" + patternArr[i].ToString()));
+                Resources.Load<GameObject>("Prefabs/Enemy Pattern/" + stage[1] + "/"+patternArr[i].ToString()));
         }
 
     }

@@ -11,6 +11,8 @@ public class Harpy : Launcher, ITouchable
     [SerializeField]
     private Sprite  buff_AS;
 
+    [SerializeField]
+    private GameObject buff_ASS;
 
     private List<ObjectBase> lineList = new List<ObjectBase>();
 
@@ -53,20 +55,18 @@ public class Harpy : Launcher, ITouchable
     {
         for (int i = 0; i < lineList.Count; i++)
         {
-            if(lineList[i].transform.FindChild("buff") != null)
+            if (lineList[i].transform.FindChild("Harpy_buff(Clone)") != null)
             {
-                GameObject tmp = lineList[i].transform.FindChild("buff").gameObject;
+                GameObject tmp = lineList[i].transform.FindChild("Harpy_buff(Clone)").gameObject;
                 tmp.GetComponent<SpriteRenderer>().color               =    Color.white;
-                if(tmp.GetComponent<SpriteDelayedDisappear>() == null)
-                    tmp.AddComponent<SpriteDelayedDisappear>().delayedTime =    buffDuration;
+                tmp.SetActive(true);
                 continue;
             }
-            GameObject go = new GameObject("buff");
+            
 
-            go.AddComponent<SpriteRenderer>().sprite = buff_AS;
-            go.AddComponent<SpriteDelayedDisappear>().delayedTime = buffDuration;
-            go.GetComponent<SpriteDelayedDisappear>().isDestory = true;
-            go.GetComponent<SpriteRenderer>().sortingLayerName = "Skill Effect";
+            GameObject go= Instantiate(buff_ASS);
+            go.GetComponent<SpriteDelayedDisappear>().delayedTime = buffDuration;
+            go.SetActive(true);
 
             go.transform.SetParent(lineList[i].transform);
 

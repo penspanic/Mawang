@@ -20,6 +20,7 @@ public class SpriteDelayedDisappear : MonoBehaviour
     }
     IEnumerator Disappear()
     {
+        Debug.Log(delayedTime);
         yield return new WaitForSeconds(delayedTime);
 
         float currTime  =   0.0f;
@@ -39,6 +40,7 @@ public class SpriteDelayedDisappear : MonoBehaviour
             DestroyObject(this);
         else
             gameObject.SetActive(false);
+
         yield break;
 
     }
