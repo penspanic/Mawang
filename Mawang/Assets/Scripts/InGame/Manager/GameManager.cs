@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
                 break;
             yield return null;
         }
+        Time.timeScale = 1f;
         StartCoroutine(SceneFader.Instance.FadeOut(1f, "Main"));
     }
 

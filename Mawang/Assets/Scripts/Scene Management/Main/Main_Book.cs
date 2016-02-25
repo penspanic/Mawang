@@ -42,8 +42,8 @@ public class Main_Book : MonoBehaviour
             descriptionText = currPage.transform.Find("Description Text").GetComponent<Text>();
             nameText.text = eachUnit.name;
             string unitType = eachUnit is Launcher ? "원거리" : "근거리";
-            descriptionText.text = string.Format("생산 비용 : {0}\n체력 : {1}\n공격력 : {2}\n{3}\n{4}\n{5}",
-                eachUnit.GetUnitCost(), eachUnit.GetHP(), eachUnit.GetAttackDamage(), unitType, "스킬정보", JsonManager.instance.GetJoke(eachUnit.name));
+            descriptionText.text = string.Format("생산 비용 : {0}\n체력 : {1}\n공격력 : {2}\n{3}\n\n{4}\n\n{5}",
+                eachUnit.GetUnitCost(), eachUnit.GetHP(), eachUnit.GetAttackDamage(), unitType, JsonManager.instance.GetDescription(eachUnit.name), JsonManager.instance.GetJoke(eachUnit.name));
             // Show Unit
 
             Movable newUnit = Instantiate(eachUnit);

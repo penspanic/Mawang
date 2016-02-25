@@ -1,26 +1,26 @@
 ﻿{
     "C0": {
         "Chapter Name": "Tutorial Chapter",
-        "Chapter Description": "동화 속에서 흔히 볼 법한 왕국이다.\n갑옷과 무기로 무장한 기사단이 존재한다.",
+        "Chapter Description": "오랜 평화의 역사를 자랑하던 동화 왕국.",
         "Skill Name": "공주의 울음",
-        "Skill Description": "아군 공속 20% 감소"
+        "Skill Description": "어마어마한 울음소리로 마왕군의 공격력이 감소한다."
     },
     "C1": {
         "Chapter Name": "Chapter 1",
-        "Chapter Description": "모든 인구가 여자로 알려져 있는 국가다.\n화려한 복식과 호화스러운 무기가 많다.\n국가 전역에서 느껴지는 장미향기는 쉽게 지워지지 않는다.",
+        "Chapter Description": "여성 중심으로 유명한 장미 왕국.\n일처다부제가 특징이다.",
         "Skill Name": "장미향 살포",
-        "Skill Description": "모든 유닛의 체력 10% 회복"
+        "Skill Description": "싱그러운 자연의 기운으로 적군과 아군 모두 체력이 회복된다."
     },
     "C2": {
         "Chapter Name": "Chapter 2",
-        "Chapter Description": "헨젤과 그레텔의 과자집같은 왕국이다.\n쉴 새 없이 밀려오는 과자병사들이 특징.",
-        "Skill Name": "배고픈 공주",
-        "Skill Description": "성 체력 20% 감소"
+        "Chapter Description": "집들도 성들도 전부 과자로 만들어져 있다는 소문이 있다.",
+        "Skill Name": "공주의 난동",
+        "Skill Description": "배고픈 공주가 먹을 것을 찾아 성을 파괴한다."
     },
     "C3": {
         "Chapter Name": "Chapter 3",
-        "Chapter Description": "단아한 분위기를 가진 동양풍의 국가이다.\n원거리에서 투척하는 폭탄을 주의할 것",
+        "Chapter Description": "신비롭고 강력한 동양 왕국.\n공주가 최근 흑마법에 미쳐있다고 한다.",
         "Skill Name": "공주의 흑마법",
-        "Skill Description": "아군 체력 50% 회복"
+        "Skill Description": "어째서인지 아군의 체력이 회복된다."
     }
 }
