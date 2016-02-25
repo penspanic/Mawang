@@ -62,12 +62,12 @@ public class PlayerData : MonoBehaviour
         {
             Debug.Log("First, Skeleton Added");
             AddUnit("Skeleton");
+            obsidian = 100; //Temp
 
         }
 
         selectedStage = "C0S1"; // Temp
         lastClearedStage = "C2S3";
-        obsidian = 100; //Temp
     }
 
 
@@ -146,10 +146,37 @@ public class PlayerData : MonoBehaviour
 
     }
 
+    public void StageClear(string stage)
+    {
+        obsidian += 30;
+        int c = int.Parse(stage[1].ToString());
+        int s = int.Parse(stage[3].ToString());
+
+        int LastC = int.Parse(lastClearedStage[1].ToString());
+        int LastS = int.Parse(lastClearedStage[3].ToString());
+
+        if (c > LastC)
+        {
+            lastClearedStage = stage;
+        }
+        else if (c == LastC)
+        {
+            if (s > LastS)
+            {
+                lastClearedStage = stage;
+            }
+            else
+                return;
+        }
+        else
+            return;
+    }
+
     public int GetSelectedChapter()
     {
         return int.Parse(selectedStage[1].ToString());
     }
+
     public int GetClearedStageCount()
     {
         if (lastClearedStage == null)

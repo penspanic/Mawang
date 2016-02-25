@@ -64,7 +64,7 @@ public class Harpy : Launcher, ITouchable
             }
             
 
-            GameObject go= Instantiate(buff_ASS);
+            GameObject go = Instantiate(buff_ASS);
             go.GetComponent<SpriteDelayedDisappear>().delayedTime = buffDuration;
             go.SetActive(true);
 

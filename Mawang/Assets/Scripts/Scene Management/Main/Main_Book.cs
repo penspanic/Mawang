@@ -18,7 +18,7 @@ public class Main_Book : MonoBehaviour
     {
         bookEffectSource = GetComponent<AudioSource>();
         SetBook();
-        ShowPage(0);
+        ShowPage(0, false);
 
         this.gameObject.SetActive(false);
     }
@@ -42,8 +42,8 @@ public class Main_Book : MonoBehaviour
             descriptionText = currPage.transform.Find("Description Text").GetComponent<Text>();
             nameText.text = eachUnit.name;
             string unitType = eachUnit is Launcher ? "원거리" : "근거리";
-            descriptionText.text = string.Format("{0}\n\n생산 비용 : {1}\n체력 : {2}\n공격력 : {3}\n{4}\n{5}\n{6}",
-                eachUnit.name, eachUnit.GetUnitCost(), eachUnit.GetHP(), eachUnit.GetAttackDamage(), unitType, "스킬 정보", JsonManager.instance.GetJoke(eachUnit.name));
+            descriptionText.text = string.Format("생산 비용 : {0}\n체력 : {1}\n공격력 : {2}\n{3}\n{4}\n{5}",
+                eachUnit.GetUnitCost(), eachUnit.GetHP(), eachUnit.GetAttackDamage(), unitType, "스킬정보", JsonManager.instance.GetJoke(eachUnit.name));
             // Show Unit
 
             Movable newUnit = Instantiate(eachUnit);
@@ -57,9 +57,10 @@ public class Main_Book : MonoBehaviour
         }
     }
 
-    void ShowPage(int index)
+    void ShowPage(int index, bool soundPlay)
     {
-        bookEffectSource.Play();
+        if(soundPlay)
+            bookEffectSource.Play();
         int i = 0;
         foreach (GameObject eachPage in pageList)
         {
@@ -89,14 +90,14 @@ public class Main_Book : MonoBehaviour
     {
         if (selectedIndex == 0)
             return;
-        ShowPage(--selectedIndex);
+        ShowPage(--selectedIndex, true);
     }
 
     public void OnRightButtonDown()
     {
         if (selectedIndex == pageList.Count - 1)
             return;
-        ShowPage(++selectedIndex);
+        ShowPage(++selectedIndex, true);
     }
 
     public void OnCloseButtonDown()

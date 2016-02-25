@@ -2,6 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using LitJson;
+
+public struct StagePattern
+{
+    public StagePattern(string[] patternsName, float interval, float princessCoolTime, float buffDuration)
+    {
+        this.patternsName = patternsName;
+        this.interval = interval;
+        this.princessCoolTime = princessCoolTime;
+        this.buffDuration = buffDuration;
+    }
+    public string[] patternsName;
+    public float interval;
+    public float princessCoolTime;
+    public float buffDuration;
+}
 public class JsonManager : MonoBehaviour
 {
     TextAsset objectDataJson;
@@ -73,9 +88,21 @@ public class JsonManager : MonoBehaviour
         return (int)objectData[name]["Cost"];
     }
 
-    public JsonData GetCurrStage()
+    public StagePattern GetStagePattern(string stage)
     {
-        return stageDesignData[PlayerData.instance.selectedStage];
+        //string[] patternsName = (string[])stageDesignData[stage]["EnemyPatttern"];
+        List<string> patternList = new List<string>();
+        
+        for(int i = 0;i<stageDesignData[stage]["EnemyPattern"].Count;i++)
+        {
+            patternList.Add(stageDesignData[stage]["EnemyPattern"][i].ToString());
+        }
+
+        float interval = float.Parse(stageDesignData[stage]["Interval"].ToString());
+        float princessCoolTime = float.Parse(stageDesignData[stage]["PrincessCoolTime"].ToString());
+        float buffDuration = float.Parse(stageDesignData[stage]["BuffDuration"].ToString());
+
+        return new StagePattern(patternList.ToArray(), interval, princessCoolTime, buffDuration);
     }
 
     public string GetType(string name)

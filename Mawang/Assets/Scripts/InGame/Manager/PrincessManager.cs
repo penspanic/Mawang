@@ -58,8 +58,9 @@ public class PrincessManager : MonoBehaviour
     void Start()
     {
         // 쿨타임 가져오기
-        coolTime        =   int.Parse(JsonManager.instance.GetCurrStage()["PrincessCoolTime"].ToString());
-        buffDuration    =   int.Parse(JsonManager.instance.GetCurrStage()["BuffDuration"].ToString());
+        StagePattern pattern = JsonManager.instance.GetStagePattern(PlayerData.instance.selectedStage);
+        coolTime = pattern.princessCoolTime;
+        buffDuration = pattern.buffDuration;
 
         InitUI();
         Debug.Log(coolTime);

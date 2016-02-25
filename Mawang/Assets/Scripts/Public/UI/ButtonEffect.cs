@@ -78,7 +78,7 @@ public class ButtonEffect : MonoBehaviour
 
         originalSize = GetComponent<RectTransform>().sizeDelta;
 
-        Vector2 startSize = originalSize / 2;
+        Vector2 startSize = originalSize * 0.66f;
         while(elapsedTime < time)
         {
             elapsedTime += Time.deltaTime;

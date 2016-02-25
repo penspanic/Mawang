@@ -122,4 +122,9 @@ public class StageSelect : MonoBehaviour
         StartCoroutine(SceneFader.Instance.FadeOut(1f, sceneName));
         StartCoroutine(SceneFader.Instance.SoundFadeOut(1f, GameObject.FindObjectsOfType<AudioSource>()));
     }
+
+    public void OnInfoCloseButtonDown()
+    {
+        EscapeProcess();
+    }
 }
