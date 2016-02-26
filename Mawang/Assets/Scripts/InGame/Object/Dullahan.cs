@@ -7,7 +7,6 @@ public class Dullahan : Warrior, ITouchable
 {
     [SerializeField]
     private float   skillDistance;
-    private GameObject skillEffect;
 
 
     protected override void Awake()
@@ -15,7 +14,6 @@ public class Dullahan : Warrior, ITouchable
         base.Awake();
         if (forDecoration)
             return;
-        skillEffect     =   transform.FindChild("Effect").gameObject;
         canUseSkill     =   true;
     }
 
@@ -24,7 +22,9 @@ public class Dullahan : Warrior, ITouchable
         if (canUseSkill && !isDestroyed)
         {
             SkillMotionStart();
-            skillEffect.SetActive(true);
+            Vector2 spawnPos = transform.position;
+            spawnPos += new Vector2(-0.57f,-1.2f);
+            EffectManager.Instance.PlayEffect(EffectKind.Dulahan_skill,spawnPos,transform);
             StartCoroutine(DullahanSkill());
         }
     }
@@ -60,7 +60,6 @@ public class Dullahan : Warrior, ITouchable
     // Animation Event
     public void OnSkillMotionEvent()
     {
-        skillEffect.SetActive(false);
         SkillMotionEnd();
     }
 

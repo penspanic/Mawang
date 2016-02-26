@@ -7,7 +7,7 @@ public class Harpy : Launcher, ITouchable
     [SerializeField]
     private float   buffDuration;
     [SerializeField]
-    private float   growthSpeed;
+    private int   growthDmg;
     [SerializeField]
     private Sprite  buff_AS;
 
@@ -16,14 +16,13 @@ public class Harpy : Launcher, ITouchable
 
     private List<ObjectBase> lineList = new List<ObjectBase>();
 
-    private GameObject  skillEffect;
 
     protected override void Awake()
     {
         base.Awake();
         if (forDecoration)
             return;
-        skillEffect     =   transform.FindChild("Effect").gameObject;
+
         canUseSkill     =   true;
     }
 
@@ -34,7 +33,9 @@ public class Harpy : Launcher, ITouchable
         if (canUseSkill && !isDestroyed)
         {
             SkillMotionStart();
-            skillEffect.SetActive(true);
+            Vector2 spawnPos = transform.position;
+            spawnPos +=  new Vector2(0.9f, -0.16f);
+            EffectManager.Instance.PlayEffect(EffectKind.Harpy_skill, spawnPos);
             StartCoroutine(BuffRoutine());
         }
     }
@@ -65,7 +66,6 @@ public class Harpy : Launcher, ITouchable
             
 
             GameObject go = Instantiate(buff_ASS);
-            go.GetComponent<SpriteDelayedDisappear>().delayedTime = buffDuration;
             go.SetActive(true);
 
             go.transform.SetParent(lineList[i].transform);
@@ -84,9 +84,9 @@ public class Harpy : Launcher, ITouchable
                 continue;
 
             if(set)
-                lineList[i].GetComponent<Movable>().AddMoveSpeed(growthSpeed);
+                lineList[i].GetComponent<Movable>().SetAddAttackDmg(growthDmg);
             else
-                lineList[i].GetComponent<Movable>().AddMoveSpeed(-growthSpeed);
+                lineList[i].GetComponent<Movable>().SetAddAttackDmg(-growthDmg);
         }
     }
 
@@ -106,7 +106,6 @@ public class Harpy : Launcher, ITouchable
     }
     public void OnSkillMotionEvent()
     {
-        skillEffect.SetActive(false);
         SkillMotionEnd();
     }
 

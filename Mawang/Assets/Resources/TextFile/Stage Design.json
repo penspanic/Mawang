@@ -1,6 +1,6 @@
 ﻿{
     "C0S1": {
-      "Interval" : 8.5,
+      "Interval" : 2.5,
       "EnemyPattern" :
       ["P1"],
 	  "PrincessCoolTime" : 50,

@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public delegate void CallbackDelegate(GameObject obj);
 public class SpriteDelayedDisappear : MonoBehaviour
 {
+    public CallbackDelegate callBack;
     public float delayedTime;
     private float duration;
     public bool isDestory;
@@ -20,7 +22,6 @@ public class SpriteDelayedDisappear : MonoBehaviour
     }
     IEnumerator Disappear()
     {
-        Debug.Log(delayedTime);
         yield return new WaitForSeconds(delayedTime);
 
         float currTime  =   0.0f;
@@ -36,10 +37,16 @@ public class SpriteDelayedDisappear : MonoBehaviour
         
         spr.color       =   new Color(0, 0, 0, 0);
 
-        if(isDestory)
-            DestroyObject(this);
+        if (callBack != null)   
+            callBack(gameObject);
         else
-            gameObject.SetActive(false);
+        {
+            if (isDestory)
+                DestroyObject(this);
+            else
+                gameObject.SetActive(false);
+        }
+        
 
         yield break;
 

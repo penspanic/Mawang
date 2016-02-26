@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Grim : Warrior, ITouchable
 {
-
-    GameObject attackEffect;
     GameObject skillProjectile;
 
     protected override void Awake()
@@ -13,7 +11,6 @@ public class Grim : Warrior, ITouchable
         if (forDecoration)
             return;
         canUseSkill     =   true;
-        attackEffect    =   transform.FindChild("AttackEffect").gameObject;
         skillProjectile =   transform.FindChild("SkillProjectile").gameObject;
     }
 
@@ -40,7 +37,12 @@ public class Grim : Warrior, ITouchable
     protected override void JudgmentAttack()
     {
         base.JudgmentAttack();
-        attackEffect.SetActive(true);
+
+        Vector3 spawnPos = transform.position;
+        spawnPos += new Vector3(1.1f, -0.4f, 0);
+
+        EffectManager.Instance.PlayEffect(EffectKind.Grim_attack,spawnPos);
+
     }
     
 }
