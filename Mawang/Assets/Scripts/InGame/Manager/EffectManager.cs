@@ -8,14 +8,14 @@ public enum EffectKind
     Grim_attack,
     Orc_skill,
     Harpy_skill,
-    Skeleton_skill
+    Skeleton_skill,
+    Bandsman_skill,
 }
 
 /// <summary>
 /// TODO : 자신이 갖고있는 유닛만 오브젝트풀 생성하기
 /// </summary>
 /// 
-// 0.9 -0.16
 public class EffectManager : Singleton<EffectManager>
 {
 
@@ -24,24 +24,32 @@ public class EffectManager : Singleton<EffectManager>
     private GameObject orcSkill;
     private GameObject harpySkill;
     private GameObject skeletonSkill;
+    private GameObject bandsmanSkill;
+
+    private GameObject harpyBuff;
 
     private Dictionary<EffectKind,GameObjectPool<GameObject>> skillDic;
 
     void Awake()
     {
-        skillDic = new Dictionary<EffectKind, GameObjectPool<GameObject>>();
+        skillDic    =   new Dictionary<EffectKind, GameObjectPool<GameObject>>();
 
         grimAttck       =   Resources.Load<GameObject>("Prefabs/Effect/Grim_Attack");
         dullahanSkill   =   Resources.Load<GameObject>("Prefabs/Effect/Dullahan_Skill");
         orcSkill        =   Resources.Load<GameObject>("Prefabs/Effect/Orc_Skill");
         harpySkill      =   Resources.Load<GameObject>("Prefabs/Effect/Harpy_Skill");
         skeletonSkill   =   Resources.Load<GameObject>("Prefabs/Effect/Skeleton_Skill");
+        bandsmanSkill   =   Resources.Load<GameObject>("Prefabs/Effect/Bandsman_Skill");
+
 
         skillDic.Add(EffectKind.Grim_attack, new GameObjectPool<GameObject>(3, grimAttck, SetObject));
         skillDic.Add(EffectKind.Dulahan_skill, new GameObjectPool<GameObject>(3, dullahanSkill, SetObject));
         skillDic.Add(EffectKind.Orc_skill, new GameObjectPool<GameObject>(3, orcSkill, SetObject));
         skillDic.Add(EffectKind.Harpy_skill, new GameObjectPool<GameObject>(3, harpySkill, SetObject));
         skillDic.Add(EffectKind.Skeleton_skill, new GameObjectPool<GameObject>(3, skeletonSkill, SetObject));
+        skillDic.Add(EffectKind.Bandsman_skill, new GameObjectPool<GameObject>(3, bandsmanSkill, SetObject));
+
+
     }
 
     GameObject SetObject(GameObject obj)
@@ -65,6 +73,7 @@ public class EffectManager : Singleton<EffectManager>
 
         obj.SetActive(true);
 
+
         obj.GetComponent<SpriteDelayedDisappear>().callBack = (GameObject old) =>
             {
                 if (SetParent != null)
@@ -74,4 +83,6 @@ public class EffectManager : Singleton<EffectManager>
                 skillDic[ek].push(old);
             };
     }
+
+
 }

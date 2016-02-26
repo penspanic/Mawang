@@ -8,11 +8,9 @@ public class Harpy : Launcher, ITouchable
     private float   buffDuration;
     [SerializeField]
     private int   growthDmg;
-    [SerializeField]
-    private Sprite  buff_AS;
 
     [SerializeField]
-    private GameObject buff_ASS;
+    private GameObject buff_AS;
 
     private List<ObjectBase> lineList = new List<ObjectBase>();
 
@@ -46,7 +44,7 @@ public class Harpy : Launcher, ITouchable
             this.attackRange * battleMgr.fightDistance > Mathf.Abs(transform.position.x - e.transform.position.x));
 
         lineList.Remove(this);
-        AddBuffsprRenderer();
+        AddBuffsprRenderer( );
         BuffSet(true);
         yield return new WaitForSeconds(buffDuration);
         BuffSet(false);
@@ -65,7 +63,7 @@ public class Harpy : Launcher, ITouchable
             }
             
 
-            GameObject go = Instantiate(buff_ASS);
+            GameObject go = Instantiate(buff_AS);
             go.SetActive(true);
 
             go.transform.SetParent(lineList[i].transform);
@@ -96,14 +94,24 @@ public class Harpy : Launcher, ITouchable
     {
         switch (name)
         {
+            case "Goblin(Clone)":
+                go.transform.localPosition += new Vector3(0.35f, 0f);
+                break;
+            case "Orc(Clone)":
+                go.transform.localPosition += new Vector3(0.25f, 1.4f);
+                break;
+            case "Grim(Clone)":
+                go.transform.localPosition += new Vector3(0.6f, -0.2f);
+                break;
             case "Dullahan(Clone)":
-                go.transform.localPosition -= new Vector3(0.5f, 0.6f);
+                go.transform.localPosition += new Vector3(-0.5f, -0.6f);
                 break;
             case "Harpy(Clone)":
                 go.transform.localPosition += new Vector3(1.1f, 0.5f);
                 break;
         }
     }
+
     public void OnSkillMotionEvent()
     {
         SkillMotionEnd();

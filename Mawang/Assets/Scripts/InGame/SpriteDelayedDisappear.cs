@@ -6,14 +6,13 @@ public class SpriteDelayedDisappear : MonoBehaviour
 {
     public CallbackDelegate callBack;
     public float delayedTime;
-    private float duration;
+    public float duration;
     public bool isDestory;
     SpriteRenderer spr;
 
     void Awake()
     {
         spr =   GetComponent<SpriteRenderer>();
-        duration    =   1;
     }
 
     void OnEnable()

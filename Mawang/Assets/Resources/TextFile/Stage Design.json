@@ -2,7 +2,7 @@
     "C0S1": {
       "Interval" : 2.5,
       "EnemyPattern" :
-      ["P1"],
+      ["Bandsman_test"],
 	  "PrincessCoolTime" : 50,
 	  "BuffDuration" : 8
     },
