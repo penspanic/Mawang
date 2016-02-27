@@ -46,6 +46,8 @@ public class Pause : MonoBehaviour
         {
             sources[i].Play();
         }
+        ButtonSound.PlaySound(ButtonSound.SoundType.BasicSound);
+
         sources = null;
         pauseUI.SetActive(false);
     }
@@ -57,7 +59,8 @@ public class Pause : MonoBehaviour
         // 메인화면으로 돌아가기
         isSceneChanging = true;
         Time.timeScale = 1;
-        
+        ButtonSound.PlaySound(ButtonSound.SoundType.BackSound);
+
         StartCoroutine(SceneFader.Instance.FadeOut(1f, "Main"));
 
     }
@@ -69,6 +72,7 @@ public class Pause : MonoBehaviour
         // 게임 재시작 하기
         isSceneChanging = true;
         Time.timeScale = 1;
+        ButtonSound.PlaySound(ButtonSound.SoundType.BasicSound);
 
         StartCoroutine(SceneFader.Instance.FadeOut(1f, "InGame"));
     }

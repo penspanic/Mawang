@@ -28,11 +28,11 @@ public class EffectManager : Singleton<EffectManager>
 
     private GameObject harpyBuff;
 
-    private Dictionary<EffectKind,GameObjectPool<GameObject>> skillDic;
+    private Dictionary<EffectKind,ObjectPool<GameObject>> skillDic;
 
     void Awake()
     {
-        skillDic    =   new Dictionary<EffectKind, GameObjectPool<GameObject>>();
+        skillDic    =   new Dictionary<EffectKind, ObjectPool<GameObject>>();
 
         grimAttck       =   Resources.Load<GameObject>("Prefabs/Effect/Grim_Attack");
         dullahanSkill   =   Resources.Load<GameObject>("Prefabs/Effect/Dullahan_Skill");
@@ -42,12 +42,12 @@ public class EffectManager : Singleton<EffectManager>
         bandsmanSkill   =   Resources.Load<GameObject>("Prefabs/Effect/Bandsman_Skill");
 
 
-        skillDic.Add(EffectKind.Grim_attack, new GameObjectPool<GameObject>(3, grimAttck, SetObject));
-        skillDic.Add(EffectKind.Dulahan_skill, new GameObjectPool<GameObject>(3, dullahanSkill, SetObject));
-        skillDic.Add(EffectKind.Orc_skill, new GameObjectPool<GameObject>(3, orcSkill, SetObject));
-        skillDic.Add(EffectKind.Harpy_skill, new GameObjectPool<GameObject>(3, harpySkill, SetObject));
-        skillDic.Add(EffectKind.Skeleton_skill, new GameObjectPool<GameObject>(3, skeletonSkill, SetObject));
-        skillDic.Add(EffectKind.Bandsman_skill, new GameObjectPool<GameObject>(3, bandsmanSkill, SetObject));
+        skillDic.Add(EffectKind.Grim_attack, new ObjectPool<GameObject>(3, grimAttck, SetObject));
+        skillDic.Add(EffectKind.Dulahan_skill, new ObjectPool<GameObject>(3, dullahanSkill, SetObject));
+        skillDic.Add(EffectKind.Orc_skill, new ObjectPool<GameObject>(3, orcSkill, SetObject));
+        skillDic.Add(EffectKind.Harpy_skill, new ObjectPool<GameObject>(3, harpySkill, SetObject));
+        skillDic.Add(EffectKind.Skeleton_skill, new ObjectPool<GameObject>(3, skeletonSkill, SetObject));
+        skillDic.Add(EffectKind.Bandsman_skill, new ObjectPool<GameObject>(3, bandsmanSkill, SetObject));
 
 
     }
@@ -56,11 +56,12 @@ public class EffectManager : Singleton<EffectManager>
     {
         GameObject clone = GameObject.Instantiate(obj);
         clone.SetActive(false);
+        clone.transform.SetParent(this.transform);
         return clone;
     }
 
 
-    public void PlayEffect(EffectKind ek, Vector2 spawnPos,Transform SetParent = null)
+    public void PlayEffect(EffectKind ek, Vector2 spawnPos,Transform parent = null)
     {
 
         GameObject obj = skillDic[ek].pop();
@@ -68,15 +69,15 @@ public class EffectManager : Singleton<EffectManager>
         obj.GetComponent<SpriteRenderer>().color = Color.white;
         obj.transform.position = spawnPos;
 
-        if (SetParent != null)
-            obj.transform.SetParent(SetParent);
+        if (parent != null)
+            obj.transform.SetParent(parent);
 
         obj.SetActive(true);
 
 
         obj.GetComponent<SpriteDelayedDisappear>().callBack = (GameObject old) =>
             {
-                if (SetParent != null)
+                if (parent != null)
                     old.transform.SetParent(null);
 
                 old.SetActive(false);

@@ -59,7 +59,6 @@ public class StageSelect : MonoBehaviour
 
         string lastOpenStage = PlayerData.GetNextStageName(lastClearedStage);
 
-        Debug.Log(lastOpenStage);
         int chapter = int.Parse(lastOpenStage[1].ToString());
         int stage = int.Parse(lastOpenStage[3].ToString());
 

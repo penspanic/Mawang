@@ -25,6 +25,7 @@ public class Bandsman : Movable
 
         if (once)
         {
+            PlaySound(attackSound);
             Vector2 spawnPos = transform.position;
             spawnPos += new Vector2(-1.2f, 0.4f);
             EffectManager.Instance.PlayEffect(EffectKind.Bandsman_skill, spawnPos);
@@ -74,6 +75,7 @@ public class Bandsman : Movable
             AdjustBuffPos(go, lineList[i].name);
         }
     }
+
     void BuffSet(bool set)
     {
         for (int i = 0; i < lineList.Count; i++)
@@ -87,7 +89,6 @@ public class Bandsman : Movable
                 lineList[i].GetComponent<ObjectBase>().SetAddAttackDmg(-growthAttack);
         }
     }
-
 
     public void AdjustBuffPos(GameObject go, string name)
     {

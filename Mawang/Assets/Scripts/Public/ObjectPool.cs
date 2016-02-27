@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-public class GameObjectPool<T> where T : class
+public class ObjectPool<T> where T : class
 {
 
     // Instance count to create.  
@@ -16,7 +16,7 @@ public class GameObjectPool<T> where T : class
 
 
     // Construct  
-    public GameObjectPool(short count, T original_object, Func fn)
+    public ObjectPool(short count, T original_object, Func fn)
     {
         this.count = count;
         this.create_fn = fn;
