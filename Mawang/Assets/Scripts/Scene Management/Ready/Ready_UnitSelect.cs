@@ -118,7 +118,7 @@ public class Ready_UnitSelect : MonoBehaviour
         }
         SetSelectButtonText();
     }
-    public void OnGameStart()
+    public bool OnGameStart()
     {
         PlayerData.instance.selectedUnitList.Clear();
 
@@ -127,8 +127,12 @@ public class Ready_UnitSelect : MonoBehaviour
             if (isUnitChecked[i])
             {
                 PlayerData.instance.selectedUnitList.Add(unitNameList[i]);
-
             }
         }
+
+        if (PlayerData.instance.selectedUnitList.Count == 0)
+            return false;
+
+        return true;
     }
 }

@@ -25,7 +25,7 @@ public class Pause : MonoBehaviour
         pauseBtn.onClick.AddListener(PauseButtonDown);
     }
 
-    void PauseButtonDown()
+    public void PauseButtonDown()
     {
         Time.timeScale = 0;
         sources = GameObject.FindObjectsOfType<AudioSource>();

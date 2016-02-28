@@ -33,6 +33,7 @@ public class TutorialManager : MonoBehaviour
             return effectFindIdx++;
         }
     }
+    public bool isRunning { get; private set; }
 
 
     public void Init()
@@ -74,6 +75,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator TutorialProcess()
     {
+        isRunning = true;
         while (currIdx < maxCount)
         {
             InputProcess();
@@ -82,6 +84,7 @@ public class TutorialManager : MonoBehaviour
 
         // end Processing
 
+        isRunning = false;
         Destroy(tutorialsprRenderer);
         Destroy(effectsprRenderer);
         Time.timeScale  =   1;

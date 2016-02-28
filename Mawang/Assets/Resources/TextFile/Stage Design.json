@@ -1,22 +1,22 @@
 ﻿{
     "C0S1": {
-      "Interval" : 2.5,
+      "Interval" : 8.5,
       "EnemyPattern" :
-      ["Bandsman_test"],
+      ["P1"],
 	  "PrincessCoolTime" : 50,
 	  "BuffDuration" : 8
     },
     "C0S2": {
-      "Interval" : 9.5,
+      "Interval" : 9,
       "EnemyPattern" :
       ["P1","P2"],
 	  "PrincessCoolTime" : 50,
 	  "BuffDuration" : 8
     },
     "C0S3": {
-      "Interval" : 9.5,
+      "Interval" : 9,
       "EnemyPattern" :
-      ["P1","P2","P1+A1"],
+      ["P1","P2","P1A1"],
 	  "PrincessCoolTime" : 50,
 	  "BuffDuration" : 8
     },

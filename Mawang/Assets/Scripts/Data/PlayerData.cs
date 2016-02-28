@@ -67,7 +67,7 @@ public class PlayerData : MonoBehaviour
         }
 
         selectedStage = "C0S1"; // Temp
-        lastClearedStage = "C2S3";
+        lastClearedStage = "C0S1";
     }
 
 

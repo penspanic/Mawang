@@ -10,15 +10,23 @@ public class Skeleton : Warrior,ITouchable
     [SerializeField]
     private float duration;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        if (forDecoration)
+            return;
+        canUseSkill = true;
+    }
+
     public void OnTouch()
     {
         if (canUseSkill && !isDestroyed)
         {
+            canUseSkill = false;
 
             Vector2 spawnPos = transform.position;
             spawnPos += new Vector2(-0.1f, 0.7f);
             EffectManager.Instance.PlayEffect(EffectKind.Skeleton_skill, spawnPos, transform);
-
             StartCoroutine(SkeletonSkill());
 
         }

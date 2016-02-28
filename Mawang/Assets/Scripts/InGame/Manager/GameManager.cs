@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     TutorialManager tutorialMgr;
     BgmManager      bgmMgr;
     SpriteOrderLayerManager orderMgr;
-
+    Pause pauseUI;
     
 
     void Awake()
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         tutorialMgr     =   GameObject.FindObjectOfType<TutorialManager>();
         orderMgr        =   FindObjectOfType<SpriteOrderLayerManager>();
         isRun           =   true;
+        pauseUI         =   FindObjectOfType<Pause>();
 
         PlayerData.instance.CheckInstance();
         StartCoroutine(SceneFader.Instance.FadeIn(1f));
@@ -145,6 +146,18 @@ public class GameManager : MonoBehaviour
         else                      // Game Clear
         {
             GameClear();
+        }
+    }
+
+
+    public void OnApplicationPause(bool pause)
+    {
+        if (tutorialMgr.isRunning)
+            return;
+
+        if (pause)
+        {
+            pauseUI.PauseButtonDown();
         }
     }
 
