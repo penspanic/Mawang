@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SceneFader.Instance.FadeIn(1f));
         GameObject.FindObjectOfType<SceneFader>().transform.SetParent(Camera.main.transform, true);
 
+
     }
 
     void Start()

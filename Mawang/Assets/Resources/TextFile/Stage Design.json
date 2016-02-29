@@ -30,7 +30,7 @@
 	"C1S2": {
       "Interval" : 9.5,
       "EnemyPattern" :
-      ["Bandsman_test"],
+      ["P1A1S1"],
 	  "PrincessCoolTime" : 50,
 	  "BuffDuration" : 8
     },

@@ -17,7 +17,17 @@ public class Bandsman : Movable
     private List<ObjectBase>    lineList = new List<ObjectBase>();
     private GameObject          skillEffect;
 
+    private static AudioClip[] attackSounds;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        if(attackSounds == null)
+        {
+            attackSounds = Resources.LoadAll<AudioClip>("Sound/Object/Enemy/Bandsman");
+        }
+    }
     protected override void Attack()
     {
         animator.speed = 1;
@@ -25,7 +35,7 @@ public class Bandsman : Movable
 
         if (once)
         {
-            PlaySound(attackSound);
+            PlaySound(attackSounds[Random.Range(0,attackSounds.Length)]);
             Vector2 spawnPos = transform.position;
             spawnPos += new Vector2(-1.2f, 0.4f);
             EffectManager.Instance.PlayEffect(EffectKind.Bandsman_skill, spawnPos);

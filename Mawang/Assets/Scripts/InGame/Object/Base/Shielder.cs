@@ -5,7 +5,6 @@ public class Shielder : Movable
 {
     private Vector3 prevPos = Vector3.zero;
 
-
     protected override void Attack()
     {
 
@@ -14,7 +13,7 @@ public class Shielder : Movable
             return;
 
         prevPos     =   transform.position;
-
+        PlaySound(attackSound);
         animator.speed = 1;
         animator.Play("Attack", 0);
 
