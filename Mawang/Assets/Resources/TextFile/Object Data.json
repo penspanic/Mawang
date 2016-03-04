@@ -37,16 +37,16 @@
     /* 적군 유닛 */
 
     "Pawn": {
-        "Description": "국가를 지키는 듬직한 병사입니다."
+        "Description": "검과 방패를 쓰는 일반 병사."
     },
     "Archer": {
-        "Description": "활을 잘 다루는 병사입니다."
+        "Description": "유일하게 원거리 공격을 하는 궁병."
     },
     "Shielder": {
-        "Description": "방패를 들고 최전방에 서는 병사입니다"
+        "Description": "적을 만나면 거대한 방패를 세우고 버티는 방패병."
     },
     "Bandsman": {
-        "Description": "악기를 연주해 사기를 높이는 병사입니다"
+        "Description": "훌륭한 연주로 아군에게 버프를 주는 군악병."
     },
 
     /* 아이템 */

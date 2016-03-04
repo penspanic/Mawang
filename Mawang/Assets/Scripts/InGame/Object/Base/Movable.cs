@@ -222,6 +222,9 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
     protected void Death()
     {
+        if (isFreezed)
+            animator.enabled = true;
+
         animator.Play("Dead",0);
     }
 
