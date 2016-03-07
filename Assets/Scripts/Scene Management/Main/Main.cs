@@ -14,17 +14,24 @@ public class Main : MonoBehaviour
 
     //BlurControl blurCtrl;
 
+    GameEventReceiver stageClearEventReceiver;
+    GameEventReceiver chapterClearEventReceiver;
+
     void Awake()
     {
 
         StartCoroutine(SceneFader.Instance.FadeIn(1f));
         upgrade = GameObject.FindObjectOfType<CastleUpgrade>();
         info = GameObject.FindObjectOfType<CastleInfo>();
+
+        stageClearEventReceiver = new GameEventReceiver(GameEvent.FirstC0S1Cleared, OnFirstC0S1Cleared);
+        chapterClearEventReceiver = new GameEventReceiver(GameEvent.FirstChapter0Cleared, OnFirstChapter0Cleared);
+
+        stageClearEventReceiver.CheckEvent();
+        chapterClearEventReceiver.CheckEvent();
+
         //blurCtrl = GameObject.FindObjectOfType<BlurControl>();
     }
-
-
-
 
     public void OnStartButtonDown()
     {
@@ -43,9 +50,20 @@ public class Main : MonoBehaviour
         if (!info.isShowing && !upgrade.isShowing)
             info.ShowInfo();
     }
+
     public void OnBookButtonDown()
     {
         book.gameObject.SetActive(true);
+    }
+
+    void OnFirstC0S1Cleared()
+    {
+        Debug.Log("First C0S1 Cleared!");
+    }
+
+    void OnFirstChapter0Cleared()
+    {
+        Debug.Log("First Chapter0 Cleared!");
     }
 
     public void BlurBackground(bool isBlear)

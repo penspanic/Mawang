@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
         pauseUI         =   FindObjectOfType<Pause>();
 
         PlayerData.instance.CheckInstance();
+        GameEventManager.instance.CheckInstance();
+
         StartCoroutine(SceneFader.Instance.FadeIn(1f));
         GameObject.FindObjectOfType<SceneFader>().transform.SetParent(Camera.main.transform, true);
 
@@ -106,6 +108,11 @@ public class GameManager : MonoBehaviour
     void GameClear()
     {
         gameClear.SetActive(true);
+        if (PlayerData.instance.lastClearedStage == null)
+            GameEventManager.instance.PushEvent(GameEvent.FirstC0S1Cleared);
+        if (PlayerData.instance.selectedStage == "C0S3" && PlayerData.instance.IsStageCleared("C0S3"))
+            GameEventManager.instance.PushEvent(GameEvent.FirstChapter0Cleared);
+
         PlayerData.instance.StageClear(PlayerData.instance.selectedStage);
         StartCoroutine(TouchToMain());
     }

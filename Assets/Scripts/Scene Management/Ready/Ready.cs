@@ -4,14 +4,12 @@ using System.Collections;
 public class Ready : MonoBehaviour
 {
     Ready_UnitSelect unitSelect;
-    NotifyBar notifyBar;
     void Awake()
     {
         StartCoroutine(FadeIn());
         PlayerData.instance.CheckInstance();
 
         unitSelect = GameObject.FindObjectOfType<Ready_UnitSelect>();
-        notifyBar = FindObjectOfType<NotifyBar>();
     }
 
     IEnumerator FadeIn()
@@ -44,13 +42,8 @@ public class Ready : MonoBehaviour
         if (isChanging)
             return;
 
-        if (unitSelect.OnGameStart())
-        {
-            isChanging = true;
-            ChangeScene("InGame");
-        }
-        else
-            notifyBar.ShowMessage("유닛을 한 종류 이상 선택하세요");
+        isChanging = true;
+        ChangeScene("InGame");
 
     }
 

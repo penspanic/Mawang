@@ -67,7 +67,6 @@ public class PlayerData : MonoBehaviour
         }
 
         selectedStage = "C0S1"; // Temp
-        lastClearedStage = "C0S1";
     }
 
 
@@ -100,8 +99,9 @@ public class PlayerData : MonoBehaviour
         itemStorage.Add("Freeze", DataLoadSave.GetInt("Freeze"));
         itemStorage.Add("Defense", DataLoadSave.GetInt("Defense"));
 
-        
-        lastClearedStage = DataLoadSave.GetString("lastClearedStage");
+        if (DataLoadSave.HasKey("lastClearedStage"))
+            lastClearedStage = DataLoadSave.GetString("lastClearedStage");
+
         isFirst = DataLoadSave.GetInt("isFirst") == 0 ? true : false;
         obsidian = DataLoadSave.GetInt("obsidian");
 
@@ -125,7 +125,9 @@ public class PlayerData : MonoBehaviour
 
     public void SaveData()
     {
-        DataLoadSave.SetString("lastClearedStage", lastClearedStage);
+        if(lastClearedStage != null)
+            DataLoadSave.SetString("lastClearedStage", lastClearedStage);
+
         DataLoadSave.SetInt("isFirst", 1);
         DataLoadSave.SetInt("obsidian", obsidian);
 
@@ -170,6 +172,25 @@ public class PlayerData : MonoBehaviour
         }
         else
             return;
+    }
+
+    public bool IsStageCleared(string stage)
+    {
+        int c = int.Parse(stage[1].ToString());
+        int s = int.Parse(stage[3].ToString());
+
+        int LastC = int.Parse(lastClearedStage[1].ToString());
+        int LastS = int.Parse(lastClearedStage[3].ToString());
+
+        if (c > LastC)
+            return true;
+        else if (c == LastC)
+            if (s > LastS)
+                return true;
+            else
+                return false;
+        else
+            return false;
     }
 
     public int GetSelectedChapter()

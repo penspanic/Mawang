@@ -76,63 +76,63 @@ public class Ready_UnitSelect : MonoBehaviour
         unitDescription.text = JsonManager.instance.GetType(unitNameList[index]) + "\n" +
             JsonManager.instance.GetDescription(unitNameList[index]);
 
-        SetSelectButtonText();
+        //SetSelectButtonText();
 
     }
-    void SetSelectButtonText()
-    {
-        if (isUnitChecked[selectedUnitIndex])
-        {
-            unitSelectButton.GetComponentInChildren<Text>().text = "취소";
-        }
-        else
-        {
-            unitSelectButton.GetComponentInChildren<Text>().text = "선택";
-        }
-    }
+    //void SetSelectButtonText()
+    //{
+    //    if (isUnitChecked[selectedUnitIndex])
+    //    {
+    //        unitSelectButton.GetComponentInChildren<Text>().text = "취소";
+    //    }
+    //    else
+    //    {
+    //        unitSelectButton.GetComponentInChildren<Text>().text = "선택";
+    //    }
+    //}
 
-    public void OnUnitSelectButonDown()
-    {
-        // 7개 초과인지 체크
-        int selectedNum = 0;
-        foreach (bool eachValue in isUnitChecked)
-        {
-            if (eachValue == true)
-                selectedNum++;
-        }
-        if (selectedNum == 6 && isUnitChecked[selectedUnitIndex] == false)
-        {
-            notifyBar.ShowMessage("6종류만 선택할 수 있습니다!");
-        }
-        else
-        {
-            isUnitChecked[selectedUnitIndex] = !isUnitChecked[selectedUnitIndex];
-            if (isUnitChecked[selectedUnitIndex])
-            {
-                checkedImages[selectedUnitIndex].enabled = true;
-            }
-            else
-            {
-                checkedImages[selectedUnitIndex].enabled = false;
-            }
-        }
-        SetSelectButtonText();
-    }
-    public bool OnGameStart()
-    {
-        PlayerData.instance.selectedUnitList.Clear();
+    //public void OnUnitSelectButonDown()
+    //{
+    //    // 7개 초과인지 체크
+    //    int selectedNum = 0;
+    //    foreach (bool eachValue in isUnitChecked)
+    //    {
+    //        if (eachValue == true)
+    //            selectedNum++;
+    //    }
+    //    if (selectedNum == 6 && isUnitChecked[selectedUnitIndex] == false)
+    //    {
+    //        notifyBar.ShowMessage("6종류만 선택할 수 있습니다!");
+    //    }
+    //    else
+    //    {
+    //        isUnitChecked[selectedUnitIndex] = !isUnitChecked[selectedUnitIndex];
+    //        if (isUnitChecked[selectedUnitIndex])
+    //        {
+    //            checkedImages[selectedUnitIndex].enabled = true;
+    //        }
+    //        else
+    //        {
+    //            checkedImages[selectedUnitIndex].enabled = false;
+    //        }
+    //    }
+    //    SetSelectButtonText();
+    //}
+    //public bool OnGameStart()
+    //{
+    //    PlayerData.instance.selectedUnitList.Clear();
 
-        for (int i = 0; i < unitButtons.Length; i++)
-        {
-            if (isUnitChecked[i])
-            {
-                PlayerData.instance.selectedUnitList.Add(unitNameList[i]);
-            }
-        }
+    //    for (int i = 0; i < unitButtons.Length; i++)
+    //    {
+    //        if (isUnitChecked[i])
+    //        {
+    //            PlayerData.instance.selectedUnitList.Add(unitNameList[i]);
+    //        }
+    //    }
 
-        if (PlayerData.instance.selectedUnitList.Count == 0)
-            return false;
+    //    if (PlayerData.instance.selectedUnitList.Count == 0)
+    //        return false;
 
-        return true;
-    }
+    //    return true;
+    //}
 }
