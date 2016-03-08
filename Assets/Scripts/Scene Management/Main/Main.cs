@@ -9,6 +9,10 @@ public class Main : MonoBehaviour
     public Button infoButton;
 
     public Main_Book book;
+
+    public GameObject explainUpgradePrefab;
+    public GameObject explainPrincessPrefab;
+
     CastleUpgrade upgrade;
     CastleInfo info;
 
@@ -27,10 +31,15 @@ public class Main : MonoBehaviour
         stageClearEventReceiver = new GameEventReceiver(GameEvent.FirstC0S1Cleared, OnFirstC0S1Cleared);
         chapterClearEventReceiver = new GameEventReceiver(GameEvent.FirstChapter0Cleared, OnFirstChapter0Cleared);
 
-        stageClearEventReceiver.CheckEvent();
-        chapterClearEventReceiver.CheckEvent();
+        Invoke("CheckEvents", 1f);
 
         //blurCtrl = GameObject.FindObjectOfType<BlurControl>();
+    }
+
+    void CheckEvents()
+    {
+        stageClearEventReceiver.CheckEvent();
+        chapterClearEventReceiver.CheckEvent();
     }
 
     public void OnStartButtonDown()
@@ -56,12 +65,13 @@ public class Main : MonoBehaviour
         book.gameObject.SetActive(true);
     }
 
-    void OnFirstC0S1Cleared()
+    void OnFirstC0S1Cleared() // 마왕성 업그레이드 알려주기
     {
         Debug.Log("First C0S1 Cleared!");
+        StartCoroutine(ExplainCastleUpgrade());
     }
 
-    void OnFirstChapter0Cleared()
+    void OnFirstChapter0Cleared() // 공주 납치한 사실 알려주기
     {
         Debug.Log("First Chapter0 Cleared!");
     }
@@ -88,6 +98,41 @@ public class Main : MonoBehaviour
         }
         //blurCtrl.SetValue(isBlear ? maxBlur : 0);
     }
+    
+    IEnumerator ExplainCastleUpgrade()
+    {
+        Image upgradeExplainPrefab = Instantiate(explainUpgradePrefab).GetComponent<Image>();
+        upgradeExplainPrefab.transform.SetParent(GameObject.Find("Canvas").transform, false);
+
+        yield return new WaitForSeconds(1f);
+        while(true)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                break;
+            }
+            yield return null;
+        }
+        Destroy(upgradeExplainPrefab);
+    }
+
+    IEnumerator ExplainPrincess()
+    {
+        Image princessExplainImage = Instantiate(explainPrincessPrefab).GetComponent<Image>();
+        princessExplainImage.transform.SetParent(GameObject.Find("Canvas").transform, false);
+
+        yield return new WaitForSeconds(1f);
+        while (true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                break;
+            }
+            yield return null;
+        }
+        Destroy(princessExplainImage);
+    }
+
     bool isChanging = false;
     void ToBookScene()
     {

@@ -43,7 +43,6 @@ public class ButtonEffect : MonoBehaviour
         if ((data as PointerEventData).pointerEnter != targetButton.gameObject) 
             return;
 
-        Debug.Log("Pointer Enter");
         if (!isMoving)
         {
             switch(type)

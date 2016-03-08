@@ -9,23 +9,10 @@ public class GoldManager : MonoBehaviour
 
     private int goldIncreaseAmount = 10; // 기본 초당 골드 습득량
     private int goldUpgradeAddAmount = 10; // 업그레이드할 때마다 추가 골드 습득량
-    private int maxGoldAddAmount = 300; // 업그레이드할 때마다 추가 최대 골드량
-    private int playerMaxGold = 2000;
+    private int maxGoldAddAmount = 100; // 업그레이드할 때마다 추가 최대 골드량
+    private int playerMaxGold = 300;
 
     public static readonly int MaxUpgradeStep = 5;
-
-    //public static readonly int[] maxGold = new int[6]
-    //{
-    //    300,400,500,600,700,900
-    //};
-    //public static readonly int[] goldIncreaseAmount = new int[6]
-    //{
-    //    5,6,7,8,9,10
-    //};
-    //public static readonly int[] upgradeCost = new int[6]
-    //{ 
-    //    200,350,450,550,650,850
-    //};
 
     public int playerGold;
 

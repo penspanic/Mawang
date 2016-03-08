@@ -143,14 +143,18 @@ public class SelectTab : MonoBehaviour
 
     void ClickedGoldUpgButton()
     {
-        if(goldMgr.CanGoldUpgrade())
+        if(goldMgr.GetGoldUpgradeStep() >= GoldManager.MaxUpgradeStep)
+        {
+            msgBox.PushMessage("최대 업그레이드에 도달했습니다.");
+        }
+        else if(goldMgr.CanGoldUpgrade())
         {
             msgBox.PushMessage("얻는 골드량이 증가합니다!");
             goldMgr.GoldUpgrade();
         }
         else
         {
-            msgBox.PushMessage("골드가 부족합니다!");
+            msgBox.PushMessage("골드가 부족합니다.");
             return;
         }
     }

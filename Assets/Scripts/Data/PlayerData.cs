@@ -47,6 +47,9 @@ public class PlayerData : MonoBehaviour
 
     void Awake()
     {
+
+        PlayerPrefs.DeleteAll();
+
         DontDestroyOnLoad(gameObject);
 
         // 1
@@ -150,6 +153,13 @@ public class PlayerData : MonoBehaviour
 
     public void StageClear(string stage)
     {
+        if(lastClearedStage == null)
+        {
+            lastClearedStage = stage;
+            obsidian += 30;
+            return;
+        }
+
         obsidian += 30;
         int c = int.Parse(stage[1].ToString());
         int s = int.Parse(stage[3].ToString());
