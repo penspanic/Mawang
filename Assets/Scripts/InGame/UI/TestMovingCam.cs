@@ -30,7 +30,14 @@ public class TestMovingCam : MonoBehaviour
     void Update()
     {
         if (Time.timeScale == 0)
+        {
+            if(!TutorialManager.Instance.isPlaying)
+                return;
+        }
+
+        if (TutorialManager.Instance.isPlaying && !TutorialManager.Instance.camMove)
             return;
+
         if (Application.platform == RuntimePlatform.Android)
         {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)

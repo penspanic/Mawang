@@ -102,7 +102,7 @@ public class SelectTab : MonoBehaviour
     }
 
 
-    void ClikcedUnitButton(int idx)
+    public void ClikcedUnitButton(int idx)
     {
         // 돈이 부족하면
         if (goldMgr.playerGold < unitPrefabs[idx].GetUnitCost())
@@ -135,7 +135,7 @@ public class SelectTab : MonoBehaviour
 
     }
 
-    void LineSetActive(bool set)
+    public void LineSetActive(bool set)
     {
         for (int i = 0; i < lines.Length; i++)
             lines[i].GetComponent<SpriteRenderer>().enabled = set;

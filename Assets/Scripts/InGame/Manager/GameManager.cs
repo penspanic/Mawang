@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     private string stage;
 
 
-    TutorialManager tutorialMgr;
+    //  TutorialManager tutorialMgr;
     BgmManager      bgmMgr;
     SpriteOrderLayerManager orderMgr;
     Pause pauseUI;
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        tutorialMgr     =   GameObject.FindObjectOfType<TutorialManager>();
+        // tutorialMgr     =   GameObject.FindObjectOfType<TutorialManager>();
         orderMgr        =   FindObjectOfType<SpriteOrderLayerManager>();
         isRun           =   true;
         pauseUI         =   FindObjectOfType<Pause>();
@@ -45,8 +45,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         LoadStage();
-        if(PlayerData.instance.selectedStage == "C0S1")
-            tutorialMgr.Init();
+        if (PlayerData.instance.selectedStage == "C0S1")
+        {
+            Time.timeScale = 0;
+            TutorialManager.Instance.PlayTutorial(TutorialEvent.PrepareGame);
+        }
+
 
         StartCoroutine(StageSpawnLoop());
     }
@@ -160,7 +164,7 @@ public class GameManager : MonoBehaviour
 
     public void OnApplicationPause(bool pause)
     {
-        if (tutorialMgr.isRunning)
+        if (TutorialManager.Instance.isPlaying)
             return;
 
         if (pause)

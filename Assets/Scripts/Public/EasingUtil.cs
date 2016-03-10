@@ -6,6 +6,9 @@ using System.Collections;
 public static class EasingUtil
 {
     public delegate float EasingMethod(float start, float end, float value);
+
+    public const float tick = 0.016574f;
+
     public static Vector2 EaseVector2(EasingMethod method, Vector2 start, Vector2 end, float value)
     {
         Vector2 returnVec = new Vector2();

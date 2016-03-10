@@ -32,7 +32,7 @@ public class Skeleton : Warrior,ITouchable
         }
     }
 
-    IEnumerator SkeletonSkill()
+    public IEnumerator SkeletonSkill()
     {
         if (hp - hpCost <= 0)
             hp = 1;
