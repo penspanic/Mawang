@@ -73,7 +73,7 @@ public class Ready_UnitSelect : MonoBehaviour
     public void OnUnitButtonDown(int index) // 현재 유닛 설정
     {
         selectedUnitIndex = index;
-        unitDescription.text = JsonManager.instance.GetType(unitNameList[index]) + "\n" +
+        unitDescription.text = JsonManager.instance.GetType(unitNameList[index]) + "\n\n" +
             JsonManager.instance.GetDescription(unitNameList[index]);
 
         //SetSelectButtonText();

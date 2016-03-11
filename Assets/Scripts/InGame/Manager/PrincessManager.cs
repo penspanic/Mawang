@@ -7,11 +7,6 @@ using System.Collections.Generic;
 // 공주 이미지및 스킬 쿨타임 관리 ( 게임매니져로 프로세스 뺄수도있음 ) 
 public class PrincessManager : MonoBehaviour
 {
-    //public string currPrincss
-    //{
-    //    get;
-    //    set;
-    //}
     private BattleManager   battleMgr;
 
     private float       coolTime;
@@ -100,8 +95,18 @@ public class PrincessManager : MonoBehaviour
             portrait.fillAmount = currTime / coolTime;
             if (currTime >= coolTime)
             {
-                PrincessEventSet(true);
                 // 여기서 공주에 따른 효과 발동
+                if (PlayerData.instance.selectedStage == "C0S1")
+                {
+                    if (TutorialManager.Instance.oncePrinTuto)
+                    {
+                        TutorialManager.Instance.oncePrinTuto = false;
+                        TutorialManager.Instance.PlayTutorial(TutorialEvent.PrincessFullGauge);
+                        while (Time.timeScale == 0)
+                            yield return null;
+                    }
+                }
+                PrincessEventSet(true);
                 StartCoroutine(BuffRoutine());
                 currTime = 0.0f;
             }
@@ -111,6 +116,10 @@ public class PrincessManager : MonoBehaviour
         }
     }
 
+    void CheckTuto()
+    {
+
+    }
     SpriteRenderer[] currSprs;
 
     IEnumerator BuffRoutine()

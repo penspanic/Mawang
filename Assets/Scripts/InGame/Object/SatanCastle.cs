@@ -3,9 +3,11 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class SatanCastle : Castle, ITouchable
+public class SatanCastle : Castle
 {
     [SerializeField] private GameObject skillObject;
+    [SerializeField]
+    Button skillButton;
     private float skillCoolTime; // 스킬 쿨타임
     private int skillDamage;
     private Image      castlePortrait;
@@ -14,14 +16,20 @@ public class SatanCastle : Castle, ITouchable
     {
         base.Awake();
         castlePortrait  =   GameObject.Find("Castle Image").GetComponent<Image>();
-        
+
         PlayerData.instance.CheckInstance();
-        skillCoolTime = CastleUpgrade.GetUpgradeApplyedValue("Cool Time");
-        skillDamage = CastleUpgrade.GetUpgradeApplyedValue("Damage");
-        maxHP = CastleUpgrade.GetUpgradeApplyedValue("Hp");
+        skillCoolTime   = CastleUpgrade.GetUpgradeApplyedValue("Cool Time");
+        skillDamage     = CastleUpgrade.GetUpgradeApplyedValue("Damage");
+        maxHP           = CastleUpgrade.GetUpgradeApplyedValue("Hp");
+
         hp = maxHP;
 
+
+        if (PlayerData.instance.selectedStage == "C0S1")
+            skillCoolTime = 35;
+
         
+        skillButton.onClick.AddListener(OnTouch);
     }
     void Start()
     {
@@ -70,6 +78,7 @@ public class SatanCastle : Castle, ITouchable
             {
                 castlePortrait.fillAmount = 1;
                 skillElapsedTime = 0;
+                CheckTuto();
                 canUseSkill = true;
             }
             else
@@ -80,6 +89,17 @@ public class SatanCastle : Castle, ITouchable
             yield return null;
         }
 
+    }
+    void CheckTuto()
+    {
+        if (PlayerData.instance.selectedStage == "C0S1")
+        {
+            if (TutorialManager.Instance.onceCastleTuto)
+            {
+                TutorialManager.Instance.PlayTutorial(TutorialEvent.CastleFullGauge);
+                TutorialManager.Instance.onceCastleTuto = false;
+            }
+        }
     }
 
     // Use Only in FixItem.cs

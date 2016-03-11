@@ -19,7 +19,7 @@ public class ObjectBase : MonoBehaviour
 
     protected float skillElapsedTime     = 0;
     protected bool  canUseSkill          = false;
-    protected float damagedColorDuration = 0.1f;
+    protected float damagedColorDuration = 0.2f;
     protected bool  isBleed = false; // 빨갛게 변해있는지 유무
 
     #endregion 

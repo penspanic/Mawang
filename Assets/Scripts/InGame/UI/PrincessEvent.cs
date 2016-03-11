@@ -29,10 +29,12 @@ public class PrincessEvent : MonoBehaviour
         bgmMgr      = GameObject.FindGameObjectWithTag("Manager").GetComponent<BgmManager>();
         skillName   = GameObject.Find("SkillName").GetComponent<Image>();
         illust      = GameObject.Find("BigIllust").GetComponent<Image>();
-
         illustStartPos = new Vector2(1000, illustPos.y);
         skillNameStartPos = new Vector2(-1000, skillNamePos.y);
+
+
     }
+
     // 켜질때
     void OnEnable()
     {       
@@ -44,6 +46,13 @@ public class PrincessEvent : MonoBehaviour
 
     IEnumerator EventProcess()
     {
+
+        if (PlayerData.instance.selectedStage == "C0S1")
+        {
+            while (TutorialManager.Instance.camMove)
+                yield return null;
+        }
+
         // 들어오는부분
         yield return StartCoroutine(sprRendererWidthMove(illust, illustStartPos, illustPos));
         yield return StartCoroutine(sprRendererWidthMove(skillName, skillNameStartPos, skillNamePos));

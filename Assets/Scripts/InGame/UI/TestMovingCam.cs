@@ -43,9 +43,13 @@ public class TestMovingCam : MonoBehaviour
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
             {
                 if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(0))
-                    return;
+                {
+                    if(!TutorialManager.Instance.isPlaying)
+                        return;
+                }
 
-                wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);    
+                Debug.Log(wp);
                 // 레이2d를 갖고옴
                 ray = new Ray2D(wp, Vector2.zero);
                 // 레이캐스트를 쏨

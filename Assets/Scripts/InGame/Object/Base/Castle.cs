@@ -9,7 +9,7 @@ public class Castle : ObjectBase
 
 
     GameManager gameMgr;
-
+    Coroutine bleedRoutine;
     protected SpriteRenderer spr;
 
     protected override void Awake()
@@ -28,6 +28,16 @@ public class Castle : ObjectBase
             yield return null;
         }
     }
+
+    // TOOD : 간혈적으로 성이 빨간색에서 안돌아옴
+    //void Update()
+    //{
+    //    if (spr.color == Color.red && isBleed)
+    //    {
+    //        spr.color = Color.white;
+    //        front.color = Color.white;
+    //    }
+    //}
 
     public override ObjectBase[] GetTargets()
     {
@@ -49,8 +59,8 @@ public class Castle : ObjectBase
             gameMgr.CastleDestroyed(this);
         }
 
-        if(!isBleed)
-            StartCoroutine(ChangeDamageColor());
+        if(bleedRoutine == null)
+            bleedRoutine =  StartCoroutine(ChangeDamageColor());
     }
 
 

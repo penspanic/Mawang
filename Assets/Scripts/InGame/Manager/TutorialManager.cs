@@ -23,7 +23,10 @@ public class TutorialManager : Singleton<TutorialManager>
 
     public bool isPlaying { get; private set; } // 실행중일때
     public bool camMove { get; private set; }
+    public int PatternCnt { get; set; }     // 유닛 C0S1일때 초반에만 많이
 
+    public bool onceCastleTuto { get; set; }
+    public bool oncePrinTuto { get; set; }
 
     [SerializeField]
     private GameObject   tutorialPrefab;
@@ -35,9 +38,6 @@ public class TutorialManager : Singleton<TutorialManager>
     private List<Sprite> castleTutoList;    // 성 풀게이지 스프라이트
     private List<Sprite> princessTutoList;  // 공주 풀게이지 스프라이트
 
-    private bool isCheck;
-
-    private float interval = 3;
 
     private Texture2D spriteTexture;
     private CanvasGroup canvasGroup;
@@ -49,6 +49,8 @@ public class TutorialManager : Singleton<TutorialManager>
     private BattleManager battleMgr;
     private SelectTab   selectTab;
     private Movable  skeleton;
+    private SatanCastle castle;
+    private Vector3 mousePos = Vector3.zero;
 
     void Awake()
     {
@@ -87,11 +89,14 @@ public class TutorialManager : Singleton<TutorialManager>
         selectTab   =   GameObject.Find("SelectTab").GetComponent<SelectTab>();
         spawnMgr    =   GameObject.Find("Manager").GetComponent<SpawnManager>();
         battleMgr   =   GameObject.Find("Manager").GetComponent<BattleManager>();
+        castle      =   GameObject.Find("SatanCastle").GetComponent<SatanCastle>();
 
         skeleton    =   Resources.Load<Movable>("Prefabs/OurForce/Skeleton");
         camMove     =   false;
         isPlaying   =   false;
-        isCheck     =   false;        
+        onceCastleTuto  = true;
+        oncePrinTuto    = true;
+        PatternCnt  =   6;
     }
 
     void AddImgListFromFolder(List<Sprite> imgList, string folderName)
@@ -106,7 +111,6 @@ public class TutorialManager : Singleton<TutorialManager>
     {
         tutorialObj.SetActive(true);
         isPlaying = true;
-        isCheck = true;
         StartCoroutine(CheckTutorial(tutorial));
     }
 
@@ -124,11 +128,14 @@ public class TutorialManager : Singleton<TutorialManager>
             isAnyTouch      =   tutorialDic[tutorial][tutoIdx].name.Length == 2 ? true : false;
             isTouch         =   false;
 
-            #region Effect Check
+            #region cases
+
+            #region case of tutorial
 
             // 튜토리얼이 preparegame 일때
             if (TutorialEvent.PrepareGame == tutorial)
             {
+
 
                 // 이펙트 idx 이름과 튜토리얼 idx 이름이 같을때 (지금은 한자리수만)
                 if (preTutoEffList[effectIdx].name[0] == tutorialDic[tutorial][tutoIdx].name[0])
@@ -136,8 +143,6 @@ public class TutorialManager : Singleton<TutorialManager>
                     effectImg.sprite = preTutoEffList[effectIdx];
                     effectImg.gameObject.SetActive(true);
                 }
-
-                #region case of tutorial
 
                 switch (tutoIdx)
                 {
@@ -149,7 +154,8 @@ public class TutorialManager : Singleton<TutorialManager>
                         break;
                     case 3: // 라인누를때
                         spawnMgr.TrySpawnOurForce(skeleton, 2);
-                        selectTab.LineSetActive(false);
+                        selectTab.ResetButton();
+                        //  selectTab.LineSetActive(false);
 
                         Time.timeScale = 1;
                         while (Time.timeScale == 1)
@@ -192,8 +198,59 @@ public class TutorialManager : Singleton<TutorialManager>
                         camMove = false;
                         break;
                 }
-                #endregion
+
             }
+            #endregion
+
+            #region case of castleTuto
+
+            if (TutorialEvent.CastleFullGauge == tutorial)
+            {
+                switch (tutoIdx)
+                {
+                    case 0:
+                        Time.timeScale = 0;
+                        StartCoroutine(MoveCam(0,1.0f));
+
+                        break;
+                    case 1:
+                        Time.timeScale = 1;
+                        castle.OnTouch();
+                        break;
+                }
+            }
+
+            #endregion
+
+            #region case of prin
+
+            if (TutorialEvent.PrincessFullGauge == tutorial)
+            {
+                switch(tutoIdx)
+                {
+                    case 0:
+                        Time.timeScale = 0;
+                        camMove = true;
+
+                        break;
+                    case 1:
+                        camMove = false;
+                        Time.timeScale = 1;
+
+                        // float currTime = 0;
+                        //while (Time.timeScale == 1)
+                        //{
+                        //    currTime += Time.deltaTime;
+                        //    if (currTime >= 2f)
+                        //        Time.timeScale = 1;
+
+                        //    yield return null;
+                        //}
+                        break;
+                }
+            }
+
+            #endregion
 
             #endregion
 
@@ -201,17 +258,6 @@ public class TutorialManager : Singleton<TutorialManager>
             {
                 if (Input.GetMouseButtonDown(0) && OnPointerDown(isAnyTouch))
                 {
-                    Debug.Log("TOUCH");
-                    //canvasGroup.blocksRaycasts = false;
-                    //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    //RaycastHit hit;
-                    //Debug.Log(ray);
-                    //Debug.DrawRay(ray.origin, ray.direction);
-
-                    //if (Physics.Raycast(ray, out hit))
-                    //{
-                    //    Debug.Log(hit);
-                    //}
                     isTouch = true;
                     if (effectImg.gameObject.activeInHierarchy)
                     {
@@ -225,21 +271,26 @@ public class TutorialManager : Singleton<TutorialManager>
             canvasGroup.blocksRaycasts = true;
             yield return null;
         }
-        Debug.Log("end");
 
         Time.timeScale = 1;
         tutorialObj.SetActive(false);
+
+        if(tutorial == TutorialEvent.PrepareGame)
+            StartCoroutine(selectTab.RotateSelectTab());
+
         isPlaying = false;
     }
 
-    Vector3 mousePos = Vector3.zero;
+
+
+    
     bool OnPointerDown(bool anyTouch)
     {
         mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        Debug.Log(anyTouch);
-        Debug.Log("COLOR : " + spriteTexture.GetPixel((int)(1280f * mousePos.x), (int)(720f * mousePos.y)));
+
         if (!anyTouch)
         {
+            // 투명찾기
             if (spriteTexture.GetPixel((int)(1280f * mousePos.x), (int)(720f * mousePos.y)).a == 0)
                 return true;
             else
@@ -249,4 +300,20 @@ public class TutorialManager : Singleton<TutorialManager>
         return true;
     }
 
+
+    IEnumerator MoveCam(float endX, float moveTime)
+    {
+        float currTime = 0.0f;
+
+        float startX = Camera.main.transform.position.x;
+        while (currTime < moveTime)
+        {
+            currTime += EasingUtil.tick;
+            float x = EasingUtil.smoothstep(startX, endX, currTime / moveTime);
+            Camera.main.transform.position = new Vector3(x, Camera.main.transform.position.y,-10);
+            yield return null;
+        }
+
+        Camera.main.transform.position = new Vector3(endX, Camera.main.transform.position.y,-10);
+    }
 }

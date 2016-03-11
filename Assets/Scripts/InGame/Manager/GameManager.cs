@@ -64,7 +64,11 @@ public class GameManager : MonoBehaviour
 
         StagePattern pattern = JsonManager.instance.GetStagePattern(stage);
 
+
         unitSpawnInterval = pattern.interval;
+
+        if (stage == "C0S1")
+            unitSpawnInterval = 2.5f;
 
         // 적군 패턴 갖고오기
         for (int i = 0; i < pattern.patternsName.Length; i++)
@@ -79,6 +83,18 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
+            #region tutorial
+
+            if (PlayerData.instance.selectedStage == "C0S1")
+            {
+                if (TutorialManager.Instance.PatternCnt == 0)
+                    unitSpawnInterval = JsonManager.instance.GetStagePattern("C0S1").interval;
+                else
+                    TutorialManager.Instance.PatternCnt--;
+            }
+
+            #endregion
+
             yield return new WaitForSeconds(unitSpawnInterval);
             SpawnPattern();
         }
