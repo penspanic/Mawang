@@ -13,6 +13,8 @@ public class Main : MonoBehaviour
     public GameObject explainUpgradePrefab;
     public GameObject explainPrincessPrefab;
 
+    public GameObject gameQuit;
+
     CastleUpgrade upgrade;
     CastleInfo info;
 
@@ -21,6 +23,7 @@ public class Main : MonoBehaviour
     GameEventReceiver stageClearEventReceiver;
     GameEventReceiver chapterClearEventReceiver;
 
+    bool isChanging = false;
     void Awake()
     {
 
@@ -33,7 +36,32 @@ public class Main : MonoBehaviour
 
         Invoke("CheckEvents", 1f);
 
-        //blurCtrl = GameObject.FindObjectOfType<BlurControl>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            EscapeProcess();
+        }
+    }
+
+    void EscapeProcess()
+    {
+        if (isChanging)
+            return;
+        gameQuit.SetActive(true);
+        
+    }
+
+    public void GameQuitYes()
+    {
+        Application.Quit();
+    }
+
+    public void GameQuitNo()
+    {
+        gameQuit.SetActive(false);
     }
 
     void CheckEvents()
@@ -44,24 +72,27 @@ public class Main : MonoBehaviour
 
     public void OnStartButtonDown()
     {
-        if (!isChanging)
+        if (!isChanging && !gameQuit.activeSelf)
             GameStart();
     }
 
     public void OnCastleUpgradeButtonDown()
     {
-        if (!upgrade.isShowing && !info.isShowing)
+        if (!upgrade.isShowing && !info.isShowing && !gameQuit.activeSelf)
             upgrade.ShowUpgrade();
     }
 
     public void OnCastleInfoButtonDown()
     {
-        if (!info.isShowing && !upgrade.isShowing)
+        if (!info.isShowing && !upgrade.isShowing && !gameQuit.activeSelf)
             info.ShowInfo();
     }
 
     public void OnBookButtonDown()
     {
+        if (gameQuit.activeSelf)
+            return;
+
         book.gameObject.SetActive(true);
     }
 
@@ -133,13 +164,6 @@ public class Main : MonoBehaviour
         Destroy(princessExplainImage);
     }
 
-    bool isChanging = false;
-    void ToBookScene()
-    {
-        isChanging = true;
-        StartCoroutine(SceneFader.Instance.FadeOut(1f, "Book"));
-        StartCoroutine(SceneFader.Instance.SoundFadeOut(1f, GameObject.FindObjectsOfType<AudioSource>()));
-    }
 
     void GameStart()
     {

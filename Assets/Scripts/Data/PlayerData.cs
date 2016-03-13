@@ -48,7 +48,6 @@ public class PlayerData : MonoBehaviour
     void Awake()
     {
 
-        PlayerPrefs.DeleteAll();
 
         DontDestroyOnLoad(gameObject);
 

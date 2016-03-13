@@ -67,6 +67,7 @@ public class CastleUpgrade : MonoBehaviour
         for (int i = 0; i < upgradeButtons.Length; i++)
         {
             allocatedPoints[i] = PlayerData.instance.upgradePoint[upgradeButtons[i].name];
+            Debug.Log(allocatedPoints[i]);
             alreadyAllocatedPoints += allocatedPoints[i];
             for (int j = 0; j < 6; j++)
             {
@@ -109,7 +110,9 @@ public class CastleUpgrade : MonoBehaviour
 
     void SaveUpgrade()
     {
-
+        PlayerData.instance.upgradePoint["Hp"] = allocatedPoints[0];
+        PlayerData.instance.upgradePoint["Damage"] = allocatedPoints[1];
+        PlayerData.instance.upgradePoint["Cool Time"] = allocatedPoints[2];
     }
 
     //Event
@@ -154,6 +157,7 @@ public class CastleUpgrade : MonoBehaviour
     {
         if (!isMoving)
         {
+            SaveUpgrade();
             animator.Play("Castle Upgrade Rise");
             isMoving = true;
             isShowing = false;

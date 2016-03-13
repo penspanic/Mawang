@@ -41,7 +41,7 @@ public class Ready_Item : MonoBehaviour
     public void OnItemButtonDown(int index)
     {
         selectedIndex = index;
-        itemDescriptionText.text = "가격 : " + itemsCost[index].ToString() + "\n" + itemsDescription[index];
+        itemDescriptionText.text = "가격 : " + itemsCost[index].ToString() + "\n\n" + itemsDescription[index];
 
         if (PlayerData.instance.obsidian - itemsCost[index] >= 0)
             SetBuyButtonState(true);
