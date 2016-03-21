@@ -5,17 +5,22 @@ using LitJson;
 
 public struct StagePattern
 {
-    public StagePattern(string[] patternsName, float interval, float princessCoolTime, float buffDuration)
+    public StagePattern(string[] patternsName, float interval, float princessCoolTime, float buffDuration,
+        float earlyTimeInterval, float earlyTimePatternCnt)
     {
         this.patternsName = patternsName;
         this.interval = interval;
         this.princessCoolTime = princessCoolTime;
         this.buffDuration = buffDuration;
+        this.earlyTimeInterval = earlyTimeInterval;
+        this.earlyTimePatternCnt = earlyTimePatternCnt;
     }
     public string[] patternsName;
     public float interval;
     public float princessCoolTime;
     public float buffDuration;
+    public float earlyTimeInterval;
+    public float earlyTimePatternCnt;
 }
 public class JsonManager : MonoBehaviour
 {
@@ -101,8 +106,10 @@ public class JsonManager : MonoBehaviour
         float interval = float.Parse(stageDesignData[stage]["Interval"].ToString());
         float princessCoolTime = float.Parse(stageDesignData[stage]["PrincessCoolTime"].ToString());
         float buffDuration = float.Parse(stageDesignData[stage]["BuffDuration"].ToString());
+        float earlyTimeInterval = float.Parse(stageDesignData[stage]["EarlyTimeInterval"].ToString());
+        float earlyTimePatternCnt = float.Parse(stageDesignData[stage]["EarlyTimePatternCnt"].ToString());
 
-        return new StagePattern(patternList.ToArray(), interval, princessCoolTime, buffDuration);
+        return new StagePattern(patternList.ToArray(), interval, princessCoolTime, buffDuration,earlyTimeInterval,earlyTimePatternCnt);
     }
 
     public string GetType(string name)

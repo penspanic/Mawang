@@ -10,6 +10,8 @@ public class SatanCastle : Castle
     Button skillButton;
     private float skillCoolTime; // 스킬 쿨타임
     private int skillDamage;
+    private int skillCnt;
+
     private Image      castlePortrait;
 
     protected override void Awake()
@@ -18,12 +20,14 @@ public class SatanCastle : Castle
         castlePortrait  =   GameObject.Find("Castle Image").GetComponent<Image>();
 
         PlayerData.instance.CheckInstance();
+
         skillCoolTime   = CastleUpgrade.GetUpgradeApplyedValue("Cool Time");
         skillDamage     = CastleUpgrade.GetUpgradeApplyedValue("Damage");
         maxHP           = CastleUpgrade.GetUpgradeApplyedValue("Hp");
 
         hp = maxHP;
 
+        skillCnt = 40;
 
         if (PlayerData.instance.selectedStage == "C0S1")
             skillCoolTime = 35;
@@ -53,10 +57,12 @@ public class SatanCastle : Castle
 
 
         SatanSkill skill;
-        for (int i = 0; i < targets.Length; i++)
+        for (int i = 0; i < skillCnt; i++)
         {
             // 스킬 구현
-            
+            if (i == targets.Length)
+                break;
+
             skill = (Instantiate(skillObject, targets[i].transform.position, new Quaternion()) as GameObject).
                 GetComponent<SatanSkill>();
             skill.attackDamage = skillDamage;

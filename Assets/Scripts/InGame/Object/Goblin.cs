@@ -12,7 +12,7 @@ public class Goblin : Launcher, ITouchable
     [SerializeField]
     private GameObject  skillProjectile;
     [SerializeField]
-    private int       amplificationDamage;
+    private int       addDamage;
 
 
     protected override void Awake()
@@ -26,9 +26,9 @@ public class Goblin : Launcher, ITouchable
     // SkillAnimation Event
     public void OnSkillProjectile()
     {
-        attackDamage    =   attackDamage * amplificationDamage;
+        attackDamage    =   attackDamage + addDamage;
         skillProjectile.SetActive(true);
-        attackDamage    =   attackDamage / amplificationDamage;
+        attackDamage    =   attackDamage - addDamage;
 
 
         SkillMotionEnd();

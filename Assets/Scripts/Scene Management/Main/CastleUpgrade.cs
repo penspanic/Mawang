@@ -7,19 +7,23 @@ using System.Collections.Generic;
 public class CastleUpgrade : MonoBehaviour
 {
 
-    #region Game Design
     public static readonly string[] upgradeDescriptions = new string[3]{
         "마왕성의 체력이 증가합니다!",
         "스킬의 공격력이 상승합니다!",
         "스킬의 쿨타임이 감소합니다!"
     };
-    public static readonly int[] upgradeIncreaseValues = new int[3]{
-        100, 100, 10
-    };
+
+    // hp , damage, cooltime 순
+
+    // 기본 값
     public static readonly int[] originalValues = new int[3]{
-        500, 100, 180
+        500, 100, 130
     };
-    #endregion
+    // 증가하는 업그레이드 수치
+    public static readonly int[] upgradeIncreaseValues = new int[3]{
+        300, 10, 10
+    };
+
     public Text remainingPointText; // 남은 포인트 텍스트
     public Text upgradeDescriptionText;
     public Text allocateButtonText;

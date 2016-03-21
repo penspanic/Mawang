@@ -130,6 +130,13 @@ public class ObjectBase : MonoBehaviour
         else
             hp = 0;
 
+        if (hp >= maxHP)
+            hp = maxHP;
+    }
+
+    public void SetFullHP()
+    {
+        hp = maxHP;
     }
     public int GetHP()
     {

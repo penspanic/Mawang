@@ -303,17 +303,19 @@ public class TutorialManager : Singleton<TutorialManager>
 
     IEnumerator MoveCam(float endX, float moveTime)
     {
+        Transform cameraTransform = Camera.main.transform;
+
         float currTime = 0.0f;
 
-        float startX = Camera.main.transform.position.x;
+        float startX = cameraTransform.position.x;
         while (currTime < moveTime)
         {
             currTime += EasingUtil.tick;
             float x = EasingUtil.smoothstep(startX, endX, currTime / moveTime);
-            Camera.main.transform.position = new Vector3(x, Camera.main.transform.position.y,-10);
+            cameraTransform.position = new Vector3(x, cameraTransform.position.y, -10);
             yield return null;
         }
 
-        Camera.main.transform.position = new Vector3(endX, Camera.main.transform.position.y,-10);
+        cameraTransform.position = new Vector3(endX, cameraTransform.position.y, -10);
     }
 }

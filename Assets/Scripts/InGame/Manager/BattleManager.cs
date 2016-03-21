@@ -7,6 +7,8 @@ public class BattleManager : MonoBehaviour {
 	public List<ObjectBase> ourForceList = new List<ObjectBase>();
     public List<ObjectBase> enemyList    = new List<ObjectBase>();
 
+    public GameObject ourCastle { get; private set; }
+    public GameObject enemyCastle { get; private set; }
     public float fightDistance
     {
         get;
@@ -15,8 +17,6 @@ public class BattleManager : MonoBehaviour {
 
 
 
-    private GameObject ourCastle;
-    private GameObject enemyCastle;
 
     void Awake()
     {

@@ -17,6 +17,26 @@ public class InputManager : MonoBehaviour
     }
     void Update()
     {
+        // Delete This
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Time.timeScale += 0.2f;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Time.timeScale -= 0.2f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.PageUp))
+        {
+            Time.timeScale = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.PageDown))
+        {
+            Time.timeScale = 0;
+        }
+
+
         if (Input.GetMouseButtonDown(0) && Application.platform == RuntimePlatform.WindowsEditor)
         {
             if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1))
@@ -35,7 +55,7 @@ public class InputManager : MonoBehaviour
                     {
                         // 오브젝트가 아군이나 적군일때 ( 성 포함 )
                         if (hitObject.CompareTag("OurForce") && selectTab.isSelected)
-                            return;
+                            continue;
 
                         hitObject.GetComponent<ITouchable>().OnTouch();
                     }

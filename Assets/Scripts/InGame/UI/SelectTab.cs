@@ -45,23 +45,17 @@ public class SelectTab : MonoBehaviour
         lever.GetComponent<Button>().onClick.AddListener(ClickedRoseButton);
 
         // Temp
-        if (PlayerData.instance.selectedUnitList.Count == 0)
-        {
-            PlayerData.instance.selectedUnitList.Add("Skeleton");
-            PlayerData.instance.selectedUnitList.Add("Goblin");
-            PlayerData.instance.selectedUnitList.Add("Dullahan");
-            PlayerData.instance.selectedUnitList.Add("Harpy");
-            PlayerData.instance.selectedUnitList.Add("Orc");
-            PlayerData.instance.selectedUnitList.Add("Grim");
-        }
+        if (PlayerData.instance.playerUnitList.Count == 0)
+            PlayerData.instance.playerUnitList.Add("Skeleton");
+
 
 
         #region Load
 
         // 선택된 유닛들 스프라이트 로드
-        for (int i = 0; i < PlayerData.instance.selectedUnitList.Count; i++)
+        for (int i = 0; i < PlayerData.instance.playerUnitList.Count; i++)
             unitPortaitList.Add(Resources.Load<Sprite>("Sprite/UI/Icon/UnitPortrait/"
-                + PlayerData.instance.selectedUnitList[i]));
+                + PlayerData.instance.playerUnitList[i]));
 
         // 유닛버튼들 로드
         for (int i = 0; i < 6; i++)
@@ -70,7 +64,7 @@ public class SelectTab : MonoBehaviour
         // 유닛 prefab 추가
         for (int i = 0; i < unitPortaitList.Count; i++)
             unitPrefabs.Add(Resources.Load<Movable>("Prefabs/OurForce/" +
-                PlayerData.instance.selectedUnitList[i]));
+                PlayerData.instance.playerUnitList[i]));
 
         // 유닛버튼에 스프라이트 대입
         for (int i = 0; i < unitButtonList.Count; i++)

@@ -16,13 +16,15 @@ public class GameManager : MonoBehaviour
 
     private List<GameObject> stagePatternList = new List<GameObject>();
     private float unitSpawnInterval;
+    private float unitSpawnEarlyTime; // 초반 약할때 추가시간
+    private float earlyTimePatternCnt; // 약할때 추가시간 패턴 갯수
 
     private string stage;
+    private bool   isDefenceTurn;
 
-
-    //  TutorialManager tutorialMgr;
     BgmManager      bgmMgr;
     SpriteOrderLayerManager orderMgr;
+    BattleManager   battleMgr;
     Pause pauseUI;
     
 
@@ -30,8 +32,10 @@ public class GameManager : MonoBehaviour
     {
         // tutorialMgr     =   GameObject.FindObjectOfType<TutorialManager>();
         orderMgr        =   FindObjectOfType<SpriteOrderLayerManager>();
+        battleMgr       =   FindObjectOfType<BattleManager>();
         isRun           =   true;
         pauseUI         =   FindObjectOfType<Pause>();
+        isDefenceTurn   =   true;
 
         PlayerData.instance.CheckInstance();
         GameEventManager.instance.CheckInstance();
@@ -58,14 +62,14 @@ public class GameManager : MonoBehaviour
     #region stage
     void LoadStage()
     {
-
-
         stage = PlayerData.instance.selectedStage;
 
         StagePattern pattern = JsonManager.instance.GetStagePattern(stage);
 
 
         unitSpawnInterval = pattern.interval;
+        unitSpawnEarlyTime = pattern.earlyTimeInterval;
+        earlyTimePatternCnt = pattern.earlyTimePatternCnt;
 
         if (stage == "C0S1")
             unitSpawnInterval = 2.5f;
@@ -95,31 +99,81 @@ public class GameManager : MonoBehaviour
 
             #endregion
 
-            yield return new WaitForSeconds(unitSpawnInterval);
+            Debug.Log(unitSpawnEarlyTime);
+            Debug.Log(unitSpawnInterval);
+            if (earlyTimePatternCnt > 0)
+                earlyTimePatternCnt--;
+            else
+                unitSpawnEarlyTime = 0;
+
+            Debug.Log("interval : " + unitSpawnInterval + unitSpawnEarlyTime);
+            yield return new WaitForSeconds(unitSpawnInterval + unitSpawnEarlyTime);
+            
             SpawnPattern();
         }
     }
 
 
     int rand = 0;
+    int prevRand = 99;
+
     int randLine = 0;
+    int prevLine = 99;
+    int prev2Line = 99;
+    float spawnLine = 1;
     void SpawnPattern()
     {
 
+        // 첨엔 무조건 첫번째꺼 소환
         // pattern
-        rand = Random.Range(0, stagePatternList.Count);
+        while (prevRand == rand)
+        {
+            rand = Random.Range(0, stagePatternList.Count);
+
+            if (stagePatternList.Count == 1)
+                break;
+        }
+
+        prevRand = rand;
 
         // 3마리가 동시에 출현할때 앞에 1_을 붙인다.
         if (stagePatternList[rand].name[0] == '1')
+        {
             randLine = 1;
+            isDefenceTurn = false;
+        }
         else
+        {
             randLine = Random.Range(1, 4);
 
+            while (randLine == prevLine || randLine == prev2Line)
+                randLine = Random.Range(1, 4);
 
-        float randPosY = (randLine - 1) * -1.2f;
 
+            if (isDefenceTurn)
+            {
+                float minPos = 100f;
+                for (int i = 0; i < battleMgr.ourForceList.Count; i++)
+                {
+                    if (battleMgr.enemyCastle.transform.position.x - battleMgr.ourForceList[i].transform.position.x < minPos)
+                    {
+                        minPos = battleMgr.enemyCastle.transform.position.x - battleMgr.ourForceList[i].transform.position.x;
+                        spawnLine = battleMgr.ourForceList[i].line;
+                    }
+                }
+            }
+        }
+
+
+        prev2Line = prevLine;
+        prevLine = randLine;
+
+        float randPosY = ((isDefenceTurn ? spawnLine-1 : randLine - 1)) * -1.2f;
+        Debug.Log(isDefenceTurn);
         Instantiate(stagePatternList[rand], new Vector3(19, randPosY, 0), new Quaternion());
         orderMgr.UpdateOrder(randLine);
+
+        isDefenceTurn = !isDefenceTurn;
     }
     #endregion
 
@@ -130,6 +184,7 @@ public class GameManager : MonoBehaviour
         gameClear.SetActive(true);
         if (PlayerData.instance.lastClearedStage == null)
             GameEventManager.instance.PushEvent(GameEvent.FirstC0S1Cleared);
+
         if (PlayerData.instance.selectedStage == "C0S3" && PlayerData.instance.IsStageCleared("C0S3"))
             GameEventManager.instance.PushEvent(GameEvent.FirstChapter0Cleared);
 
@@ -146,6 +201,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator TouchToMain()
     {
+        // 터치 대기시간 
+        float currTime = 0.0f;
+        float waitTime = 1;
+        while(currTime <= waitTime)
+        {
+            currTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
         while(true)
         {
             if (Input.GetMouseButtonDown(0))
@@ -163,7 +226,6 @@ public class GameManager : MonoBehaviour
         if (GameObject.FindObjectOfType<Pause>().isSceneChanging)
             return;
 
-        Debug.Log("Destroyed");
         isRun = false;
         Time.timeScale = 0f;
 

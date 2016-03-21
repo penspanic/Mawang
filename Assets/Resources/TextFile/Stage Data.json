@@ -1,19 +1,16 @@
 ﻿{
     "C0S1": [
-        "Pawn",
-        "Archer"
+        "Pawn"
     ],
     "C0S2": [
-        "Pawn",
-        "Archer"
+        "Pawn"
     ],
     "C0S3": [
         "Pawn",
         "Archer"
     ],
     "C1S1": [
-        "Pawn",
-        "Archer"
+        "Pawn"
     ],
     "C1S2": [
         "Pawn",
@@ -21,7 +18,8 @@
     ],
     "C1S3": [
         "Pawn",
-        "Archer"
+        "Archer",
+		"Shielder"
     ],
     "C2S1": [
         "Pawn",
@@ -29,23 +27,31 @@
     ],
     "C2S2": [
         "Pawn",
-        "Archer"
+        "Archer",
+		"Shielder"
     ],
     "C2S3": [
         "Pawn",
-        "Archer"
+        "Archer",
+		"Shielder",
+		"Bandsman"
     ],
     "C3S1": [
-        "Pawn",
-        "Archer"
+		"Pawn",
+        "Archer",
+		"Shielder"
     ],
     "C3S2": [
         "Pawn",
-        "Archer"
+        "Archer",
+		"Shielder",
+		"Bandsman"
     ],
     "C3S3": [
         "Pawn",
-        "Archer"
+        "Archer",
+		"Shielder",
+		"Bandsman"
     ]
 
 }

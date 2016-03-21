@@ -62,8 +62,8 @@ public class PlayerData : MonoBehaviour
         // 3
         if (isFirst) // 제일 처음일때
         {
-            Debug.Log("First, Skeleton Added");
             AddUnit("Skeleton");
+            Debug.Log("First, Skeleton Added");
             obsidian = 100; //Temp
 
         }
@@ -166,6 +166,8 @@ public class PlayerData : MonoBehaviour
         int LastC = int.Parse(lastClearedStage[1].ToString());
         int LastS = int.Parse(lastClearedStage[3].ToString());
 
+        CheckAddUnit(c, s);
+
         if (c > LastC)
         {
             lastClearedStage = stage;
@@ -181,6 +183,27 @@ public class PlayerData : MonoBehaviour
         }
         else
             return;
+
+
+
+    }
+
+    void CheckAddUnit(int c, int s)
+    {
+        Debug.Log("c : " + c + ", s :" + s);
+        if (c == 0 && s == 1)
+            AddUnit("Goblin");
+
+        if (c == 0 && s == 2)
+            AddUnit("Orc");
+
+        if (c == 1 && s == 3)
+        {
+            AddUnit("Harpy");
+            AddUnit("Dullahan");
+        }
+        if (c == 2 && s == 3)
+            AddUnit("Grim");
     }
 
     public bool IsStageCleared(string stage)
@@ -217,6 +240,7 @@ public class PlayerData : MonoBehaviour
 
         //C0S1 부터 시작
 
+        Debug.Log(lastChapter * 3 + lastStage);
         return lastChapter * 3 + lastStage;
     }
 
@@ -244,6 +268,9 @@ public class PlayerData : MonoBehaviour
     {
         int chapter = int.Parse(stageName[1].ToString());
         int stage = int.Parse(stageName[3].ToString());
+
+        if (stageName == "C3S3")
+            return "C3S3";
 
         if (stage == 3)
         {

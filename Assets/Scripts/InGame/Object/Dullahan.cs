@@ -31,8 +31,10 @@ public class Dullahan : Warrior, ITouchable
 
 
     List<ObjectBase> lineList   =   new List<ObjectBase>();
+    List<ObjectBase> dmgUnitList   =   new List<ObjectBase>();
     IEnumerator DullahanSkill()
     {
+        dmgUnitList.Clear();
         while (isSkillMotion)
         {
              lineList   =   battleMgr.enemyList.FindAll(e => e.line == line);
@@ -46,10 +48,19 @@ public class Dullahan : Warrior, ITouchable
 
             transform.Translate(skillDistance * Time.deltaTime * Time.timeScale, 0, 0);
 
+
             for (int i = 0; i < lineList.Count; i++)
             {
                 if (this.attackRange > Mathf.Abs(transform.position.x - lineList[i].transform.position.x))
+                {
+                    // dmgUnit 에 유닛이 없을경우
+                    if(!dmgUnitList.Contains(lineList[i]))
+                    {
+                        lineList[i].Attacked(attackDamage);
+                        dmgUnitList.Add(lineList[i]);
+                    }
                     lineList[i].transform.Translate(skillDistance * Time.deltaTime * Time.timeScale, 0, 0);
+                }
             }
             yield return null;
         }
