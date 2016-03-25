@@ -25,19 +25,19 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: 0.25
+    heightScale: .25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
+  cubemapConvolutionSteps: 4
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -46,11 +46,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: -1
   allowsAlphaSplitting: 0
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
@@ -66,21 +66,8 @@ TextureImporter:
         width: 125
         height: 118
       alignment: 9
-      pivot: {x: 0.5106462, y: 0.13535063}
+      pivot: {x: .510646224, y: .13535063}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 61.16922, y: 86.028625}
-        - {x: 50.16922, y: 102.028625}
-        - {x: -26.83078, y: 102.028625}
-        - {x: -50.83078, y: 100.028625}
-        - {x: -63.83078, y: 77.028625}
-        - {x: -63.83078, y: 4.0286255}
-        - {x: -50.83078, y: -15.9713745}
-        - {x: 12.16922, y: -15.9713745}
-        - {x: 52.16922, y: 13.0286255}
-        - {x: 44.16922, y: 39.028625}
-        - {x: 42.16922, y: 44.028625}
-        - {x: 61.16922, y: 70.028625}
     - name: body
       rect:
         serializedVersion: 2
@@ -89,17 +76,8 @@ TextureImporter:
         width: 74
         height: 103
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -4, y: 51.5}
-        - {x: -37, y: 14.5}
-        - {x: -37, y: -6.5}
-        - {x: -20, y: -51.5}
-        - {x: 24, y: -51.5}
-        - {x: 37, y: -25.5}
-        - {x: 37, y: 41.5}
-        - {x: 24, y: 51.5}
     - name: arm_right_up
       rect:
         serializedVersion: 2
@@ -108,16 +86,8 @@ TextureImporter:
         width: 55
         height: 33
       alignment: 9
-      pivot: {x: 0.24190895, y: 0.5806533}
+      pivot: {x: .241908953, y: .58065331}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -10.304993, y: 13.83844}
-        - {x: -13.304993, y: 10.83844}
-        - {x: -13.304993, y: -5.16156}
-        - {x: -3.3049927, y: -19.16156}
-        - {x: 41.695007, y: -19.16156}
-        - {x: 41.695007, y: 0.83843994}
-        - {x: 10.695007, y: 13.83844}
     - name: arm_right_down
       rect:
         serializedVersion: 2
@@ -126,9 +96,8 @@ TextureImporter:
         width: 29
         height: 60
       alignment: 9
-      pivot: {x: 0.6376674, y: 0.72919005}
+      pivot: {x: .637667418, y: .729190052}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
     - name: arm_left
       rect:
         serializedVersion: 2
@@ -137,20 +106,8 @@ TextureImporter:
         width: 87
         height: 132
       alignment: 9
-      pivot: {x: 0.80592704, y: 0.668028}
+      pivot: {x: .805927038, y: .668027997}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 15.884346, y: -12.179695}
-        - {x: 11.884346, y: 18.820305}
-        - {x: -10.115654, y: 14.820305}
-        - {x: -34.115654, y: 43.820305}
-        - {x: -70.115654, y: 43.820305}
-        - {x: -70.115654, y: -59.179695}
-        - {x: -23.115654, y: -87.179695}
-        - {x: -13.115654, y: -88.179695}
-        - {x: 16.884346, y: -88.179695}
-        - {x: 16.884346, y: -77.179695}
-        - {x: 12.884346, y: -71.179695}
     - name: leg_left
       rect:
         serializedVersion: 2
@@ -159,16 +116,8 @@ TextureImporter:
         width: 46
         height: 97
       alignment: 9
-      pivot: {x: 0.70251065, y: 0.8658508}
+      pivot: {x: .702510655, y: .865850806}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -10.315491, y: 13.012474}
-        - {x: -16.31549, y: 12.012474}
-        - {x: -32.31549, y: -8.987526}
-        - {x: -32.31549, y: -74.987526}
-        - {x: -31.31549, y: -83.987526}
-        - {x: 13.684509, y: -83.987526}
-        - {x: 13.684509, y: 13.012474}
     - name: leg_right
       rect:
         serializedVersion: 2
@@ -177,16 +126,8 @@ TextureImporter:
         width: 46
         height: 97
       alignment: 9
-      pivot: {x: 0.760371, y: 0.89786285}
+      pivot: {x: .760371029, y: .897862852}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -12.977066, y: 9.907303}
-        - {x: -18.977066, y: 8.907303}
-        - {x: -34.977066, y: -12.092697}
-        - {x: -34.977066, y: -78.0927}
-        - {x: -33.977066, y: -87.0927}
-        - {x: 11.022934, y: -87.0927}
-        - {x: 11.022934, y: 9.907303}
     - name: arrow
       rect:
         serializedVersion: 2
@@ -195,10 +136,8 @@ TextureImporter:
         width: 14
         height: 102
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

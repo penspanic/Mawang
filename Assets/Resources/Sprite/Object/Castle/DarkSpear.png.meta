@@ -25,19 +25,19 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: 0.25
+    heightScale: .25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
+  cubemapConvolutionSteps: 4
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -46,11 +46,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: -1
   allowsAlphaSplitting: 0
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
@@ -68,15 +68,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -29.5, y: 279}
-        - {x: -32.5, y: 277}
-        - {x: -32.5, y: 223}
-        - {x: -31.5, y: 216}
-        - {x: 9.5, y: 216}
-        - {x: 19.5, y: 222}
-        - {x: 19.5, y: 277}
-        - {x: 7.5, y: 279}
     - name: DarkSpear_1
       rect:
         serializedVersion: 2
@@ -87,22 +78,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 76.87518, y: -30}
-        - {x: 76.87518, y: 46}
-        - {x: 60.875183, y: 97}
-        - {x: 28.875183, y: 249}
-        - {x: -3.124817, y: 279}
-        - {x: -22.124817, y: 279}
-        - {x: -34.124817, y: 259}
-        - {x: -43.124817, y: 99}
-        - {x: -73.12482, y: 56}
-        - {x: -73.12482, y: 13}
-        - {x: -29.124817, y: -136}
-        - {x: -18.124817, y: -136}
-        - {x: -17.124817, y: -134}
-        - {x: -11.124817, y: -136}
-        - {x: 25.875183, y: -136}
     - name: DarkSpear_2
       rect:
         serializedVersion: 2
@@ -113,19 +88,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 21.750366, y: 260}
-        - {x: 12.750366, y: 265}
-        - {x: -12.249634, y: 265}
-        - {x: -36.249634, y: 141}
-        - {x: -45.249634, y: 54}
-        - {x: -45.249634, y: -52}
-        - {x: -21.249634, y: -209}
-        - {x: -5.249634, y: -218}
-        - {x: 15.750366, y: -218}
-        - {x: 19.750366, y: -211}
-        - {x: 50.750366, y: -121}
-        - {x: 50.750366, y: 84}
     - name: DarkSpear_3
       rect:
         serializedVersion: 2
@@ -136,17 +98,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 17.62555, y: 263}
-        - {x: -3.3744507, y: 263}
-        - {x: -9.374451, y: 259}
-        - {x: -22.37445, y: 206}
-        - {x: -22.37445, y: -162}
-        - {x: -16.37445, y: -240}
-        - {x: 16.62555, y: -240}
-        - {x: 27.62555, y: -237}
-        - {x: 32.62555, y: -195}
-        - {x: 32.62555, y: 177}
     - name: DarkSpear_4
       rect:
         serializedVersion: 2
@@ -157,20 +108,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 60.000732, y: -233}
-        - {x: 18.000732, y: 120}
-        - {x: 7.0007324, y: 125}
-        - {x: 0.0007324219, y: 125}
-        - {x: -7.9992676, y: 117}
-        - {x: -14.999268, y: -136}
-        - {x: -65.99927, y: -230}
-        - {x: -65.99927, y: -258}
-        - {x: -15.999268, y: -267}
-        - {x: 40.000732, y: -267}
-        - {x: 65.00073, y: -258}
-        - {x: 69.00073, y: -255}
-        - {x: 69.00073, y: -245}
     - name: DarkSpear_5
       rect:
         serializedVersion: 2
@@ -181,18 +118,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 45.875854, y: -202}
-        - {x: 31.875854, y: -201}
-        - {x: -10.1241455, y: -201}
-        - {x: -99.124146, y: -222}
-        - {x: -103.124146, y: -228}
-        - {x: -103.124146, y: -241}
-        - {x: -58.124146, y: -259}
-        - {x: 49.875854, y: -259}
-        - {x: 103.875854, y: -246}
-        - {x: 103.875854, y: -218}
-        - {x: 85.875854, y: -212}
     - name: DarkSpear_6
       rect:
         serializedVersion: 2
@@ -203,16 +128,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20.248901, y: -184}
-        - {x: -95.2489, y: -212}
-        - {x: -95.2489, y: -232}
-        - {x: -63.2489, y: -253}
-        - {x: -52.2489, y: -256}
-        - {x: 58.7511, y: -256}
-        - {x: 106.7511, y: -244}
-        - {x: 106.7511, y: -209}
-        - {x: 44.7511, y: -184}
     - name: DarkSpear_7
       rect:
         serializedVersion: 2
@@ -223,40 +138,6 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -69.37378, y: -193}
-        - {x: -80.37378, y: -196}
-        - {x: -93.37378, y: -208}
-        - {x: -100.37378, y: -219}
-        - {x: -100.37378, y: -239}
-        - {x: -61.37378, y: -246}
-        - {x: 83.62622, y: -246}
-        - {x: 97.62622, y: -244}
-        - {x: 97.62622, y: -200}
-        - {x: 58.62622, y: -193}
-      - - {x: 95.62622, y: -225}
-        - {x: 94.62622, y: -227}
-        - {x: 94.62622, y: -231}
-        - {x: 100.62622, y: -231}
-        - {x: 100.62622, y: -227}
-        - {x: 99.62622, y: -225}
-      - - {x: -12.373779, y: -167}
-        - {x: -14.373779, y: -171}
-        - {x: -14.373779, y: -177}
-        - {x: -11.373779, y: -179}
-        - {x: -4.3737793, y: -179}
-        - {x: -2.3737793, y: -175}
-        - {x: -2.3737793, y: -170}
-        - {x: -5.3737793, y: -167}
-      - - {x: 6.6262207, y: -167}
-        - {x: 4.6262207, y: -171}
-        - {x: 4.6262207, y: -174}
-        - {x: 9.626221, y: -178}
-        - {x: 12.626221, y: -178}
-        - {x: 15.626221, y: -173}
-        - {x: 15.626221, y: -169}
-        - {x: 11.626221, y: -167}
-    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

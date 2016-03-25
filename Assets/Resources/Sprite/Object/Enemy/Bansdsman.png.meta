@@ -23,13 +23,13 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: 0.25
+    heightScale: .25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
+  cubemapConvolutionSteps: 4
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
@@ -44,11 +44,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: -1
   allowsAlphaSplitting: 0
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
@@ -64,19 +64,8 @@ TextureImporter:
         width: 133
         height: 127
       alignment: 9
-      pivot: {x: 0.46880066, y: 0.13592577}
+      pivot: {x: .468800664, y: .13592577}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -42.350487, y: 109.73743}
-        - {x: -53.350487, y: 105.73743}
-        - {x: -62.350487, y: 84.73743}
-        - {x: -62.350487, y: 11.737427}
-        - {x: -43.350487, y: -17.262573}
-        - {x: 21.649513, y: -17.262573}
-        - {x: 62.649513, y: 7.7374268}
-        - {x: 70.64951, y: 19.737427}
-        - {x: 70.64951, y: 104.73743}
-        - {x: 67.64951, y: 109.73743}
     - name: arm_left
       rect:
         serializedVersion: 2
@@ -85,16 +74,8 @@ TextureImporter:
         width: 122
         height: 100
       alignment: 9
-      pivot: {x: 0.89843076, y: 0.357731}
+      pivot: {x: .898430765, y: .357731014}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -109.60855, y: 64.2269}
-        - {x: -109.60855, y: -21.773102}
-        - {x: -99.60855, y: -35.7731}
-        - {x: 0.39144897, y: -35.7731}
-        - {x: 12.391449, y: -10.773102}
-        - {x: 12.391449, y: 61.2269}
-        - {x: -4.608551, y: 64.2269}
     - name: leg_left
       rect:
         serializedVersion: 2
@@ -103,17 +84,8 @@ TextureImporter:
         width: 49
         height: 104
       alignment: 9
-      pivot: {x: 0.7782471, y: 0.8989912}
+      pivot: {x: .778247118, y: .898991227}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -15.1341095, y: 10.504913}
-        - {x: -21.13411, y: 8.504913}
-        - {x: -38.13411, y: -11.495087}
-        - {x: -38.13411, y: -88.49509}
-        - {x: -37.13411, y: -93.49509}
-        - {x: 10.8658905, y: -93.49509}
-        - {x: 10.8658905, y: 6.5049133}
-        - {x: 7.8658905, y: 10.504913}
     - name: leg_right
       rect:
         serializedVersion: 2
@@ -122,17 +94,8 @@ TextureImporter:
         width: 49
         height: 104
       alignment: 9
-      pivot: {x: 0.69356316, y: 0.8704919}
+      pivot: {x: .693563163, y: .870491922}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -13.984596, y: 13.468842}
-        - {x: -16.984596, y: 12.468842}
-        - {x: -33.984596, y: -11.531158}
-        - {x: -33.984596, y: -77.53116}
-        - {x: -32.984596, y: -90.53116}
-        - {x: 15.015404, y: -90.53116}
-        - {x: 15.015404, y: 11.468842}
-        - {x: 14.015404, y: 13.468842}
     - name: arm_right
       rect:
         serializedVersion: 2
@@ -141,17 +104,8 @@ TextureImporter:
         width: 66
         height: 117
       alignment: 9
-      pivot: {x: 0.28444117, y: 0.8951913}
+      pivot: {x: .284441173, y: .895191312}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -13.773117, y: 12.262619}
-        - {x: -18.773117, y: 8.262619}
-        - {x: -18.773117, y: -47.73738}
-        - {x: -5.773117, y: -104.73738}
-        - {x: 32.226883, y: -104.73738}
-        - {x: 47.226883, y: -49.73738}
-        - {x: 47.226883, y: -4.737381}
-        - {x: 20.226883, y: 12.262619}
     - name: body
       rect:
         serializedVersion: 2
@@ -160,17 +114,8 @@ TextureImporter:
         width: 58
         height: 112
       alignment: 9
-      pivot: {x: 0.44889766, y: 0.5899766}
+      pivot: {x: .44889766, y: .589976609}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -13.036064, y: 45.922623}
-        - {x: -26.036064, y: 24.922623}
-        - {x: -26.036064, y: -66.07738}
-        - {x: 20.963936, y: -66.07738}
-        - {x: 31.963936, y: -53.077377}
-        - {x: 31.963936, y: 30.922623}
-        - {x: 19.963936, y: 45.922623}
-    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
