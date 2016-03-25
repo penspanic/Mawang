@@ -29,19 +29,19 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 4
+  cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: 1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -50,11 +50,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: -1
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
@@ -70,8 +70,17 @@ TextureImporter:
         width: 70
         height: 160
       alignment: 9
-      pivot: {x: .767148674, y: .102616504}
+      pivot: {x: 0.7671487, y: 0.102616504}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.700409, y: 143.58136}
+        - {x: -47.70041, y: 143.58136}
+        - {x: -53.70041, y: 92.58136}
+        - {x: -53.70041, y: -5.41864}
+        - {x: -23.700409, y: -16.41864}
+        - {x: 16.299591, y: -16.41864}
+        - {x: 16.299591, y: 68.58136}
+        - {x: 4.299591, y: 124.58136}
     - name: wing_R_1
       rect:
         serializedVersion: 2
@@ -80,8 +89,17 @@ TextureImporter:
         width: 160
         height: 70
       alignment: 9
-      pivot: {x: .89404422, y: .225218847}
+      pivot: {x: 0.8940442, y: 0.22521885}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90.04707, y: 54.23468}
+        - {x: -143.04707, y: 49.23468}
+        - {x: -143.04707, y: 24.23468}
+        - {x: -127.04707, y: -5.76532}
+        - {x: -63.047073, y: -15.76532}
+        - {x: 16.952927, y: -15.76532}
+        - {x: 16.952927, y: 20.23468}
+        - {x: -13.047073, y: 54.23468}
     - name: body
       rect:
         serializedVersion: 2
@@ -90,8 +108,18 @@ TextureImporter:
         width: 61
         height: 94
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.5, y: 47}
+        - {x: -30.5, y: 30}
+        - {x: -30.5, y: -32}
+        - {x: -13.5, y: -47}
+        - {x: 10.5, y: -47}
+        - {x: 13.5, y: -46}
+        - {x: 30.5, y: -12}
+        - {x: 30.5, y: 22}
+        - {x: 13.5, y: 47}
     - name: head
       rect:
         serializedVersion: 2
@@ -100,8 +128,18 @@ TextureImporter:
         width: 125
         height: 103
       alignment: 9
-      pivot: {x: .491451651, y: .188759223}
+      pivot: {x: 0.49145165, y: 0.18875922}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 60.568542, y: 12.5578}
+        - {x: 63.568542, y: 12.5578}
+        - {x: 63.568542, y: 42.5578}
+        - {x: 47.568542, y: 83.5578}
+        - {x: -29.431458, y: 83.5578}
+        - {x: -61.431458, y: 74.5578}
+        - {x: -61.431458, y: -19.4422}
+        - {x: 63.568542, y: -19.4422}
+        - {x: 63.568542, y: 12.5578}
     - name: face_normal
       rect:
         serializedVersion: 2
@@ -110,8 +148,25 @@ TextureImporter:
         width: 54
         height: 38
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25, y: 19}
+        - {x: -27, y: 17}
+        - {x: -27, y: -7}
+        - {x: -26, y: -9}
+        - {x: -12, y: -19}
+        - {x: 8, y: -19}
+        - {x: 13, y: -18}
+        - {x: 13, y: -12}
+        - {x: 11, y: -10}
+        - {x: -8, y: 19}
+      - - {x: 14, y: 12}
+        - {x: 4, y: 2}
+        - {x: 4, y: -8}
+        - {x: 23, y: -8}
+        - {x: 27, y: -6}
+        - {x: 27, y: 12}
     - name: face_dead
       rect:
         serializedVersion: 2
@@ -120,8 +175,31 @@ TextureImporter:
         width: 52
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 0}
+        - {x: -26, y: -11}
+        - {x: -8, y: -16}
+        - {x: 7, y: -16}
+        - {x: 7, y: -13}
+        - {x: 1, y: -6}
+        - {x: -9, y: 0}
+      - - {x: 14, y: 7}
+        - {x: 3, y: 3}
+        - {x: 2, y: 0}
+        - {x: 2, y: -6}
+        - {x: 16, y: -6}
+        - {x: 26, y: -3}
+        - {x: 26, y: 7}
+      - - {x: -25, y: 16}
+        - {x: -25, y: 12}
+        - {x: -21, y: 4}
+        - {x: -12, y: -1}
+        - {x: -5, y: -1}
+        - {x: -5, y: 4}
+        - {x: -6, y: 7}
+        - {x: -16, y: 16}
     - name: wing_R_2
       rect:
         serializedVersion: 2
@@ -130,8 +208,14 @@ TextureImporter:
         width: 47
         height: 105
       alignment: 9
-      pivot: {x: .181695819, y: .851109505}
+      pivot: {x: 0.18169582, y: 0.8511095}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.539703, y: 15.633499}
+        - {x: -8.539703, y: -89.3665}
+        - {x: 24.460297, y: -89.3665}
+        - {x: 38.460297, y: -84.3665}
+        - {x: 38.460297, y: 15.633499}
     - name: wing_L_2
       rect:
         serializedVersion: 2
@@ -140,8 +224,20 @@ TextureImporter:
         width: 54
         height: 105
       alignment: 9
-      pivot: {x: .500000536, y: .891817927}
+      pivot: {x: 0.50000054, y: 0.8918179}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 26.99997, y: -43.640884}
+        - {x: 26.99997, y: 4.3591156}
+        - {x: 11.9999695, y: 11.359116}
+        - {x: -10.0000305, y: 11.359116}
+        - {x: -20.00003, y: -13.640884}
+        - {x: -27.00003, y: -72.640884}
+        - {x: -27.00003, y: -93.640884}
+        - {x: -15.0000305, y: -93.640884}
+        - {x: 3.9999695, y: -79.640884}
+        - {x: 9.9999695, y: -70.640884}
+        - {x: 23.99997, y: -54.640884}
     - name: wing_L_1
       rect:
         serializedVersion: 2
@@ -150,8 +246,19 @@ TextureImporter:
         width: 71
         height: 131
       alignment: 9
-      pivot: {x: .868740678, y: .0962181985}
+      pivot: {x: 0.8687407, y: 0.0962182}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.680588, y: 118.39542}
+        - {x: -57.680588, y: 118.39542}
+        - {x: -61.680588, y: 117.39542}
+        - {x: -61.680588, y: 91.39542}
+        - {x: -33.680588, y: 21.395416}
+        - {x: -18.680588, y: -1.6045837}
+        - {x: -4.680588, y: -12.604584}
+        - {x: 9.319412, y: -12.604584}
+        - {x: 9.319412, y: 17.395416}
+        - {x: -0.68058777, y: 65.39542}
     - name: wing_L_3
       rect:
         serializedVersion: 2
@@ -160,8 +267,15 @@ TextureImporter:
         width: 112
         height: 98
       alignment: 9
-      pivot: {x: .113588877, y: .783504665}
+      pivot: {x: 0.11358888, y: 0.78350466}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12.721954, y: 21.216545}
+        - {x: -12.721954, y: -55.783455}
+        - {x: 47.278046, y: -76.783455}
+        - {x: 99.278046, y: -76.783455}
+        - {x: 99.278046, y: -24.783455}
+        - {x: 42.278046, y: 21.216545}
     - name: leg_right
       rect:
         serializedVersion: 2
@@ -170,8 +284,15 @@ TextureImporter:
         width: 59
         height: 108
       alignment: 9
-      pivot: {x: .273603529, y: .851250768}
+      pivot: {x: 0.27360353, y: 0.85125077}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.142609, y: 16.064919}
+        - {x: -16.142609, y: -80.93508}
+        - {x: -7.1426086, y: -91.93508}
+        - {x: 42.85739, y: -91.93508}
+        - {x: 42.85739, y: 7.0649185}
+        - {x: 17.857391, y: 16.064919}
     - name: leg_left
       rect:
         serializedVersion: 2
@@ -180,8 +301,17 @@ TextureImporter:
         width: 75
         height: 114
       alignment: 9
-      pivot: {x: .393140465, y: .828077078}
+      pivot: {x: 0.39314047, y: 0.8280771}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.485535, y: 19.599213}
+        - {x: -29.485535, y: 11.599213}
+        - {x: -29.485535, y: -81.40079}
+        - {x: -20.485535, y: -94.40079}
+        - {x: 45.514465, y: -94.40079}
+        - {x: 45.514465, y: -3.4007874}
+        - {x: 9.514465, y: 19.599213}
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

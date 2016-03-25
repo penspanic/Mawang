@@ -22,19 +22,19 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 4
+  cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: 1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -43,11 +43,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: -1
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
@@ -63,8 +63,17 @@ TextureImporter:
         width: 65
         height: 126
       alignment: 9
-      pivot: {x: .788853943, y: .859572291}
+      pivot: {x: 0.78885394, y: 0.8595723}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.275505, y: 17.693893}
+        - {x: -42.275505, y: 0.69389343}
+        - {x: -51.275505, y: -28.306107}
+        - {x: -51.275505, y: -79.30611}
+        - {x: -22.275505, y: -108.30611}
+        - {x: 1.7244949, y: -108.30611}
+        - {x: 13.724495, y: -58.306107}
+        - {x: 13.724495, y: 17.693893}
     - name: skull_1
       rect:
         serializedVersion: 2
@@ -73,8 +82,17 @@ TextureImporter:
         width: 121
         height: 170
       alignment: 9
-      pivot: {x: .263872623, y: .391956747}
+      pivot: {x: 0.26387262, y: 0.39195675}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 78.07141, y: 103.367355}
+        - {x: -24.928589, y: 103.367355}
+        - {x: -31.928589, y: 101.367355}
+        - {x: -31.928589, y: -66.632645}
+        - {x: 17.071411, y: -66.632645}
+        - {x: 83.07141, y: 26.367355}
+        - {x: 89.07141, y: 52.367355}
+        - {x: 89.07141, y: 88.367355}
     - name: skull_2
       rect:
         serializedVersion: 2
@@ -83,8 +101,9 @@ TextureImporter:
         width: 30
         height: 89
       alignment: 9
-      pivot: {x: .350340158, y: .91274929}
+      pivot: {x: 0.35034016, y: 0.9127493}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: skull_3
       rect:
         serializedVersion: 2
@@ -93,8 +112,9 @@ TextureImporter:
         width: 31
         height: 89
       alignment: 9
-      pivot: {x: .32883504, y: .917335451}
+      pivot: {x: 0.32883504, y: 0.91733545}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: skull_4
       rect:
         serializedVersion: 2
@@ -103,8 +123,18 @@ TextureImporter:
         width: 55
         height: 91
       alignment: 9
-      pivot: {x: .128942594, y: .867795527}
+      pivot: {x: 0.1289426, y: 0.8677955}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.0918427, y: 12.030609}
+        - {x: -7.0918427, y: -45.96939}
+        - {x: 14.908157, y: -76.96939}
+        - {x: 16.908157, y: -78.96939}
+        - {x: 34.908157, y: -78.96939}
+        - {x: 47.908157, y: -51.96939}
+        - {x: 47.908157, y: -12.969391}
+        - {x: 34.908157, y: 12.030609}
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

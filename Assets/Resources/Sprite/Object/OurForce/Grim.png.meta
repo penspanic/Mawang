@@ -22,19 +22,19 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 4
+  cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: 1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -43,11 +43,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: -1
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
@@ -63,8 +63,23 @@ TextureImporter:
         width: 221
         height: 304
       alignment: 9
-      pivot: {x: .21269615, y: .337281674}
+      pivot: {x: 0.21269615, y: 0.33728167}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 156.99416, y: 147.46637}
+        - {x: 113.994156, y: 191.46637}
+        - {x: 71.994156, y: 201.46637}
+        - {x: -8.005848, y: 201.46637}
+        - {x: -19.005848, y: 195.46637}
+        - {x: -42.005848, y: 176.46637}
+        - {x: -47.005848, y: 161.46637}
+        - {x: -47.005848, y: 96.46637}
+        - {x: -20.005848, y: -92.53363}
+        - {x: -16.005848, y: -102.53363}
+        - {x: 31.994152, y: -102.53363}
+        - {x: 173.99416, y: 23.46637}
+        - {x: 173.99416, y: 102.46637}
+        - {x: 165.99416, y: 126.46637}
     - name: arm_right
       rect:
         serializedVersion: 2
@@ -73,8 +88,18 @@ TextureImporter:
         width: 62
         height: 100
       alignment: 9
-      pivot: {x: .369010687, y: .861768782}
+      pivot: {x: 0.3690107, y: 0.8617688}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32.121338, y: 3.82312}
+        - {x: 11.121338, y: 13.82312}
+        - {x: -22.878662, y: 13.82312}
+        - {x: -22.878662, y: -31.17688}
+        - {x: 1.1213379, y: -86.17688}
+        - {x: 36.121338, y: -86.17688}
+        - {x: 39.121338, y: -82.17688}
+        - {x: 39.121338, y: -38.17688}
+        - {x: 37.121338, y: -24.17688}
     - name: arm_left
       rect:
         serializedVersion: 2
@@ -83,8 +108,16 @@ TextureImporter:
         width: 62
         height: 127
       alignment: 9
-      pivot: {x: .285653383, y: .726723135}
+      pivot: {x: 0.28565338, y: 0.72672313}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6.2894897, y: 34.70616}
+        - {x: -17.71051, y: 17.706161}
+        - {x: -17.71051, y: -92.29384}
+        - {x: 4.2894897, y: -92.29384}
+        - {x: 44.28949, y: -3.2938385}
+        - {x: 44.28949, y: 33.70616}
+        - {x: 41.28949, y: 34.70616}
     - name: body
       rect:
         serializedVersion: 2
@@ -93,8 +126,23 @@ TextureImporter:
         width: 120
         height: 182
       alignment: 9
-      pivot: {x: .413864642, y: .362074971}
+      pivot: {x: 0.41386464, y: 0.36207497}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 40.336243, y: -19.897644}
+        - {x: 70.33624, y: 42.102356}
+        - {x: 70.33624, y: 115.102356}
+        - {x: 63.336243, y: 116.102356}
+        - {x: -22.663757, y: 116.102356}
+        - {x: -46.663757, y: 89.102356}
+        - {x: -36.663757, y: 47.102356}
+        - {x: -44.663757, y: 29.102356}
+        - {x: -49.663757, y: 15.102356}
+        - {x: -49.663757, y: -65.897644}
+        - {x: 53.336243, y: -65.897644}
+        - {x: 63.336243, y: -53.897644}
+        - {x: 54.336243, y: -18.897644}
+        - {x: 45.336243, y: -18.897644}
     - name: tail
       rect:
         serializedVersion: 2
@@ -103,8 +151,19 @@ TextureImporter:
         width: 75
         height: 109
       alignment: 9
-      pivot: {x: .5, y: .818351388}
+      pivot: {x: 0.5, y: 0.8183514}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 37.5, y: 14.799698}
+        - {x: 36.5, y: 14.799698}
+        - {x: 22.5, y: 19.799698}
+        - {x: -37.5, y: 19.799698}
+        - {x: -37.5, y: -89.2003}
+        - {x: -15.5, y: -89.2003}
+        - {x: -14.5, y: -86.2003}
+        - {x: 28.5, y: -51.200302}
+        - {x: 37.5, y: -40.200302}
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

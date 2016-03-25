@@ -22,19 +22,19 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 4
+  cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: -1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -43,11 +43,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: -1
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
@@ -65,6 +65,16 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 88, y: 67}
+        - {x: -75, y: 67}
+        - {x: -136, y: 8}
+        - {x: -136, y: -23}
+        - {x: -123, y: -82}
+        - {x: -101, y: -87}
+        - {x: 114, y: -87}
+        - {x: 137, y: -63}
+        - {x: 137, y: 34}
     - name: Orc_effect_1
       rect:
         serializedVersion: 2
@@ -75,6 +85,23 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 77, y: -58}
+        - {x: 82, y: -55}
+        - {x: 86, y: -64}
+        - {x: 118, y: -68}
+        - {x: 149, y: -30}
+        - {x: 149, y: 14}
+        - {x: 86, y: 82}
+        - {x: 71, y: 96}
+        - {x: -14, y: 96}
+        - {x: -150, y: 29}
+        - {x: -150, y: -20}
+        - {x: -54, y: -127}
+        - {x: 84, y: -127}
+        - {x: 93, y: -90}
+        - {x: 82, y: -61}
+        - {x: 79, y: -58}
     - name: Orc_effect_2
       rect:
         serializedVersion: 2
@@ -85,6 +112,89 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 97, y: -76}
+        - {x: 84, y: -76}
+        - {x: 82, y: -80}
+        - {x: 81, y: -84}
+        - {x: 70, y: -121}
+        - {x: 70, y: -145}
+        - {x: 71, y: -148}
+        - {x: 88, y: -148}
+        - {x: 96, y: -143}
+        - {x: 100, y: -112}
+        - {x: 100, y: -78}
+      - - {x: 45, y: -96}
+        - {x: 35, y: -96}
+        - {x: 31, y: -97}
+        - {x: 31, y: -126}
+        - {x: 41, y: -141}
+        - {x: 60, y: -141}
+        - {x: 61, y: -139}
+        - {x: 61, y: -122}
+        - {x: 53, y: -103}
+      - - {x: -36, y: -94}
+        - {x: -40, y: -96}
+        - {x: -40, y: -117}
+        - {x: -37, y: -118}
+        - {x: -18, y: -118}
+        - {x: -18, y: -94}
+      - - {x: 70, y: 68}
+        - {x: 3, y: 68}
+        - {x: -8, y: 64}
+        - {x: -8, y: -46}
+        - {x: 8, y: -80}
+        - {x: 59, y: -80}
+        - {x: 100, y: -63}
+        - {x: 127, y: -43}
+        - {x: 127, y: -10}
+      - - {x: -1, y: -31}
+        - {x: -33, y: -31}
+        - {x: -51, y: -37}
+        - {x: -51, y: -56}
+        - {x: 4, y: -56}
+        - {x: 8, y: -55}
+        - {x: 8, y: -35}
+        - {x: 5, y: -32}
+      - - {x: -77, y: -4}
+        - {x: -78, y: -5}
+        - {x: -78, y: -21}
+        - {x: -54, y: -21}
+        - {x: -52, y: -18}
+        - {x: -52, y: -4}
+      - - {x: -131, y: -1}
+        - {x: -133, y: -4}
+        - {x: -133, y: -16}
+        - {x: -130, y: -19}
+        - {x: -115, y: -20}
+        - {x: -92, y: -20}
+        - {x: -91, y: -19}
+        - {x: -91, y: -6}
+        - {x: -93, y: -1}
+      - - {x: -28, y: 54}
+        - {x: -42, y: 54}
+        - {x: -43, y: 53}
+        - {x: -43, y: 37}
+        - {x: -33, y: 31}
+        - {x: -18, y: 31}
+        - {x: -17, y: 34}
+        - {x: -17, y: 50}
+        - {x: -20, y: 52}
+      - - {x: 71, y: 116}
+        - {x: 71, y: 79}
+        - {x: 82, y: 52}
+        - {x: 97, y: 52}
+        - {x: 99, y: 54}
+        - {x: 99, y: 96}
+        - {x: 88, y: 116}
+      - - {x: 40, y: 140}
+        - {x: 34, y: 135}
+        - {x: 30, y: 118}
+        - {x: 30, y: 96}
+        - {x: 53, y: 96}
+        - {x: 73, y: 109}
+        - {x: 73, y: 139}
+        - {x: 70, y: 140}
     - name: Orc_effect_3
       rect:
         serializedVersion: 2
@@ -95,6 +205,83 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 92, y: -117}
+        - {x: 74, y: -117}
+        - {x: 70, y: -125}
+        - {x: 70, y: -144}
+        - {x: 72, y: -148}
+        - {x: 90, y: -148}
+        - {x: 93, y: -139}
+        - {x: 93, y: -121}
+      - - {x: 35, y: -113}
+        - {x: 35, y: -139}
+        - {x: 40, y: -141}
+        - {x: 60, y: -141}
+        - {x: 60, y: -119}
+        - {x: 52, y: -113}
+      - - {x: -11, y: -35}
+        - {x: -15, y: -43}
+        - {x: -15, y: -54}
+        - {x: -13, y: -56}
+        - {x: -4, y: -56}
+        - {x: 5, y: -53}
+        - {x: 8, y: -51}
+        - {x: 8, y: -38}
+        - {x: 7, y: -35}
+      - - {x: 127, y: -29}
+        - {x: 127, y: -21}
+        - {x: 126, y: -17}
+        - {x: 122, y: -15}
+        - {x: 101, y: 14}
+        - {x: 94, y: 20}
+        - {x: 57, y: 20}
+        - {x: 40, y: 13}
+        - {x: 40, y: -35}
+        - {x: 45, y: -56}
+        - {x: 64, y: -56}
+        - {x: 73, y: -45}
+        - {x: 78, y: -38}
+        - {x: 124, y: -34}
+      - - {x: -7, y: 19}
+        - {x: -8, y: 16}
+        - {x: -8, y: 4}
+        - {x: -5, y: 0}
+        - {x: 9, y: 0}
+        - {x: 12, y: 1}
+        - {x: 12, y: 18}
+        - {x: 10, y: 19}
+      - - {x: -28, y: 54}
+        - {x: -42, y: 54}
+        - {x: -43, y: 53}
+        - {x: -43, y: 37}
+        - {x: -33, y: 31}
+        - {x: -18, y: 31}
+        - {x: -17, y: 34}
+        - {x: -17, y: 50}
+        - {x: -20, y: 52}
+      - - {x: 39, y: 68}
+        - {x: 39, y: 37}
+        - {x: 54, y: 37}
+        - {x: 58, y: 38}
+        - {x: 58, y: 54}
+        - {x: 56, y: 65}
+        - {x: 52, y: 68}
+      - - {x: 72, y: 115}
+        - {x: 72, y: 91}
+        - {x: 79, y: 82}
+        - {x: 91, y: 82}
+        - {x: 95, y: 84}
+        - {x: 95, y: 100}
+        - {x: 91, y: 115}
+      - - {x: 42, y: 140}
+        - {x: 38, y: 138}
+        - {x: 37, y: 131}
+        - {x: 37, y: 113}
+        - {x: 53, y: 113}
+        - {x: 71, y: 120}
+        - {x: 71, y: 139}
+        - {x: 68, y: 140}
     - name: Orc_effect_4
       rect:
         serializedVersion: 2
@@ -105,6 +292,40 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: -35}
+        - {x: -15, y: -43}
+        - {x: -15, y: -54}
+        - {x: -13, y: -56}
+        - {x: -4, y: -56}
+        - {x: 5, y: -53}
+        - {x: 8, y: -51}
+        - {x: 8, y: -38}
+        - {x: 7, y: -35}
+      - - {x: 48, y: -30}
+        - {x: 46, y: -32}
+        - {x: 46, y: -53}
+        - {x: 47, y: -56}
+        - {x: 64, y: -56}
+        - {x: 69, y: -53}
+        - {x: 69, y: -31}
+        - {x: 65, y: -30}
+      - - {x: 82, y: 16}
+        - {x: 81, y: 13}
+        - {x: 81, y: -2}
+        - {x: 98, y: -2}
+        - {x: 99, y: 2}
+        - {x: 99, y: 15}
+        - {x: 98, y: 16}
+      - - {x: -7, y: 19}
+        - {x: -8, y: 16}
+        - {x: -8, y: 4}
+        - {x: -5, y: 0}
+        - {x: 9, y: 0}
+        - {x: 12, y: 1}
+        - {x: 12, y: 18}
+        - {x: 10, y: 19}
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

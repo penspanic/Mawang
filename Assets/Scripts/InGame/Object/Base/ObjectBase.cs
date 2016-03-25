@@ -121,6 +121,7 @@ public class ObjectBase : MonoBehaviour
             attackDamage = 0;
         else
             attackDamage += addDmg;
+        Debug.Log("Name :" + name + ", attackDamage : "+ attackDamage);
     }
     public void SetMinusHP(int minusHP)
     {

@@ -56,7 +56,7 @@ public abstract class ItemBase : MonoBehaviour
     {
         if (amount > 0)
         {
-            PlayerData.instance.UseItem(name);
+            PlayerData.instance.itemStorage["DefenseItem"] = amount - 1;
             Useitem();
         }
         else

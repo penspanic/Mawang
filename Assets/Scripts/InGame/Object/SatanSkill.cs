@@ -21,6 +21,7 @@ public class SatanSkill : MonoBehaviour
 
     void Attack()
     {
+        Debug.Log(attackDamage);
         target.Attacked(attackDamage);
     }
 

@@ -99,12 +99,14 @@ public class GameManager : MonoBehaviour
 
             #endregion
 
-
+            Debug.Log(unitSpawnEarlyTime);
+            Debug.Log(unitSpawnInterval);
             if (earlyTimePatternCnt > 0)
                 earlyTimePatternCnt--;
             else
                 unitSpawnEarlyTime = 0;
 
+            Debug.Log("interval : " + unitSpawnInterval + unitSpawnEarlyTime);
             yield return new WaitForSeconds(unitSpawnInterval + unitSpawnEarlyTime);
             
             SpawnPattern();
@@ -167,7 +169,7 @@ public class GameManager : MonoBehaviour
         prevLine = randLine;
 
         float randPosY = ((isDefenceTurn ? spawnLine-1 : randLine - 1)) * -1.2f;
-
+        Debug.Log(isDefenceTurn);
         Instantiate(stagePatternList[rand], new Vector3(19, randPosY, 0), new Quaternion());
         orderMgr.UpdateOrder(randLine);
 
@@ -183,7 +185,7 @@ public class GameManager : MonoBehaviour
         if (PlayerData.instance.lastClearedStage == null)
             GameEventManager.instance.PushEvent(GameEvent.FirstC0S1Cleared);
 
-        if (PlayerData.instance.selectedStage == "C0S3" && !PlayerData.instance.IsStageCleared("C0S3"))
+        if (PlayerData.instance.selectedStage == "C0S3" && PlayerData.instance.IsStageCleared("C0S3"))
             GameEventManager.instance.PushEvent(GameEvent.FirstChapter0Cleared);
 
         PlayerData.instance.StageClear(PlayerData.instance.selectedStage);

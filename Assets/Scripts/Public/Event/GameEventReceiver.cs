@@ -15,8 +15,10 @@ public class GameEventReceiver
 
     public void CheckEvent()
     {
+        Debug.Log("Check Event");
         if(GameEventManager.instance.EventExist(targetEvent))
         {
+            Debug.Log("Event Exist");
             GameEventManager.instance.EventReceived(targetEvent);
             if (actionEvent != null)
             {

@@ -13,26 +13,13 @@ public class SatanCastle : Castle
     private int skillCnt;
 
     private Image      castlePortrait;
-  
+
     protected override void Awake()
     {
         base.Awake();
-        PlayerData.instance.CheckInstance();
-
         castlePortrait  =   GameObject.Find("Castle Image").GetComponent<Image>();
-        Image castleGrayImage = GameObject.Find("Castle Gray").GetComponent<Image>();
-        Sprite castleIconSprite = Resources.Load<Sprite>("Sprite/UI/Icon/Castle_Lv" + CastleInfo.GetCastleLevel());
 
-        Image starImage = GameObject.Find("Star").GetComponent<Image>();
-        starImage.sprite = Resources.Load<Sprite>("Sprite/UI/InGame/Star_" + CastleInfo.GetCastleLevel());
-
-        castlePortrait.sprite = castleIconSprite;
-        castleGrayImage.sprite = castleIconSprite;
-
-
-
-
-
+        PlayerData.instance.CheckInstance();
 
         skillCoolTime   = CastleUpgrade.GetUpgradeApplyedValue("Cool Time");
         skillDamage     = CastleUpgrade.GetUpgradeApplyedValue("Damage");

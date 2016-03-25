@@ -49,6 +49,7 @@ public class TestMovingCam : MonoBehaviour
                 }
 
                 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);    
+                Debug.Log(wp);
                 // 레이2d를 갖고옴
                 ray = new Ray2D(wp, Vector2.zero);
                 // 레이캐스트를 쏨

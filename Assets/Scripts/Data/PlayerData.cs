@@ -48,6 +48,7 @@ public class PlayerData : MonoBehaviour
     void Awake()
     {
 
+
         DontDestroyOnLoad(gameObject);
 
         // 1
@@ -62,6 +63,7 @@ public class PlayerData : MonoBehaviour
         if (isFirst) // 제일 처음일때
         {
             AddUnit("Skeleton");
+            Debug.Log("First, Skeleton Added");
             obsidian = 100; //Temp
 
         }
@@ -74,8 +76,9 @@ public class PlayerData : MonoBehaviour
     {
         var data = PlayerPrefs.GetString("playerUnitList");
 
-        if (!PlayerPrefs.HasKey("isFirst")) // 유닛 데이터가없을경우
+        if (!DataLoadSave.HasKey("isFirst")) // 유닛 데이터가없을경우
         {
+            Debug.Log("First");
             isFirst = true;
 
             upgradePoint.Add("Hp", 0);
@@ -90,19 +93,19 @@ public class PlayerData : MonoBehaviour
 
         // 처음이 아닌경우
 
-        upgradePoint.Add("Hp", PlayerPrefs.GetInt("Hp"));
-        upgradePoint.Add("Damage", PlayerPrefs.GetInt("Damage"));
-        upgradePoint.Add("Cool Time", PlayerPrefs.GetInt("Cool Time"));
+        upgradePoint.Add("Hp", DataLoadSave.GetInt("Hp"));
+        upgradePoint.Add("Damage", DataLoadSave.GetInt("Damage"));
+        upgradePoint.Add("Cool Time", DataLoadSave.GetInt("Cool Time"));
 
-        itemStorage.Add("Fix", PlayerPrefs.GetInt("Fix"));
-        itemStorage.Add("Freeze", PlayerPrefs.GetInt("Freeze"));
-        itemStorage.Add("Defense", PlayerPrefs.GetInt("Defense"));
+        itemStorage.Add("Fix", DataLoadSave.GetInt("Fix"));
+        itemStorage.Add("Freeze", DataLoadSave.GetInt("Freeze"));
+        itemStorage.Add("Defense", DataLoadSave.GetInt("Defense"));
 
-        if (PlayerPrefs.HasKey("lastClearedStage"))
-            lastClearedStage = PlayerPrefs.GetString("lastClearedStage");
+        if (DataLoadSave.HasKey("lastClearedStage"))
+            lastClearedStage = DataLoadSave.GetString("lastClearedStage");
 
-        isFirst = PlayerPrefs.GetInt("isFirst") == 0 ? true : false;
-        obsidian = PlayerPrefs.GetInt("obsidian");
+        isFirst = DataLoadSave.GetInt("isFirst") == 0 ? true : false;
+        obsidian = DataLoadSave.GetInt("obsidian");
 
         // Deserialize
         var b = new BinaryFormatter();
@@ -110,34 +113,33 @@ public class PlayerData : MonoBehaviour
 
         playerUnitList = (List<string>)b.Deserialize(m);
 
+        data = PlayerPrefs.GetString("satan");
+        m = new MemoryStream(Convert.FromBase64String(data));
+
     }
 
     public void OnApplicationQuit()
     {
+        Debug.Log("Save Data");
         SaveData();
     }
 
-    public void OnApplicationPause(bool pause)
-    {
-        if (pause)
-            SaveData();
-    }
 
     public void SaveData()
     {
-        if (lastClearedStage != null)
-            PlayerPrefs.SetString("lastClearedStage", lastClearedStage);
+        if(lastClearedStage != null)
+            DataLoadSave.SetString("lastClearedStage", lastClearedStage);
 
-        PlayerPrefs.SetInt("isFirst", 1);
-        PlayerPrefs.SetInt("obsidian", obsidian);
+        DataLoadSave.SetInt("isFirst", 1);
+        DataLoadSave.SetInt("obsidian", obsidian);
 
-        PlayerPrefs.SetInt("Hp", upgradePoint["Hp"]);
-        PlayerPrefs.SetInt("Damage", upgradePoint["Damage"]);
-        PlayerPrefs.SetInt("Cool Time", upgradePoint["Cool Time"]);
+        DataLoadSave.SetInt("Hp", upgradePoint["Hp"]);
+        DataLoadSave.SetInt("Damage", upgradePoint["Damage"]);
+        DataLoadSave.SetInt("Cool Time", upgradePoint["Cool Time"]);
 
-        PlayerPrefs.SetInt("Fix", itemStorage["Fix"]);
-        PlayerPrefs.SetInt("Freeze", itemStorage["Freeze"]);
-        PlayerPrefs.SetInt("Defense", itemStorage["Defense"]);
+        DataLoadSave.SetInt("Fix", itemStorage["Fix"]);
+        DataLoadSave.SetInt("Freeze", itemStorage["Freeze"]);
+        DataLoadSave.SetInt("Defense", itemStorage["Defense"]);
 
         // Deserialize - Serialize
         var b = new BinaryFormatter();
@@ -145,27 +147,26 @@ public class PlayerData : MonoBehaviour
         b.Serialize(m, playerUnitList);
         PlayerPrefs.SetString("playerUnitList", Convert.ToBase64String(m.GetBuffer()));
 
-        PlayerPrefs.Save();
 
     }
 
     public void StageClear(string stage)
     {
+        if(lastClearedStage == null)
+        {
+            lastClearedStage = stage;
+            obsidian += 30;
+            return;
+        }
 
         obsidian += 30;
         int c = int.Parse(stage[1].ToString());
         int s = int.Parse(stage[3].ToString());
-        CheckAddUnit(c, s);
-
-        if (lastClearedStage == null)
-        {
-            lastClearedStage = stage;
-            return;
-        }
 
         int LastC = int.Parse(lastClearedStage[1].ToString());
         int LastS = int.Parse(lastClearedStage[3].ToString());
 
+        CheckAddUnit(c, s);
 
         if (c > LastC)
         {
@@ -183,10 +184,13 @@ public class PlayerData : MonoBehaviour
         else
             return;
 
+
+
     }
 
     void CheckAddUnit(int c, int s)
     {
+        Debug.Log("c : " + c + ", s :" + s);
         if (c == 0 && s == 1)
             AddUnit("Goblin");
 
@@ -213,7 +217,7 @@ public class PlayerData : MonoBehaviour
         if (c > LastC)
             return true;
         else if (c == LastC)
-            if (s < LastS)
+            if (s > LastS)
                 return true;
             else
                 return false;
@@ -236,6 +240,7 @@ public class PlayerData : MonoBehaviour
 
         //C0S1 부터 시작
 
+        Debug.Log(lastChapter * 3 + lastStage);
         return lastChapter * 3 + lastStage;
     }
 
@@ -288,11 +293,6 @@ public class PlayerData : MonoBehaviour
         {
             return false;
         }
-    }
-
-    public void UseItem(string name)
-    {
-        itemStorage[name]--;
     }
 
     public void AddUnit(string name)

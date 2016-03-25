@@ -27,19 +27,19 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 4
+  cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: 1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -48,11 +48,11 @@ TextureImporter:
   rGBM: 0
   compressionQuality: -1
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
@@ -68,8 +68,9 @@ TextureImporter:
         width: 26
         height: 41
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: face_attack
       rect:
         serializedVersion: 2
@@ -78,8 +79,17 @@ TextureImporter:
         width: 33
         height: 43
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2.5, y: 21.5}
+        - {x: -16.5, y: 21.5}
+        - {x: -16.5, y: -14.5}
+        - {x: -7.5, y: -21.5}
+        - {x: 14.5, y: -21.5}
+        - {x: 16.5, y: -20.5}
+        - {x: 16.5, y: -9.5}
+        - {x: 11.5, y: 2.5}
     - name: face_daed
       rect:
         serializedVersion: 2
@@ -88,8 +98,9 @@ TextureImporter:
         width: 31
         height: 43
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: arm_left
       rect:
         serializedVersion: 2
@@ -98,8 +109,16 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 9
-      pivot: {x: .857823193, y: .850368679}
+      pivot: {x: 0.8578232, y: 0.8503687}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.89116, y: 7.4815674}
+        - {x: -42.89116, y: -19.518433}
+        - {x: -42.89116, y: -42.518433}
+        - {x: -27.89116, y: -42.518433}
+        - {x: -16.89116, y: -37.518433}
+        - {x: 7.108841, y: -7.5184326}
+        - {x: 7.108841, y: 7.4815674}
     - name: body
       rect:
         serializedVersion: 2
@@ -108,8 +127,16 @@ TextureImporter:
         width: 100
         height: 124
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: 62}
+        - {x: -50, y: -36}
+        - {x: -47, y: -51}
+        - {x: -41, y: -62}
+        - {x: 21, y: -62}
+        - {x: 50, y: -40}
+        - {x: 50, y: 62}
     - name: stone_big
       rect:
         serializedVersion: 2
@@ -118,8 +145,17 @@ TextureImporter:
         width: 39
         height: 41
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.5, y: 20.5}
+        - {x: -19.5, y: 19.5}
+        - {x: -19.5, y: -11.5}
+        - {x: -9.5, y: -20.5}
+        - {x: 17.5, y: -20.5}
+        - {x: 19.5, y: -14.5}
+        - {x: 19.5, y: 19.5}
+        - {x: 17.5, y: 20.5}
     - name: stone_small
       rect:
         serializedVersion: 2
@@ -128,8 +164,9 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: leg_left
       rect:
         serializedVersion: 2
@@ -138,8 +175,14 @@ TextureImporter:
         width: 34
         height: 51
       alignment: 9
-      pivot: {x: .26978302, y: .843498707}
+      pivot: {x: 0.26978302, y: 0.8434987}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.172623, y: 7.9815674}
+        - {x: -9.172623, y: -43.018433}
+        - {x: 24.827377, y: -43.018433}
+        - {x: 24.827377, y: -8.018433}
+        - {x: 15.827377, y: 7.9815674}
     - name: leg_right
       rect:
         serializedVersion: 2
@@ -148,8 +191,16 @@ TextureImporter:
         width: 35
         height: 50
       alignment: 9
-      pivot: {x: .287009746, y: .842913985}
+      pivot: {x: 0.28700975, y: 0.842914}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 22.954659, y: -8.145699}
+        - {x: 7.9546585, y: 7.8543015}
+        - {x: -10.0453415, y: 7.8543015}
+        - {x: -10.0453415, y: -27.145699}
+        - {x: -7.0453415, y: -42.1457}
+        - {x: 24.954659, y: -42.1457}
+        - {x: 24.954659, y: -13.145699}
     - name: arm_right
       rect:
         serializedVersion: 2
@@ -158,8 +209,16 @@ TextureImporter:
         width: 48
         height: 40
       alignment: 9
-      pivot: {x: .166094139, y: .695684612}
+      pivot: {x: 0.16609414, y: 0.6956846}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.972519, y: 12.172615}
+        - {x: -7.972519, y: -25.827385}
+        - {x: -5.972519, y: -27.827385}
+        - {x: 22.027481, y: -27.827385}
+        - {x: 40.02748, y: -15.827385}
+        - {x: 40.02748, y: 12.172615}
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

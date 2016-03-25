@@ -75,6 +75,8 @@ public class GoldManager : MonoBehaviour
         
         goldUpgradeStep++;
         SetUpgradeCostText();
+        Debug.Log("초당 골드 습득량 : " + goldIncreaseAmount);
+        Debug.Log("최대 골드량 :" + playerMaxGold);
     }
 
     public bool CanGoldUpgrade()
