@@ -71,7 +71,6 @@ public class CastleUpgrade : MonoBehaviour
         for (int i = 0; i < upgradeButtons.Length; i++)
         {
             allocatedPoints[i] = PlayerData.instance.upgradePoint[upgradeButtons[i].name];
-            Debug.Log(allocatedPoints[i]);
             alreadyAllocatedPoints += allocatedPoints[i];
             for (int j = 0; j < 6; j++)
             {

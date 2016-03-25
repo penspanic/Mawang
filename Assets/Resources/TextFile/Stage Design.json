@@ -60,7 +60,7 @@
       "EnemyPattern" :
       ["1P","P5","P3A2","P2A2"],
 	  "PrincessCoolTime" : 40,
-	  "BuffDuration" : 8
+	  "BuffDuration" : 0.7
     },
 	"C2S2": {
       "Interval" : 15.0,
@@ -69,7 +69,7 @@
       "EnemyPattern" :
       ["1P","1P5A6","P1A1S2","1P6S3"],
 	  "PrincessCoolTime" : 50,
-	  "BuffDuration" : 8
+	  "BuffDuration" : 0.7
     },
 	"C2S3": {
       "Interval" : 7,
@@ -78,7 +78,7 @@
       "EnemyPattern" :
       ["1P6B1","1P3A2","P2A2","P1A3","P1A1S1B1"],
 	  "PrincessCoolTime" : 50,
-	  "BuffDuration" : 8
+	  "BuffDuration" : 0.7
     },
 		"C3S1": {
       "Interval" : 10,
@@ -87,7 +87,7 @@
       "EnemyPattern" :
       ["P1B1","P1A1","1P"],
 	  "PrincessCoolTime" : 50,
-	  "BuffDuration" : 8
+	  "BuffDuration" : 0.7
     },
 		"C3S2": {
       "Interval" : 11,
@@ -96,7 +96,7 @@
       "EnemyPattern" :
       ["P1A1S1B1","1P2A3S1"],
 	  "PrincessCoolTime" : 50,
-	  "BuffDuration" : 8
+	  "BuffDuration" : 0.7
     },
 		"C3S3": {
       "Interval" : 12,
@@ -105,7 +105,7 @@
       "EnemyPattern" :
       ["P1B1","P1A1","1P","1S"],
 	  "PrincessCoolTime" : 50,
-	  "BuffDuration" : 8
+	  "BuffDuration" : 0.7
     }
 
 }

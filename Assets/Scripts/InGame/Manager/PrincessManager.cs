@@ -65,7 +65,6 @@ public class PrincessManager : MonoBehaviour
         buffDuration = pattern.buffDuration;
 
         InitUI();
-        Debug.Log(coolTime);
 
     }
     // 이미지에 currPrincesse 받은걸로 대입하기
@@ -75,6 +74,9 @@ public class PrincessManager : MonoBehaviour
         illust.sprite           =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_L");
         portrait.sprite         =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_Portait");
         castlesprRenderer.sprite        =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_CastleImg");
+
+        skillName.SetNativeSize();
+        illust.SetNativeSize();
 
         portrait_gray.sprite    =   portrait.sprite;
 

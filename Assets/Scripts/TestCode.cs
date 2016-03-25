@@ -15,7 +15,6 @@ public class TestCode : MonoBehaviour, IPointerDownHandler
     {
         spriteTexture = test.sprite.texture;
 
-        Debug.Log("Color : " + spriteTexture.GetPixel(100, 200));
 	}
 	
 
@@ -23,6 +22,5 @@ public class TestCode : MonoBehaviour, IPointerDownHandler
     {
         Vector3 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
-        Debug.Log("COLOR : " + spriteTexture.GetPixel((int)(1280f * mousePos.x), (int)(720f * mousePos.y)));
     }
 }

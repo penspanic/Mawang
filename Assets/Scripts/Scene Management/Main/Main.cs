@@ -13,6 +13,8 @@ public class Main : MonoBehaviour
     public GameObject explainUpgradePrefab;
     public GameObject explainPrincessPrefab;
 
+    public Sprite castleInfoExplainSprite;
+
     public GameObject gameQuit;
 
     CastleUpgrade upgrade;
@@ -98,13 +100,12 @@ public class Main : MonoBehaviour
 
     void OnFirstC0S1Cleared() // 마왕성 업그레이드 알려주기
     {
-        Debug.Log("First C0S1 Cleared!");
         StartCoroutine(ExplainCastleUpgrade());
     }
 
     void OnFirstChapter0Cleared() // 공주 납치한 사실 알려주기
     {
-        Debug.Log("First Chapter0 Cleared!");
+        StartCoroutine(ExplainPrincess());
     }
 
     public void BlurBackground(bool isBlear)
@@ -132,8 +133,8 @@ public class Main : MonoBehaviour
     
     IEnumerator ExplainCastleUpgrade()
     {
-        Image upgradeExplainPrefab = Instantiate(explainUpgradePrefab).GetComponent<Image>();
-        upgradeExplainPrefab.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        Image upgradeExplainImage = Instantiate(explainUpgradePrefab).GetComponent<Image>();
+        upgradeExplainImage.transform.SetParent(GameObject.Find("Canvas").transform, false);
 
         yield return new WaitForSeconds(1f);
         while(true)
@@ -144,7 +145,18 @@ public class Main : MonoBehaviour
             }
             yield return null;
         }
-        Destroy(upgradeExplainPrefab);
+        upgradeExplainImage.sprite = castleInfoExplainSprite;
+        yield return new WaitForSeconds(1f);
+        while (true)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                break;
+            }
+            yield return null;
+        }
+        yield return new WaitForSeconds(1f);
+        Destroy(upgradeExplainImage);
     }
 
     IEnumerator ExplainPrincess()
