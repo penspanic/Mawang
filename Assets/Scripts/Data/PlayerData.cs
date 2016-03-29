@@ -39,6 +39,7 @@ public class PlayerData : MonoBehaviour
     public string selectedStage { get; set; }  // StageSelect 씬에서 골라줌
     public bool isFirst { get; private set; }
     public int stageSelectPosIndex { get; set; }
+    public bool appRated { get; set; }
     public void CheckInstance()
     {
 
@@ -104,6 +105,7 @@ public class PlayerData : MonoBehaviour
             lastClearedStage = PlayerPrefs.GetString("lastClearedStage");
 
         isFirst = PlayerPrefs.GetInt("isFirst") == 0 ? true : false;
+        appRated = PlayerPrefs.GetInt("appRated") == 1 ? true : false;
         obsidian = PlayerPrefs.GetInt("obsidian");
 
         // Deserialize
@@ -131,6 +133,7 @@ public class PlayerData : MonoBehaviour
             PlayerPrefs.SetString("lastClearedStage", lastClearedStage);
 
         PlayerPrefs.SetInt("isFirst", 1);
+        PlayerPrefs.SetInt("appRated", appRated ? 1 : 0);
         PlayerPrefs.SetInt("obsidian", obsidian);
 
         PlayerPrefs.SetInt("stageSelectPosIndex", stageSelectPosIndex);
