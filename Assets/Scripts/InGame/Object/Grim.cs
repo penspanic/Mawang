@@ -22,7 +22,7 @@ public class Grim : Warrior, ITouchable
     }
     public void OnTouch()
     {
-        if (state != MovableState.Advance && canUseSkill && !isDestroyed)
+        if (/*state != MovableState.Advance && */canUseSkill && !isDestroyed)
         {
             SkillMotionStart();
         }
@@ -44,5 +44,4 @@ public class Grim : Warrior, ITouchable
         EffectManager.Instance.PlayEffect(EffectKind.Grim_attack,spawnPos);
 
     }
-    
 }

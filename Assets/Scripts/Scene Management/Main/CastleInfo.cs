@@ -21,6 +21,8 @@ public class CastleInfo : MonoBehaviour
     public bool isShowing;
     public bool isMoving;
 
+
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -32,10 +34,10 @@ public class CastleInfo : MonoBehaviour
     {
         hpText.text = "마왕성 체력 : 500 + " + (upgrade.allocatedPoints[0] * CastleUpgrade.upgradeIncreaseValues[0]).ToString();
         skillText.text = "마왕성 스킬 공격력 : 100 + " + (upgrade.allocatedPoints[1] * CastleUpgrade.upgradeIncreaseValues[1]).ToString();
-        coolTimeText.text = "마왕성 스킬 쿨타임 : 100 - " + (upgrade.allocatedPoints[2] * CastleUpgrade.upgradeIncreaseValues[2]).ToString();
+        coolTimeText.text = "마왕성 스킬 쿨타임 : 130 - " + (upgrade.allocatedPoints[2] * CastleUpgrade.upgradeIncreaseValues[2]).ToString();
         int upgradeValue = upgrade.usableMaxPoint - upgrade.usablePoint;
 
-        int castleIndex = (upgradeValue - 1) / 6;
+        int castleIndex = upgradeValue / 5;
         if (castleIndex > 2)
             castleIndex = 2;
         for (int i = 0; i < 3; i++)
@@ -68,11 +70,17 @@ public class CastleInfo : MonoBehaviour
 
     public void OnMoveEnd()
     {
-        Debug.Log("Move End");
         isMoving = false;
     }
     public void OnRiseEnd()
     {
         isShowing = false;
+    }
+
+    public static int GetCastleLevel()
+    {
+        int upgradePoint = PlayerData.instance.upgradePoint["Hp"] + PlayerData.instance.upgradePoint["Damage"] +
+            PlayerData.instance.upgradePoint["Cool Time"];
+        return (upgradePoint / 5) + 1;
     }
 }

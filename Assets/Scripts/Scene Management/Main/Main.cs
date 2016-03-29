@@ -13,12 +13,12 @@ public class Main : MonoBehaviour
     public GameObject explainUpgradePrefab;
     public GameObject explainPrincessPrefab;
 
+    public Sprite castleInfoExplainSprite;
+
     public GameObject gameQuit;
 
     CastleUpgrade upgrade;
     CastleInfo info;
-
-    //BlurControl blurCtrl;
 
     GameEventReceiver stageClearEventReceiver;
     GameEventReceiver chapterClearEventReceiver;
@@ -26,6 +26,7 @@ public class Main : MonoBehaviour
     bool isChanging = false;
     void Awake()
     {
+        Time.timeScale = 1f;
 
         StartCoroutine(SceneFader.Instance.FadeIn(1f));
         upgrade = GameObject.FindObjectOfType<CastleUpgrade>();
@@ -51,7 +52,7 @@ public class Main : MonoBehaviour
         if (isChanging)
             return;
         gameQuit.SetActive(true);
-        
+
     }
 
     public void GameQuitYes()
@@ -98,13 +99,12 @@ public class Main : MonoBehaviour
 
     void OnFirstC0S1Cleared() // 마왕성 업그레이드 알려주기
     {
-        Debug.Log("First C0S1 Cleared!");
         StartCoroutine(ExplainCastleUpgrade());
     }
 
     void OnFirstChapter0Cleared() // 공주 납치한 사실 알려주기
     {
-        Debug.Log("First Chapter0 Cleared!");
+        StartCoroutine(ExplainPrincess());
     }
 
     public void BlurBackground(bool isBlear)
@@ -117,7 +117,7 @@ public class Main : MonoBehaviour
         float elapsedTime = 0f;
         const float blurTime = 1f;
         const float maxBlur = 3f;
-       
+
         while (elapsedTime < blurTime)
         {
             elapsedTime += Time.deltaTime;
@@ -129,22 +129,33 @@ public class Main : MonoBehaviour
         }
         //blurCtrl.SetValue(isBlear ? maxBlur : 0);
     }
-    
+
     IEnumerator ExplainCastleUpgrade()
     {
-        Image upgradeExplainPrefab = Instantiate(explainUpgradePrefab).GetComponent<Image>();
-        upgradeExplainPrefab.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        Image upgradeExplainImage = Instantiate(explainUpgradePrefab).GetComponent<Image>();
+        upgradeExplainImage.transform.SetParent(GameObject.Find("Canvas").transform, false);
 
         yield return new WaitForSeconds(1f);
-        while(true)
+        while (true)
         {
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 break;
             }
             yield return null;
         }
-        Destroy(upgradeExplainPrefab);
+        upgradeExplainImage.sprite = castleInfoExplainSprite;
+        yield return new WaitForSeconds(1f);
+        while (true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                break;
+            }
+            yield return null;
+        }
+        yield return new WaitForSeconds(1f);
+        Destroy(upgradeExplainImage);
     }
 
     IEnumerator ExplainPrincess()
@@ -152,7 +163,7 @@ public class Main : MonoBehaviour
         Image princessExplainImage = Instantiate(explainPrincessPrefab).GetComponent<Image>();
         princessExplainImage.transform.SetParent(GameObject.Find("Canvas").transform, false);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         while (true)
         {
             if (Input.GetMouseButtonDown(0))

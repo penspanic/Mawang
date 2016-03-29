@@ -71,22 +71,27 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     protected PrincessManager           princessMgr;
     protected AudioSource               audioSource;
 
+    protected UnitHpBar hpBar;
     protected bool  canAttack           = true;
     protected float attackElapsedTime   = 0;
     protected bool  isSkillMotion       = false;
     protected bool  isOneShotSound      = false;
     protected SpriteRenderer[] sprs;
+    protected SpriteRenderer shadowRenderer;
     private   float disappearDuration   = 0.6f;
-    #endregion 
+    #endregion
 
-
+    #region static fields
+    static GameObject shadowPrefab;
+    static GameObject hpBarPrefab;
+    #endregion
     protected override void Awake()
     {
         base.Awake();
         List<SpriteRenderer> sprList = new List<SpriteRenderer>(GetComponentsInChildren<SpriteRenderer>(true));
         sprList.RemoveAll((obj) =>
         {
-            if (obj.CompareTag("Skill Effect"))
+            if (obj.CompareTag("Skill Effect") || obj.CompareTag("Shadow") || obj.CompareTag("Hp Bar"))
                 return true;
             else
                 return false;
@@ -94,7 +99,9 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         sprs = sprList.ToArray();
 
         if (forDecoration)
+        {
             return;
+        }
 
         battleMgr.AddObject(this);
 
@@ -104,7 +111,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         princessMgr         =   GameObject.FindGameObjectWithTag("Manager").GetComponent<PrincessManager>();
         animator            =   GetComponent<Animator>();
         audioSource         =   GetComponent<AudioSource>();
-        attackInterval      =   (float)1f / attackSpeed;
+        attackInterval      =   1f / attackSpeed;
         isMoveRight         =   isOurForce ? true : false;
         state               =   MovableState.Advance;
 
@@ -113,6 +120,19 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
 
         SettingLine();
+        if (!isOurForce)
+        {
+            CreateShadow();
+
+        }
+        if(GetComponentInChildren<UnitHpBar>() == null)
+        {
+            CreateHpBar();
+        }
+
+        hpBar = GetComponentInChildren<UnitHpBar>();
+
+        SetSortingLayer("Line" + line + " Object", hpBar.GetSpriteRenderers());
         StartCoroutine(UnitProcess());
     }
 
@@ -333,6 +353,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
             goldMgr.AddGold(deathReward);
 
         battleMgr.RemoveObject(this);
+        Destroy(GetComponentInChildren<UnitHpBar>().gameObject);
         StartCoroutine(WaitForDissappear());
     }
 
@@ -343,6 +364,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     {
         float beginTime = Time.time;
         float alpha = 1;
+
         while (alpha != 0)
         {
             alpha = EasingUtil.linear(1, 0, (Time.time - beginTime) / disappearDuration);
@@ -355,8 +377,6 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
         Destroy(gameObject);
     }
-
-
     void SettingLine()
     {
         if (transform.position.y > -1)
@@ -372,9 +392,63 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         transform.position += new Vector3(0, Random.Range(0, 0.5f), 0);
     }
 
-
-    public void SetSortingLayer(string layerName)
+    void CreateShadow()
     {
+        if (shadowPrefab == null)
+            shadowPrefab = Resources.Load<GameObject>("Prefabs/Shadow Prefab");
+
+        GameObject newShadow = Instantiate<GameObject>(shadowPrefab);
+        newShadow.transform.SetParent(this.transform, false);
+        float ratio = 1f / newShadow.transform.lossyScale.magnitude;
+        newShadow.transform.localScale = Vector3.one * ratio;
+
+        Vector2 localPos = Vector2.zero;
+
+        if (name.Contains("Pawn"))
+            localPos = new Vector2(-0.29f, -2f);
+        else if (name.Contains("Archer"))
+            localPos = new Vector2(-0.419f, -0.746f);
+        else if (name.Contains("Bandsman"))
+            localPos = new Vector2(0, -0.825f);
+        else if (name.Contains("Shielder"))
+            localPos = new Vector2(0, -0.757f);
+        newShadow.transform.localPosition = localPos;
+    }
+
+    void CreateHpBar()
+    {
+        if (hpBarPrefab == null)
+            hpBarPrefab = Resources.Load<GameObject>("Prefabs/UI/Unit Hp Bar");
+        GameObject hpBar = Instantiate<GameObject>(hpBarPrefab);
+        hpBar.transform.SetParent(transform, false);
+        float ratio = 1f / hpBar.transform.lossyScale.magnitude;
+        hpBar.transform.localScale = Vector3.one * ratio;
+
+        Vector2 localPos = Vector2.zero;
+
+        if (name.Contains("Pawn"))
+            localPos = new Vector2(0.63f, 2.62f);
+        else if (name.Contains("Archer"))
+            localPos = new Vector2(0.109f, 1.979f);
+        else if (name.Contains("Bandsman"))
+            localPos = new Vector2(0.62f, 2.15f);
+        else if (name.Contains("Shielder"))
+            localPos = new Vector2(0.62f, 1.88f);
+
+        hpBar.transform.localPosition = localPos;
+
+        hpBar.GetComponent<UnitHpBar>().Init();
+
+    }
+
+    public void SetSortingLayer(string layerName, SpriteRenderer[] renderers = null)
+    {
+        if(renderers != null)
+        {
+            for (int i = 0; i < renderers.Length; i++)
+                renderers[i].sortingLayerName = layerName;
+            return;
+        }
         for(int i =0;i<sprs.Length;i++)
         {
             sprs[i].sortingLayerName = layerName;

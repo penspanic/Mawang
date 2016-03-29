@@ -65,9 +65,9 @@ public class PrincessManager : MonoBehaviour
         buffDuration = pattern.buffDuration;
 
         InitUI();
-        Debug.Log(coolTime);
 
     }
+
     // 이미지에 currPrincesse 받은걸로 대입하기
     void InitUI()
     {
@@ -77,6 +77,9 @@ public class PrincessManager : MonoBehaviour
         castlesprRenderer.sprite        =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_CastleImg");
 
         portrait_gray.sprite    =   portrait.sprite;
+
+        skillName.SetNativeSize();
+        illust.SetNativeSize();
 
         SetPrincessBuff();
 
@@ -178,6 +181,9 @@ public class PrincessManager : MonoBehaviour
             case "C2":
                 AttackCastle(set);
                 break;
+            case "C3":
+                HealAllOurForce();
+                break;
         }
     }
 
@@ -200,11 +206,11 @@ public class PrincessManager : MonoBehaviour
         if (!set)
             return;
 
-        for (int i = 0; i < battleMgr.ourForceList.Count; i++)
-            battleMgr.ourForceList[i].GetComponent<Movable>().SetFullHP();
+        foreach (Movable eachUnit in battleMgr.ourForceList)
+            eachUnit.SetFullHP();
 
-        for (int i = 0; i < battleMgr.enemyList.Count; i++)
-            battleMgr.enemyList[i].GetComponent<Movable>().SetFullHP();
+        foreach (Movable eachUnit in battleMgr.enemyList)
+            eachUnit.SetFullHP();
 
     }
 
@@ -214,16 +220,21 @@ public class PrincessManager : MonoBehaviour
         if (!set)
             return;
 
-        battleMgr.ourCastle.GetComponent<SatanCastle>().Attacked(70);
+        battleMgr.ourCastle.GetComponent<SatanCastle>().Attacked(100);
     }
     
 
-    // C3 Skill : 아군만 체력회복? ( 적군만 체력회족이 맞지않낭)
+    // C3 Skill : 아군만 체력회복
+    void HealAllOurForce()
+    {
+        foreach(Movable eachUnit in battleMgr.ourForceList)
+        {
+            eachUnit.SetFullHP();
+        }
+    }
 
     public void PrincessEventSet(bool set)
     {
         princessUI.transform.GetChild(0).gameObject.SetActive(set);
     }
-
-
 }

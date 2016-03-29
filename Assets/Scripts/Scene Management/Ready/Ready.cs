@@ -23,6 +23,11 @@ public class Ready : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             EscapeProcess();
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            PlayerData.instance.obsidian += 100;
+        }
     }
 
     bool isChanging = false; 

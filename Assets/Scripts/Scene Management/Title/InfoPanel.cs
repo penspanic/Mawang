@@ -26,13 +26,11 @@ public class InfoPanel : MonoBehaviour
             return;
         if(isShowing)
         {
-            Debug.Log("Rise");
             isShowing = false;
             animator.Play("Info Panel Rise", 0);
         }
         else
         {
-            Debug.Log("Fall");
             isShowing = true;
             animator.Play("Info Panel Fall",0);
         }
@@ -41,7 +39,6 @@ public class InfoPanel : MonoBehaviour
 
     public void OnMoveEnd()
     {
-        Debug.Log("Move End");
         isMoving = false;
     }
 }

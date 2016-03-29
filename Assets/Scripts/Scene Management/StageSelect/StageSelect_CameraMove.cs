@@ -6,7 +6,8 @@ using System.Collections.Generic;
 public class StageSelect_CameraMove : MonoBehaviour
 {
     public bool isMoving;
-
+    public Button leftButton;
+    public Button rightButton;
     float moveTime = 2f;
 
     StageSelect stageSelect;
@@ -25,6 +26,12 @@ public class StageSelect_CameraMove : MonoBehaviour
             cameraStopTransformList.Add(GameObject.Find("Chapter" + i.ToString()).GetComponent<RectTransform>());
         }
         cameraStopTransform = cameraStopTransformList.ToArray();
+
+        currStopIndex = PlayerData.instance.stageSelectPosIndex;
+        this.transform.position = cameraStopTransform[currStopIndex].position;
+        this.transform.Translate(Vector3.forward * -10);
+
+        ButtonStateSet();
     }
 
     IEnumerator MoveCamera()
@@ -56,8 +63,10 @@ public class StageSelect_CameraMove : MonoBehaviour
             return;
 
         currStopIndex += moveRight ? 1 : -1;
+        PlayerData.instance.stageSelectPosIndex = currStopIndex;
         targetTransform = cameraStopTransform[currStopIndex];
 
+        ButtonStateSet();
         StartCoroutine(MoveCamera());
     }
 
@@ -71,5 +80,24 @@ public class StageSelect_CameraMove : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    void ButtonStateSet()
+    {
+        if(currStopIndex == 0)
+        {
+            leftButton.interactable = false;
+            rightButton.interactable = true;
+        }
+        else if(currStopIndex == 3)
+        {
+            leftButton.interactable = true;
+            rightButton.interactable = false;
+        }
+        else
+        {
+            leftButton.interactable = true;
+            rightButton.interactable = true;
+        }
     }
 }

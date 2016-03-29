@@ -1,20 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class Projectile : MonoBehaviour
 {
     [SerializeField]
-    private float       pjtileSpeed;
+    private float pjtileSpeed;
     [SerializeField]
-    private Vector2     adjustPos;
+    private Vector2 adjustPos;
+    [SerializeField]
+    private bool hitMultipleObject;
+    [SerializeField]
+    private int moveDistance;
+    [SerializeField]
+    private int canHitNum;
 
-    private Movable  parent;
-    private bool        isMoveRight;
-    private int         damage;
-    private ObjectBase  target;
+    private BattleManager battleMgr;
+    private List<ObjectBase> hitObjectList = new List<ObjectBase>();
+    private Movable parent;
+    private bool isMoveRight;
+    private int damage;
+    private ObjectBase target;
+
 
     void Awake()
     {
+        battleMgr = GameObject.FindObjectOfType<BattleManager>();
         parent = transform.parent.GetComponent<Movable>();
 
         damage = parent.GetAttackDamage();
@@ -29,14 +39,21 @@ public class Projectile : MonoBehaviour
             target = parent.GetComponent<Launcher>().GetLauncherTargets(0);
         else
         {
-            if(parent.GetTargets() != null)
+            if (parent.GetTargets() != null)
                 target = parent.GetTargets()[0];
+        }
+
+        if (hitMultipleObject)
+        {
+            StartCoroutine(Penetrate());
+            return;
         }
 
         if (target != null)
         {
             transform.position = new Vector2(parent.transform.position.x + adjustPos.x,
             parent.transform.position.y + adjustPos.y);
+
             StartCoroutine(ChaseUnit());
         }
         else
@@ -67,6 +84,30 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    private IEnumerator Penetrate() // 목적지까지 가면서 퀘뚫음, 일정 타겟이상 맞췄을 시 종료
+    {
+        hitObjectList.Clear();
+        ObjectBase[] targets = battleMgr.GetTargets(parent, moveDistance, canHitNum);
 
+        if (targets != null)
+        {
+            for (int i = 0; i < targets.Length; i++)
+                targets[i].Attacked(damage);
+        }
 
+        Vector2 startPos = parent.transform.position;
+        Vector2 endPos = startPos;
+        endPos.x += moveDistance * BattleManager.fightDistance;
+
+        transform.position = startPos;
+        while (gameObject.activeSelf == true)
+        {
+            transform.Translate(Vector2.right * Time.deltaTime * pjtileSpeed * (isMoveRight ? 1 : -1), Space.World);
+
+            if (Mathf.Abs(transform.position.x - endPos.x) < 0.1f)
+                break;
+            yield return null;
+        }
+        gameObject.SetActive(false);
+    }
 }

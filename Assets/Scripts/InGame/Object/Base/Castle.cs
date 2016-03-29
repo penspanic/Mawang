@@ -9,7 +9,6 @@ public class Castle : ObjectBase
 
 
     GameManager gameMgr;
-    Coroutine bleedRoutine;
     protected SpriteRenderer spr;
 
     protected override void Awake()
@@ -18,8 +17,10 @@ public class Castle : ObjectBase
         gameMgr = GameObject.FindObjectOfType<GameManager>();
         front   =   transform.FindChild("Front").GetComponent<SpriteRenderer>();
         spr     =   this.GetComponent<SpriteRenderer>();
+
         StartCoroutine(CastleProcess());
     }
+
     protected IEnumerator CastleProcess()
     {
         while(true)
@@ -59,8 +60,9 @@ public class Castle : ObjectBase
             gameMgr.CastleDestroyed(this);
         }
 
-        if(bleedRoutine == null)
-            bleedRoutine =  StartCoroutine(ChangeDamageColor());
+        if (!isBleed)
+            StartCoroutine(ChangeDamageColor());
+
     }
 
 

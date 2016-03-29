@@ -39,7 +39,8 @@
     "C3S1": [
 		"Pawn",
         "Archer",
-		"Shielder"
+      "Shielder",
+      "Bandsman"
     ],
     "C3S2": [
         "Pawn",

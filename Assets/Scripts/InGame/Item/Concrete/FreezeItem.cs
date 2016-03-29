@@ -68,7 +68,6 @@ public class FreezeItem : ItemBase
     {
         float currTime = 0.0f;
 
-        Debug.Log("aaa");
         while (currTime < coolTime)
         {
             currTime += Time.deltaTime;

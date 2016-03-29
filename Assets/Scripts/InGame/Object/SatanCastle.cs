@@ -5,25 +5,34 @@ using System.Collections.Generic;
 
 public class SatanCastle : Castle
 {
-    [SerializeField] private GameObject skillObject;
+    [SerializeField]
+    private GameObject skillObject;
     [SerializeField]
     Button skillButton;
     private float skillCoolTime; // 스킬 쿨타임
     private int skillDamage;
     private int skillCnt;
 
-    private Image      castlePortrait;
+    private Image castlePortrait;
 
     protected override void Awake()
     {
         base.Awake();
-        castlePortrait  =   GameObject.Find("Castle Image").GetComponent<Image>();
-
         PlayerData.instance.CheckInstance();
 
-        skillCoolTime   = CastleUpgrade.GetUpgradeApplyedValue("Cool Time");
-        skillDamage     = CastleUpgrade.GetUpgradeApplyedValue("Damage");
-        maxHP           = CastleUpgrade.GetUpgradeApplyedValue("Hp");
+        castlePortrait = GameObject.Find("Castle Image").GetComponent<Image>();
+        Image castleGrayImage = GameObject.Find("Castle Gray").GetComponent<Image>();
+        Sprite castleIconSprite = Resources.Load<Sprite>("Sprite/UI/Icon/Castle_Lv" + CastleInfo.GetCastleLevel());
+
+        Image starImage = GameObject.Find("Star").GetComponent<Image>();
+        starImage.sprite = Resources.Load<Sprite>("Sprite/UI/InGame/Star_" + CastleInfo.GetCastleLevel());
+
+        castlePortrait.sprite = castleIconSprite;
+        castleGrayImage.sprite = castleIconSprite;
+
+        skillCoolTime = CastleUpgrade.GetUpgradeApplyedValue("Cool Time");
+        skillDamage = CastleUpgrade.GetUpgradeApplyedValue("Damage");
+        maxHP = CastleUpgrade.GetUpgradeApplyedValue("Hp");
 
         hp = maxHP;
 
@@ -32,8 +41,10 @@ public class SatanCastle : Castle
         if (PlayerData.instance.selectedStage == "C0S1")
             skillCoolTime = 35;
 
-        
+
         skillButton.onClick.AddListener(OnTouch);
+
+        
     }
     void Start()
     {
@@ -53,7 +64,7 @@ public class SatanCastle : Castle
 
         canUseSkill = false;
 
-       
+
 
 
         SatanSkill skill;
@@ -70,7 +81,7 @@ public class SatanCastle : Castle
         }
 
 
-        StopAllCoroutines();
+        StopCoroutine(SkillProcess());
         StartCoroutine(SkillProcess());
     }
 
@@ -113,7 +124,7 @@ public class SatanCastle : Castle
     {
         float healValue = maxHP * hpHealRate;
 
-        if(healValue + hp > maxHP) // 아이템을 사용했을 때 최대로 회복될 때
+        if (healValue + hp > maxHP) // 아이템을 사용했을 때 최대로 회복될 때
         {
             hp = maxHP;
         }
@@ -130,7 +141,8 @@ public class SatanCastle : Castle
     }
 
     public void OnTouch()
-    {   
+    {
         UseSkill();
     }
 }
+

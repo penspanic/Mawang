@@ -37,6 +37,7 @@ public class InputManager : MonoBehaviour
         }
 
 
+
         if (Input.GetMouseButtonDown(0) && Application.platform == RuntimePlatform.WindowsEditor)
         {
             if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1))

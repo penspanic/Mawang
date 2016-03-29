@@ -21,7 +21,7 @@ public class CastleUpgrade : MonoBehaviour
     };
     // 증가하는 업그레이드 수치
     public static readonly int[] upgradeIncreaseValues = new int[3]{
-        300, 10, 10
+        100, 10, 10
     };
 
     public Text remainingPointText; // 남은 포인트 텍스트
@@ -71,7 +71,6 @@ public class CastleUpgrade : MonoBehaviour
         for (int i = 0; i < upgradeButtons.Length; i++)
         {
             allocatedPoints[i] = PlayerData.instance.upgradePoint[upgradeButtons[i].name];
-            Debug.Log(allocatedPoints[i]);
             alreadyAllocatedPoints += allocatedPoints[i];
             for (int j = 0; j < 6; j++)
             {

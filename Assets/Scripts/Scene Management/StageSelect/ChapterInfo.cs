@@ -35,7 +35,6 @@ public class ChapterInfo : MonoBehaviour
     public void ShowChapterInfo()
     {
         string chapterName = stageSelect.chapterName;
-        Debug.Log(chapterName);
         if(isShowing)
         {
             return;

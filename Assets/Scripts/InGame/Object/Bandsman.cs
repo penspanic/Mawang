@@ -53,7 +53,7 @@ public class Bandsman : Movable
     IEnumerator BuffRoutine()
     {
         lineList = battleMgr.enemyList.FindAll(e => e.line == line &&
-            this.attackRange * battleMgr.fightDistance > Mathf.Abs(transform.position.x - e.transform.position.x));
+            this.attackRange * BattleManager.fightDistance > Mathf.Abs(transform.position.x - e.transform.position.x));
 
         lineList.Remove(this);
 

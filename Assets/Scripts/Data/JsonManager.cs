@@ -78,6 +78,11 @@ public class JsonManager : MonoBehaviour
 
     }
 
+    public string GetKoreanName(string name)
+    {
+        return objectData[name]["Korean Name"].ToString();
+    }
+
     public string GetDescription(string name) // 유닛 설명 리턴
     {
         return objectData[name]["Description"].ToString();

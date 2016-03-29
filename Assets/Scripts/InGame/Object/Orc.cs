@@ -6,7 +6,8 @@ public class Orc : Warrior, ITouchable
 
     [SerializeField]
     private int skillMultiplicationDmg;
-
+    [SerializeField]
+    private int skillHitNum;
     
     protected override void Awake()
     {
@@ -31,7 +32,7 @@ public class Orc : Warrior, ITouchable
 
     public void OnSkillMotionEvent()
     {
-        ObjectBase[] targets = battleMgr.GetTargets(this, attackRange, 3);
+        ObjectBase[] targets = battleMgr.GetTargets(this, attackRange, skillHitNum);
         if (targets != null)
         {
             for (int i = 0; i < targets.Length; i++)

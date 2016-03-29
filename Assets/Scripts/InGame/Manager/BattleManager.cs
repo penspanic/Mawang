@@ -9,10 +9,12 @@ public class BattleManager : MonoBehaviour {
 
     public GameObject ourCastle { get; private set; }
     public GameObject enemyCastle { get; private set; }
-    public float fightDistance
+    public static float fightDistance
     {
-        get;
-        private set;
+        get
+        {
+            return 1.4f;
+        }
     }
 
 
@@ -20,7 +22,6 @@ public class BattleManager : MonoBehaviour {
 
     void Awake()
     {
-        fightDistance   =   1.4f;
         ourCastle       =   GameObject.Find("SatanCastle");
         enemyCastle     =   GameObject.Find("Outpost");
     }
@@ -148,7 +149,6 @@ public class BattleManager : MonoBehaviour {
         else
             return ourCastle;
     }
-
 }   
 
 

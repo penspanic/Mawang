@@ -40,7 +40,7 @@ public class Main_Book : MonoBehaviour
 
             nameText = currPage.transform.Find("Name Text").GetComponent<Text>();
             descriptionText = currPage.transform.Find("Description Text").GetComponent<Text>();
-            nameText.text = eachUnit.name;
+            nameText.text = JsonManager.instance.GetKoreanName(eachUnit.name);
             string unitType = eachUnit is Launcher ? "원거리" : "근거리";
             descriptionText.text = string.Format("생산 비용 : {0}\n체력 : {1}\n공격력 : {2}\n{3}\n\n{4}\n\n{5}",
                 eachUnit.GetUnitCost(), eachUnit.GetHP(), eachUnit.GetAttackDamage(), unitType, JsonManager.instance.GetDescription(eachUnit.name), JsonManager.instance.GetJoke(eachUnit.name));
@@ -52,6 +52,14 @@ public class Main_Book : MonoBehaviour
             newUnit.transform.Translate(newUnit.GetAdjustPos());
             newUnit.transform.localScale *= 1.5f;
             newUnit.SetSortingLayer("UI Over");
+
+            // Color Set
+            if(!PlayerData.instance.playerUnitList.Contains(eachUnit.name)) // 캐릭터를 보유하고 있지 않을 때
+            {
+                SpriteRenderer[] sprs = newUnit.GetSprs();
+                for (int i = 0; i < sprs.Length; i++)
+                    sprs[i].color = Color.black;
+            }
 
             pageList.Add(currPage);
         }
