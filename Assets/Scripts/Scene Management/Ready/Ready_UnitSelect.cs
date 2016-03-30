@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class Ready_UnitSelect : MonoBehaviour
 {
-    Ready ready;
     public ListView unitView;
     public Sprite checkedSprite;
 
@@ -13,27 +12,19 @@ public class Ready_UnitSelect : MonoBehaviour
     public GameObject unitSelectButton;
     public Text unitDescription;
     bool[] isUnitChecked;
-    readonly Vector2 unitButtonStartPos = new Vector2(50, -50);
-    readonly int unitButtonXInterval = 90;
-    readonly int unitButtonYInterval = -90;
 
     List<string> unitNameList = new List<string>();
     Button[] unitButtons;
     Image[] checkedImages;
 
-    NotifyBar notifyBar;
-
     void Awake()
     {
-        ready = GameObject.FindObjectOfType<Ready>();
         PlayerData.instance.CheckInstance();
         JsonManager.instance.CheckInstance();
 
         unitNameList = PlayerData.instance.playerUnitList;
 
         SetUnitList();
-
-        notifyBar = GameObject.FindObjectOfType<NotifyBar>();
     }
 
     void SetUnitList()

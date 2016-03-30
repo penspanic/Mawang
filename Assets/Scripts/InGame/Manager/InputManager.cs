@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     private Vector2 wp;
     private Ray2D ray;
     private RaycastHit2D[] hit;
+
     void Awake()
     {
         selectTab   =   FindObjectOfType<SelectTab>();
@@ -21,6 +22,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Time.timeScale += 0.2f;
+            
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {

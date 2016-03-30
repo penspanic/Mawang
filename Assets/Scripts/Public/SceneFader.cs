@@ -8,7 +8,7 @@ public class SceneFader : MonoBehaviour
 {
 
     SpriteRenderer sprRenderer;
-    BoxCollider2D collider;
+    new BoxCollider2D collider;
     Sprite black;
     Sprite white;
     #region Singleton

@@ -85,6 +85,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     static GameObject shadowPrefab;
     static GameObject hpBarPrefab;
     #endregion
+
     protected override void Awake()
     {
         base.Awake();

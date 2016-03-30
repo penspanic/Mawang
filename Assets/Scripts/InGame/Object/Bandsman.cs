@@ -82,7 +82,6 @@ public class Bandsman : Movable
             go.transform.SetParent(lineList[i].transform);
 
             go.transform.localPosition = new Vector2(0, 2.6f);
-            AdjustBuffPos(go, lineList[i].name);
         }
     }
 
@@ -100,27 +99,6 @@ public class Bandsman : Movable
         }
     }
 
-    public void AdjustBuffPos(GameObject go, string name)
-    {
-        switch (name)
-        {
-            //case "Pawn(Clone)":
-            //    go.transform.localPosition += new Vector3(0f, 0.4f);
-            //    break;
-            //case "Orc(Clone)":
-            //    go.transform.localPosition += new Vector3(0.25f, 1.4f);
-            //    break;
-            //case "Grim(Clone)":
-            //    go.transform.localPosition += new Vector3(0.6f, -0.2f);
-            //    break;
-            //case "Dullahan(Clone)":
-            //    go.transform.localPosition += new Vector3(-0.5f, -0.6f);
-            //    break;
-            //case "Harpy(Clone)":
-            //    go.transform.localPosition += new Vector3(1.1f, 0.5f);
-            //    break;
-        }
-    }
     public void OnAttackEnd()
     {
         AttackEnd();

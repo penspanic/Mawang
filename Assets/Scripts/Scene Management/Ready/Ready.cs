@@ -4,7 +4,6 @@ using System.Collections;
 
 public class Ready : MonoBehaviour
 {
-    Ready_UnitSelect unitSelect;
 
     Text obsidianText;
 
@@ -13,7 +12,6 @@ public class Ready : MonoBehaviour
         StartCoroutine(FadeIn());
         PlayerData.instance.CheckInstance();
 
-        unitSelect = GameObject.FindObjectOfType<Ready_UnitSelect>();
         obsidianText = GameObject.Find("Obsidian").GetComponentInChildren<Text>();
 
         ResetObsidianText();

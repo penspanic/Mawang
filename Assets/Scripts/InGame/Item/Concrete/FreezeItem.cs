@@ -13,7 +13,7 @@ public class FreezeItem : ItemBase
     {
         base.Awake();
         battleMgr = GameObject.FindObjectOfType<BattleManager>();
-        coolTime = 40;
+        coolTime = 10;
         skillImg = GetComponent<Image>();
         message = "적 유닛의 이동을 막습니다.";
     }
@@ -41,10 +41,10 @@ public class FreezeItem : ItemBase
         // 얼릴 적 찾기
         Movable[] enemys = System.Array.FindAll<Movable>
             (GameObject.FindObjectsOfType<Movable>(),(obj)=>{
-                return obj.CompareTag("Enemy");
+                return obj.CompareTag("Enemy") && !obj.isDestroyed;
             });
 
-        for (int i = 0; i < enemys.Length;i++)
+        for (int i = 0; i < enemys.Length; i++)
             enemys[i].Freeze(true);
 
         yield return new WaitForSeconds(duration);

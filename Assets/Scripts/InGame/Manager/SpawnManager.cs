@@ -14,8 +14,6 @@ public class SpawnManager : MonoBehaviour
 
     private List<Vector2> ourForceLinePos   =   new List<Vector2>();
 
-    private Vector2 randomY;
-
     void Awake()
     {
         gameMgr     = FindObjectOfType<GameManager>();
@@ -40,7 +38,7 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnOurForce(Movable obj, int line)
     {
-        Instantiate(obj, ourForceLinePos[line - 1] + randomY, new Quaternion());
+        Instantiate(obj, ourForceLinePos[line - 1], new Quaternion());
         orderMgr.UpdateOrder(line);
     }
 
