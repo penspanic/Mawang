@@ -12,6 +12,8 @@ public class Ready_Item : MonoBehaviour
     public Text itemDescriptionText;
     public Text obsidianText;
 
+    Ready ready;
+
     int selectedIndex;
 
     int[] itemsCost;
@@ -21,7 +23,7 @@ public class Ready_Item : MonoBehaviour
     {
         JsonManager.instance.CheckInstance();
         PlayerData.instance.CheckInstance();
-        obsidianText.text = PlayerData.instance.obsidian.ToString();
+        ready = GameObject.FindObjectOfType<Ready>();
 
         itemsCost = new int[itemButtons.Length];
         itemsDescription = new string[itemButtons.Length];
@@ -32,6 +34,8 @@ public class Ready_Item : MonoBehaviour
             itemsDescription[i] = JsonManager.instance.GetDescription(name);
             itemAmountTexts[i].text = PlayerData.instance.itemStorage[name].ToString();
         }
+
+        SetBuyButtonState(false);
     }
 
     void SetBuyButtonState(bool value)
@@ -53,7 +57,7 @@ public class Ready_Item : MonoBehaviour
     {
         string name = itemButtons[selectedIndex].name;
         PlayerData.instance.PurchaseItem(name, itemsCost[selectedIndex]);
-        obsidianText.text = PlayerData.instance.obsidian.ToString();
+        ready.ResetObsidianText();
         itemAmountTexts[selectedIndex].text = PlayerData.instance.itemStorage[name].ToString();
         if (PlayerData.instance.obsidian - itemsCost[selectedIndex] < 0)
             SetBuyButtonState(false);

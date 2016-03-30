@@ -4,7 +4,7 @@ using System;
 public class FixItem : ItemBase
 {
     SatanCastle satanCastle;
-    float hpHealRate = 0.1f;
+    float hpHealRate = 0.3f;
 
     
     protected override void Awake()
@@ -16,6 +16,7 @@ public class FixItem : ItemBase
 
     protected override void Useitem()
     {
+        PlayerData.instance.UseItem(name);
         amount--;
         msgBox.PushMessage(message);
         satanCastle.UseFixItem(hpHealRate);

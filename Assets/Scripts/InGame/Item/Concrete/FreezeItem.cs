@@ -27,6 +27,7 @@ public class FreezeItem : ItemBase
         else
         {
             isUsing = true;
+            PlayerData.instance.UseItem(name);
             amount--;
             msgBox.PushMessage(message);
             StartCoroutine(FreezeProcess());

@@ -5,8 +5,13 @@ public class AppRatingPopup : MonoBehaviour
 {
     void Awake()
     {
-
+        PlayerData.instance.CheckInstance();
     }   
+
+    public void ShowPopup()
+    {
+        gameObject.SetActive(true);
+    }
 
     public void AcceptButtonDown()
     {

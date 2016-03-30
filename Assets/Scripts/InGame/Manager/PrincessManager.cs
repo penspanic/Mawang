@@ -15,6 +15,7 @@ using System.Collections.Generic;
 public class PrincessManager : MonoBehaviour
 {
     private BattleManager   battleMgr;
+    private GameManager     gameMgr;
 
     private float       coolTime;
     private float       buffDuration;
@@ -42,6 +43,7 @@ public class PrincessManager : MonoBehaviour
     void Awake()
     {
         battleMgr       =   GetComponent<BattleManager>();
+        gameMgr         =   GetComponent<GameManager>();
         princessUI      =   GameObject.Find("PrincessEvent");
         skillName       =   princessUI.transform.FindChild("Event").FindChild("SkillName").GetComponent<Image>();
         illust          =   princessUI.transform.FindChild("Event").FindChild("BigIllust").GetComponent<Image>();
@@ -111,6 +113,8 @@ public class PrincessManager : MonoBehaviour
             portrait.fillAmount = currTime / coolTime;
             if (currTime >= coolTime)
             {
+                if (!gameMgr.isRun)
+                    yield break;
                 // 여기서 공주에 따른 효과 발동
                 if (PlayerData.instance.selectedStage == "C0S1")
                 {

@@ -16,16 +16,22 @@ public class Main : MonoBehaviour
     public Sprite castleInfoExplainSprite;
 
     public GameObject gameQuit;
+    public AppRatingPopup appRatingPopup;
 
     CastleUpgrade upgrade;
     CastleInfo info;
 
     GameEventReceiver stageClearEventReceiver;
-    GameEventReceiver chapterClearEventReceiver;
+    GameEventReceiver chapter0ClearEventReceiver;
+    GameEventReceiver appRatingEventReceiver;
+
+    bool eventHandling = false;
 
     bool isChanging = false;
     void Awake()
     {
+        PlayerData.instance.CheckInstance();
+
         Time.timeScale = 1f;
 
         StartCoroutine(SceneFader.Instance.FadeIn(1f));
@@ -33,7 +39,8 @@ public class Main : MonoBehaviour
         info = GameObject.FindObjectOfType<CastleInfo>();
 
         stageClearEventReceiver = new GameEventReceiver(GameEvent.FirstC0S1Cleared, OnFirstC0S1Cleared);
-        chapterClearEventReceiver = new GameEventReceiver(GameEvent.FirstChapter0Cleared, OnFirstChapter0Cleared);
+        chapter0ClearEventReceiver = new GameEventReceiver(GameEvent.FirstChapter0Cleared, OnFirstChapter0Cleared);
+        appRatingEventReceiver = new GameEventReceiver(GameEvent.AppRating, ShowAppRatingPopup);
 
         Invoke("CheckEvents", 1f);
 
@@ -68,7 +75,8 @@ public class Main : MonoBehaviour
     void CheckEvents()
     {
         stageClearEventReceiver.CheckEvent();
-        chapterClearEventReceiver.CheckEvent();
+        chapter0ClearEventReceiver.CheckEvent();
+        appRatingEventReceiver.CheckEvent();
     }
 
     public void OnStartButtonDown()
@@ -107,6 +115,13 @@ public class Main : MonoBehaviour
         StartCoroutine(ExplainPrincess());
     }
 
+    void ShowAppRatingPopup()
+    {
+        if (PlayerData.instance.appRated)
+            return;
+        StartCoroutine(ShowAppRatingProcess());
+    }
+
     public void BlurBackground(bool isBlear)
     {
         StartCoroutine(BlurProcess(isBlear));
@@ -132,9 +147,10 @@ public class Main : MonoBehaviour
 
     IEnumerator ExplainCastleUpgrade()
     {
+        
         Image upgradeExplainImage = Instantiate(explainUpgradePrefab).GetComponent<Image>();
         upgradeExplainImage.transform.SetParent(GameObject.Find("Canvas").transform, false);
-
+        
         yield return new WaitForSeconds(1f);
         while (true)
         {
@@ -160,6 +176,7 @@ public class Main : MonoBehaviour
 
     IEnumerator ExplainPrincess()
     {
+        eventHandling = true;
         Image princessExplainImage = Instantiate(explainPrincessPrefab).GetComponent<Image>();
         princessExplainImage.transform.SetParent(GameObject.Find("Canvas").transform, false);
 
@@ -173,8 +190,20 @@ public class Main : MonoBehaviour
             yield return null;
         }
         Destroy(princessExplainImage);
+        eventHandling = false;
     }
 
+    IEnumerator ShowAppRatingProcess()
+    {
+        while(true)
+        {
+            if (eventHandling)
+                yield return null;
+            else
+                break;
+        }
+        appRatingPopup.ShowPopup();
+    }
 
     void GameStart()
     {

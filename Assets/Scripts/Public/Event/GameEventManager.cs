@@ -6,6 +6,7 @@ public enum GameEvent
 {
     FirstC0S1Cleared, // 처음으로 C0S1 클리어 되었을 때
     FirstChapter0Cleared, // 처음으로 챕터 0 클리어 되었을 때
+    AppRating
 }
 public class GameEventManager : MonoBehaviour
 {

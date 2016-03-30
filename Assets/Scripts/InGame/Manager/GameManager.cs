@@ -185,7 +185,9 @@ public class GameManager : MonoBehaviour
         if (PlayerData.instance.selectedStage == "C0S3" && !PlayerData.instance.IsStageCleared("C0S3"))
             GameEventManager.instance.PushEvent(GameEvent.FirstChapter0Cleared);
 
-        if()
+        if (PlayerData.instance.selectedStage[3] == '3' && 
+            !PlayerData.instance.IsStageCleared(PlayerData.instance.selectedStage)) // 챕터 클리어
+            GameEventManager.instance.PushEvent(GameEvent.AppRating);
         PlayerData.instance.StageClear(PlayerData.instance.selectedStage);
         StartCoroutine(TouchToMain());
     }

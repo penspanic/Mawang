@@ -5,18 +5,19 @@ public class DefenseItem : ItemBase
 {
 
     SatanCastle satanCastle;
-    int durationTime = 60;
-    float defensivePower = 0.2f;
+    const int durationTime = 10;
+    const float defensivePower = 1f;
 
     protected override void Awake()
     {
         base.Awake();
         satanCastle = GameObject.FindObjectOfType<SatanCastle>();
-        message = "1분간 방어태세에 돌입합니다!";
+        message = "10초간 마왕성이 무적상태가 됩니다!";
     }
 
     protected override void Useitem()
     {
+        PlayerData.instance.UseItem(name);
         amount--;
         if(isUsing) // 사용중일 때에는 지속시간만 초기화
         {

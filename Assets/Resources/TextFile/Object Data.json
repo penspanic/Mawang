@@ -55,15 +55,15 @@
   /* 아이템 */
 
   "Fix": {
-    "Description": "HP 10% 회복",
-    "Cost": 50
+    "Description": "HP 30% 회복",
+    "Cost": 30
   },
   "Freeze": {
-    "Description": "적 유닛 5초간 정지",
+    "Description": "적 유닛 5초간 정지, 일정 확률로 동상이 된다",
     "Cost": 40
   },
   "Defense": {
-    "Description": "1분간 방어력 20% 상승",
-    "Cost": 30
+    "Description": "10초간 마왕성 무적",
+    "Cost": 50
   }
 }

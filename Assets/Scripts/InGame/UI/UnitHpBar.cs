@@ -20,6 +20,10 @@ public class UnitHpBar : MonoBehaviour
         }
     }
 
+    readonly Color ourForceBackColor = new Color(1, 234f / 255f, 60f / 255f, 1);
+    readonly Color enemyBackColor = new Color(144f / 255f, 221f / 255f, 70f / 255f, 1);
+    readonly Color redColor = new Color(174f / 255f, 0, 0, 1);
+
     public void Init()
     {
         target = transform.parent.GetComponent<Movable>();
@@ -31,9 +35,10 @@ public class UnitHpBar : MonoBehaviour
         hpRed = transform.FindChild("Red").gameObject;
         hpBack = transform.FindChild("Hp Back").gameObject;
 
-        hpBack.GetComponent<SpriteRenderer>().color = target.isOurForce ? Color.yellow : Color.green;
+        hpBack.GetComponent<SpriteRenderer>().color = target.isOurForce ? ourForceBackColor : enemyBackColor;
         SetHpBar();
     }
+
     void Update()
     {
         SetHpBar();

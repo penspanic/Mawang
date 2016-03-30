@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Ready : MonoBehaviour
 {
     Ready_UnitSelect unitSelect;
+
+    Text obsidianText;
+
     void Awake()
     {
         StartCoroutine(FadeIn());
         PlayerData.instance.CheckInstance();
 
         unitSelect = GameObject.FindObjectOfType<Ready_UnitSelect>();
+        obsidianText = GameObject.Find("Obsidian").GetComponentInChildren<Text>();
+
+        ResetObsidianText();
     }
 
     IEnumerator FadeIn()
@@ -27,6 +34,7 @@ public class Ready : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             PlayerData.instance.obsidian += 100;
+            ResetObsidianText();
         }
     }
 
@@ -40,6 +48,11 @@ public class Ready : MonoBehaviour
 
         ChangeScene("StageSelect");
         ButtonSound.PlaySound(ButtonSound.SoundType.BackSound);
+    }
+
+    public void ResetObsidianText()
+    {
+        obsidianText.text = PlayerData.instance.obsidian.ToString();
     }
 
     public void OnStartButtonDown()

@@ -47,7 +47,6 @@ public class PlayerData : MonoBehaviour
 
     void Awake()
     {
-
         DontDestroyOnLoad(gameObject);
 
         // 1
