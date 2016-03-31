@@ -120,6 +120,7 @@ public class TutorialManager : Singleton<TutorialManager>
         int effectIdx = 0;
         bool isAnyTouch =   false;
         bool isTouch    =   false;
+            float waitTime;
 
         while (tutoIdx < tutorialDic[tutorial].Count)
         {
@@ -127,6 +128,9 @@ public class TutorialManager : Singleton<TutorialManager>
             spriteTexture   =   mainImg.sprite.texture;
             isAnyTouch      =   tutorialDic[tutorial][tutoIdx].name.Length == 2 ? true : false;
             isTouch         =   false;
+
+            waitTime = 2.0f;
+
 
             #region cases
 
@@ -147,6 +151,7 @@ public class TutorialManager : Singleton<TutorialManager>
                 switch (tutoIdx)
                 {
                     case 0: // 제일 첨
+                        waitTime = 0.0f;
                         goldMgr.AddGold(50);
                         break;
                     case 2: // 스켈레톤 누를때 
@@ -165,6 +170,7 @@ public class TutorialManager : Singleton<TutorialManager>
                         }
                         break;
                     case 4: // 스켈레톤 누를때
+                        waitTime = 0.0f;
                         Time.timeScale = 1;
                         float currTime = 0.0f;
                         while (Time.timeScale == 1)
@@ -181,6 +187,7 @@ public class TutorialManager : Singleton<TutorialManager>
                         }
                         break;
                     case 6:
+                        waitTime = 0.0f;
                         StartCoroutine(selectTab.RotateSelectTab());
                         break;
                     case 7:
@@ -195,6 +202,9 @@ public class TutorialManager : Singleton<TutorialManager>
                             yield return null;
                         }
                         camMove = false;
+                        break;
+                    case 8:
+                        waitTime = 0.0f;
                         break;
                 }
 
@@ -213,6 +223,7 @@ public class TutorialManager : Singleton<TutorialManager>
 
                         break;
                     case 1:
+                        waitTime = 0.0f;
                         Time.timeScale = 1;
                         castle.OnTouch();
                         break;
@@ -230,21 +241,13 @@ public class TutorialManager : Singleton<TutorialManager>
                     case 0:
                         Time.timeScale = 0;
                         camMove = true;
+                        waitTime = 0.0f;
 
                         break;
                     case 1:
-                        camMove = false;
                         Time.timeScale = 1;
-
-                        // float currTime = 0;
-                        //while (Time.timeScale == 1)
-                        //{
-                        //    currTime += Time.deltaTime;
-                        //    if (currTime >= 2f)
-                        //        Time.timeScale = 1;
-
-                        //    yield return null;
-                        //}
+                        camMove = false;
+                        waitTime = 0.0f;
                         break;
                 }
             }
@@ -254,20 +257,11 @@ public class TutorialManager : Singleton<TutorialManager>
             #endregion
 
 
-
-            float waitTime;
-
-            if (tutoIdx == 4 || tutoIdx == 6 || tutoIdx == 8)
-                waitTime = 0.0f;
-            else
-                waitTime = 2.0f;
-
             while (!isTouch)
             {
-                while(waitTime < 1.3f)
+                while(waitTime < 2f)
                 {
-                    Debug.Log("waiting... : "+ tutoIdx);
-                    waitTime += 0.016f;
+                    waitTime += Time.unscaledDeltaTime;
                     yield return null;
                 }
                 if (Input.GetMouseButtonDown(0) && OnPointerDown(isAnyTouch))
@@ -294,9 +288,6 @@ public class TutorialManager : Singleton<TutorialManager>
 
         isPlaying = false;
     }
-
-
-
     
     bool OnPointerDown(bool anyTouch)
     {
@@ -313,7 +304,6 @@ public class TutorialManager : Singleton<TutorialManager>
         else
         return true;
     }
-
 
     IEnumerator MoveCam(float endX, float moveTime)
     {
