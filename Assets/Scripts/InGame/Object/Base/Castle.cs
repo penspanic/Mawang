@@ -6,7 +6,7 @@ public class Castle : ObjectBase
 {
     private SpriteRenderer front;
     [SerializeField] private Image      hpBar;
-
+    private float currAlpha;
 
     GameManager gameMgr;
     protected SpriteRenderer spr;
@@ -23,22 +23,15 @@ public class Castle : ObjectBase
 
     protected IEnumerator CastleProcess()
     {
-        while(true)
+        while (true)
         {
             ValueUpdate(hp, maxHP);
+            CoveringCastle();
             yield return null;
-        }
-    }
 
-    // TOOD : 간혈적으로 성이 빨간색에서 안돌아옴
-    //void Update()
-    //{
-    //    if (spr.color == Color.red && isBleed)
-    //    {
-    //        spr.color = Color.white;
-    //        front.color = Color.white;
-    //    }
-    //}
+        }
+
+    }
 
     public override ObjectBase[] GetTargets()
     {
@@ -48,6 +41,17 @@ public class Castle : ObjectBase
     private void ValueUpdate(float currValue, float maxValue)
     {
         hpBar.fillAmount = currValue / maxValue;
+    }
+
+    private void CoveringCastle()
+    {
+        if (battleMgr.SelectInRange(battleMgr.GetOpposite(!isOurForce), transform.position, 0.8f).Count != 0)
+            currAlpha -= Time.deltaTime * 0.4f;
+        else
+            currAlpha += Time.deltaTime * 3f;
+
+        front.color = new Color(1, 1, 1, Mathf.Clamp(currAlpha, 0.5f, 1f));
+        currAlpha   = Mathf.Clamp(currAlpha, 0.5f, 1f);
     }
 
     public override void Attacked(int damage)

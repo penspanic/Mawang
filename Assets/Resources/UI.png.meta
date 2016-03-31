@@ -1,0 +1,1048 @@
+fileFormatVersion: 2
+guid: 9816f93ce8bcc2941885dffea981c1a7
+timeCreated: 1459398323
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: book
+    21300002: castle_upgrade_frame
+    21300004: castle_info_frame
+    21300006: end
+    21300008: upgrade_i
+    21300010: information_i
+    21300012: health_icon
+    21300014: time_icon
+    21300016: attack_icon
+    21300018: book_right
+    21300020: book_left
+    21300022: exit
+    21300024: castle_upgrade_gauge
+    21300026: Unit Select
+    21300028: Checked
+    21300030: Start_btn
+    21300032: Ready_btn
+    21300034: plus
+    21300036: scrollbar
+    21300038: info
+    21300040: Left
+    21300042: Right
+    21300044: info button
+    21300046: Collection_btn
+    21300048: Lab_btn
+    21300050: Castle_Lv2
+    21300052: Castle_Lv3
+    21300054: Castle_Lv1
+    21300056: Defense
+    21300058: Fix
+    21300060: Freeze
+    21300062: PrevDefense
+    21300064: PrevGold
+    21300066: PrevFix
+    21300068: Orc
+    21300070: Harpy
+    21300072: Dullahan
+    21300074: Goblin
+    21300076: Bandsman
+    21300078: Grim
+    21300080: Skeleton
+    21300082: C2 Icon
+    21300084: C3 Icon
+    21300086: C0 Icon
+    21300088: C1 Icon
+    21300090: shielder
+    21300092: archer
+    21300094: Pawn
+    21300096: Stage1
+    21300098: Stage2
+    21300100: Stage3
+    21300102: Select_on
+    21300104: Select_middle
+    21300106: Select_under
+    21300108: Select_case
+    21300110: Select_base
+    21300112: Stop_return
+    21300114: Stop_main
+    21300116: Stop_keep
+    21300118: MessageBox
+    21300120: Item
+    21300122: Gauge_Enemy
+    21300124: Gauge_Satan
+    21300126: Portrait_empty
+    21300128: Upgrade_hp
+    21300130: Upgrade_gold
+    21300132: Upgrade_power
+    21300134: Fill_princess
+    21300136: Fill_castle
+    21300138: MiniMap_bg
+    21300140: Score_icon
+    21300142: Gold_icon
+    21300144: Select_lever
+    21300146: HP_Satan
+    21300148: HP_Enemy
+    21300150: Select_rose
+    21300152: Stop
+    21300154: Star_3
+    21300156: Star_1
+    21300158: Star_2
+    21300160: MiniMap_blue
+    21300162: MiniMap_red
+    21300164: wide_message
+    21300166: Obsidian
+    21300168: Back_btn
+    21300170: SatanCastle
+    21300172: Outpost
+    21300174: Outpost_front
+    21300176: SatanCastle_front
+    21300178: Carpet
+    21300180: Archer
+    21300182: Shielder
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: 1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 3
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: book
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1125
+        height: 652
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: info
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 653
+        width: 861
+        height: 709
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: castle_upgrade_frame
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1363
+        width: 827
+        height: 677
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: castle_info_frame
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 1363
+        width: 818
+        height: 676
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SatanCastle
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 0
+        width: 380
+        height: 720
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Outpost
+      rect:
+        serializedVersion: 2
+        x: 1507
+        y: 0
+        width: 359
+        height: 720
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Select_on
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 721
+        width: 2038
+        height: 110
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Select_middle
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 0
+        width: 2044
+        height: 107
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Select_under
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 108
+        width: 2045
+        height: 104
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Outpost_front
+      rect:
+        serializedVersion: 2
+        x: 2901
+        y: 213
+        width: 266
+        height: 720
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Select_case
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 832
+        width: 246
+        height: 720
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Carpet
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 832
+        width: 541
+        height: 261
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: end
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 213
+        width: 493
+        height: 284
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wide_message
+      rect:
+        serializedVersion: 2
+        x: 2361
+        y: 213
+        width: 493
+        height: 284
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Select_base
+      rect:
+        serializedVersion: 2
+        x: 3913
+        y: 0
+        width: 172
+        height: 720
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SatanCastle_front
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 832
+        width: 147
+        height: 720
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Unit Select
+      rect:
+        serializedVersion: 2
+        x: 2042
+        y: 832
+        width: 344
+        height: 306
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stop_return
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 1094
+        width: 500
+        height: 200
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stop_main
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 498
+        width: 500
+        height: 200
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stop_keep
+      rect:
+        serializedVersion: 2
+        x: 2368
+        y: 498
+        width: 500
+        height: 200
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MessageBox
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 1553
+        width: 724
+        height: 120
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Checked
+      rect:
+        serializedVersion: 2
+        x: 2387
+        y: 832
+        width: 292
+        height: 297
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Item
+      rect:
+        serializedVersion: 2
+        x: 2042
+        y: 1139
+        width: 369
+        height: 142
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Lab_btn
+      rect:
+        serializedVersion: 2
+        x: 2042
+        y: 1282
+        width: 364
+        height: 136
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Collection_btn
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 1674
+        width: 364
+        height: 136
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gauge_Enemy
+      rect:
+        serializedVersion: 2
+        x: 2042
+        y: 1419
+        width: 451
+        height: 105
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gauge_Satan
+      rect:
+        serializedVersion: 2
+        x: 2407
+        y: 1282
+        width: 451
+        height: 105
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: upgrade_i
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 1094
+        width: 244
+        height: 171
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: information_i
+      rect:
+        serializedVersion: 2
+        x: 2680
+        y: 934
+        width: 244
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: health_icon
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 832
+        width: 153
+        height: 250
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: time_icon
+      rect:
+        serializedVersion: 2
+        x: 2012
+        y: 1674
+        width: 150
+        height: 250
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: attack_icon
+      rect:
+        serializedVersion: 2
+        x: 2163
+        y: 1674
+        width: 150
+        height: 250
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bandsman
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 1811
+        width: 210
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dullahan
+      rect:
+        serializedVersion: 2
+        x: 2680
+        y: 1105
+        width: 210
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goblin
+      rect:
+        serializedVersion: 2
+        x: 2314
+        y: 1674
+        width: 210
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Portrait_empty
+      rect:
+        serializedVersion: 2
+        x: 2314
+        y: 1845
+        width: 210
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Orc
+      rect:
+        serializedVersion: 2
+        x: 2494
+        y: 1388
+        width: 210
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Harpy
+      rect:
+        serializedVersion: 2
+        x: 2525
+        y: 1559
+        width: 210
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton
+      rect:
+        serializedVersion: 2
+        x: 2705
+        y: 1388
+        width: 210
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grim
+      rect:
+        serializedVersion: 2
+        x: 2891
+        y: 1105
+        width: 210
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Start_btn
+      rect:
+        serializedVersion: 2
+        x: 1858
+        y: 1925
+        width: 292
+        height: 110
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C2 Icon
+      rect:
+        serializedVersion: 2
+        x: 2412
+        y: 1130
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C1 Icon
+      rect:
+        serializedVersion: 2
+        x: 2925
+        y: 934
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C3 Icon
+      rect:
+        serializedVersion: 2
+        x: 3076
+        y: 934
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C0 Icon
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 721
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Obsidian
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 213
+        width: 156
+        height: 132
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Upgrade_gold
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 346
+        width: 104
+        height: 181
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Upgrade_power
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 528
+        width: 104
+        height: 181
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Upgrade_hp
+      rect:
+        serializedVersion: 2
+        x: 3273
+        y: 346
+        width: 104
+        height: 181
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Castle_Lv1
+      rect:
+        serializedVersion: 2
+        x: 3273
+        y: 528
+        width: 130
+        height: 136
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Castle_Lv2
+      rect:
+        serializedVersion: 2
+        x: 3378
+        y: 213
+        width: 130
+        height: 136
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Castle_Lv3
+      rect:
+        serializedVersion: 2
+        x: 3378
+        y: 350
+        width: 130
+        height: 136
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fill_princess
+      rect:
+        serializedVersion: 2
+        x: 2525
+        y: 1730
+        width: 125
+        height: 129
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fill_castle
+      rect:
+        serializedVersion: 2
+        x: 2525
+        y: 1860
+        width: 125
+        height: 127
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Left
+      rect:
+        serializedVersion: 2
+        x: 2651
+        y: 1730
+        width: 94
+        height: 159
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Right
+      rect:
+        serializedVersion: 2
+        x: 2736
+        y: 1559
+        width: 94
+        height: 159
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Back_btn
+      rect:
+        serializedVersion: 2
+        x: 1858
+        y: 1811
+        width: 129
+        height: 109
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MiniMap_bg
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 653
+        width: 213
+        height: 60
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Defense
+      rect:
+        serializedVersion: 2
+        x: 2372
+        y: 1559
+        width: 104
+        height: 110
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fix
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 1130
+        width: 104
+        height: 110
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Freeze
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 1925
+        width: 104
+        height: 109
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ready_btn
+      rect:
+        serializedVersion: 2
+        x: 2680
+        y: 832
+        width: 164
+        height: 69
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: book_right
+      rect:
+        serializedVersion: 2
+        x: 2651
+        y: 1890
+        width: 95
+        height: 112
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: book_left
+      rect:
+        serializedVersion: 2
+        x: 2746
+        y: 1719
+        width: 95
+        height: 112
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Score_icon
+      rect:
+        serializedVersion: 2
+        x: 2859
+        y: 1276
+        width: 100
+        height: 100
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shielder
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 1266
+        width: 105
+        height: 85
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Pawn
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 1266
+        width: 105
+        height: 85
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Archer
+      rect:
+        serializedVersion: 2
+        x: 2831
+        y: 1559
+        width: 105
+        height: 85
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PrevFix
+      rect:
+        serializedVersion: 2
+        x: 2916
+        y: 1377
+        width: 95
+        height: 75
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PrevDefense
+      rect:
+        serializedVersion: 2
+        x: 2960
+        y: 1276
+        width: 95
+        height: 75
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PrevGold
+      rect:
+        serializedVersion: 2
+        x: 2916
+        y: 1453
+        width: 95
+        height: 75
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: exit
+      rect:
+        serializedVersion: 2
+        x: 2831
+        y: 1645
+        width: 101
+        height: 68
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gold_icon
+      rect:
+        serializedVersion: 2
+        x: 1558
+        y: 832
+        width: 83
+        height: 80
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Select_lever
+      rect:
+        serializedVersion: 2
+        x: 2525
+        y: 1988
+        width: 116
+        height: 57
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HP_Enemy
+      rect:
+        serializedVersion: 2
+        x: 2042
+        y: 1525
+        width: 335
+        height: 19
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HP_Satan
+      rect:
+        serializedVersion: 2
+        x: 3378
+        y: 487
+        width: 335
+        height: 19
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stage1
+      rect:
+        serializedVersion: 2
+        x: 1558
+        y: 913
+        width: 75
+        height: 76
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stage2
+      rect:
+        serializedVersion: 2
+        x: 1558
+        y: 990
+        width: 75
+        height: 76
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stage3
+      rect:
+        serializedVersion: 2
+        x: 3509
+        y: 213
+        width: 75
+        height: 76
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: plus
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 1266
+        width: 70
+        height: 70
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Select_rose
+      rect:
+        serializedVersion: 2
+        x: 3509
+        y: 290
+        width: 68
+        height: 70
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: info button
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 1295
+        width: 67
+        height: 67
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stop
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 1982
+        width: 65
+        height: 63
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: scrollbar
+      rect:
+        serializedVersion: 2
+        x: 3325
+        y: 213
+        width: 30
+        height: 130
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: castle_upgrade_gauge
+      rect:
+        serializedVersion: 2
+        x: 2563
+        y: 1241
+        width: 68
+        height: 39
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Star_2
+      rect:
+        serializedVersion: 2
+        x: 2378
+        y: 1525
+        width: 97
+        height: 24
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Star_1
+      rect:
+        serializedVersion: 2
+        x: 2680
+        y: 902
+        width: 97
+        height: 24
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Star_3
+      rect:
+        serializedVersion: 2
+        x: 2778
+        y: 902
+        width: 97
+        height: 24
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MiniMap_blue
+      rect:
+        serializedVersion: 2
+        x: 2736
+        y: 1719
+        width: 6
+        height: 6
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MiniMap_red
+      rect:
+        serializedVersion: 2
+        x: 2387
+        y: 1130
+        width: 6
+        height: 6
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

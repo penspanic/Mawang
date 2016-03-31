@@ -41,8 +41,8 @@ public class Ready_UnitSelect : MonoBehaviour
         Button newButton;
         for (int i = 0; i < unitNameList.Count; i++)
         {
-            portrait = Resources.Load<Sprite>("Sprite/UI/Icon/UnitPortrait/" + unitNameList[i]);
-            newButton = unitView.GetItem(i).GetComponent<Button>();
+            portrait    =   SpriteManager.Instance.GetSprite(PackingType.UI, unitNameList[i]);
+            newButton   =   unitView.GetItem(i).GetComponent<Button>();
             newButton.image.sprite = portrait;
 
             int param = i;

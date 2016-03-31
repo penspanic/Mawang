@@ -73,10 +73,10 @@ public class PrincessManager : MonoBehaviour
     // 이미지에 currPrincesse 받은걸로 대입하기
     void InitUI()
     {
-        skillName.sprite        =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_SkillName");
-        illust.sprite           =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_L");
-        portrait.sprite         =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_Portait");
-        castlesprRenderer.sprite        =   Resources.Load<Sprite>("Sprite/Princess/" + currChapter + "_CastleImg");
+        skillName.sprite        =   SpriteManager.Instance.GetSprite(PackingType.Princess, currChapter + "_SkillName");
+        illust.sprite           =   SpriteManager.Instance.GetSprite(PackingType.Princess, currChapter + "_L");
+        portrait.sprite         =   SpriteManager.Instance.GetSprite(PackingType.Princess, currChapter + "_Portait");
+        castlesprRenderer.sprite=   SpriteManager.Instance.GetSprite(PackingType.Princess, currChapter + "_CastleImg");
 
         portrait_gray.sprite    =   portrait.sprite;
 

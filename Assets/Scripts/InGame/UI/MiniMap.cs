@@ -26,8 +26,8 @@ public class MiniMap : MonoBehaviour
     {
         battleMgr   = FindObjectOfType<BattleManager>();
 
-        blueMark    = Resources.Load<Sprite>("Sprite/UI/InGame/MiniMap_blue");
-        redMark     = Resources.Load<Sprite>("Sprite/UI/InGame/MiniMap_red");
+        blueMark    = SpriteManager.Instance.GetSprite(PackingType.UI,"MiniMap_blue");
+        redMark     = SpriteManager.Instance.GetSprite(PackingType.UI, "MiniMap_red");
 
         markPrefab  = Resources.Load<GameObject>("Prefabs/UI/Mark");
         

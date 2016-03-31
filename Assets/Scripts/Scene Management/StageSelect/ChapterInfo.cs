@@ -45,7 +45,7 @@ public class ChapterInfo : MonoBehaviour
             gameObject.SetActive(true);
             selectedChapterData = JsonManager.instance.GetChapterData(chapterName);
 
-            princessIllust.sprite = Resources.Load<Sprite>("Sprite/Princess/" + chapterName + "_L");
+            princessIllust.sprite = SpriteManager.Instance.GetSprite(PackingType.Princess, chapterName + "_L");
             princessIllust.SetNativeSize();
 
             chapterNameText.text = selectedChapterData.chapterName;

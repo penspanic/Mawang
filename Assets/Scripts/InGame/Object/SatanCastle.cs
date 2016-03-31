@@ -22,10 +22,10 @@ public class SatanCastle : Castle
 
         castlePortrait = GameObject.Find("Castle Image").GetComponent<Image>();
         Image castleGrayImage = GameObject.Find("Castle Gray").GetComponent<Image>();
-        Sprite castleIconSprite = Resources.Load<Sprite>("Sprite/UI/Icon/Castle_Lv" + CastleInfo.GetCastleLevel());
+        Sprite castleIconSprite = SpriteManager.Instance.GetSprite(PackingType.UI,"Castle_Lv" + CastleInfo.GetCastleLevel().ToString());
 
         Image starImage = GameObject.Find("Star").GetComponent<Image>();
-        starImage.sprite = Resources.Load<Sprite>("Sprite/UI/InGame/Star_" + CastleInfo.GetCastleLevel());
+        starImage.sprite = SpriteManager.Instance.GetSprite(PackingType.UI, "Star_" + CastleInfo.GetCastleLevel().ToString());
 
         castlePortrait.sprite = castleIconSprite;
         castleGrayImage.sprite = castleIconSprite;

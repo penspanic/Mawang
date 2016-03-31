@@ -54,8 +54,8 @@ public class SelectTab : MonoBehaviour
 
         // 선택된 유닛들 스프라이트 로드
         for (int i = 0; i < PlayerData.instance.playerUnitList.Count; i++)
-            unitPortaitList.Add(Resources.Load<Sprite>("Sprite/UI/Icon/UnitPortrait/"
-                + PlayerData.instance.playerUnitList[i]));
+            unitPortaitList.Add(SpriteManager.Instance.GetSprite(PackingType.UI,
+                PlayerData.instance.playerUnitList[i]));
 
         // 유닛버튼들 로드
         for (int i = 0; i < 6; i++)
@@ -78,6 +78,7 @@ public class SelectTab : MonoBehaviour
             }
         }
 
+        
         // Button Onclick 추가
         for (int i = 0; i < unitButtonList.Count; i++)
         {
@@ -94,6 +95,7 @@ public class SelectTab : MonoBehaviour
 
 
     }
+
 
 
     public void ClikcedUnitButton(int idx)

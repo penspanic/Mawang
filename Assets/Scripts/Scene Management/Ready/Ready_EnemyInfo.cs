@@ -49,7 +49,7 @@ public class Ready_EnemyInfo : MonoBehaviour
 
             enemysData[i].transform.localPosition = new Vector2(
                 enemysData[i].transform.localPosition.x - 120, enemysData[i].transform.localPosition.y);
-            enemyImage[i].sprite = Resources.Load<Sprite>("Sprite/UI/Icon/UnitPortrait/" + enemyName[i]);
+            enemyImage[i].sprite = SpriteManager.Instance.GetSprite(PackingType.UI, enemyName[i]);
             enemyDescription[i].text = JsonManager.instance.GetDescription(enemyName[i]);
 
         }

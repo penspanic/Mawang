@@ -44,7 +44,10 @@ public class Title : MonoBehaviour
     public void OnScreenTouched()
     {
         if (panel.isShowing)
+        {
+            panel.ShowPanel();
             return;
+        }
         TouchProcess();
     }
 

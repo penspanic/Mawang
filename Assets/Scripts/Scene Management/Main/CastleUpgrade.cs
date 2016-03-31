@@ -21,7 +21,7 @@ public class CastleUpgrade : MonoBehaviour
     };
     // 증가하는 업그레이드 수치
     public static readonly int[] upgradeIncreaseValues = new int[3]{
-        100, 10, 10
+        100, 20, 10
     };
 
     public Text remainingPointText; // 남은 포인트 텍스트
