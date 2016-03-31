@@ -155,7 +155,6 @@ public class TutorialManager : Singleton<TutorialManager>
                     case 3: // 라인누를때
                         spawnMgr.TrySpawnOurForce(skeleton, 2);
                         selectTab.ResetButton();
-                        //  selectTab.LineSetActive(false);
 
                         Time.timeScale = 1;
                         while (Time.timeScale == 1)
@@ -254,8 +253,23 @@ public class TutorialManager : Singleton<TutorialManager>
 
             #endregion
 
+
+
+            float waitTime;
+
+            if (tutoIdx == 4 || tutoIdx == 6 || tutoIdx == 8)
+                waitTime = 0.0f;
+            else
+                waitTime = 2.0f;
+
             while (!isTouch)
             {
+                while(waitTime < 1.3f)
+                {
+                    Debug.Log("waiting... : "+ tutoIdx);
+                    waitTime += 0.016f;
+                    yield return null;
+                }
                 if (Input.GetMouseButtonDown(0) && OnPointerDown(isAnyTouch))
                 {
                     isTouch = true;

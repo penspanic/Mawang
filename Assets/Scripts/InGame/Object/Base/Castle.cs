@@ -10,6 +10,7 @@ public class Castle : ObjectBase
 
     GameManager gameMgr;
     protected SpriteRenderer spr;
+    private Vector3 addRange;
 
     protected override void Awake()
     {
@@ -18,6 +19,11 @@ public class Castle : ObjectBase
         front   =   transform.FindChild("Front").GetComponent<SpriteRenderer>();
         spr     =   this.GetComponent<SpriteRenderer>();
 
+        if (isOurForce)
+            addRange = Vector3.left;
+        else
+            addRange = Vector3.right;
+         
         StartCoroutine(CastleProcess());
     }
 
@@ -45,8 +51,8 @@ public class Castle : ObjectBase
 
     private void CoveringCastle()
     {
-        if (battleMgr.SelectInRange(battleMgr.GetOpposite(!isOurForce), transform.position, 0.8f).Count != 0)
-            currAlpha -= Time.deltaTime * 0.4f;
+        if (battleMgr.SelectInRange(battleMgr.GetOpposite(!isOurForce), transform.position + addRange, 0.8f).Count != 0)
+            currAlpha -= Time.deltaTime * 5f;
         else
             currAlpha += Time.deltaTime * 3f;
 
