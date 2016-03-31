@@ -226,6 +226,13 @@ public class TutorialManager : Singleton<TutorialManager>
                         waitTime = 0.0f;
                         Time.timeScale = 1;
                         castle.OnTouch();
+                        float currTime = 0.0f;
+                        while (currTime< 1.0f)
+                        {
+                            currTime += Time.unscaledDeltaTime;
+                            yield return null;
+                        }
+                        Time.timeScale = 0;
                         break;
                 }
             }
