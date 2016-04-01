@@ -54,7 +54,7 @@ public class Main_Book : MonoBehaviour
             newUnit.SetSortingLayer("UI Over");
 
             // Color Set
-            if(!PlayerData.instance.playerUnitList.Contains(eachUnit.name)) // 캐릭터를 보유하고 있지 않을 때
+            if (!PlayerData.instance.playerUnitList.Contains(eachUnit.name)) // 캐릭터를 보유하고 있지 않을 때
             {
                 SpriteRenderer[] sprs = newUnit.GetSprs();
                 for (int i = 0; i < sprs.Length; i++)
@@ -110,7 +110,6 @@ public class Main_Book : MonoBehaviour
 
     public void OnCloseButtonDown()
     {
-        selectedIndex = 0;
         this.gameObject.SetActive(false);
     }
 }
