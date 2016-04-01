@@ -8,6 +8,8 @@ public class DefenseItem : ItemBase
     const int durationTime = 10;
     const float defensivePower = 1f;
 
+    Coroutine effectCoroutine;
+
     protected override void Awake()
     {
         base.Awake();
@@ -22,19 +24,19 @@ public class DefenseItem : ItemBase
         if(isUsing) // 사용중일 때에는 지속시간만 초기화
         {
             msgBox.PushMessage("지속시간이 초기화되었습니다.");
-            StopCoroutine(ItemEffect());
-            StartCoroutine(ItemEffect());
+            StopCoroutine(effectCoroutine);
+            effectCoroutine = StartCoroutine(ItemEffect());
         }
         else
         {
-            isUsing = true;
             msgBox.PushMessage(message);
-            StartCoroutine(ItemEffect());
+            effectCoroutine = StartCoroutine(ItemEffect());
         }
     }
 
     IEnumerator ItemEffect()
     {
+        isUsing = true;
         satanCastle.SetDefensivePower(defensivePower);
         
         yield return new WaitForSeconds(durationTime);

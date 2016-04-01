@@ -36,8 +36,8 @@
 	  "BuffDuration" : 0.7
     },
 	"C1S2": {
-      "Interval" : 6.5,
-	  "EarlyTimeInterval" : 6.5,
+      "Interval" : 8.5,
+	  "EarlyTimeInterval" : 5.5,
 	  "EarlyTimePatternCnt" : 5,
       "EnemyPattern" :
       ["P1A2","P2A2"],
@@ -45,8 +45,8 @@
 	  "BuffDuration" : 0.7
     },
 	"C1S3": {
-      "Interval" : 6.5,
-	  "EarlyTimeInterval" : 6.5,
+      "Interval" : 7.5,
+	  "EarlyTimeInterval" : 6,
 	  "EarlyTimePatternCnt" : 5,
       "EnemyPattern" :
       ["1P","P1A1S1","P1A2","P1A3"],
@@ -63,8 +63,8 @@
 	  "BuffDuration" : 0.7
     },
 	"C2S2": {
-      "Interval" : 15.0,
-	  "EarlyTimeInterval" : 20,
+      "Interval" : 14,
+	  "EarlyTimeInterval" : 10,
 	  "EarlyTimePatternCnt" : 1,
       "EnemyPattern" :
       ["1P","1P5A6","P1A1S2","1P6S3"],
@@ -82,16 +82,16 @@
     },
 		"C3S1": {
       "Interval" : 10,
-	  "EarlyTimeInterval" : 10,
-	  "EarlyTimePatternCnt" : 2,
+	  "EarlyTimeInterval" : 9,
+	  "EarlyTimePatternCnt" : 3,
       "EnemyPattern" :
       ["P1B1","P1A1","1P"],
 	  "PrincessCoolTime" : 50,
 	  "BuffDuration" : 0.7
     },
 		"C3S2": {
-      "Interval" : 11,
-	  "EarlyTimeInterval" : 15,
+      "Interval" : 15,
+	  "EarlyTimeInterval" : 12,
 	  "EarlyTimePatternCnt" : 3,
       "EnemyPattern" :
       ["P1A1S1B1","1P2A3S1"],
@@ -99,11 +99,11 @@
 	  "BuffDuration" : 0.7
     },
 		"C3S3": {
-      "Interval" : 12,
-	  "EarlyTimeInterval" : 13,
-	  "EarlyTimePatternCnt" : 3,
+      "Interval" : 20,
+	  "EarlyTimeInterval" : 10,
+	  "EarlyTimePatternCnt" : 2,
       "EnemyPattern" :
-      ["1P","P1B1","P1A1","1S"],
+      ["1A6B3","1P3A4S3B3"],
 	  "PrincessCoolTime" : 50,
 	  "BuffDuration" : 0.7
     }

@@ -118,7 +118,7 @@ public class StageSelect : MonoBehaviour
 
     void ChangeScene(string sceneName)
     {
-        StartCoroutine(SceneFader.Instance.FadeOut(1f, sceneName));
+        StartCoroutine(SceneFader.Instance.FadeOut(0.6f, sceneName));
         StartCoroutine(SceneFader.Instance.SoundFadeOut(1f, GameObject.FindObjectsOfType<AudioSource>()));
     }
 

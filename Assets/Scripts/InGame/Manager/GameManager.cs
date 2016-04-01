@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         PlayerData.instance.CheckInstance();
         GameEventManager.instance.CheckInstance();
 
-        StartCoroutine(SceneFader.Instance.FadeIn(1f));
+        StartCoroutine(SceneFader.Instance.FadeIn(0.6f));
         GameObject.FindObjectOfType<SceneFader>().transform.SetParent(Camera.main.transform, true);
 
 
@@ -216,7 +216,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         Time.timeScale = 1f;
-        StartCoroutine(SceneFader.Instance.FadeOut(1f, "Main"));
+        StartCoroutine(SceneFader.Instance.FadeOut(0.6f, "Main"));
     }
 
     public void CastleDestroyed(Castle castle)

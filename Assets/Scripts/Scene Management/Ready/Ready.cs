@@ -20,7 +20,7 @@ public class Ready : MonoBehaviour
     IEnumerator FadeIn()
     {
         isChanging = true;
-        StartCoroutine(SceneFader.Instance.FadeIn(1f));
+        StartCoroutine(SceneFader.Instance.FadeIn(0.6f));
         yield return new WaitForSeconds(1f);
         isChanging = false;
     }
@@ -65,7 +65,7 @@ public class Ready : MonoBehaviour
 
     void ChangeScene(string sceneName)
     {
-        StartCoroutine(SceneFader.Instance.FadeOut(1f, sceneName));
+        StartCoroutine(SceneFader.Instance.FadeOut(0.6f, sceneName));
         StartCoroutine(SceneFader.Instance.SoundFadeOut(1f, GameObject.FindObjectsOfType<AudioSource>()));
     }
 

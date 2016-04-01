@@ -61,7 +61,7 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1;
         ButtonSound.PlaySound(ButtonSound.SoundType.BackSound);
 
-        StartCoroutine(SceneFader.Instance.FadeOut(1f, "Main"));
+        StartCoroutine(SceneFader.Instance.FadeOut(0.6f, "Main"));
 
     }
     public void RetryButtonDown()
@@ -74,7 +74,7 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1;
         ButtonSound.PlaySound(ButtonSound.SoundType.BasicSound);
 
-        StartCoroutine(SceneFader.Instance.FadeOut(1f, "InGame"));
+        StartCoroutine(SceneFader.Instance.FadeOut(0.6f, "InGame"));
     }
 }
 

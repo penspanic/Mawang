@@ -208,7 +208,7 @@ public class Main : MonoBehaviour
     void GameStart()
     {
         isChanging = true;
-        StartCoroutine(SceneFader.Instance.FadeOut(1f, "StageSelect"));
+        StartCoroutine(SceneFader.Instance.FadeOut(0.6f, "StageSelect"));
         StartCoroutine(SceneFader.Instance.SoundFadeOut(1f, GameObject.FindObjectsOfType<AudioSource>()));
     }
 }

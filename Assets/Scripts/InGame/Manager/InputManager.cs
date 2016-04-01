@@ -90,7 +90,7 @@ public class InputManager : MonoBehaviour
                         {
                             // 오브젝트가 아군이나 적군일때 ( 성 포함 )
                             if (hitObj.CompareTag("OurForce") && selectTab.isSelected)
-                                return;
+                                continue;
 
                             hitObj.GetComponent<ITouchable>().OnTouch();
                         }

@@ -15,6 +15,6 @@ public class Logo : MonoBehaviour
         logoAnimator.enabled = true;
         yield return new WaitForSeconds(2f);
 
-        StartCoroutine(SceneFader.Instance.FadeOut(1.5f, "Title"));
+        StartCoroutine(SceneFader.Instance.FadeOut(0.6f, "Title"));
     }
 }

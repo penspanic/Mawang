@@ -37,7 +37,7 @@ public class Title : MonoBehaviour
         isChanging = true;
         StopCoroutine(Twinkle());
         touchTheScreen.SetActive(false);
-        StartCoroutine(SceneFader.Instance.FadeOut(1f, "Main"));
+        StartCoroutine(SceneFader.Instance.FadeOut(0.6f, "Main"));
         StartCoroutine(SceneFader.Instance.SoundFadeOut(1f, GameObject.FindObjectsOfType<AudioSource>()));
     }
 
