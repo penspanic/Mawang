@@ -65,7 +65,6 @@ public class CastleInfo : MonoBehaviour
         isMoving = true;
         animator.Play("Castle Info Fall");
         ResetInfo();
-        main.BlurBackground(true);
     }
 
     public void OnMoveEnd()

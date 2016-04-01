@@ -67,7 +67,7 @@ public class GoldManager : MonoBehaviour
         upgradeCostText.text = goldUpgradeCost.ToString();
 
         if (goldUpgradeStep == MaxUpgradeStep)
-            upgradeCostText.text = "MAX";
+            upgradeCostText.text = "Max";
     }
     public void GoldUpgrade()
     {

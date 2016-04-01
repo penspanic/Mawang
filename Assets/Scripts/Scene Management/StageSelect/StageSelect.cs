@@ -30,6 +30,7 @@ public class StageSelect : MonoBehaviour
 
         ButtonSet();
         GameObject.FindObjectOfType<SceneFader>().transform.SetParent(Camera.main.transform, true);
+        GameObject.FindObjectOfType<SceneFader>().transform.localPosition = new Vector3(0, 0, 10);
     }
 
     IEnumerator FadeIn()

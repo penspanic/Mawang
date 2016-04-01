@@ -174,7 +174,6 @@ public class CastleUpgrade : MonoBehaviour
         isShowing = true;
         isMoving = true;
         animator.Play("Castle Upgrade Fall");
-        main.BlurBackground(true);
     }
     
     public static int GetUpgradeIncreaseValue(string name)

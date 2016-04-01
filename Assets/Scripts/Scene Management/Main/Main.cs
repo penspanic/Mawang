@@ -122,29 +122,6 @@ public class Main : MonoBehaviour
         StartCoroutine(ShowAppRatingProcess());
     }
 
-    public void BlurBackground(bool isBlear)
-    {
-        StartCoroutine(BlurProcess(isBlear));
-    }
-
-    IEnumerator BlurProcess(bool isBlear)
-    {
-        float elapsedTime = 0f;
-        const float blurTime = 1f;
-        const float maxBlur = 3f;
-
-        while (elapsedTime < blurTime)
-        {
-            elapsedTime += Time.deltaTime;
-            float blurValue = isBlear ? EasingUtil.easeInOutQuint(0, maxBlur, elapsedTime / blurTime) : EasingUtil.easeInOutQuint(maxBlur, 0, elapsedTime / blurTime);
-
-            //blurCtrl.SetValue(blurValue);
-
-            yield return null;
-        }
-        //blurCtrl.SetValue(isBlear ? maxBlur : 0);
-    }
-
     IEnumerator ExplainCastleUpgrade()
     {
         
