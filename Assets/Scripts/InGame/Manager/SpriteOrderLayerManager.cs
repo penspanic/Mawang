@@ -7,7 +7,7 @@ public class SpriteOrderLayerManager : MonoBehaviour
     BattleManager battleMgr;
     List<ObjectBase> allList = new List<ObjectBase>();
     List<ObjectBase> lineListArr = new List<ObjectBase>();
-    int orderInterval   =   6;
+    int orderInterval   =   12;
     
     Queue<int> deathOrderQueue = new Queue<int>();
 
