@@ -59,7 +59,7 @@
     "Cost": 30
   },
   "Freeze": {
-    "Description": "적 유닛 5초간 정지, 일정 확률로 동상이 된다",
+    "Description": "적 유닛 5초간 정지",
     "Cost": 40
   },
   "Defense": {
