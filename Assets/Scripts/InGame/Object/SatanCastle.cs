@@ -46,6 +46,7 @@ public class SatanCastle : Castle
 
         
     }
+
     void Start()
     {
         StartCoroutine(SkillProcess());
@@ -145,4 +146,3 @@ public class SatanCastle : Castle
         UseSkill();
     }
 }
-

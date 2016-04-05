@@ -22,7 +22,16 @@ public class Castle : ObjectBase
         if (isOurForce)
             addRange = Vector3.left;
         else
+        {
             addRange = Vector3.right;
+
+            // 스테이지 뒤로 갈수록 체력 100증가
+            string stage = PlayerData.instance.selectedStage;
+            int stageNum = int.Parse(stage[1].ToString()) * 3;
+            stageNum += int.Parse(stage[3].ToString());
+            maxHP += 100 * stageNum;
+            hp = maxHP;
+        }
          
         StartCoroutine(CastleProcess());
     }

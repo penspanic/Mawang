@@ -284,6 +284,7 @@ public class PlayerData : MonoBehaviour
             return "C" + chapter.ToString() + "S" + (stage + 1).ToString();
         }
     }
+
     public bool PurchaseItem(string name, int cost)
     {
         if (obsidian - cost >= 0)
