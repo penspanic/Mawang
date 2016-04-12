@@ -33,8 +33,8 @@ public class SpriteOrderLayerManager : MonoBehaviour
 
         lineListArr.Sort((a, b) =>
         {
-            float A = a.transform.position.y;
-            float B = b.transform.position.y;
+            float A = a.transform.position.y + a.GetComponent<Movable>().GetAdjustPos().y;
+            float B = b.transform.position.y + a.GetComponent<Movable>().GetAdjustPos().y;
 
             if (A < B)
                 return 1;

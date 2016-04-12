@@ -37,6 +37,9 @@ public class ObjectBase : MonoBehaviour
         protected set;
     }
 
+    /// <summary>
+    /// Line : 1, 2, 3
+    /// </summary>
     public int line
     {
         get;

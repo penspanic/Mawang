@@ -168,7 +168,9 @@ public class GameManager : MonoBehaviour
         float randPosY = ((isDefenceTurn ? spawnLine-1 : randLine - 1)) * -1.2f;
 
         Instantiate(stagePatternList[rand], new Vector3(19, randPosY, 0), new Quaternion());
-        orderMgr.UpdateOrder(randLine);
+
+        for (int i = 1; i <= 3; i++)
+            orderMgr.UpdateOrder(i);
 
         isDefenceTurn = !isDefenceTurn;
     }

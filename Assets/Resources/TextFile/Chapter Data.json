@@ -1,24 +1,24 @@
 ﻿{
     "C0": {
-        "Chapter Name": "Tutorial Chapter",
+        "Chapter Name": "동화 왕국",
         "Chapter Description": "오랜 평화의 역사를 자랑하던 동화 왕국.",
         "Skill Name": "공주의 울음",
         "Skill Description": "어마어마한 울음소리로 마왕군의 공격력이 감소한다."
     },
     "C1": {
-        "Chapter Name": "Chapter 1",
+        "Chapter Name": "장미 왕국",
         "Chapter Description": "여성 중심으로 유명한 장미 왕국.\n일처다부제가 특징이다.",
         "Skill Name": "장미향 살포",
         "Skill Description": "싱그러운 자연의 기운으로 적군과 아군 모두 체력이 회복된다."
     },
     "C2": {
-        "Chapter Name": "Chapter 2",
+        "Chapter Name": "과자 왕국",
         "Chapter Description": "집들도 성들도 전부 과자로 만들어져 있다는 소문이 있다.",
-        "Skill Name": "공주의 난동",
+        "Skill Name": "공주의 배고픔",
         "Skill Description": "배고픈 공주가 먹을 것을 찾아 성을 파괴한다."
     },
     "C3": {
-        "Chapter Name": "Chapter 3",
+        "Chapter Name": "동양 왕국",
         "Chapter Description": "신비롭고 강력한 동양 왕국.\n공주가 최근 흑마법에 미쳐있다고 한다.",
         "Skill Name": "공주의 흑마법",
         "Skill Description": "어째서인지 아군의 체력이 회복된다."

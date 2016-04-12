@@ -22,9 +22,12 @@ public class ChapterInfo : MonoBehaviour
     public Text skillDescriptionText;
 
     ChapterData selectedChapterData;
+
+    TipUI tipUI;
     void Awake()
     {
         stageSelect = GameObject.FindObjectOfType<StageSelect>();
+        tipUI = GameObject.FindObjectOfType<TipUI>();
         JsonManager.instance.CheckInstance();
     }
 
@@ -43,6 +46,7 @@ public class ChapterInfo : MonoBehaviour
         {
             isShowing = true;
             gameObject.SetActive(true);
+            tipUI.gameObject.SetActive(false);
             selectedChapterData = JsonManager.instance.GetChapterData(chapterName);
 
             princessIllust.sprite = SpriteManager.Instance.GetSprite(PackingType.Princess, chapterName + "_L");
@@ -61,6 +65,7 @@ public class ChapterInfo : MonoBehaviour
         {
             isShowing = false;
             gameObject.SetActive(false);
+            tipUI.gameObject.SetActive(true);
         }
     }
 }

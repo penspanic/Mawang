@@ -16,7 +16,7 @@ public class AppRatingPopup : MonoBehaviour
     public void AcceptButtonDown()
     {
         PlayerData.instance.appRated = true;
-        Application.OpenURL("market://search?q=pname:com.nerdgroup.WarControlPro");
+        Application.OpenURL("market://search?q=pname:com.advergamekorea.mawang");
         gameObject.SetActive(false);
     }
 
