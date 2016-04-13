@@ -1,7 +1,7 @@
 # Mawang
 마왕의 그녀들
 
-4월 초 출시 예정
+다운로드 링크 : https://play.google.com/store/apps/details?id=com.advergamekorea.mawang
 
 기획       : 공동 기획
 
