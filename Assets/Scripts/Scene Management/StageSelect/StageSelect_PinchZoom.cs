@@ -1,10 +1,22 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
-public class PinchZoom : MonoBehaviour
+public class StageSelect_PinchZoom : MonoBehaviour
 {
     public float perspectiveZoomSpeed;     // The rate of change of the field of view in perspective mode.
     public float orthoZoomSpeed;           // The rate of change of the orthographic size in orthographic mode.
 
+    public float ratio
+    {
+        get;
+        private set;
+    }
+
+    Vector3 cameraOriginalScale;
+    void Awake()
+    {
+        cameraOriginalScale = Camera.main.transform.localScale;
+    }
 
     void Update()
     {
@@ -26,25 +38,16 @@ public class PinchZoom : MonoBehaviour
             // Find the difference in the distances between each frame.
             float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
 
-            // If the camera is orthographic...
-            if (Camera.main.orthographic)
-            {
-                // ... change the orthographic size based on the change in distance between the touches.
-                Camera.main.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
 
-                // Make sure the orthographic size never drops below zero.
-                Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize, 3.6f);
+            Camera.main.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
 
-                Camera.main.orthographicSize = Mathf.Min(Camera.main.orthographicSize, 7.2f);
-            }
-            else
-            {
-                // Otherwise change the field of view based on the change in distance between the touches.
-                Camera.main.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
+            // Make sure the orthographic size never drops below zero.
+            Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize, 3.6f);
 
-                // Clamp the field of view to make sure it's between 0 and 180.
-                Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 0.1f, 179.9f);
-            }
+            Camera.main.orthographicSize = Mathf.Min(Camera.main.orthographicSize, 7.2f);
         }
+
+        ratio = Camera.main.orthographicSize / 3.6f;
+        Camera.main.transform.localScale = ratio * cameraOriginalScale;
     }
 }
