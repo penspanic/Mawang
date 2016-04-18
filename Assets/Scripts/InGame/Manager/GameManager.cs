@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     SpriteOrderLayerManager orderMgr;
     BattleManager   battleMgr;
     Pause pauseUI;
-    
+    UnitInfo[] currUnits;
 
     void Awake()
     {
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         stage = PlayerData.instance.selectedStage;
 
         StagePattern pattern = JsonManager.instance.GetStagePattern(stage);
-
+        currUnits = JsonManager.instance.GetCurrChaterUnit(PlayerData.instance.selectedStage[1].ToString());
 
         unitSpawnInterval = pattern.interval;
         unitSpawnEarlyTime = pattern.earlyTimeInterval;
@@ -78,9 +78,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < pattern.patternsName.Length; i++)
         {
             stagePatternList.Add(
-                Resources.Load<GameObject>("Prefabs/Enemy Pattern/" + stage[1] + "/" + pattern.patternsName[i]));
+                Resources.Load<GameObject>("Prefabs/Enemy Pattern/" + pattern.patternsName[i]));
         }
-
     }
 
     IEnumerator StageSpawnLoop()
@@ -167,7 +166,16 @@ public class GameManager : MonoBehaviour
 
         float randPosY = ((isDefenceTurn ? spawnLine-1 : randLine - 1)) * -1.2f;
 
-        Instantiate(stagePatternList[rand], new Vector3(19, randPosY, 0), new Quaternion());
+        GameObject parent = Instantiate(stagePatternList[rand], new Vector3(19, randPosY, 0), new Quaternion()) as GameObject;
+
+        for (int j = 0; j < parent.transform.childCount; ++j)
+        {
+            for (int k = 0; k < currUnits.Length; ++k)
+            {
+                if (parent.transform.GetChild(j).name.Contains(currUnits[k].unitName))
+                    parent.transform.GetChild(j).GetComponent<Movable>().SetStat(currUnits[k]);
+            }
+        }
 
         for (int i = 1; i <= 3; i++)
             orderMgr.UpdateOrder(i);

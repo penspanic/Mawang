@@ -138,6 +138,18 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     }
 
 
+    public void SetStat(UnitInfo info)
+    {
+        Debug.Log(info.HealthPoint);
+        attackDamage = info.AttackDamage;
+        attackSpeed  = info.AttackSpeed;
+        maxHP        = info.HealthPoint;
+        moveSpeed    = info.MoveSpeed;
+        canHitNum    = info.HitNum;
+
+        hp = maxHP;
+    }
+
     protected virtual IEnumerator UnitProcess()
     {
         while (!isDestroyed)

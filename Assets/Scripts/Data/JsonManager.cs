@@ -22,9 +22,29 @@ public struct StagePattern
     public float earlyTimeInterval;
     public float earlyTimePatternCnt;
 }
+
+public struct UnitInfo
+{
+    public UnitInfo(string name, float AS, float MS, int AD, int HP, int HN)
+    {
+        unitName        = name;
+        AttackSpeed     = AS;
+        MoveSpeed       = MS;
+        AttackDamage    = AD;
+        HealthPoint     = HP;
+        HitNum          = HN;
+    }
+    public string unitName;
+    public float AttackSpeed;
+    public float MoveSpeed;
+    public int AttackDamage;
+    public int HealthPoint;
+    public int HitNum;
+}
 public class JsonManager : MonoBehaviour
 {
     TextAsset objectDataJson;
+    TextAsset unitDataJson;
     TextAsset stageDataJson;
     TextAsset stageDesignDataJson;
     TextAsset princessScriptJson;
@@ -48,6 +68,7 @@ public class JsonManager : MonoBehaviour
 
 
     public JsonData objectData { get; private set; }
+    public JsonData unitData { get; private set; }
     public JsonData stageData { get; private set; }
     public JsonData stageDesignData { get; private set; }
     public JsonData princessScript { get; private set; }
@@ -56,7 +77,6 @@ public class JsonManager : MonoBehaviour
 
     public void CheckInstance()
     {
-
     }
 
     void Awake()
@@ -67,17 +87,17 @@ public class JsonManager : MonoBehaviour
         stageDesignDataJson = Resources.Load<TextAsset>("TextFile/Stage Design");
         princessScriptJson  = Resources.Load<TextAsset>("TextFile/Princess Script");
         chapterDataJson     = Resources.Load<TextAsset>("TextFile/Chapter Data");
+        unitDataJson        = Resources.Load<TextAsset>("TextFile/Stage Unit");
 
-
-        
         stageData           =   JsonMapper.ToObject(stageDataJson.text);
         stageDesignData     =   JsonMapper.ToObject(stageDesignDataJson.text);
         objectData          =   JsonMapper.ToObject(objectDataJson.text);
         princessScript      =   JsonMapper.ToObject(princessScriptJson.text);
         chapterData         =   JsonMapper.ToObject(chapterDataJson.text);
-
+        unitData            =   JsonMapper.ToObject(unitDataJson.text);
     }
 
+    #region GetObjData 
     public string GetKoreanName(string name)
     {
         return objectData[name]["Korean Name"].ToString();
@@ -97,7 +117,28 @@ public class JsonManager : MonoBehaviour
     {
         return (int)objectData[name]["Cost"];
     }
+    public string GetType(string name)
+    {
+        return objectData[name]["Type"].ToString();
+    }
+    #endregion
 
+    public UnitInfo[] GetCurrChaterUnit(string chapter)
+    {
+        JsonData unitsInfo = unitData["C" + chapter]["Units"];
+        UnitInfo[] units = new UnitInfo[unitsInfo.Count];
+
+        for (int i = 0; i < units.Length; ++i)
+        {
+            units[i].unitName       = unitsInfo[i]["Name"].ToString();
+            units[i].AttackDamage   = int.Parse(unitsInfo[i]["AD"].ToString());
+            units[i].AttackSpeed    = float.Parse(unitsInfo[i]["AS"].ToString());
+            units[i].HitNum         = int.Parse(unitsInfo[i]["HN"].ToString());
+            units[i].HealthPoint    = int.Parse(unitsInfo[i]["HP"].ToString());
+            units[i].MoveSpeed      = float.Parse(unitsInfo[i]["MS"].ToString());
+        }
+        return units;
+    }
     public StagePattern GetStagePattern(string stage)
     {
         //string[] patternsName = (string[])stageDesignData[stage]["EnemyPatttern"];
@@ -117,10 +158,8 @@ public class JsonManager : MonoBehaviour
         return new StagePattern(patternList.ToArray(), interval, princessCoolTime, buffDuration,earlyTimeInterval,earlyTimePatternCnt);
     }
 
-    public string GetType(string name)
-    {
-        return objectData[name]["Type"].ToString();
-    }
+
+
     public string[] GetAppearEnemyName(string stageName) // 해당 스테이지에서 등장하는 적 이름 리턴
     {
         JsonData currStageData = stageData[stageName];
