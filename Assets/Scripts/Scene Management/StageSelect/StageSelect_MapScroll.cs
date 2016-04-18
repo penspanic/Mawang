@@ -21,7 +21,7 @@ public class StageSelect_MapScroll : MonoBehaviour
 
     void Update()
     {
-        if (!background.backgroundTouched || Input.touchCount >=2)
+        if (!background.backgroundTouched || Input.touchCount >= 2)
         {
             prevMouseDown = false;
             return;
@@ -41,7 +41,6 @@ public class StageSelect_MapScroll : MonoBehaviour
             transform.position = newPos;
 
             prevMouseDown = true;
-            Debug.Log(GetMaxPosX());
         }
         if (Input.GetMouseButton(0))
             prevMouseDown = true;
@@ -65,6 +64,6 @@ public class StageSelect_MapScroll : MonoBehaviour
 
     float GetMinPosY()
     {
-        return 0f - (1f - pinchZoom.ratio) * 3.6f; 
+        return 0f - (1f - pinchZoom.ratio) * 3.6f;
     }
 }

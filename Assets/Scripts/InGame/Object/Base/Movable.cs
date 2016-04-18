@@ -140,7 +140,6 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
     public void SetStat(UnitInfo info)
     {
-        Debug.Log(info.HealthPoint);
         attackDamage = info.AttackDamage;
         attackSpeed  = info.AttackSpeed;
         maxHP        = info.HealthPoint;

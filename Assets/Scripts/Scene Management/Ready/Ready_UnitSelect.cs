@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class Ready_UnitSelect : MonoBehaviour
 {
     public ListView unitView;
-    public Sprite checkedSprite;
 
     //public GameObject unitMaxPopUp;
     public GameObject unitSelectButton;
@@ -41,18 +40,15 @@ public class Ready_UnitSelect : MonoBehaviour
         Button newButton;
         for (int i = 0; i < unitNameList.Count; i++)
         {
-            portrait    =   SpriteManager.Instance.GetSprite(PackingType.UI, unitNameList[i]);
-            newButton   =   unitView.GetItem(i).GetComponent<Button>();
+            portrait = SpriteManager.Instance.GetSprite(PackingType.UI, unitNameList[i]);
+            newButton = unitView.GetItem(i).GetComponent<Button>();
             newButton.image.sprite = portrait;
 
             int param = i;
             newButton.onClick.AddListener(() => OnUnitButtonDown(param));
             unitButtonList.Add(newButton);
 
-            Image checkedImage = new GameObject().AddComponent<Image>();
-            checkedImage.sprite = checkedSprite;
-            checkedImage.enabled = false;
-            checkedImage.transform.SetParent(newButton.transform, false);
+            Image checkedImage = newButton.transform.FindChild("Check").GetComponent<Image>();
             checkedImageList.Add(checkedImage);
         }
         unitButtons = unitButtonList.ToArray();
@@ -62,7 +58,10 @@ public class Ready_UnitSelect : MonoBehaviour
     int selectedUnitIndex;
     public void OnUnitButtonDown(int index) // 현재 유닛 설정
     {
+        checkedImages[selectedUnitIndex].enabled = false;
+
         selectedUnitIndex = index;
+        checkedImages[selectedUnitIndex].enabled = true;
         unitDescription.text = JsonManager.instance.GetKoreanName(unitNameList[index]) + "\n\n" +
             JsonManager.instance.GetDescription(unitNameList[index]);
 

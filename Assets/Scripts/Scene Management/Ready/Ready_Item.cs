@@ -7,10 +7,12 @@ using System.Collections.Generic;
 public class Ready_Item : MonoBehaviour
 {
     public Button[] itemButtons;
+    public Image[] checkImages;
     public Text[] itemAmountTexts;
     public Button buyButton;
     public Text itemDescriptionText;
     public Text obsidianText;
+
 
     Ready ready;
 
@@ -44,7 +46,9 @@ public class Ready_Item : MonoBehaviour
     }
     public void OnItemButtonDown(int index)
     {
+        checkImages[selectedIndex].enabled = false;
         selectedIndex = index;
+        checkImages[selectedIndex].enabled = true;
         itemDescriptionText.text = "가격 : " + itemsCost[index].ToString() + "\n\n" + itemsDescription[index];
 
         if (PlayerData.instance.obsidian - itemsCost[index] >= 0)

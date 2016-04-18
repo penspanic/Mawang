@@ -14,6 +14,7 @@ public class SatanCastle : Castle
     private int skillCnt;
 
     private Image castlePortrait;
+    private Image castleWhite;
 
     protected override void Awake()
     {
@@ -21,8 +22,10 @@ public class SatanCastle : Castle
         PlayerData.instance.CheckInstance();
 
         castlePortrait = GameObject.Find("Castle Image").GetComponent<Image>();
+        castleWhite = GameObject.Find("Castle White").GetComponent<Image>();
         Image castleGrayImage = GameObject.Find("Castle Gray").GetComponent<Image>();
-        Sprite castleIconSprite = SpriteManager.Instance.GetSprite(PackingType.UI,"Castle_Lv" + CastleInfo.GetCastleLevel().ToString());
+        //Sprite castleIconSprite = SpriteManager.Instance.GetSprite(PackingType.UI,"Castle_Lv" + CastleInfo.GetCastleLevel().ToString());
+        Sprite castleIconSprite = Resources.Load<Sprite>("Sprite/UI/InGame/castle_lv" + CastleInfo.GetCastleLevel().ToString());
 
         Image starImage = GameObject.Find("Star").GetComponent<Image>();
         starImage.sprite = SpriteManager.Instance.GetSprite(PackingType.UI, "Star_" + CastleInfo.GetCastleLevel().ToString());
@@ -44,7 +47,7 @@ public class SatanCastle : Castle
 
         skillButton.onClick.AddListener(OnTouch);
 
-        
+
     }
 
     void Start()
@@ -106,8 +109,21 @@ public class SatanCastle : Castle
             }
             yield return null;
         }
-
+        StartCoroutine(SkillTwinkle());
     }
+
+    IEnumerator SkillTwinkle()
+    {
+        float elapsedTime = 0f;
+        while (canUseSkill)
+        {
+            elapsedTime += Time.deltaTime;
+            castleWhite.color = new Color(1, 1, 1, (Mathf.Sin((elapsedTime - 1.57f) * 5f) * 0.5f + 0.5f) * 0.3f);
+            yield return null;
+        }
+        castleWhite.color = new Color(1, 1, 1, 0);
+    }
+
     void CheckTuto()
     {
         if (PlayerData.instance.selectedStage == "C0S1")

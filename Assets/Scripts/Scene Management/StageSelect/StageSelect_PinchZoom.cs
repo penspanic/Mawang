@@ -13,6 +13,9 @@ public class StageSelect_PinchZoom : MonoBehaviour
     }
 
     Vector3 cameraOriginalScale;
+    float prevOrthoSize;
+    readonly Vector2 mapCenter = new Vector2(6.4f, 3.6f);
+
     void Awake()
     {
         cameraOriginalScale = Camera.main.transform.localScale;
@@ -41,13 +44,21 @@ public class StageSelect_PinchZoom : MonoBehaviour
 
             Camera.main.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
 
-            // Make sure the orthographic size never drops below zero.
             Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize, 3.6f);
-
             Camera.main.orthographicSize = Mathf.Min(Camera.main.orthographicSize, 7.2f);
+
+            if (prevOrthoSize < Camera.main.orthographicSize)
+            {
+                Vector2 centerDistance = mapCenter - new Vector2(transform.position.x, transform.position.y);
+                float increasedSize = Camera.main.orthographicSize - prevOrthoSize;
+
+                transform.Translate(centerDistance * increasedSize);
+            }
         }
 
         ratio = Camera.main.orthographicSize / 3.6f;
+        prevOrthoSize = Camera.main.orthographicSize;
+
         Camera.main.transform.localScale = ratio * cameraOriginalScale;
     }
 }

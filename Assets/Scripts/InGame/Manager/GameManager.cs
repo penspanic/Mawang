@@ -212,8 +212,8 @@ public class GameManager : MonoBehaviour
     IEnumerator TouchToMain()
     {
         // 터치 대기시간 
-        float currTime = 0.0f;
-        float waitTime = 1;
+        float currTime = 0f;
+        float waitTime = 2f;
         while(currTime <= waitTime)
         {
             currTime += Time.unscaledDeltaTime;
