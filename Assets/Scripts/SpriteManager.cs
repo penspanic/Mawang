@@ -35,7 +35,7 @@ public class SpriteManager : Singleton<SpriteManager>
         }
 
         if (returnSpr == null)
-            Debug.Log("this sprName is none");
+            Debug.Log(sprName + " is none");
 
         return returnSpr;
     }

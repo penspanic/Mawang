@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         // tutorialMgr     =   GameObject.FindObjectOfType<TutorialManager>();
         orderMgr        =   FindObjectOfType<SpriteOrderLayerManager>();
         battleMgr       =   FindObjectOfType<BattleManager>();
+        bgmMgr          =   FindObjectOfType<BgmManager>();
         isRun           =   true;
         pauseUI         =   FindObjectOfType<Pause>();
         isDefenceTurn   =   true;
@@ -204,6 +205,7 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
+        bgmMgr.Pause();
         gameOver.SetActive(true);
         StartCoroutine(TouchToMain());
     }

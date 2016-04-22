@@ -77,6 +77,7 @@ public class JsonManager : MonoBehaviour
 
     public void CheckInstance()
     {
+
     }
 
     void Awake()
