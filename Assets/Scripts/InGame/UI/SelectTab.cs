@@ -127,8 +127,6 @@ public class SelectTab : MonoBehaviour
                 prevIdx = idx;
             }
         }
-
-
     }
 
     public void LineSetActive(bool set)
@@ -161,6 +159,13 @@ public class SelectTab : MonoBehaviour
         if (isMoving)
             return;
         roseButtonEffectSource.Play();
+        
+        if(isSelected)
+        {
+            isSelected = false;
+            unitButtonList[prevIdx].color = Color.white;
+            LineSetActive(false);
+        }
 
         StartCoroutine(RotateSelectTab());
     }

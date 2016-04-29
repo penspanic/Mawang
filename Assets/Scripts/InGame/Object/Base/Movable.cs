@@ -13,7 +13,9 @@ public enum MovableState
 
 
 /// <summary>
-/// 죽을땐 MovableState.Death 를바꾼다.
+/// 움직이는 유닛들은 이 클래스를 상속받거나 사용한다.
+///             
+/// 죽을땐 MovableState.Death 를 바꾼다.
 /// </summary>
 public class Movable : ObjectBase, System.IComparable<Movable>
 {

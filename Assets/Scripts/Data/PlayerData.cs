@@ -64,7 +64,6 @@ public class PlayerData : MonoBehaviour
             obsidian = 100; //Temp
 
         }
-
         selectedStage = "C0S1"; // Temp
     }
 

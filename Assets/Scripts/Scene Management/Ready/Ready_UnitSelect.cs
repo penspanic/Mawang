@@ -7,14 +7,18 @@ public class Ready_UnitSelect : MonoBehaviour
 {
     public ListView unitView;
 
-    //public GameObject unitMaxPopUp;
     public GameObject unitSelectButton;
     public Text unitDescription;
-    bool[] isUnitChecked;
+    public Text selectedCountText;
 
-    List<string> unitNameList = new List<string>();
+    List<string> unitNameList;
     Button[] unitButtons;
     Image[] checkedImages;
+    Image[] selectedImages;
+    bool[] unitSelected;
+
+    int selectedCount = 0;
+
 
     void Awake()
     {
@@ -24,6 +28,7 @@ public class Ready_UnitSelect : MonoBehaviour
         unitNameList = PlayerData.instance.playerUnitList;
 
         SetUnitList();
+        selectedCountText.text = "0/" + unitNameList.Count.ToString();
     }
 
     void SetUnitList()
@@ -31,13 +36,18 @@ public class Ready_UnitSelect : MonoBehaviour
         Sprite portrait;
         List<Button> unitButtonList = new List<Button>();
         List<Image> checkedImageList = new List<Image>();
-        isUnitChecked = new bool[unitNameList.Count];
+        List<Image> selectedImageList = new List<Image>();
+
+        unitSelected = new bool[unitNameList.Count];
         unitView.column = 3;
         unitView.row = unitNameList.Count / 3 + ((unitNameList.Count % 3) == 0 ? 0 : 1);
         unitView.itemCount = unitNameList.Count;
         unitView.SetItems();
 
+
         Button newButton;
+        Image checkedImage;
+        Image selectedImage;
         for (int i = 0; i < unitNameList.Count; i++)
         {
             portrait = SpriteManager.Instance.GetSprite(PackingType.UI, unitNameList[i]);
@@ -48,11 +58,14 @@ public class Ready_UnitSelect : MonoBehaviour
             newButton.onClick.AddListener(() => OnUnitButtonDown(param));
             unitButtonList.Add(newButton);
 
-            Image checkedImage = newButton.transform.FindChild("Check").GetComponent<Image>();
+            checkedImage = newButton.transform.FindChild("Check").GetComponent<Image>();
             checkedImageList.Add(checkedImage);
+            selectedImage = newButton.transform.FindChild("Select").GetComponent<Image>();
+            selectedImageList.Add(selectedImage);
         }
         unitButtons = unitButtonList.ToArray();
         checkedImages = checkedImageList.ToArray();
+        selectedImages = selectedImageList.ToArray();
     }
 
     int selectedUnitIndex;
@@ -65,63 +78,26 @@ public class Ready_UnitSelect : MonoBehaviour
         unitDescription.text = JsonManager.instance.GetKoreanName(unitNameList[index]) + "\n\n" +
             JsonManager.instance.GetDescription(unitNameList[index]);
 
-        //SetSelectButtonText();
-
+        unitSelectButton.GetComponentInChildren<Text>().text = unitSelected[selectedUnitIndex] ? "취소" : "선택";
     }
-    //void SetSelectButtonText()
-    //{
-    //    if (isUnitChecked[selectedUnitIndex])
-    //    {
-    //        unitSelectButton.GetComponentInChildren<Text>().text = "취소";
-    //    }
-    //    else
-    //    {
-    //        unitSelectButton.GetComponentInChildren<Text>().text = "선택";
-    //    }
-    //}
 
-    //public void OnUnitSelectButonDown()
-    //{
-    //    // 7개 초과인지 체크
-    //    int selectedNum = 0;
-    //    foreach (bool eachValue in isUnitChecked)
-    //    {
-    //        if (eachValue == true)
-    //            selectedNum++;
-    //    }
-    //    if (selectedNum == 6 && isUnitChecked[selectedUnitIndex] == false)
-    //    {
-    //        notifyBar.ShowMessage("6종류만 선택할 수 있습니다!");
-    //    }
-    //    else
-    //    {
-    //        isUnitChecked[selectedUnitIndex] = !isUnitChecked[selectedUnitIndex];
-    //        if (isUnitChecked[selectedUnitIndex])
-    //        {
-    //            checkedImages[selectedUnitIndex].enabled = true;
-    //        }
-    //        else
-    //        {
-    //            checkedImages[selectedUnitIndex].enabled = false;
-    //        }
-    //    }
-    //    SetSelectButtonText();
-    //}
-    //public bool OnGameStart()
-    //{
-    //    PlayerData.instance.selectedUnitList.Clear();
+    public void OnSelectButtonDown()
+    {
+        if (selectedCount == 6 && !unitSelected[selectedUnitIndex])
+            return;
 
-    //    for (int i = 0; i < unitButtons.Length; i++)
-    //    {
-    //        if (isUnitChecked[i])
-    //        {
-    //            PlayerData.instance.selectedUnitList.Add(unitNameList[i]);
-    //        }
-    //    }
+        checkedImages[selectedUnitIndex].enabled = true;
+        unitSelected[selectedUnitIndex] = !unitSelected[selectedUnitIndex];
+        selectedImages[selectedUnitIndex].enabled = unitSelected[selectedUnitIndex];
+        unitSelectButton.GetComponentInChildren<Text>().text = unitSelected[selectedUnitIndex] ? "취소" : "선택";
 
-    //    if (PlayerData.instance.selectedUnitList.Count == 0)
-    //        return false;
+        selectedCount = 0;
+        for(int i = 0;i<unitSelected.Length;i++)
+        {
+            if (unitSelected[i])
+                selectedCount++;
+        }
 
-    //    return true;
-    //}
+        selectedCountText.text = selectedCount.ToString() + "/" + unitNameList.Count.ToString();
+    }
 }
