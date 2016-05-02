@@ -75,18 +75,17 @@ public class ButtonEffect : MonoBehaviour
         isMoving = true;
         float elapsedTime = 0f;
 
-        originalSize = GetComponent<RectTransform>().sizeDelta;
+        originalSize = GetComponent<RectTransform>().localScale;
 
-        Vector2 startSize = originalSize * 0.66f;
+        Vector3 startSize = originalSize * 0.66f;
         while(elapsedTime < time)
         {
             elapsedTime += Time.deltaTime;
-
-            rectTransform.sizeDelta = EasingUtil.EaseVector2(EasingUtil.smoothstep, startSize, originalSize, elapsedTime / time);
+            rectTransform.localScale = EasingUtil.EaseVector3(EasingUtil.smoothstep, startSize, originalSize, elapsedTime / time);
 
             yield return null;
         }
-        rectTransform.sizeDelta = originalSize;
+        rectTransform.localScale = originalSize;
         isMoving = false;
     }
     IEnumerator BigAndSmall(float time)
