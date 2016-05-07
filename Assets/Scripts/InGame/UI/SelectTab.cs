@@ -44,11 +44,10 @@ public class SelectTab : MonoBehaviour
 
         lever.GetComponent<Button>().onClick.AddListener(ClickedRoseButton);
 
+        PlayerData.instance.selectedStage = "C1S1";
         // Temp
         if (PlayerData.instance.playerUnitList.Count == 0)
             PlayerData.instance.playerUnitList.Add("Skeleton");
-
-
 
         #region Load
 
@@ -63,8 +62,10 @@ public class SelectTab : MonoBehaviour
 
         // 유닛 prefab 추가
         for (int i = 0; i < unitPortaitList.Count; i++)
+        {
             unitPrefabs.Add(Resources.Load<Movable>("Prefabs/OurForce/" +
                 PlayerData.instance.playerUnitList[i]));
+        }
 
         // 유닛버튼에 스프라이트 대입
         for (int i = 0; i < unitButtonList.Count; i++)

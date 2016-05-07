@@ -116,7 +116,7 @@ public class PlayerData : MonoBehaviour
 
     public void OnApplicationQuit()
     {
-        SaveData();
+        // SaveData();
     }
 
     public void OnApplicationPause(bool pause)

@@ -105,6 +105,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         {
             return;
         }
+        canUseSkill = true;
 
         battleMgr.AddObject(this);
 

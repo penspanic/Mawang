@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: 46d855af0d52baa41a3f19174715bf2e
+timeCreated: 1462165245
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: arm_left
+    21300002: arm_right
+    21300004: head
+    21300006: pants_left
+    21300008: pants_right
+    21300010: body
+    21300012: leg_left
+    21300014: leg_right
+    21300016: foot_left
+    21300018: foot)right
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: arm_left
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 293
+        width: 114
+        height: 61
+      alignment: 9
+      pivot: {x: .886507869, y: .774300992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: arm_right
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 154
+        width: 88
+        height: 57
+      alignment: 9
+      pivot: {x: .113380782, y: .71527046}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: head
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 263
+        width: 132
+        height: 100
+      alignment: 9
+      pivot: {x: .411267728, y: .221127018}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pants_left
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 226
+        width: 50
+        height: 47
+      alignment: 9
+      pivot: {x: .65616852, y: .784806252}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pants_right
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 90
+        width: 64
+        height: 45
+      alignment: 9
+      pivot: {x: .212412417, y: .710704029}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: body
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 143
+        width: 83
+        height: 106
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: leg_left
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 89
+        width: 46
+        height: 26
+      alignment: 9
+      pivot: {x: .754622757, y: .542903304}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: leg_right
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 82
+        width: 41
+        height: 39
+      alignment: 9
+      pivot: {x: .704053164, y: .728819251}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: foot_left
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 17
+        width: 35
+        height: 59
+      alignment: 9
+      pivot: {x: .308772922, y: .821412921}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: foot)right
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 17
+        width: 54
+        height: 47
+      alignment: 9
+      pivot: {x: .241784275, y: .808540285}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

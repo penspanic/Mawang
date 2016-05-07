@@ -43,10 +43,15 @@ public class BattleManager : MonoBehaviour {
     }
 
 
-    public ObjectBase[] GetTargets(ObjectBase obj, float attackRange, int canHitNum)
+    public ObjectBase[] GetTargets(ObjectBase obj, float attackRange, int canHitNum, bool isFindOur = false)
     {
         List<ObjectBase> oppositeList = new List<ObjectBase>();
-        oppositeList = GetOpposite(obj.isOurForce);
+
+        if (isFindOur)
+            oppositeList = GetOpposite(!obj.isOurForce);
+        else
+            oppositeList = GetOpposite(obj.isOurForce);
+
         oppositeList = GetSameLine(oppositeList, obj.line);
         oppositeList = SelectInRange(oppositeList, obj.transform.position, attackRange);
 

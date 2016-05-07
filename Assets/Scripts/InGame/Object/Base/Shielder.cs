@@ -14,7 +14,6 @@ public class Shielder : Movable
 
         prevPos     =   transform.position;
         PlaySound(attackSound);
-        animator.speed = 1;
         animator.Play("Attack", 0);
 
     }
