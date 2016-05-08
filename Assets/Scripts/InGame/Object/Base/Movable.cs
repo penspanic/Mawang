@@ -162,13 +162,13 @@ public class Movable : ObjectBase, System.IComparable<Movable>
                 continue;
             }
 
-            FindTarget();
 
             attackInterval = (float)1f / attackSpeed;
 
             WaitForAttack();
             WaitForActive();
 
+            FindTarget();
 
             switch (state)
             {
@@ -246,6 +246,9 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
     protected virtual void Attack()
     {
+        if (name == "Medic")
+            Debug.Log("attack");
+
         animator.Play("Attack",0);
 
         if (!isOneShotSound)
@@ -427,6 +430,8 @@ public class Movable : ObjectBase, System.IComparable<Movable>
             localPos = new Vector2(0, -0.825f);
         else if (name.Contains("Shielder"))
             localPos = new Vector2(0, -0.757f);
+        else if (name.Contains("Medic"))
+            localPos = new Vector2(0, -0.757f);
         newShadow.transform.localPosition = localPos;
     }
 
@@ -449,7 +454,8 @@ public class Movable : ObjectBase, System.IComparable<Movable>
             localPos = new Vector2(0.62f, 2.15f);
         else if (name.Contains("Shielder"))
             localPos = new Vector2(0.62f, 1.88f);
-
+        else if (name.Contains("Medic"))
+            localPos = new Vector2(0.28f, 1.3f);
         hpBar.transform.localPosition = localPos;
 
         hpBar.GetComponent<UnitHpBar>().Init();

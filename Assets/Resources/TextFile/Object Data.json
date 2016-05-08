@@ -56,6 +56,9 @@
   "Bandsman": {
     "Description": "훌륭한 연주로 사기를 올리는 병사"
   },
+  "Medic": {
+    "Description": "적군과 닿았을 때 적군을 천천히 치유한다."
+  },
 
   /* 아이템 */
 

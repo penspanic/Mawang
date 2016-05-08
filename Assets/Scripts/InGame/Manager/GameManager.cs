@@ -168,7 +168,6 @@ public class GameManager : MonoBehaviour
         float randPosY = ((isDefenceTurn ? spawnLine-1 : randLine - 1)) * -1.2f;
 
         GameObject parent = Instantiate(stagePatternList[rand], new Vector3(19, randPosY, 0), new Quaternion()) as GameObject;
-
         for (int j = 0; j < parent.transform.childCount; ++j)
         {
             for (int k = 0; k < currUnits.Length; ++k)

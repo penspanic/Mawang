@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// 메딕
@@ -12,37 +13,94 @@ using System.Collections;
 public class Medic : Movable
 {
     private Vector3 prevPos;
+    [SerializeField]
+    private int healPerSec;
 
+    private List<ObjectBase> healTargets;
+
+    private bool isHealing = false;
+    private bool onceAttackAni = true;
+
+    protected override void Awake()
+    {
+        healTargets = new List<ObjectBase>();
+        base.Awake();
+    }
     protected override void Attack()
     {
-        if (transform.position == prevPos)
-            return;
+        if (!isHealing)
+        {
+            if (onceAttackAni)
+            {
+                animator.Play("Attack", 0);
+                onceAttackAni = false;
+            }
+        }
+    }
 
+    public void OnAttackEnd()
+    {
+        AttackEnd();
 
-        prevPos = transform.position;
-        animator.Play("Attack", 0);
+        if(healTargets.Count > 0)
+            StartCoroutine(HealProcess(healTargets[0]));
+    }
+
+    IEnumerator HealProcess(ObjectBase healTarget)
+    {
+        while (!healTarget.isDestroyed
+            && Mathf.Abs(healTarget.transform.position.x - transform.position.x) <= attackRange * BattleManager.fightDistance
+            && healTarget.GetHP() != healTarget.maxHP)
+        {
+            isHealing = true;
+            yield return new WaitForSeconds(1f);
+
+            // 단일
+            healTarget.SetMinusHP(-healPerSec);
+        }
+        onceAttackAni = true;
+        isHealing = false;
     }
 
     protected override void FindTarget()
     {
+        if (isHealing)
+            return;
+
+        // 인접 아군 유닛 찾음
         ObjectBase[] targets = battleMgr.GetTargets(this, attackRange, canHitNum, true);
 
+        // 힐 받을 유닛 초기화
+        healTargets.Clear();
         if (targets == null)
-            targets = battleMgr.GetTargets(this, attackRange, canHitNum);
-
-        if (isSkillMotion)
         {
-            state = MovableState.Skill;
-            return;
+            targets = battleMgr.GetTargets(this, attackRange, canHitNum);
+        }
+        else
+        {
+            for (int i = 0; i < targets.Length; ++i)
+            {
+                if (targets[i].GetHP() < targets[i].maxHP && !targets[i].isOurForce)
+                {
+                    healTargets.Add(targets[i]);
+                }
+            }
         }
 
+        if (healTargets.Count == 0)
+            canAttack = false;
+                    
+        // 행동 분배 
+
+        // 아군도 적군도 없을 경우
         if (targets == null)
             state = MovableState.Advance;
         else
         {
+            // 공격이 가능한 경우
             if (canAttack)
                 state = MovableState.Attack;
-            else
+            else // 공격이 불가능한 경우
                 state = MovableState.Idle;
         }
     }

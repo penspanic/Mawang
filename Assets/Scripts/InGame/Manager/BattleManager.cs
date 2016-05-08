@@ -32,6 +32,7 @@ public class BattleManager : MonoBehaviour {
             ourForceList.Add(obj);
         else
             enemyList.Add(obj);
+
     }
 
     public void RemoveObject(ObjectBase obj)
@@ -53,7 +54,7 @@ public class BattleManager : MonoBehaviour {
             oppositeList = GetOpposite(obj.isOurForce);
 
         oppositeList = GetSameLine(oppositeList, obj.line);
-        oppositeList = SelectInRange(oppositeList, obj.transform.position, attackRange);
+        oppositeList = SelectInRange(oppositeList, obj.transform.position, attackRange, isFindOur);
 
         if (oppositeList.Count == 0)    // 없을때는 성공격하거나 null 
         {
@@ -72,6 +73,7 @@ public class BattleManager : MonoBehaviour {
         return returnList.ToArray();
     }
 
+
     public List<ObjectBase> GetOpposite(bool isOur) // 맞은편 반환
     {
         if (isOur)
@@ -86,19 +88,35 @@ public class BattleManager : MonoBehaviour {
 
         return list;
     }
-    public List<ObjectBase> SelectInRange(List<ObjectBase> list, Vector2 objPos, float range) // 거리되는애들 리턴
+    public List<ObjectBase> SelectInRange(List<ObjectBase> list, Vector2 objPos, float range, bool isFindOur = false) // 거리되는애들 리턴
     {
         float attackRange = fightDistance * range;
 
         List<ObjectBase> tmplist = new List<ObjectBase>();
+        float distX = 0;
 
         foreach (ObjectBase obj in list)
         {
-            if (Mathf.Abs(objPos.x - obj.transform.position.x) <= attackRange && !obj.isDestroyed)
+            if (!obj.isDestroyed)
             {
-                tmplist.Add(obj);
+                if (obj.isOurForce)
+                    distX = objPos.x - obj.transform.position.x;
+                else
+                    distX = obj.transform.position.x - objPos.x;
+
+                if (isFindOur)
+                {
+                    if(obj.isOurForce)
+                        distX = obj.transform.position.x - objPos.x;
+                    else
+                        distX = objPos.x - obj.transform.position.x;
+                }
+
+                if (0 < distX && distX < attackRange)
+                    tmplist.Add(obj);
             }
         }
+
         tmplist.Sort((a, b) =>
         {
             float A = Mathf.Abs(objPos.x - a.transform.position.x);

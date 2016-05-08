@@ -60,7 +60,7 @@ public class MiniMap : MonoBehaviour
     }
 
     void FindUnitListPos(List<Vector2> miniMapPosList, List<ObjectBase> objList)
-    {
+    { 
         Vector2 drawPos;
         for (int i = 0; i < objList.Count; i++)
         {
