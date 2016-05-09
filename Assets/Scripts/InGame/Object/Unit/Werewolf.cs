@@ -15,6 +15,8 @@ public class Werewolf : Warrior, ITouchable
     protected override void Awake()
     {
         base.Awake();
+        if (forDecoration)
+            return;
         enemyCastlePos = battleMgr.enemyCastle.transform;
     }
     // Mathf.Abs(2 *  sin(x))
