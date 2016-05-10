@@ -40,6 +40,6 @@ public class Orc : Warrior, ITouchable
     {
         Vector2 spawnPos = transform.position;
         spawnPos += new Vector2(1.03f,0.5f);
-        EffectManager.Instance.PlayEffect(EffectKind.Orc_skill,spawnPos);
+        EffectManager.instance.PlayEffect(EffectKind.Orc_skill,spawnPos);
     }
 }

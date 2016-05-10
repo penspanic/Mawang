@@ -50,7 +50,7 @@ public class Ready_UnitSelect : MonoBehaviour
         Image selectedImage;
         for (int i = 0; i < unitNameList.Count; i++)
         {
-            portrait = SpriteManager.Instance.GetSprite(PackingType.UI, unitNameList[i]);
+            portrait = SpriteManager.instance.GetSprite(PackingType.UI, unitNameList[i]);
             newButton = unitView.GetItem(i).GetComponent<Button>();
             newButton.image.sprite = portrait;
 

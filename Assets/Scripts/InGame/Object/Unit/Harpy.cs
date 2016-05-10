@@ -21,7 +21,7 @@ public class Harpy : Launcher, ITouchable
             SkillMotionStart();
             Vector2 spawnPos = transform.position;
             spawnPos +=  new Vector2(0.9f, -0.16f);
-            EffectManager.Instance.PlayEffect(EffectKind.Harpy_skill, spawnPos);
+            EffectManager.instance.PlayEffect(EffectKind.Harpy_skill, spawnPos);
             StartCoroutine(BuffRoutine());
         }
     }

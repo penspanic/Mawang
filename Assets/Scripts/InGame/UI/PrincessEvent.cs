@@ -49,7 +49,7 @@ public class PrincessEvent : MonoBehaviour
 
         if (PlayerData.instance.selectedStage == "C0S1")
         {
-            while (TutorialManager.Instance.camMove)
+            while (TutorialManager.instance.camMove)
                 yield return null;
         }
 

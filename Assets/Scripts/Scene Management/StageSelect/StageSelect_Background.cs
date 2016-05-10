@@ -4,21 +4,22 @@ using System.Collections;
 
 public class StageSelect_Background : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public bool backgroundTouched
-    {
-        get;
-        private set;
-    }
 
+    private static bool touched;
+
+    public static bool Touched()
+    {
+        return touched;
+    }
 
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        backgroundTouched = true;
+        touched = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        backgroundTouched = false;
+        touched = false;
     }
 }

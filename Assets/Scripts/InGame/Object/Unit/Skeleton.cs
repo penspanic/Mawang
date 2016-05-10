@@ -26,7 +26,7 @@ public class Skeleton : Warrior,ITouchable
 
             Vector2 spawnPos = transform.position;
             spawnPos += new Vector2(-0.1f, 0.7f);
-            EffectManager.Instance.PlayEffect(EffectKind.Skeleton_skill, spawnPos, transform);
+            EffectManager.instance.PlayEffect(EffectKind.Skeleton_skill, spawnPos, transform);
             StartCoroutine(SkeletonSkill());
 
         }

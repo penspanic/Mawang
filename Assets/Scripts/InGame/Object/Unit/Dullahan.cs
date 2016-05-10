@@ -16,7 +16,7 @@ public class Dullahan : Warrior, ITouchable
             SkillMotionStart();
             Vector2 spawnPos = transform.position;
             spawnPos += new Vector2(-0.57f,-1.2f);
-            EffectManager.Instance.PlayEffect(EffectKind.Dulahan_skill,spawnPos,transform);
+            EffectManager.instance.PlayEffect(EffectKind.Dulahan_skill,spawnPos,transform);
             StartCoroutine(DullahanSkill());
         }
     }

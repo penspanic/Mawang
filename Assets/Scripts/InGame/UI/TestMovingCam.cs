@@ -31,11 +31,11 @@ public class TestMovingCam : MonoBehaviour
     {
         if (Time.timeScale == 0)
         {
-            if(!TutorialManager.Instance.isPlaying)
+            if(!TutorialManager.instance.isPlaying)
                 return;
         }
 
-        if (TutorialManager.Instance.isPlaying && !TutorialManager.Instance.camMove)
+        if (TutorialManager.instance.isPlaying && !TutorialManager.instance.camMove)
             return;
 
         if (Application.platform == RuntimePlatform.Android)
@@ -44,7 +44,7 @@ public class TestMovingCam : MonoBehaviour
             {
                 if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(0))
                 {
-                    if(!TutorialManager.Instance.isPlaying)
+                    if(!TutorialManager.instance.isPlaying)
                         return;
                 }
 

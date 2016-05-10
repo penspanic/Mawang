@@ -73,10 +73,10 @@ public class PrincessManager : MonoBehaviour
     // 이미지에 currPrincesse 받은걸로 대입하기
     void InitUI()
     {
-        skillName.sprite        =   SpriteManager.Instance.GetSprite(PackingType.Princess, currChapter + "_SkillName");
-        illust.sprite           =   SpriteManager.Instance.GetSprite(PackingType.Princess, currChapter + "_L");
-        portrait.sprite         =   SpriteManager.Instance.GetSprite(PackingType.Princess, currChapter + "_Portait");
-        castlesprRenderer.sprite=   SpriteManager.Instance.GetSprite(PackingType.Princess, currChapter + "_CastleImg");
+        skillName.sprite        =   SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_SkillName");
+        illust.sprite           =   SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_L");
+        portrait.sprite         =   SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_Portait");
+        castlesprRenderer.sprite=   SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_CastleImg");
 
         portrait_gray.sprite    =   portrait.sprite;
 
@@ -118,10 +118,10 @@ public class PrincessManager : MonoBehaviour
                 // 여기서 공주에 따른 효과 발동
                 if (PlayerData.instance.selectedStage == "C0S1")
                 {
-                    if (TutorialManager.Instance.oncePrinTuto)
+                    if (TutorialManager.instance.oncePrinTuto)
                     {
-                        TutorialManager.Instance.oncePrinTuto = false;
-                        TutorialManager.Instance.PlayTutorial(TutorialEvent.PrincessFullGauge);
+                        TutorialManager.instance.oncePrinTuto = false;
+                        TutorialManager.instance.PlayTutorial(TutorialEvent.PrincessFullGauge);
                         while (Time.timeScale == 0)
                             yield return null;
                     }

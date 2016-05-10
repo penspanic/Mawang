@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         if (PlayerData.instance.selectedStage == "C0S1")
         {
             Time.timeScale = 0;
-            TutorialManager.Instance.PlayTutorial(TutorialEvent.PrepareGame);
+            TutorialManager.instance.PlayTutorial(TutorialEvent.PrepareGame);
         }
 
 
@@ -91,10 +91,10 @@ public class GameManager : MonoBehaviour
 
             if (PlayerData.instance.selectedStage == "C0S1")
             {
-                if (TutorialManager.Instance.PatternCnt == 0)
+                if (TutorialManager.instance.PatternCnt == 0)
                     unitSpawnInterval = JsonManager.instance.GetStagePattern("C0S1").interval;
                 else
-                    TutorialManager.Instance.PatternCnt--;
+                    TutorialManager.instance.PatternCnt--;
             }
 
             #endregion
@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviour
 
     public void OnApplicationPause(bool pause)
     {
-        if (TutorialManager.Instance.isPlaying)
+        if (TutorialManager.instance.isPlaying)
             return;
 
         if (pause)

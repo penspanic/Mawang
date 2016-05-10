@@ -53,7 +53,7 @@ public class SelectTab : MonoBehaviour
 
         // 선택된 유닛들 스프라이트 로드
         for (int i = 0; i < PlayerData.instance.playerUnitList.Count; i++)
-            unitPortaitList.Add(SpriteManager.Instance.GetSprite(PackingType.UI,
+            unitPortaitList.Add(SpriteManager.instance.GetSprite(PackingType.UI,
                 PlayerData.instance.playerUnitList[i]));
 
         // 유닛버튼들 로드

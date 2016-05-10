@@ -21,7 +21,7 @@ public class StageSelect_MapScroll : MonoBehaviour
 
     void Update()
     {
-        if (!background.backgroundTouched || Input.touchCount >= 2)
+        if (!StageSelect_Background.Touched() || Input.touchCount >= 2)
         {
             prevMouseDown = false;
             return;

@@ -28,7 +28,7 @@ public class SatanCastle : Castle
         Sprite castleIconSprite = Resources.Load<Sprite>("Sprite/UI/InGame/castle_lv" + CastleInfo.GetCastleLevel().ToString());
 
         Image starImage = GameObject.Find("Star").GetComponent<Image>();
-        starImage.sprite = SpriteManager.Instance.GetSprite(PackingType.UI, "Star_" + CastleInfo.GetCastleLevel().ToString());
+        starImage.sprite = SpriteManager.instance.GetSprite(PackingType.UI, "Star_" + CastleInfo.GetCastleLevel().ToString());
 
         castlePortrait.sprite = castleIconSprite;
         castleGrayImage.sprite = castleIconSprite;
@@ -128,10 +128,10 @@ public class SatanCastle : Castle
     {
         if (PlayerData.instance.selectedStage == "C0S1")
         {
-            if (TutorialManager.Instance.onceCastleTuto)
+            if (TutorialManager.instance.onceCastleTuto)
             {
-                TutorialManager.Instance.PlayTutorial(TutorialEvent.CastleFullGauge);
-                TutorialManager.Instance.onceCastleTuto = false;
+                TutorialManager.instance.PlayTutorial(TutorialEvent.CastleFullGauge);
+                TutorialManager.instance.onceCastleTuto = false;
             }
         }
     }

@@ -44,21 +44,20 @@ public class SceneFader : MonoBehaviour
 
     public IEnumerator FadeOut(float duration, string nextScene = null)
     {
-        float fadeAlpha = 0;
+        float elapsedTime = 0f;
 
         sprRenderer.enabled     =   true;
         sprRenderer.sprite      =   black;
         collider.enabled        =   true;
-        while (fadeAlpha != 1)
+        while (elapsedTime < duration)
         {
-            // 시작시간과 지나가는 시간의 차이 / 지속시간 
-            fadeAlpha = Mathf.MoveTowards(fadeAlpha, 1, Time.unscaledDeltaTime * (1 / duration));
-            sprRenderer.color = new Color(0, 0, 0, fadeAlpha);
+            elapsedTime += Time.unscaledDeltaTime;
+            float alpha = Mathf.MoveTowards(0, 1, elapsedTime / duration);
+            sprRenderer.color = new Color(0, 0, 0, alpha);
             yield return null;
         }
 
-        fadeAlpha = 1;
-        sprRenderer.color = new Color(0, 0, 0, fadeAlpha);
+        sprRenderer.color = new Color(0, 0, 0, 1);
         collider.enabled = true;
         if (nextScene != null)
             Application.LoadLevel(nextScene);
@@ -67,20 +66,21 @@ public class SceneFader : MonoBehaviour
 
     public IEnumerator FadeIn(float duration, string nextScene = null)
     {
-        float fadeAlpha = 1;
+        float elapsedTime = 0f;
         
         sprRenderer.enabled     =   true;
         sprRenderer.sprite      =   black;
         collider.enabled        =   true;
 
-        while (fadeAlpha != 0)
+        while (elapsedTime < duration)
         {
-            // 시작시간과 지나가는 시간의 차이 / 지속시간 
-            fadeAlpha = Mathf.MoveTowards(fadeAlpha, 0, Time.unscaledDeltaTime * (1 / duration));
-            sprRenderer.color = new Color(0, 0, 0, fadeAlpha);
+            elapsedTime += Time.unscaledDeltaTime;
+            float alpha = 1f - Mathf.MoveTowards(0, 1, elapsedTime / duration);
+            sprRenderer.color = new Color(0, 0, 0, alpha);
             yield return null;
         }
 
+        sprRenderer.color = new Color(0, 0, 0, 0);
         sprRenderer.enabled = false;
         collider.enabled = false;
         if (nextScene != null)

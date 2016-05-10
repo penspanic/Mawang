@@ -38,7 +38,7 @@ public class Grim : Warrior, ITouchable
         Vector3 spawnPos = transform.position;
         spawnPos += new Vector3(1.1f, -0.4f, 0);
 
-        EffectManager.Instance.PlayEffect(EffectKind.Grim_attack,spawnPos);
+        EffectManager.instance.PlayEffect(EffectKind.Grim_attack,spawnPos);
 
     }
 }

@@ -37,7 +37,7 @@ public class Bandsman : Movable
             PlaySound(attackSounds[Random.Range(0,attackSounds.Length)]);
             Vector2 spawnPos = transform.position;
             spawnPos += new Vector2(-1.2f, 0.4f);
-            EffectManager.Instance.PlayEffect(EffectKind.Bandsman_skill, spawnPos);
+            EffectManager.instance.PlayEffect(EffectKind.Bandsman_skill, spawnPos);
             once = false;
         }
 

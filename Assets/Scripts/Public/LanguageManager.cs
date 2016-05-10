@@ -26,4 +26,9 @@ public class LanguageManager : MonoBehaviour
     {
         return null;
     }
+
+    public void ChangeLanguage(string language)
+    {
+
+    }
 }

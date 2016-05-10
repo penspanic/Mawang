@@ -3,23 +3,23 @@ using System.Collections;
 
 public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    static T instance;
+    static T _instance;
 
-    public static T Instance
+    public static T instance
     {
         get
         {
-            if (null == instance)
+            if (null == _instance)
             {
-                instance = FindObjectOfType(typeof(T)) as T;
-                if (null == instance)
+                _instance = FindObjectOfType(typeof(T)) as T;
+                if (null == _instance)
                 {
                     GameObject obj = new GameObject(typeof(T).Name);
-                    instance = obj.AddComponent<T>();
+                    _instance = obj.AddComponent<T>();
                 }
             }
 
-            return instance;
+            return _instance;
         }
     }
 }

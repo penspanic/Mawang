@@ -49,7 +49,7 @@ public class ChapterInfo : MonoBehaviour
             tipUI.gameObject.SetActive(false);
             selectedChapterData = JsonManager.instance.GetChapterData(chapterName);
 
-            princessIllust.sprite = SpriteManager.Instance.GetSprite(PackingType.Princess, chapterName + "_L");
+            princessIllust.sprite = SpriteManager.instance.GetSprite(PackingType.Princess, chapterName + "_L");
             princessIllust.SetNativeSize();
 
             chapterNameText.text = selectedChapterData.chapterName;

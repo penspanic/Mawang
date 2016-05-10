@@ -13,6 +13,7 @@ public enum ButtonEffectType
 public class ButtonEffect : MonoBehaviour
 {
     public ButtonEffectType type;
+    public bool childChange;
 
     Button targetButton;
     EventTrigger trigger;
@@ -48,10 +49,10 @@ public class ButtonEffect : MonoBehaviour
             switch(type)
             {
                 case ButtonEffectType.Expand:
-                    StartCoroutine(Expand(0.25f));
+                    StartCoroutine(Expand(0.25f, childChange));
                     break;
                 case ButtonEffectType.BigAndSmall:
-                    StartCoroutine(BigAndSmall(0.785f));
+                    StartCoroutine(BigAndSmall(0.785f, childChange));
                     break;
             }
         }
@@ -70,39 +71,61 @@ public class ButtonEffect : MonoBehaviour
     bool isMoving = false;
 
 
-    IEnumerator Expand(float time)
+    IEnumerator Expand(float time, bool childChange = false)
     {
         isMoving = true;
         float elapsedTime = 0f;
 
-        originalSize = GetComponent<RectTransform>().localScale;
+        if (childChange)
+            originalSize = GetComponent<RectTransform>().localScale;
+        else
+            originalSize = GetComponent<RectTransform>().sizeDelta;
 
         Vector3 startSize = originalSize * 0.66f;
+
         while(elapsedTime < time)
         {
             elapsedTime += Time.deltaTime;
-            rectTransform.localScale = EasingUtil.EaseVector3(EasingUtil.smoothstep, startSize, originalSize, elapsedTime / time);
+            if (childChange)
+                rectTransform.localScale = EasingUtil.EaseVector3(EasingUtil.smoothstep, startSize, originalSize, elapsedTime / time);
+            else
+                rectTransform.sizeDelta = EasingUtil.EaseVector3(EasingUtil.smoothstep, startSize, originalSize, elapsedTime / time);
 
             yield return null;
         }
-        rectTransform.localScale = originalSize;
+        if (childChange)
+            rectTransform.localScale = originalSize;
+        else
+            rectTransform.sizeDelta = originalSize;
         isMoving = false;
     }
-    IEnumerator BigAndSmall(float time)
+
+    IEnumerator BigAndSmall(float time, bool childChange = false)
     {
+        isMoving = true;
         float elapsedTime = 0f;
 
-        originalSize = GetComponent<RectTransform>().sizeDelta;
-        isMoving = true;
+        if (childChange)
+            originalSize = rectTransform.localScale;
+        else
+            originalSize = rectTransform.sizeDelta;
+
         while(elapsedTime < time)
         {
             elapsedTime += Time.deltaTime;
 
-            rectTransform.sizeDelta = originalSize + (originalSize * Mathf.Sin(elapsedTime * 20)) / (elapsedTime * 5 + 5);
+            if (childChange)
+                rectTransform.localScale = originalSize + (originalSize * Mathf.Sin(elapsedTime * 20)) / (elapsedTime * 5 + 5);
+            else
+                rectTransform.sizeDelta = originalSize + (originalSize * Mathf.Sin(elapsedTime * 20)) / (elapsedTime * 5 + 5);
 
             yield return null;
         }
-        rectTransform.sizeDelta = originalSize;
+
+        if (childChange)
+            rectTransform.localScale = originalSize;
+        else
+            rectTransform.sizeDelta = originalSize;
         isMoving = false;
     }
 

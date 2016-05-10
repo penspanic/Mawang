@@ -43,7 +43,7 @@ public class GoldManager : MonoBehaviour
     {
         while (gameMgr.isRun)
         {
-            while (TutorialManager.Instance.isPlaying)
+            while (TutorialManager.instance.isPlaying)
                 yield return null;
 
             yield return new WaitForSeconds(1f);
