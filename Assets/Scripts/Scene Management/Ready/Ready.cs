@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Ready : MonoBehaviour
 {
 
     Text obsidianText;
 
+    Ready_UnitSelect unitSelect;
+
     void Awake()
     {
         StartCoroutine(FadeIn());
         PlayerData.instance.CheckInstance();
+        unitSelect = GameObject.FindObjectOfType<Ready_UnitSelect>();
 
         obsidianText = GameObject.Find("Obsidian").GetComponentInChildren<Text>();
 
@@ -65,6 +69,14 @@ public class Ready : MonoBehaviour
 
     void ChangeScene(string sceneName)
     {
+        PlayerData.instance.selectedUnitList = new List<string>(unitSelect.GetSelectedUnit());
+        PlayerData.instance.selectedUnitList.Sort((a, b) =>
+        {
+            Movable aUnit = Resources.Load<Movable>("Prefabs/OurForce/" + a);
+            Movable bUnit = Resources.Load<Movable>("Prefabs/OurForce/" + b);
+            return Comparer<Movable>.Default.Compare(aUnit, bUnit);
+        });
+        
         StartCoroutine(SceneFader.Instance.FadeOut(0.6f, sceneName));
         StartCoroutine(SceneFader.Instance.SoundFadeOut(1f, GameObject.FindObjectsOfType<AudioSource>()));
     }

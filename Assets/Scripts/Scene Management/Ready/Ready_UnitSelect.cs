@@ -18,7 +18,7 @@ public class Ready_UnitSelect : MonoBehaviour
     bool[] unitSelected;
 
     int selectedCount = 0;
-
+    int selectedUnitIndex = 0;
 
     void Awake()
     {
@@ -28,7 +28,8 @@ public class Ready_UnitSelect : MonoBehaviour
         unitNameList = PlayerData.instance.playerUnitList;
 
         SetUnitList();
-        selectedCountText.text = "0/" + unitNameList.Count.ToString();
+        SetSelectedUnit();
+        selectedCountText.text = selectedCount.ToString() + "/6";
     }
 
     void SetUnitList()
@@ -68,7 +69,18 @@ public class Ready_UnitSelect : MonoBehaviour
         selectedImages = selectedImageList.ToArray();
     }
 
-    int selectedUnitIndex;
+    void SetSelectedUnit()
+    {
+        if(PlayerData.instance.selectedUnitList.Count != 0)
+        {
+            foreach(string eachName in PlayerData.instance.selectedUnitList)
+            {
+                selectedUnitIndex = unitNameList.IndexOf(eachName);
+                OnSelectButtonDown();
+            }
+        }
+    }
+
     public void OnUnitButtonDown(int index) // 현재 유닛 설정
     {
         checkedImages[selectedUnitIndex].enabled = false;
@@ -98,6 +110,19 @@ public class Ready_UnitSelect : MonoBehaviour
                 selectedCount++;
         }
 
-        selectedCountText.text = selectedCount.ToString() + "/" + unitNameList.Count.ToString();
+        selectedCountText.text = selectedCount.ToString() + "/" + "6";
+    }
+
+    public string[] GetSelectedUnit()
+    {
+        List<string> unitsList = new List<string>();
+        int i = 0;
+        foreach(string eachName in unitNameList)
+        {
+            if (unitSelected[i])
+                unitsList.Add(eachName);
+            i++;
+        }
+        return unitsList.ToArray();
     }
 }

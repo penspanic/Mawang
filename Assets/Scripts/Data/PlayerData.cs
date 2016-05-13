@@ -29,7 +29,7 @@ public class PlayerData : MonoBehaviour
 
 
     public List<string> playerUnitList { get; private set; }
-    public List<string> selectedUnitList { get; private set; }
+    public List<string> selectedUnitList { get; set; }
     public Dictionary<string, int> upgradePoint { get; private set; }
     public Dictionary<string, int> itemStorage { get; private set; }
 
@@ -57,6 +57,7 @@ public class PlayerData : MonoBehaviour
 
         // 2
         LoadData();
+
         // 3
         if (isFirst) // 제일 처음일때
         {
@@ -70,7 +71,6 @@ public class PlayerData : MonoBehaviour
 
     private void LoadData()
     {
-        var data = PlayerPrefs.GetString("playerUnitList");
 
         if (!PlayerPrefs.HasKey("isFirst")) // 유닛 데이터가없을경우
         {
@@ -106,17 +106,26 @@ public class PlayerData : MonoBehaviour
         appRated = PlayerPrefs.GetInt("appRated") == 1 ? true : false;
         obsidian = PlayerPrefs.GetInt("obsidian");
 
+        var data = PlayerPrefs.GetString("playerUnitList");
         // Deserialize
         var b = new BinaryFormatter();
         using (var m = new MemoryStream(Convert.FromBase64String(data)))
         {
             playerUnitList = (List<string>)b.Deserialize(m);
         }
+        data = PlayerPrefs.GetString("selectedUnitList");
+        if (data != null)
+        {
+            using (var m = new MemoryStream(Convert.FromBase64String(data)))
+            {
+                selectedUnitList = (List<string>)b.Deserialize(m);
+            }
+        }
     }
 
     public void OnApplicationQuit()
     {
-        // SaveData();
+        SaveData();
     }
 
     public void OnApplicationPause(bool pause)
@@ -150,6 +159,14 @@ public class PlayerData : MonoBehaviour
         {
             b.Serialize(m, playerUnitList);
             PlayerPrefs.SetString("playerUnitList", Convert.ToBase64String(m.GetBuffer()));
+        }
+        if (selectedUnitList != null && selectedUnitList.Count != 0)
+        {
+            using (var m = new MemoryStream())
+            {
+                b.Serialize(m, selectedUnitList);
+                PlayerPrefs.SetString("selectedUnitList", Convert.ToBase64String(m.GetBuffer()));
+            }
         }
 
         PlayerPrefs.Save();

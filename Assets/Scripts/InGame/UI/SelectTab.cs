@@ -44,17 +44,16 @@ public class SelectTab : MonoBehaviour
 
         lever.GetComponent<Button>().onClick.AddListener(ClickedRoseButton);
 
-        PlayerData.instance.selectedStage = "C1S1";
         // Temp
-        if (PlayerData.instance.playerUnitList.Count == 0)
-            PlayerData.instance.playerUnitList.Add("Skeleton");
+        if (PlayerData.instance.selectedUnitList.Count == 0)
+            PlayerData.instance.selectedUnitList.Add("Skeleton");
 
         #region Load
 
         // 선택된 유닛들 스프라이트 로드
-        for (int i = 0; i < PlayerData.instance.playerUnitList.Count; i++)
+        for (int i = 0; i < PlayerData.instance.selectedUnitList.Count; i++)
             unitPortaitList.Add(SpriteManager.instance.GetSprite(PackingType.UI,
-                PlayerData.instance.playerUnitList[i]));
+                PlayerData.instance.selectedUnitList[i]));
 
         // 유닛버튼들 로드
         for (int i = 0; i < 6; i++)
@@ -64,7 +63,7 @@ public class SelectTab : MonoBehaviour
         for (int i = 0; i < unitPortaitList.Count; i++)
         {
             unitPrefabs.Add(Resources.Load<Movable>("Prefabs/OurForce/" +
-                PlayerData.instance.playerUnitList[i]));
+                PlayerData.instance.selectedUnitList[i]));
         }
 
         // 유닛버튼에 스프라이트 대입
@@ -175,7 +174,7 @@ public class SelectTab : MonoBehaviour
     public IEnumerator RotateSelectTab()
     {
         float startRot, endRot;
-        float unitBtnEndY, upgBtnEndX; ;
+        float unitBtnEndY, upgBtnEndX;
         isMoving = true;
         float beginTime = Time.unscaledTime;
 
