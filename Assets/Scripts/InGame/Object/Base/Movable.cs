@@ -432,6 +432,8 @@ public class Movable : ObjectBase, System.IComparable<Movable>
             localPos = new Vector2(0, -0.757f);
         else if (name.Contains("Medic"))
             localPos = new Vector2(0, -0.757f);
+        else if (name.Contains("Lanceman"))
+            localPos = new Vector2(0.1f, -0.9f);
         newShadow.transform.localPosition = localPos;
     }
 
@@ -456,6 +458,8 @@ public class Movable : ObjectBase, System.IComparable<Movable>
             localPos = new Vector2(0.62f, 1.88f);
         else if (name.Contains("Medic"))
             localPos = new Vector2(0.28f, 1.3f);
+        else if (name.Contains("Lanceman"))
+            localPos = new Vector2(0.33f, 1.33f);
         hpBar.transform.localPosition = localPos;
 
         hpBar.GetComponent<UnitHpBar>().Init();
