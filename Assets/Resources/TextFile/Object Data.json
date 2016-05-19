@@ -42,8 +42,11 @@
     "Description": "도약하여 적들을 공격하며 진격한다.",
     "Type": "근거리"
   },
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> origin/master
   /* 적군 유닛 */
 
   "Pawn": {
@@ -61,7 +64,11 @@
   "Medic": {
     "Description": "적군과 닿았을 때 적군을 천천히 치유한다."
   },
+<<<<<<< HEAD
+  "Lanceman": {
+=======
   "Lanceman" :  {
+>>>>>>> origin/master
     "Description": "긴 창으로 아군의 접근을 막는다."
   },
 

@@ -47,7 +47,6 @@ public class JsonManager : MonoBehaviour
     TextAsset unitDataJson;
     TextAsset stageDataJson;
     TextAsset stageDesignDataJson;
-    TextAsset princessScriptJson;
     TextAsset chapterDataJson;
 
     #region Singleton
@@ -71,7 +70,6 @@ public class JsonManager : MonoBehaviour
     public JsonData unitData { get; private set; }
     public JsonData stageData { get; private set; }
     public JsonData stageDesignData { get; private set; }
-    public JsonData princessScript { get; private set; }
     public JsonData chapterData { get; private set; }
 
 
@@ -86,14 +84,12 @@ public class JsonManager : MonoBehaviour
         objectDataJson      = Resources.Load<TextAsset>("TextFile/Object Data");
         stageDataJson       = Resources.Load<TextAsset>("TextFile/Stage Data");
         stageDesignDataJson = Resources.Load<TextAsset>("TextFile/Stage Design");
-        princessScriptJson  = Resources.Load<TextAsset>("TextFile/Princess Script");
         chapterDataJson     = Resources.Load<TextAsset>("TextFile/Chapter Data");
         unitDataJson        = Resources.Load<TextAsset>("TextFile/Stage Unit");
 
         stageData           =   JsonMapper.ToObject(stageDataJson.text);
         stageDesignData     =   JsonMapper.ToObject(stageDesignDataJson.text);
         objectData          =   JsonMapper.ToObject(objectDataJson.text);
-        princessScript      =   JsonMapper.ToObject(princessScriptJson.text);
         chapterData         =   JsonMapper.ToObject(chapterDataJson.text);
         unitData            =   JsonMapper.ToObject(unitDataJson.text);
     }
@@ -142,7 +138,6 @@ public class JsonManager : MonoBehaviour
     }
     public StagePattern GetStagePattern(string stage)
     {
-        //string[] patternsName = (string[])stageDesignData[stage]["EnemyPatttern"];
         List<string> patternList = new List<string>();
         
         for(int i = 0;i<stageDesignData[stage]["EnemyPattern"].Count;i++)
@@ -175,20 +170,12 @@ public class JsonManager : MonoBehaviour
 
     public string[] GetPrincessScript(string chapterName)
     {
-        JsonData princessesData = JsonMapper.ToObject(princessScriptJson.text)["Princesses"];
+        chapterData = JsonMapper.ToObject(chapterDataJson.text)[chapterName];
         List<string> scriptList = new List<string>();
 
-        for (int i = 0; i < princessesData.Count;i++)
-        {
-            if(princessesData[i]["Chapter"].ToString() == chapterName)
-            {
-                for(int j=0;j<princessesData[i]["Scripts"].Count;j++)
-                {
-                    scriptList.Add(princessesData[i]["Scripts"][j].ToString());
-                }
-                break;
-            }
-        }
+        for(int i = 0;i<chapterData["Princess Scripts"].Count;i++)
+            scriptList.Add(chapterData["Princess Scripts"][i].ToString());
+
         return scriptList.ToArray();
     }
     

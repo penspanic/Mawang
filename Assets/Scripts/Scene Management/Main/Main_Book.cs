@@ -43,7 +43,8 @@ public class Main_Book : MonoBehaviour
             nameText.text = JsonManager.instance.GetKoreanName(eachUnit.name);
             string unitType = "타입 : " +  (eachUnit is Launcher ? "원거리" : "근거리");
             descriptionText.text = string.Format("생산 비용 : {0}\n체력 : {1}\n공격력 : {2}\n{3}\n\n{4}\n\n{5}",
-                eachUnit.GetUnitCost(), eachUnit.GetHP(), eachUnit.GetAttackDamage(), unitType, "스킬 : " + JsonManager.instance.GetDescription(eachUnit.name), JsonManager.instance.GetJoke(eachUnit.name));
+                eachUnit.GetUnitCost(), eachUnit.GetHP(), eachUnit.GetAttackDamage(), unitType, "스킬 : " + 
+                JsonManager.instance.GetDescription(eachUnit.name), JsonManager.instance.GetJoke(eachUnit.name));
             // Show Unit
 
             Movable newUnit = Instantiate(eachUnit);

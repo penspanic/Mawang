@@ -74,7 +74,7 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1;
         ButtonSound.PlaySound(ButtonSound.SoundType.BasicSound);
 
-        StartCoroutine(SceneFader.Instance.FadeOut(0.6f, "InGame"));
+        StartCoroutine(SceneFader.Instance.FadeOut(0.6f, PlayerData.instance.GetInGameSceneName()));
     }
 }
 

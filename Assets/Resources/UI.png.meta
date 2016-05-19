@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9816f93ce8bcc2941885dffea981c1a7
-timeCreated: 1462247170
+timeCreated: 1463624950
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -120,7 +120,7 @@ TextureImporter:
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 5
   maxTextureSize: 4096
   textureSettings:
     filterMode: 1
@@ -264,21 +264,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: end
+    - name: Outpost
       rect:
         serializedVersion: 2
         x: 1754
         y: 262
-        width: 493
-        height: 284
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Outpost
-      rect:
-        serializedVersion: 2
-        x: 2248
-        y: 285
         width: 359
         height: 360
       alignment: 9
@@ -314,41 +304,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stop_keep
-      rect:
-        serializedVersion: 2
-        x: 1647
-        y: 1766
-        width: 500
-        height: 200
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stop_main
-      rect:
-        serializedVersion: 2
-        x: 1795
-        y: 1442
-        width: 500
-        height: 200
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stop_return
-      rect:
-        serializedVersion: 2
-        x: 1795
-        y: 1045
-        width: 500
-        height: 200
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
     - name: MessageBox
       rect:
         serializedVersion: 2
-        x: 1795
-        y: 1246
+        x: 2114
+        y: 285
         width: 724
         height: 120
       alignment: 9
@@ -357,48 +317,28 @@ TextureImporter:
     - name: Checked
       rect:
         serializedVersion: 2
-        x: 2608
-        y: 285
+        x: 1207
+        y: 1045
         width: 292
         height: 297
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Collection_btn
-      rect:
-        serializedVersion: 2
-        x: 1754
-        y: 547
-        width: 364
-        height: 136
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Lab_btn
-      rect:
-        serializedVersion: 2
-        x: 2296
-        y: 1045
-        width: 364
-        height: 136
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Gauge_Satan
-      rect:
-        serializedVersion: 2
-        x: 1795
-        y: 1643
-        width: 451
-        height: 105
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Gauge_Enemy
       rect:
         serializedVersion: 2
-        x: 2296
-        y: 1367
+        x: 2114
+        y: 406
+        width: 451
+        height: 105
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gauge_Satan
+      rect:
+        serializedVersion: 2
+        x: 2114
+        y: 512
         width: 451
         height: 105
       alignment: 9
@@ -407,8 +347,8 @@ TextureImporter:
     - name: upgrade_i
       rect:
         serializedVersion: 2
-        x: 2520
-        y: 1182
+        x: 2566
+        y: 406
         width: 244
         height: 171
       alignment: 9
@@ -417,8 +357,8 @@ TextureImporter:
     - name: information_i
       rect:
         serializedVersion: 2
-        x: 1207
-        y: 1045
+        x: 1647
+        y: 1766
         width: 244
         height: 170
       alignment: 9
@@ -427,19 +367,9 @@ TextureImporter:
     - name: health_icon
       rect:
         serializedVersion: 2
-        x: 1452
-        y: 1045
+        x: 1795
+        y: 1442
         width: 153
-        height: 250
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: time_icon
-      rect:
-        serializedVersion: 2
-        x: 2748
-        y: 1354
-        width: 150
         height: 250
       alignment: 9
       pivot: {x: .5, y: .5}
@@ -447,58 +377,28 @@ TextureImporter:
     - name: attack_icon
       rect:
         serializedVersion: 2
-        x: 2296
-        y: 1473
+        x: 1795
+        y: 1045
         width: 150
         height: 250
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Orc
+    - name: time_icon
       rect:
         serializedVersion: 2
-        x: 2447
-        y: 1473
-        width: 210
-        height: 170
+        x: 1946
+        y: 1045
+        width: 150
+        height: 250
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Harpy
+    - name: Bandsman
       rect:
         serializedVersion: 2
-        x: 2148
-        y: 1749
-        width: 210
-        height: 170
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Werewolf
-      rect:
-        serializedVersion: 2
-        x: 2359
-        y: 1724
-        width: 210
-        height: 170
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Grim
-      rect:
-        serializedVersion: 2
-        x: 2570
-        y: 1644
-        width: 210
-        height: 170
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Skeleton
-      rect:
-        serializedVersion: 2
-        x: 2570
-        y: 1815
+        x: 1949
+        y: 1296
         width: 210
         height: 170
       alignment: 9
@@ -507,28 +407,8 @@ TextureImporter:
     - name: Dullahan
       rect:
         serializedVersion: 2
-        x: 2781
-        y: 1605
-        width: 210
-        height: 170
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bandsman
-      rect:
-        serializedVersion: 2
-        x: 2781
-        y: 1776
-        width: 210
-        height: 170
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Portrait_empty
-      rect:
-        serializedVersion: 2
-        x: 2992
-        y: 1442
+        x: 2097
+        y: 1045
         width: 210
         height: 170
       alignment: 9
@@ -537,48 +417,78 @@ TextureImporter:
     - name: Goblin
       rect:
         serializedVersion: 2
-        x: 2992
-        y: 1613
+        x: 2308
+        y: 1045
         width: 210
         height: 170
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Start_btn
+    - name: Portrait_empty
       rect:
         serializedVersion: 2
-        x: 2608
-        y: 583
-        width: 292
-        height: 110
+        x: 2519
+        y: 1045
+        width: 210
+        height: 170
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C3 Icon
+    - name: Skeleton
       rect:
         serializedVersion: 2
-        x: 2359
-        y: 1895
-        width: 150
-        height: 150
+        x: 2160
+        y: 1216
+        width: 210
+        height: 170
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C0 Icon
+    - name: Harpy
       rect:
         serializedVersion: 2
-        x: 2992
-        y: 1784
-        width: 150
-        height: 150
+        x: 2371
+        y: 1216
+        width: 210
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Orc
+      rect:
+        serializedVersion: 2
+        x: 2582
+        y: 1216
+        width: 210
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Grim
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 1387
+        width: 210
+        height: 170
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Werewolf
+      rect:
+        serializedVersion: 2
+        x: 1949
+        y: 1467
+        width: 210
+        height: 170
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: C2 Icon
       rect:
         serializedVersion: 2
-        x: 3143
-        y: 1784
+        x: 2730
+        y: 1045
         width: 150
         height: 150
       alignment: 9
@@ -587,8 +497,28 @@ TextureImporter:
     - name: C1 Icon
       rect:
         serializedVersion: 2
-        x: 3081
-        y: 721
+        x: 2371
+        y: 1387
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C3 Icon
+      rect:
+        serializedVersion: 2
+        x: 2522
+        y: 1387
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C0 Icon
+      rect:
+        serializedVersion: 2
+        x: 2673
+        y: 1387
         width: 150
         height: 150
       alignment: 9
@@ -597,14 +527,24 @@ TextureImporter:
     - name: Obsidian
       rect:
         serializedVersion: 2
-        x: 2661
-        y: 1045
+        x: 2566
+        y: 578
         width: 156
         height: 132
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Upgrade_hp
+    - name: Upgrade_gold
+      rect:
+        serializedVersion: 2
+        x: 2793
+        y: 1196
+        width: 104
+        height: 181
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Upgrade_power
       rect:
         serializedVersion: 2
         x: 2790
@@ -614,31 +554,21 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Upgrade_power
+    - name: Upgrade_hp
       rect:
         serializedVersion: 2
-        x: 3081
-        y: 872
+        x: 1500
+        y: 1045
         width: 104
         height: 181
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Upgrade_gold
+    - name: Castle_Lv1
       rect:
         serializedVersion: 2
-        x: 3081
-        y: 1054
-        width: 104
-        height: 181
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Castle_Lv3
-      rect:
-        serializedVersion: 2
-        x: 2765
-        y: 1178
+        x: 1795
+        y: 1296
         width: 130
         height: 136
       alignment: 9
@@ -647,18 +577,18 @@ TextureImporter:
     - name: Castle_Lv2
       rect:
         serializedVersion: 2
-        x: 1207
-        y: 1216
+        x: 2723
+        y: 578
         width: 130
         height: 136
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Castle_Lv1
+    - name: Castle_Lv3
       rect:
         serializedVersion: 2
-        x: 3081
-        y: 1236
+        x: 2824
+        y: 1442
         width: 130
         height: 136
       alignment: 9
@@ -667,8 +597,8 @@ TextureImporter:
     - name: Fill_princess
       rect:
         serializedVersion: 2
-        x: 2119
-        y: 547
+        x: 1500
+        y: 1227
         width: 125
         height: 129
       alignment: 9
@@ -677,28 +607,28 @@ TextureImporter:
     - name: Fill_castle
       rect:
         serializedVersion: 2
-        x: 2148
-        y: 1920
+        x: 2371
+        y: 1538
         width: 125
         height: 127
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Right
-      rect:
-        serializedVersion: 2
-        x: 3186
-        y: 872
-        width: 94
-        height: 159
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Left
       rect:
         serializedVersion: 2
-        x: 3186
-        y: 1032
+        x: 2160
+        y: 1558
+        width: 94
+        height: 159
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Right
+      rect:
+        serializedVersion: 2
+        x: 2255
+        y: 1558
         width: 94
         height: 159
       alignment: 9
@@ -707,8 +637,8 @@ TextureImporter:
     - name: Back_btn
       rect:
         serializedVersion: 2
-        x: 2992
-        y: 1935
+        x: 1949
+        y: 1638
         width: 129
         height: 109
       alignment: 9
@@ -717,28 +647,28 @@ TextureImporter:
     - name: MiniMap_bg
       rect:
         serializedVersion: 2
-        x: 2296
-        y: 1182
+        x: 862
+        y: 653
         width: 213
         height: 60
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fix
-      rect:
-        serializedVersion: 2
-        x: 1338
-        y: 1216
-        width: 104
-        height: 110
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Defense
       rect:
         serializedVersion: 2
-        x: 3122
-        y: 1935
+        x: 2497
+        y: 1538
+        width: 104
+        height: 110
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Fix
+      rect:
+        serializedVersion: 2
+        x: 2602
+        y: 1538
         width: 104
         height: 110
       alignment: 9
@@ -747,8 +677,8 @@ TextureImporter:
     - name: Freeze
       rect:
         serializedVersion: 2
-        x: 3227
-        y: 1935
+        x: 2707
+        y: 1538
         width: 104
         height: 109
       alignment: 9
@@ -757,28 +687,28 @@ TextureImporter:
     - name: Ready_btn
       rect:
         serializedVersion: 2
-        x: 2781
-        y: 1947
+        x: 2114
+        y: 618
         width: 164
         height: 69
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: book_left
-      rect:
-        serializedVersion: 2
-        x: 3203
-        y: 1373
-        width: 95
-        height: 112
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: book_right
       rect:
         serializedVersion: 2
-        x: 3212
-        y: 1192
+        x: 2707
+        y: 1648
+        width: 95
+        height: 112
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: book_left
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 1649
         width: 95
         height: 112
       alignment: 9
@@ -794,11 +724,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Archer
+    - name: Shielder
       rect:
         serializedVersion: 2
-        x: 3203
-        y: 1486
+        x: 2279
+        y: 618
         width: 105
         height: 85
       alignment: 9
@@ -807,28 +737,28 @@ TextureImporter:
     - name: Pawn
       rect:
         serializedVersion: 2
-        x: 3299
-        y: 1305
+        x: 2385
+        y: 618
         width: 105
         height: 85
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Shielder
+    - name: Archer
       rect:
         serializedVersion: 2
-        x: 3299
-        y: 1391
+        x: 1754
+        y: 623
         width: 105
         height: 85
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PrevGold
+    - name: PrevFix
       rect:
         serializedVersion: 2
-        x: 2447
-        y: 1644
+        x: 1860
+        y: 623
         width: 95
         height: 75
       alignment: 9
@@ -837,18 +767,18 @@ TextureImporter:
     - name: PrevDefense
       rect:
         serializedVersion: 2
-        x: 1647
-        y: 1967
+        x: 1956
+        y: 623
         width: 95
         height: 75
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PrevFix
+    - name: PrevGold
       rect:
         serializedVersion: 2
-        x: 1743
-        y: 1967
+        x: 2593
+        y: 1649
         width: 95
         height: 75
       alignment: 9
@@ -857,8 +787,8 @@ TextureImporter:
     - name: exit
       rect:
         serializedVersion: 2
-        x: 3081
-        y: 1373
+        x: 1795
+        y: 1693
         width: 101
         height: 68
       alignment: 9
@@ -867,8 +797,8 @@ TextureImporter:
     - name: Gold_icon
       rect:
         serializedVersion: 2
-        x: 2274
-        y: 1920
+        x: 2811
+        y: 406
         width: 83
         height: 80
       alignment: 9
@@ -877,38 +807,38 @@ TextureImporter:
     - name: Select_lever
       rect:
         serializedVersion: 2
-        x: 1443
-        y: 1296
+        x: 2350
+        y: 1666
         width: 116
         height: 57
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: HP_Satan
-      rect:
-        serializedVersion: 2
-        x: 2510
-        y: 2017
-        width: 335
-        height: 19
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: HP_Enemy
       rect:
         serializedVersion: 2
-        x: 2119
-        y: 677
+        x: 1860
+        y: 699
         width: 335
         height: 19
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stage3
+    - name: HP_Satan
       rect:
         serializedVersion: 2
-        x: 2818
-        y: 1045
+        x: 2079
+        y: 1724
+        width: 335
+        height: 19
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Stage1
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 1638
         width: 75
         height: 76
       alignment: 9
@@ -917,18 +847,18 @@ TextureImporter:
     - name: Stage2
       rect:
         serializedVersion: 2
-        x: 2899
-        y: 1442
+        x: 2811
+        y: 487
         width: 75
         height: 76
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stage1
+    - name: Stage3
       rect:
         serializedVersion: 2
-        x: 2899
-        y: 1519
+        x: 2415
+        y: 1724
         width: 75
         height: 76
       alignment: 9
@@ -937,8 +867,8 @@ TextureImporter:
     - name: plus
       rect:
         serializedVersion: 2
-        x: 2455
-        y: 646
+        x: 2491
+        y: 618
         width: 70
         height: 70
       alignment: 9
@@ -947,8 +877,8 @@ TextureImporter:
     - name: Select_rose
       rect:
         serializedVersion: 2
-        x: 2526
-        y: 646
+        x: 2593
+        y: 1725
         width: 68
         height: 70
       alignment: 9
@@ -957,8 +887,8 @@ TextureImporter:
     - name: info button
       rect:
         serializedVersion: 2
-        x: 3212
-        y: 1305
+        x: 2491
+        y: 1762
         width: 67
         height: 67
       alignment: 9
@@ -967,8 +897,8 @@ TextureImporter:
     - name: Stop
       rect:
         serializedVersion: 2
-        x: 1560
-        y: 1296
+        x: 2824
+        y: 1378
         width: 65
         height: 63
       alignment: 9
@@ -977,8 +907,8 @@ TextureImporter:
     - name: scrollbar
       rect:
         serializedVersion: 2
-        x: 1606
-        y: 1045
+        x: 2854
+        y: 564
         width: 30
         height: 130
       alignment: 9
@@ -987,18 +917,18 @@ TextureImporter:
     - name: castle_upgrade_gauge
       rect:
         serializedVersion: 2
-        x: 2274
-        y: 2001
+        x: 2079
+        y: 1744
         width: 68
         height: 39
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Star_3
+    - name: Star_2
       rect:
         serializedVersion: 2
-        x: 2247
-        y: 1724
+        x: 1892
+        y: 1762
         width: 97
         height: 24
       alignment: 9
@@ -1007,38 +937,38 @@ TextureImporter:
     - name: Star_1
       rect:
         serializedVersion: 2
-        x: 1338
-        y: 1327
+        x: 2148
+        y: 1744
         width: 97
         height: 24
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Star_2
+    - name: Star_3
       rect:
         serializedVersion: 2
-        x: 2846
-        y: 2017
+        x: 2246
+        y: 1744
         width: 97
         height: 24
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: MiniMap_red
-      rect:
-        serializedVersion: 2
-        x: 1436
-        y: 1327
-        width: 6
-        height: 6
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: MiniMap_blue
       rect:
         serializedVersion: 2
-        x: 1436
-        y: 1334
+        x: 2793
+        y: 1378
+        width: 6
+        height: 6
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MiniMap_red
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 1378
         width: 6
         height: 6
       alignment: 9

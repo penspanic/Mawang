@@ -301,6 +301,14 @@ public class PlayerData : MonoBehaviour
         }
     }
 
+    public string GetInGameSceneName()
+    {
+        if (GetSelectedChapter() < 4)
+            return "World1";
+        else
+            return "World2";
+    }
+
     public bool PurchaseItem(string name, int cost)
     {
         if (obsidian - cost >= 0)

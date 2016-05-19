@@ -63,7 +63,7 @@ public class Ready : MonoBehaviour
             return;
 
         isChanging = true;
-        ChangeScene("InGame");
+        ChangeScene(PlayerData.instance.GetInGameSceneName());
 
     }
 

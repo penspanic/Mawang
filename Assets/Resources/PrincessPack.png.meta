@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8a550c97022c3b44b88f92537c9e7ff7
-timeCreated: 1462607649
+timeCreated: 1463624596
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -25,6 +25,10 @@ TextureImporter:
     21300036: C3_CastleImg
     21300038: C1_CastleImg
     21300040: Medic
+    21300042: C5_L
+    21300044: C4_L
+    21300046: C7_L
+    21300048: C6_L
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -47,7 +51,7 @@ TextureImporter:
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 5
   maxTextureSize: 4096
   textureSettings:
     filterMode: 1
@@ -81,7 +85,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C2_L
+    - name: C5_L
       rect:
         serializedVersion: 2
         x: 0
@@ -91,11 +95,51 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C1_L
+    - name: C4_L
       rect:
         serializedVersion: 2
         x: 773
         y: 899
+        width: 772
+        height: 720
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C7_L
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 0
+        width: 772
+        height: 720
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C2_L
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 721
+        width: 772
+        height: 720
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C6_L
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 0
+        width: 772
+        height: 720
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C1_L
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 721
         width: 654
         height: 720
       alignment: 9
@@ -104,7 +148,7 @@ TextureImporter:
     - name: C0_L
       rect:
         serializedVersion: 2
-        x: 795
+        x: 2341
         y: 0
         width: 516
         height: 720
@@ -124,7 +168,7 @@ TextureImporter:
     - name: C3_S
       rect:
         serializedVersion: 2
-        x: 1312
+        x: 2858
         y: 0
         width: 331
         height: 300
@@ -134,7 +178,7 @@ TextureImporter:
     - name: C2_S
       rect:
         serializedVersion: 2
-        x: 1312
+        x: 2858
         y: 301
         width: 331
         height: 300
@@ -144,8 +188,8 @@ TextureImporter:
     - name: C3_SkillName
       rect:
         serializedVersion: 2
-        x: 1428
-        y: 874
+        x: 1546
+        y: 1442
         width: 550
         height: 154
       alignment: 9
@@ -154,8 +198,8 @@ TextureImporter:
     - name: C0_SkillName
       rect:
         serializedVersion: 2
-        x: 1428
-        y: 1029
+        x: 1546
+        y: 1597
         width: 555
         height: 152
       alignment: 9
@@ -164,8 +208,8 @@ TextureImporter:
     - name: C1_SkillName
       rect:
         serializedVersion: 2
-        x: 1513
-        y: 602
+        x: 2097
+        y: 1442
         width: 491
         height: 152
       alignment: 9
@@ -174,8 +218,8 @@ TextureImporter:
     - name: C1_S
       rect:
         serializedVersion: 2
-        x: 1644
-        y: 0
+        x: 0
+        y: 1620
         width: 186
         height: 300
       alignment: 9
@@ -184,28 +228,18 @@ TextureImporter:
     - name: C0_S
       rect:
         serializedVersion: 2
-        x: 1644
-        y: 301
+        x: 187
+        y: 1620
         width: 174
         height: 286
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C3_Portait
-      rect:
-        serializedVersion: 2
-        x: 1819
-        y: 301
-        width: 135
-        height: 135
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: C1_Portait
       rect:
         serializedVersion: 2
-        x: 1819
-        y: 437
+        x: 362
+        y: 1620
         width: 135
         height: 135
       alignment: 9
@@ -214,8 +248,18 @@ TextureImporter:
     - name: C2_Portait
       rect:
         serializedVersion: 2
-        x: 1831
-        y: 0
+        x: 498
+        y: 1620
+        width: 135
+        height: 135
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C3_Portait
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 1620
         width: 135
         height: 135
       alignment: 9
@@ -224,8 +268,8 @@ TextureImporter:
     - name: C0_Portait
       rect:
         serializedVersion: 2
-        x: 1831
-        y: 136
+        x: 770
+        y: 1620
         width: 135
         height: 134
       alignment: 9
@@ -234,38 +278,28 @@ TextureImporter:
     - name: Medic
       rect:
         serializedVersion: 2
-        x: 1312
+        x: 2858
         y: 602
         width: 105
         height: 85
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C1_CastleImg
+    - name: C3_CastleImg
       rect:
         serializedVersion: 2
-        x: 1418
+        x: 2964
         y: 602
         width: 58
         height: 55
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C3_CastleImg
+    - name: C1_CastleImg
       rect:
         serializedVersion: 2
-        x: 1418
+        x: 2964
         y: 658
-        width: 58
-        height: 55
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C0_CastleImg
-      rect:
-        serializedVersion: 2
-        x: 1979
-        y: 755
         width: 58
         height: 55
       alignment: 9
@@ -274,8 +308,18 @@ TextureImporter:
     - name: C2_CastleImg
       rect:
         serializedVersion: 2
-        x: 1979
-        y: 811
+        x: 906
+        y: 1620
+        width: 58
+        height: 55
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C0_CastleImg
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 1676
         width: 58
         height: 55
       alignment: 9
