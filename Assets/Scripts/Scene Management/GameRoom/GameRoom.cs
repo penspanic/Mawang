@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class GameRoom : MonoBehaviour
 {
-
-    void Awake()
+    private void Awake()
     {
         NetworkManager.instance.ConnectRoom();
     }

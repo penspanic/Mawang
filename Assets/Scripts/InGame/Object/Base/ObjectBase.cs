@@ -1,30 +1,42 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ObjectBase : MonoBehaviour
 {
     #region GameDesign
 
-    [SerializeField] protected float   attackRange     =   1;
-    [SerializeField] protected int     hp              =   100;
-    [SerializeField] protected int     canHitNum       =   1;
-    [SerializeField] protected float   defensivePower =   0; // 1일때 받는 대미지 0
-    [SerializeField] protected int     attackDamage = 1;
+    [SerializeField]
+    protected float attackRange = 1;
 
-    #endregion
+    [SerializeField]
+    protected int hp = 100;
+
+    [SerializeField]
+    protected int canHitNum = 1;
+
+    [SerializeField]
+    protected float defensivePower = 0; // 1일때 받는 대미지 0
+
+    [SerializeField]
+    protected int attackDamage = 1;
+
+    #endregion GameDesign
 
     #region Obj Variable
 
-    protected BattleManager  battleMgr;
+    protected BattleManager battleMgr;
 
-    protected float skillElapsedTime     = 0;
-    protected bool  canUseSkill          = false;
+    protected float skillElapsedTime = 0;
+    protected bool canUseSkill = false;
     protected float damagedColorDuration = 0.2f;
-    protected bool  isBleed = false; // 빨갛게 변해있는지 유무
+    protected bool isBleed = false; // 빨갛게 변해있는지 유무
 
-    #endregion 
+    #endregion Obj Variable
+
+
 
     #region Property
+
     public bool isOurForce
     {
         get;
@@ -57,7 +69,8 @@ public class ObjectBase : MonoBehaviour
         get;
         protected set;
     }
-    #endregion
+
+    #endregion Property
 
     protected virtual void Awake()
     {
@@ -72,8 +85,6 @@ public class ObjectBase : MonoBehaviour
             isOurForce = true;
         else
             isOurForce = false;
-
-        
 
         maxHP = hp;
     }
@@ -93,16 +104,14 @@ public class ObjectBase : MonoBehaviour
         yield break;
     }
 
-    public virtual void Attacked(int damage) { }
+    public virtual void Attacked(int damage)
+    {
+    }
 
     public virtual ObjectBase[] GetTargets()
     {
         return null;
     }
-
-
-
-
 
     //--------------------------------------------------------
     // 프로퍼티로 보호하면서 인스펙터에 보여지게 하면 Delete
@@ -111,7 +120,7 @@ public class ObjectBase : MonoBehaviour
         return attackRange;
     }
 
-    public int   GetCanHitNum()
+    public int GetCanHitNum()
     {
         return this.canHitNum;
     }
@@ -123,7 +132,7 @@ public class ObjectBase : MonoBehaviour
 
     public void SetAddAttackDmg(int addDmg)
     {
-        if(attackDamage + addDmg <= 0)
+        if (attackDamage + addDmg <= 0)
             attackDamage = 0;
         else
             attackDamage += addDmg;
@@ -144,6 +153,7 @@ public class ObjectBase : MonoBehaviour
     {
         hp = maxHP;
     }
+
     public int GetHP()
     {
         return hp;

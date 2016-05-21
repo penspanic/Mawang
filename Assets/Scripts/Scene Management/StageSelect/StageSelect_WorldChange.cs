@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class StageSelect_WorldChange : MonoBehaviour
 {
@@ -11,7 +11,8 @@ public class StageSelect_WorldChange : MonoBehaviour
 
     private bool changing = false;
     private StageSelect_PinchZoom pinchZoom;
-    void Awake()
+
+    private void Awake()
     {
         pinchZoom = GameObject.FindObjectOfType<StageSelect_PinchZoom>();
     }
@@ -23,7 +24,7 @@ public class StageSelect_WorldChange : MonoBehaviour
         StartCoroutine(ChangeWorld());
     }
 
-    IEnumerator ChangeWorld()
+    private IEnumerator ChangeWorld()
     {
         changing = true;
 
@@ -38,7 +39,7 @@ public class StageSelect_WorldChange : MonoBehaviour
         worlds[currWorldIndex].transform.SetSiblingIndex(worlds.Length - 1);
         Image currWorldImage = worlds[currWorldIndex].GetComponent<Image>();
 
-        while(elapsedTIme < changeTime)
+        while (elapsedTIme < changeTime)
         {
             elapsedTIme += Time.deltaTime;
             worlds[currWorldIndex].transform.position = EasingUtil.EaseVector3(EasingUtil.easeInOutCubic, startPos, endPos, elapsedTIme / changeTime);

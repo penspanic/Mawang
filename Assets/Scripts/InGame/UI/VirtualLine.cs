@@ -1,23 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class VirtualLine : MonoBehaviour, ITouchable
 {
-    SpawnManager    spawnMgr;
-    SelectTab       selectTab;
-    Movable         spawnObj;
+    private SpawnManager spawnMgr;
+    private SelectTab selectTab;
+    private Movable spawnObj;
 
-    void Awake()
+    private void Awake()
     {
-        selectTab   =   FindObjectOfType<SelectTab>();
-        spawnMgr    =   FindObjectOfType<SpawnManager>();
+        selectTab = FindObjectOfType<SelectTab>();
+        spawnMgr = FindObjectOfType<SpawnManager>();
     }
-
-
 
     public void OnTouch()
     {
-        spawnObj    =   selectTab.GetUnit();
+        spawnObj = selectTab.GetUnit();
 
         if (spawnObj != null)
         {
@@ -26,9 +23,11 @@ public class VirtualLine : MonoBehaviour, ITouchable
                 case "Spawn Line1":
                     spawnMgr.TrySpawnOurForce(spawnObj, 1);
                     break;
+
                 case "Spawn Line2":
                     spawnMgr.TrySpawnOurForce(spawnObj, 2);
                     break;
+
                 case "Spawn Line3":
                     spawnMgr.TrySpawnOurForce(spawnObj, 3);
                     break;

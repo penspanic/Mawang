@@ -1,42 +1,44 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public delegate void CallbackDelegate(GameObject obj);
+
 public class SpriteDelayedDisappear : MonoBehaviour
 {
     public CallbackDelegate callBack;
     public float delayedTime;
     public float duration;
     public bool isDestory;
-    SpriteRenderer spr;
+    private SpriteRenderer spr;
 
-    void Awake()
+    private void Awake()
     {
-        spr =   GetComponent<SpriteRenderer>();
+        spr = GetComponent<SpriteRenderer>();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         StartCoroutine(Disappear());
     }
-    IEnumerator Disappear()
+
+    private IEnumerator Disappear()
     {
         yield return new WaitForSeconds(delayedTime);
 
-        float currTime  =   0.0f;
+        float currTime = 0.0f;
         while (currTime < duration)
         {
-            currTime    +=  Time.deltaTime;
+            currTime += Time.deltaTime;
 
-            float alpha =   EasingUtil.easeOutExpo(1, 0, currTime / duration);
+            float alpha = EasingUtil.easeOutExpo(1, 0, currTime / duration);
 
-            spr.color   =   new Color(1, 1, 1, alpha);
+            spr.color = new Color(1, 1, 1, alpha);
             yield return null;
         }
-        
-        spr.color       =   new Color(0, 0, 0, 0);
 
-        if (callBack != null)   
+        spr.color = new Color(0, 0, 0, 0);
+
+        if (callBack != null)
             callBack(gameObject);
         else
         {
@@ -45,9 +47,7 @@ public class SpriteDelayedDisappear : MonoBehaviour
             else
                 gameObject.SetActive(false);
         }
-        
 
         yield break;
-
     }
 }

@@ -1,37 +1,38 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class FadeAlphaForImg : MonoBehaviour
 {
-    [Range(0,1)]
+    [Range(0, 1)]
     public float minAlpha = 0;
-    [Range(0,1)]
+
+    [Range(0, 1)]
     public float maxAlpha = 1;
 
     public float fadingTime;
 
     private Image targetImg;
     private bool isUpping;
-    void Awake()
+
+    private void Awake()
     {
         targetImg = gameObject.GetComponent<Image>();
-        isUpping  = false;
+        isUpping = false;
     }
 
-
-    void OnEnable()
+    private void OnEnable()
     {
         StartCoroutine(FadeAlpha());
     }
 
-    IEnumerator FadeAlpha()
+    private IEnumerator FadeAlpha()
     {
         while (true)
         {
             float currTime = 0.0f;
 
-            if(isUpping)
+            if (isUpping)
                 targetImg.color = SetAlpha(targetImg, minAlpha);
             else
                 targetImg.color = SetAlpha(targetImg, maxAlpha);
@@ -60,7 +61,7 @@ public class FadeAlphaForImg : MonoBehaviour
         }
     }
 
-    Color SetAlpha(Image img, float alpha)
+    private Color SetAlpha(Image img, float alpha)
     {
         return new Color(img.color.r, img.color.g, img.color.b, alpha);
     }

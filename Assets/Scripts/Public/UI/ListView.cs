@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public enum XAlignment
 {
@@ -9,12 +7,14 @@ public enum XAlignment
     Middle,
     Right,
 }
+
 public enum YAlignment
 {
     Top,
     Middle,
     Bottom,
 }
+
 /// <summary>
 /// 행렬로 아이템을 정렬해서 추가해 주는 UI이다.
 /// </summary>
@@ -31,18 +31,20 @@ public class ListView : MonoBehaviour
     public int yInterval;
 
     [SerializeField]
-    XAlignment xAlignment;
+    private XAlignment xAlignment;
+
     [SerializeField]
-    YAlignment yAlignment;
+    private YAlignment yAlignment;
+
     private List<GameObject[]> itemList = new List<GameObject[]>();
     private object[][] items;
     private Vector2 itemSize;
 
-    bool isLeftToRight = true;  // 아이템을 왼쪽에서 오른쪽으로 배치할 지
-    bool isTopToButtom = true;  // 아이템을 위에서 아래로 배치할 지
-    void Awake()
-    {
+    private bool isLeftToRight = true;  // 아이템을 왼쪽에서 오른쪽으로 배치할 지
+    private bool isTopToButtom = true;  // 아이템을 위에서 아래로 배치할 지
 
+    private void Awake()
+    {
     }
 
     public void SetItems()
@@ -70,10 +72,12 @@ public class ListView : MonoBehaviour
             case XAlignment.Left:
                 firstItemPos.x = leftTop.x + xInterval + itemSize.x / 2;
                 break;
+
             case XAlignment.Middle:
                 float xLength = itemSize.x * column + xInterval * (column - 1);
                 firstItemPos.x = -(xLength / 2) + itemSize.x / 2;
                 break;
+
             case XAlignment.Right:
                 isLeftToRight = false;
                 float contentRight = leftTop.x + contentTransform.sizeDelta.x;
@@ -85,17 +89,18 @@ public class ListView : MonoBehaviour
             case YAlignment.Top:
                 firstItemPos.y = leftTop.y - (itemSize.y / 2 + yInterval);
                 break;
+
             case YAlignment.Middle:
                 float yLength = itemSize.y * row + yInterval * (row - 1);
                 firstItemPos.y = -(-(yLength / 2) + itemSize.y / 2);
                 break;
+
             case YAlignment.Bottom:
                 isTopToButtom = false;
                 float contentBottom = leftTop.y - contentTransform.sizeDelta.y;
                 firstItemPos.y = contentBottom + (yInterval + itemSize.y / 2);
                 break;
         }
-
 
         GameObject newItem;
         for (int y = 0; y < row; y++)
@@ -123,6 +128,7 @@ public class ListView : MonoBehaviour
     {
         return itemList[y][x];
     }
+
     public GameObject GetItem(int index)
     {
         return itemList[index / column][index % column];

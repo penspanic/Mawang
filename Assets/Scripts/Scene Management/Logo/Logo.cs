@@ -1,16 +1,16 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Logo : MonoBehaviour
 {
     public Animator logoAnimator;
 
-    void Awake()
+    private void Awake()
     {
         StartCoroutine(LogoProcess());
     }
 
-    IEnumerator LogoProcess()
+    private IEnumerator LogoProcess()
     {
         logoAnimator.enabled = true;
         yield return new WaitForSeconds(2f);

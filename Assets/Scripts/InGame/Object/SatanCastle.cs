@@ -1,14 +1,16 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class SatanCastle : Castle
 {
     [SerializeField]
     private GameObject skillObject;
+
     [SerializeField]
-    Button skillButton;
+    private Button skillButton;
+
     private float skillCoolTime; // 스킬 쿨타임
     private int skillDamage;
     private int skillCnt;
@@ -44,13 +46,10 @@ public class SatanCastle : Castle
         if (PlayerData.instance.selectedStage == "C0S1")
             skillCoolTime = 35;
 
-
         skillButton.onClick.AddListener(OnTouch);
-
-
     }
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(SkillProcess());
     }
@@ -68,9 +67,6 @@ public class SatanCastle : Castle
 
         canUseSkill = false;
 
-
-
-
         SatanSkill skill;
         for (int i = 0; i < skillCnt; i++)
         {
@@ -84,17 +80,14 @@ public class SatanCastle : Castle
             skill.SetTarget(targets[i]);
         }
 
-
         StopCoroutine(SkillProcess());
         StartCoroutine(SkillProcess());
     }
 
-
-    IEnumerator SkillProcess()
+    private IEnumerator SkillProcess()
     {
         while (!canUseSkill)
         {
-
             if (skillElapsedTime >= skillCoolTime)
             {
                 castlePortrait.fillAmount = 1;
@@ -112,7 +105,7 @@ public class SatanCastle : Castle
         StartCoroutine(SkillTwinkle());
     }
 
-    IEnumerator SkillTwinkle()
+    private IEnumerator SkillTwinkle()
     {
         float elapsedTime = 0f;
         while (canUseSkill)
@@ -124,7 +117,7 @@ public class SatanCastle : Castle
         castleWhite.color = new Color(1, 1, 1, 0);
     }
 
-    void CheckTuto()
+    private void CheckTuto()
     {
         if (PlayerData.instance.selectedStage == "C0S1")
         {
@@ -150,10 +143,12 @@ public class SatanCastle : Castle
             hp += (int)healValue;
         }
     }
+
     public override ObjectBase[] GetTargets()
     {
         List<ObjectBase> oppositeList = battleMgr.GetOpposite(true);
-        oppositeList = battleMgr.SelectInRange(oppositeList, transform.position, this.attackRange);
+
+        oppositeList = battleMgr.SelectInRange(oppositeList, transform.position + Vector3.left, this.attackRange);
         return oppositeList.ToArray();
     }
 

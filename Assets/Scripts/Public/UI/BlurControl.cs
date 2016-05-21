@@ -1,13 +1,11 @@
 using UnityEngine;
-using System.Collections;
 
 public class BlurControl : MonoBehaviour
 {
-
     public float value;
-    Renderer renderer;
+    private Renderer renderer;
 
-    void Awake()
+    private void Awake()
     {
         renderer = GetComponent<Renderer>();
         renderer.material.SetFloat("_blurSizeXY", value);
@@ -35,6 +33,7 @@ public class BlurControl : MonoBehaviour
         this.value = value;
         renderer.material.SetFloat("_blurSizeXY", value);
     }
+
     //void OnGUI()
     //{
     //    GUI.TextArea(new Rect(10f, 10f, 200f, 50f), "Press the 'Up' and 'Down' arrows \nto interact with the blur plane\nCurrent value: " + value);

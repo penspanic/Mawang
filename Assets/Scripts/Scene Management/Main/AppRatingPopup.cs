@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class AppRatingPopup : MonoBehaviour
 {
-    void Awake()
+    private void Awake()
     {
         PlayerData.instance.CheckInstance();
-    }   
+    }
 
     public void ShowPopup()
     {

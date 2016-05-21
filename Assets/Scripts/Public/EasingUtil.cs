@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 //http://www.gizma.com/easing/
 
@@ -309,6 +308,7 @@ public static class EasingUtil
 
         return (a * Mathf.Pow(2, -10 * value) * Mathf.Sin((value * d - s) * (2 * Mathf.PI) / p) + end + start);
     }
+
     public static float smoothstep(float from, float to, float t)
     {
         return Mathf.SmoothStep(from, to, t);

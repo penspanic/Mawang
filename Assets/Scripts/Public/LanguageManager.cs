@@ -11,15 +11,12 @@ public class LanguageManager : MonoBehaviour
     public Language currLanguage
     { get; private set; }
 
-
-    void Awake()
+    private void Awake()
     {
-
     }
 
-    void Update()
+    private void Update()
     {
-
     }
 
     public string GetText(string key)
@@ -29,6 +26,5 @@ public class LanguageManager : MonoBehaviour
 
     public void ChangeLanguage(string language)
     {
-
     }
 }

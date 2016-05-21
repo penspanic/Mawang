@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public class Main_Princess : MonoBehaviour
 {
-    string[] scripts;
-    Text scriptText;
+    private string[] scripts;
+    private Text scriptText;
 
-    const float scriptDuration = 2f;
-    void Awake()
+    private const float scriptDuration = 2f;
+
+    private void Awake()
     {
         scriptText = transform.GetComponentInChildren<Text>();
     }
@@ -19,16 +18,16 @@ public class Main_Princess : MonoBehaviour
         this.scripts = scripts;
     }
 
+    private bool isShowing;
 
-    bool isShowing;
-    void ShowScript()
+    private void ShowScript()
     {
         isShowing = true;
         scriptText.text = scripts[Random.Range(0, scripts.Length)];
         Invoke("OnHideScript", scriptDuration);
     }
 
-    void OnHideScript()
+    private void OnHideScript()
     {
         isShowing = false;
         scriptText.text = string.Empty;

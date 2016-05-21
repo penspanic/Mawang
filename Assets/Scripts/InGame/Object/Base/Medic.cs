@@ -1,21 +1,23 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// 메딕
 /// ------적-------아군----메딕-------
-/// 아군과 일정 거리 유지 ( idle ) 
+/// 아군과 일정 거리 유지 ( idle )
 /// 아군이 피해를 입을 경우, 즉시 힐 시작
-/// 아군이 죽을경우 자리에 그자리에 서기 ( idle ) 
-/// 
+/// 아군이 죽을경우 자리에 그자리에 서기 ( idle )
+///
 /// /// </summary>
 public class Medic : Movable
 {
     private Vector3 prevPos;
+
     [SerializeField]
     private int healPerSec;
-
+    [SerializeField]
+    private bool isOverlapHeal;
     private List<ObjectBase> healTargets;
 
     private bool isHealing = false;
@@ -26,6 +28,7 @@ public class Medic : Movable
         healTargets = new List<ObjectBase>();
         base.Awake();
     }
+
     protected override void Attack()
     {
         if (!isHealing)
@@ -42,11 +45,11 @@ public class Medic : Movable
     {
         AttackEnd();
 
-        if(healTargets.Count > 0)
+        if (healTargets.Count > 0)
             StartCoroutine(HealProcess(healTargets[0]));
     }
 
-    IEnumerator HealProcess(ObjectBase healTarget)
+    private IEnumerator HealProcess(ObjectBase healTarget)
     {
         while (!healTarget.isDestroyed
             && Mathf.Abs(healTarget.transform.position.x - transform.position.x) <= attackRange * BattleManager.fightDistance
@@ -75,6 +78,7 @@ public class Medic : Movable
         if (targets == null)
         {
             targets = battleMgr.GetTargets(this, attackRange, canHitNum);
+
         }
         else
         {
@@ -89,11 +93,23 @@ public class Medic : Movable
 
         if (healTargets.Count == 0)
             canAttack = false;
-                    
-        // 행동 분배 
 
+        if (isOverlapHeal)
+        {
+            if (IsOverlapMedic(targets))
+            {
+                state = MovableState.Advance;
+                return;
+            }
+
+        }
+
+
+        // 행동 분배
+        if(targets != null)
+            Debug.Log("targets: " + targets.Length);
         // 아군도 적군도 없을 경우
-        if (targets == null)
+        if (targets == null || targets.Length == 0)
             state = MovableState.Advance;
         else
         {
@@ -103,5 +119,16 @@ public class Medic : Movable
             else // 공격이 불가능한 경우
                 state = MovableState.Idle;
         }
+    }
+
+    private bool IsOverlapMedic(ObjectBase[] targets)
+    {
+        if (targets == null)
+            return false;
+
+        if (targets[0].name.Contains("Medic"))
+            return true;
+
+        return false;
     }
 }

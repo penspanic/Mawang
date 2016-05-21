@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class LogoWheel : MonoBehaviour
 {
@@ -7,13 +6,13 @@ public class LogoWheel : MonoBehaviour
     public float rotateSpeed;
     public float moveSpeed;
 
-    bool isMoving = true;
-    void Awake()
-    {
+    private bool isMoving = true;
 
+    private void Awake()
+    {
     }
 
-    void Update()
+    private void Update()
     {
         if (isMoving)
         {

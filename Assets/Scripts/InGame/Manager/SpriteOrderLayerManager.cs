@@ -1,17 +1,16 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class SpriteOrderLayerManager : MonoBehaviour
 {
-    BattleManager battleMgr;
-    List<ObjectBase> allList = new List<ObjectBase>();
-    List<ObjectBase> lineListArr = new List<ObjectBase>();
-    int orderInterval   =   12;
-    
-    Queue<int> deathOrderQueue = new Queue<int>();
+    private BattleManager battleMgr;
+    private List<ObjectBase> allList = new List<ObjectBase>();
+    private List<ObjectBase> lineListArr = new List<ObjectBase>();
+    private int orderInterval = 12;
 
-    void Awake()
+    private Queue<int> deathOrderQueue = new Queue<int>();
+
+    private void Awake()
     {
         battleMgr = GetComponent<BattleManager>();
     }
@@ -29,7 +28,7 @@ public class SpriteOrderLayerManager : MonoBehaviour
         allList.AddRange(battleMgr.enemyList);
         allList.AddRange(battleMgr.ourForceList);
 
-        lineListArr = battleMgr.GetSameLine(allList,lineNum);
+        lineListArr = battleMgr.GetSameLine(allList, lineNum);
 
         lineListArr.Sort((a, b) =>
         {
@@ -44,17 +43,13 @@ public class SpriteOrderLayerManager : MonoBehaviour
                 return 0;
         });
 
-
         for (int i = 0; i < lineListArr.Count; i++)
         {
-            SpriteRenderer[] sprs =  lineListArr[i].GetComponent<Movable>().GetSprs();
+            SpriteRenderer[] sprs = lineListArr[i].GetComponent<Movable>().GetSprs();
             for (int j = 0; j < sprs.Length; j++)
             {
                 sprs[j].sortingOrder += i * orderInterval;
             }
         }
-
     }
-
-
 }

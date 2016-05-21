@@ -1,24 +1,25 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 /// <summary>
 /// 구름들 관리 스크립트
 /// </summary>
 public class Clouds : MonoBehaviour
 {
-
     [SerializeField]
     private bool isMovingRight;
+
     [SerializeField]
     private GameObject[] clouds;
 
-    public  float cloudInterval;
+    public float cloudInterval;
 
     private float[] randSpeed;
     private Vector2 startPos;
     private float startX;
     private float currTime;
-    void Awake()
+
+    private void Awake()
     {
         randSpeed = new float[clouds.Length];
         if (isMovingRight)
@@ -30,11 +31,10 @@ public class Clouds : MonoBehaviour
         for (int i = 0; i < clouds.Length; i++)
             randSpeed[i] = Random.Range(0.2f, 0.3f);
 
-
         StartCoroutine(CloudUpdate());
     }
 
-    IEnumerator CloudUpdate()
+    private IEnumerator CloudUpdate()
     {
         while (true)
         {
@@ -49,7 +49,7 @@ public class Clouds : MonoBehaviour
         }
     }
 
-    void IsFinished(GameObject obj)
+    private void IsFinished(GameObject obj)
     {
         if (isMovingRight ?
             obj.transform.localPosition.x >= -startX : obj.transform.localPosition.x <= -startX)
@@ -62,7 +62,7 @@ public class Clouds : MonoBehaviour
         }
     }
 
-    Vector2 SetStartPos()
+    private Vector2 SetStartPos()
     {
         startPos = new Vector2(startX, Random.Range(-0.56f, 0.1f));
         return startPos;

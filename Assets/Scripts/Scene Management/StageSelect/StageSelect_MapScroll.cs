@@ -1,25 +1,23 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class StageSelect_MapScroll : MonoBehaviour
 {
+    private StageSelect_Background background;
+    private StageSelect_PinchZoom pinchZoom;
 
-    StageSelect_Background background;
-    StageSelect_PinchZoom pinchZoom;
+    private bool prevMouseDown = false;
 
-    bool prevMouseDown = false;
+    private Vector2 prevTouchPos = Vector2.zero;
+    private Vector2 currTouchPos = Vector2.zero;
+    private Vector2 deltaPos = Vector2.zero;
 
-    Vector2 prevTouchPos = Vector2.zero;
-    Vector2 currTouchPos = Vector2.zero;
-    Vector2 deltaPos = Vector2.zero;
-
-    void Awake()
+    private void Awake()
     {
         background = GameObject.FindObjectOfType<StageSelect_Background>();
         pinchZoom = GameObject.FindObjectOfType<StageSelect_PinchZoom>();
     }
 
-    void Update()
+    private void Update()
     {
         if (!StageSelect_Background.Touched() || Input.touchCount >= 2)
         {
@@ -48,21 +46,22 @@ public class StageSelect_MapScroll : MonoBehaviour
             prevMouseDown = false;
     }
 
-    float GetMaxPosX()
+    private float GetMaxPosX()
     {
         return 12.8f + (1f - pinchZoom.ratio) * 6.4f;
     }
 
-    float GetMinPosX()
+    private float GetMinPosX()
     {
         return 0f - (1f - pinchZoom.ratio) * 6.4f;
     }
-    float GetMaxPosY()
+
+    private float GetMaxPosY()
     {
         return 7.2f + (1f - pinchZoom.ratio) * 3.6f;
     }
 
-    float GetMinPosY()
+    private float GetMinPosY()
     {
         return 0f - (1f - pinchZoom.ratio) * 3.6f;
     }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class InfoPanel : MonoBehaviour
 {
@@ -8,23 +7,25 @@ public class InfoPanel : MonoBehaviour
         get;
         private set;
     }
+
     public bool isShowing
     {
         get;
         private set;
     }
 
-    Animator animator;
-    void Awake()
+    private Animator animator;
+
+    private void Awake()
     {
         animator = GetComponent<Animator>();
     }
-    
+
     public void ShowPanel()
     {
         if (isMoving)
             return;
-        if(isShowing)
+        if (isShowing)
         {
             isShowing = false;
             animator.Play("Info Panel Rise", 0);
@@ -32,7 +33,7 @@ public class InfoPanel : MonoBehaviour
         else
         {
             isShowing = true;
-            animator.Play("Info Panel Fall",0);
+            animator.Play("Info Panel Fall", 0);
         }
         isMoving = true;
     }

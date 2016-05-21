@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Launcher : Movable
 {
     [SerializeField]
-    private     GameObject      projectile;
-    protected   ObjectBase[]    targets;
+    private GameObject projectile;
+
+    protected ObjectBase[] targets;
 
     protected override void Attack()
     {
         base.Attack();
 
-        targets     = this.GetTargets();
+        targets = this.GetTargets();
 
         if (targets == null)
             return;
-
-        
-    }   
+    }
 
     public void OnProjectile()
     {
@@ -27,27 +25,22 @@ public class Launcher : Movable
         }
     }
 
-    void OnAttackEnd()
+    private void OnAttackEnd()
     {
         AttackEnd();
     }
 
     public ObjectBase GetLauncherTargets(int idx)
     {
-        if(targets[idx] == null)
+        if (targets[idx] == null)
             return null;
 
         return targets[idx];
     }
-
-
-   
 
     public override void AttackEnd()
     {
         base.AttackEnd();
         canAttack = false;
     }
-
-
 }

@@ -1,16 +1,14 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PrincessReact : MonoBehaviour
 {
-    RectTransform[][] princessTransforms;
-    bool[][] princessExists;
+    private RectTransform[][] princessTransforms;
+    private bool[][] princessExists;
 
-    Main_Princess[] princesses;
-    void Awake()
+    private Main_Princess[] princesses;
+
+    private void Awake()
     {
         PlayerData.instance.CheckInstance();
         JsonManager.instance.CheckInstance();
@@ -19,7 +17,7 @@ public class PrincessReact : MonoBehaviour
         PrincessPosSetting();
     }
 
-    void LoadPosition()
+    private void LoadPosition()
     {
         princessTransforms = new RectTransform[2][];
         princessExists = new bool[2][];
@@ -39,7 +37,7 @@ public class PrincessReact : MonoBehaviour
         }
     }
 
-    void CreatePrincesses()
+    private void CreatePrincesses()
     {
         int lastChapter = PlayerData.instance.GetClearedLastChapter();
         if (lastChapter == 999)
@@ -55,17 +53,17 @@ public class PrincessReact : MonoBehaviour
         princesses = princessList.ToArray();
     }
 
-    void PrincessPosSetting()
+    private void PrincessPosSetting()
     {
         if (princesses == null)
             return;
-        for(int i = 0;i<princesses.Length;i++)
+        for (int i = 0; i < princesses.Length; i++)
         {
-            while(true)
+            while (true)
             {
-                int randomX = Random.Range(0,3);
-                int randomY = Random.Range(0,2);
-                if(princessExists[randomY][randomX])
+                int randomX = Random.Range(0, 3);
+                int randomY = Random.Range(0, 2);
+                if (princessExists[randomY][randomX])
                 {
                     continue;
                 }

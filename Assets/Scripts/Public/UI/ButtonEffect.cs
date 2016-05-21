@@ -1,25 +1,26 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 
 public enum ButtonEffectType
 {
     Expand,
     BigAndSmall,
 }
+
 public class ButtonEffect : MonoBehaviour
 {
     public ButtonEffectType type;
     public bool childChange;
 
-    Button targetButton;
-    EventTrigger trigger;
-    Vector2 originalSize;
-    RectTransform rectTransform;
-    void Awake()
+    private Button targetButton;
+    private EventTrigger trigger;
+    private Vector2 originalSize;
+    private RectTransform rectTransform;
+
+    private void Awake()
     {
         targetButton = GetComponent<Button>();
         rectTransform = GetComponent<RectTransform>();
@@ -29,7 +30,7 @@ public class ButtonEffect : MonoBehaviour
         AddEventTrigger(EventTriggerType.PointerEnter, OnPointerEnter);
     }
 
-    void AddEventTrigger(EventTriggerType type, UnityAction<BaseEventData> action)
+    private void AddEventTrigger(EventTriggerType type, UnityAction<BaseEventData> action)
     {
         EventTrigger.Entry entry;
         entry = new EventTrigger.Entry();
@@ -41,16 +42,17 @@ public class ButtonEffect : MonoBehaviour
     public void OnPointerEnter(BaseEventData data)
     {
         // Filter child object's event out.
-        if ((data as PointerEventData).pointerEnter != targetButton.gameObject) 
+        if ((data as PointerEventData).pointerEnter != targetButton.gameObject)
             return;
 
         if (!isMoving)
         {
-            switch(type)
+            switch (type)
             {
                 case ButtonEffectType.Expand:
                     StartCoroutine(Expand(0.25f, childChange));
                     break;
+
                 case ButtonEffectType.BigAndSmall:
                     StartCoroutine(BigAndSmall(0.785f, childChange));
                     break;
@@ -58,9 +60,9 @@ public class ButtonEffect : MonoBehaviour
         }
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
-        if(isMoving)
+        if (isMoving)
         {
             isMoving = false;
             rectTransform.sizeDelta = originalSize;
@@ -68,10 +70,9 @@ public class ButtonEffect : MonoBehaviour
         }
     }
 
-    bool isMoving = false;
+    private bool isMoving = false;
 
-
-    IEnumerator Expand(float time, bool childChange = false)
+    private IEnumerator Expand(float time, bool childChange = false)
     {
         isMoving = true;
         float elapsedTime = 0f;
@@ -83,7 +84,7 @@ public class ButtonEffect : MonoBehaviour
 
         Vector3 startSize = originalSize * 0.66f;
 
-        while(elapsedTime < time)
+        while (elapsedTime < time)
         {
             elapsedTime += Time.deltaTime;
             if (childChange)
@@ -100,7 +101,7 @@ public class ButtonEffect : MonoBehaviour
         isMoving = false;
     }
 
-    IEnumerator BigAndSmall(float time, bool childChange = false)
+    private IEnumerator BigAndSmall(float time, bool childChange = false)
     {
         isMoving = true;
         float elapsedTime = 0f;
@@ -110,7 +111,7 @@ public class ButtonEffect : MonoBehaviour
         else
             originalSize = rectTransform.sizeDelta;
 
-        while(elapsedTime < time)
+        while (elapsedTime < time)
         {
             elapsedTime += Time.deltaTime;
 
@@ -128,7 +129,4 @@ public class ButtonEffect : MonoBehaviour
             rectTransform.sizeDelta = originalSize;
         isMoving = false;
     }
-
-
-   
 }

@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class GoldManager : MonoBehaviour
 {
-    private int goldUpgradeCost = 150; 
+    private int goldUpgradeCost = 150;
     private int goldUpgradeAddCost = 40;
 
     private int goldIncreaseAmount = 10; // 기본 초당 골드 습득량
@@ -16,12 +16,13 @@ public class GoldManager : MonoBehaviour
 
     public int playerGold;
 
-    int goldUpgradeStep;
+    private int goldUpgradeStep;
 
-    GameManager gameMgr;
-    Text playerGoldText;
-    Text upgradeCostText;
-    void Awake()
+    private GameManager gameMgr;
+    private Text playerGoldText;
+    private Text upgradeCostText;
+
+    private void Awake()
     {
         gameMgr = GameObject.FindObjectOfType<GameManager>();
         playerGoldText = GameObject.Find("Gold Text").GetComponent<Text>();
@@ -31,15 +32,16 @@ public class GoldManager : MonoBehaviour
         SetUpgradeCostText();
     }
 
-    IEnumerator UpdateGoldText()
+    private IEnumerator UpdateGoldText()
     {
-        while(gameMgr.isRun)
+        while (gameMgr.isRun)
         {
             SetGoldText();
             yield return null;
         }
     }
-    IEnumerator IncreaseGold()
+
+    private IEnumerator IncreaseGold()
     {
         while (gameMgr.isRun)
         {
@@ -55,42 +57,45 @@ public class GoldManager : MonoBehaviour
             {
                 playerGold += goldIncreaseAmount;
             }
-
         }
     }
-    void SetGoldText()
+
+    private void SetGoldText()
     {
         playerGoldText.text = playerGold.ToString();
     }
-    void SetUpgradeCostText()
+
+    private void SetUpgradeCostText()
     {
         upgradeCostText.text = goldUpgradeCost.ToString();
 
         if (goldUpgradeStep == MaxUpgradeStep)
             upgradeCostText.text = "Max";
     }
+
     public void GoldUpgrade()
     {
         playerGold -= goldUpgradeCost;
         goldIncreaseAmount += goldUpgradeAddAmount;
         playerMaxGold += maxGoldAddAmount;
         goldUpgradeCost += goldUpgradeAddCost;
-        
+
         goldUpgradeStep++;
         SetUpgradeCostText();
-
     }
 
     public bool CanGoldUpgrade()
-    { 
+    {
         if (playerGold - goldUpgradeCost < 0)
             return false;
         return true;
     }
+
     public int GetGoldUpgradeStep()
     {
         return goldUpgradeStep;
     }
+
     public void AddGold(int gold)
     {
         if (playerGold + gold > playerMaxGold)

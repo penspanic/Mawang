@@ -1,28 +1,29 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public class MessageBox : MonoBehaviour
 {
     [SerializeField]
     private Text[] messages;
+
     [SerializeField]
     private Image frame;
-    Vector2[] messagesPos = { new Vector2(96, 28), new Vector2(96, -26.5f) };
-    Vector2 middlePos = new Vector2(96, 0);
-    Queue<string> messageQueue = new Queue<string>();
-    GameObject[] children;
-    bool isMessageBoxActive = false;
-    float elaspedTime;
-    float waitingTime;
-    void Awake()
-    {
 
+    private Vector2[] messagesPos = { new Vector2(96, 28), new Vector2(96, -26.5f) };
+    private Vector2 middlePos = new Vector2(96, 0);
+    private Queue<string> messageQueue = new Queue<string>();
+    private GameObject[] children;
+    private bool isMessageBoxActive = false;
+    private float elaspedTime;
+    private float waitingTime;
+
+    private void Awake()
+    {
         InactiveMessageBox();
     }
 
-    void Update()
+    private void Update()
     {
         if (isMessageBoxActive)
         {
@@ -32,7 +33,6 @@ public class MessageBox : MonoBehaviour
                 elaspedTime = 0;
                 InactiveMessageBox();
             }
-
         }
     }
 
@@ -51,7 +51,7 @@ public class MessageBox : MonoBehaviour
         }
     }
 
-    void ResetMessageBox()
+    private void ResetMessageBox()
     {
         ActiveMessageBox();
         messages[0].text = "";
@@ -70,7 +70,7 @@ public class MessageBox : MonoBehaviour
         }
     }
 
-    void ActiveMessageBox()
+    private void ActiveMessageBox()
     {
         isMessageBoxActive = true;
         messages[0].enabled = true;
@@ -78,7 +78,7 @@ public class MessageBox : MonoBehaviour
         frame.enabled = true;
     }
 
-    void InactiveMessageBox()
+    private void InactiveMessageBox()
     {
         messageQueue.Clear();
         isMessageBoxActive = false;

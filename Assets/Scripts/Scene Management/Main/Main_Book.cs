@@ -1,7 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public class Main_Book : MonoBehaviour
 {
@@ -9,12 +8,12 @@ public class Main_Book : MonoBehaviour
     public Image leftButtonImage;
     public Image rightButtonImage;
 
-    List<GameObject> pageList = new List<GameObject>();
-    AudioSource bookEffectSource;
+    private List<GameObject> pageList = new List<GameObject>();
+    private AudioSource bookEffectSource;
 
-    int selectedIndex = 0;
+    private int selectedIndex = 0;
 
-    void Awake()
+    private void Awake()
     {
         bookEffectSource = GetComponent<AudioSource>();
         SetBook();
@@ -23,9 +22,9 @@ public class Main_Book : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    void SetBook()
+    private void SetBook()
     {
-        // Sprite/UI/Icon/Unitortrait 경로 안에 있는 스프라이트 갯수만큼 생성됨 
+        // Sprite/UI/Icon/Unitortrait 경로 안에 있는 스프라이트 갯수만큼 생성됨
         List<Movable> unitList = new List<Movable>(Resources.LoadAll<Movable>("Prefabs/OurForce"));
         unitList.Sort();
 
@@ -33,7 +32,6 @@ public class Main_Book : MonoBehaviour
         Text descriptionText;
         foreach (Movable eachUnit in unitList)
         {
-
             GameObject currPage = Instantiate(pagePrefab);
             currPage.transform.SetParent(this.transform, false);
             currPage.transform.SetAsFirstSibling();
@@ -41,9 +39,9 @@ public class Main_Book : MonoBehaviour
             nameText = currPage.transform.Find("Name Text").GetComponent<Text>();
             descriptionText = currPage.transform.Find("Description Text").GetComponent<Text>();
             nameText.text = JsonManager.instance.GetKoreanName(eachUnit.name);
-            string unitType = "타입 : " +  (eachUnit is Launcher ? "원거리" : "근거리");
+            string unitType = "타입 : " + (eachUnit is Launcher ? "원거리" : "근거리");
             descriptionText.text = string.Format("생산 비용 : {0}\n체력 : {1}\n공격력 : {2}\n{3}\n\n{4}\n\n{5}",
-                eachUnit.GetUnitCost(), eachUnit.GetHP(), eachUnit.GetAttackDamage(), unitType, "스킬 : " + 
+                eachUnit.GetUnitCost(), eachUnit.GetHP(), eachUnit.GetAttackDamage(), unitType, "스킬 : " +
                 JsonManager.instance.GetDescription(eachUnit.name), JsonManager.instance.GetJoke(eachUnit.name));
             // Show Unit
 
@@ -66,9 +64,9 @@ public class Main_Book : MonoBehaviour
         }
     }
 
-    void ShowPage(int index, bool soundPlay)
+    private void ShowPage(int index, bool soundPlay)
     {
-        if(soundPlay)
+        if (soundPlay)
             bookEffectSource.Play();
         int i = 0;
         foreach (GameObject eachPage in pageList)
@@ -79,11 +77,11 @@ public class Main_Book : MonoBehaviour
             i++;
         }
 
-        if(selectedIndex == 0)
+        if (selectedIndex == 0)
         {
             leftButtonImage.color = new Color(1, 1, 1, 0.5f);
         }
-        else if(selectedIndex == pageList.Count - 1)
+        else if (selectedIndex == pageList.Count - 1)
         {
             rightButtonImage.color = new Color(1, 1, 1, 0.5f);
         }
@@ -92,7 +90,6 @@ public class Main_Book : MonoBehaviour
             leftButtonImage.color = new Color(1, 1, 1, 1);
             rightButtonImage.color = new Color(1, 1, 1, 1);
         }
-            
     }
 
     public void OnLeftButtonDown()

@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Orc : Warrior, ITouchable
 {
-
     [SerializeField]
     private int skillMultiplicationDmg;
+
     [SerializeField]
     private int skillHitNum;
-    
 
     #region ITouchable 멤버
 
@@ -20,8 +18,7 @@ public class Orc : Warrior, ITouchable
         }
     }
 
-    #endregion
-
+    #endregion ITouchable 멤버
 
     public void OnSkillMotionEvent()
     {
@@ -33,13 +30,12 @@ public class Orc : Warrior, ITouchable
         }
 
         SkillMotionEnd();
-
     }
 
     public void OnEffect()
     {
         Vector2 spawnPos = transform.position;
-        spawnPos += new Vector2(1.03f,0.5f);
-        EffectManager.instance.PlayEffect(EffectKind.Orc_skill,spawnPos);
+        spawnPos += new Vector2(1.03f, 0.5f);
+        EffectManager.instance.PlayEffect(EffectKind.Orc_skill, spawnPos);
     }
 }

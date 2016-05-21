@@ -1,17 +1,17 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class StageSelect : MonoBehaviour
 {
     public string chapterName;
 
-    ChapterInfo chapterInfo;
+    private ChapterInfo chapterInfo;
 
-    Button[][] stageButtons = new Button[4][];
+    private Button[][] stageButtons = new Button[4][];
 
-    void Awake()
+    private void Awake()
     {
         StartCoroutine(FadeIn());
         PlayerData.instance.CheckInstance();
@@ -33,7 +33,7 @@ public class StageSelect : MonoBehaviour
         GameObject.FindObjectOfType<SceneFader>().transform.localPosition = new Vector3(0, 0, 10);
     }
 
-    IEnumerator FadeIn()
+    private IEnumerator FadeIn()
     {
         isChanging = true;
         StartCoroutine(SceneFader.Instance.FadeIn(1f));
@@ -41,7 +41,7 @@ public class StageSelect : MonoBehaviour
         isChanging = false;
     }
 
-    void ButtonSet()
+    private void ButtonSet()
     {
         foreach (Button[] buttons in stageButtons)
         {
@@ -49,8 +49,7 @@ public class StageSelect : MonoBehaviour
                 eachButton.interactable = false;
         }
 
-        
-        if (PlayerData.instance.lastClearedStage == null) // 클리어 한게 아무것도 없을 경우
+        if (PlayerData.instance.lastClearedStage == null || PlayerData.instance.lastClearedStage == "") // 클리어 한게 아무것도 없을 경우
         {
             stageButtons[0][0].interactable = true;
             return;
@@ -78,13 +77,13 @@ public class StageSelect : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             EscapeProcess();
     }
 
-    bool isChanging = false;
+    private bool isChanging = false;
 
     public void EscapeProcess()
     {
@@ -114,10 +113,9 @@ public class StageSelect : MonoBehaviour
     {
         this.chapterName = chapterName;
         chapterInfo.ShowChapterInfo();
-
     }
 
-    void ChangeScene(string sceneName)
+    private void ChangeScene(string sceneName)
     {
         StartCoroutine(SceneFader.Instance.FadeOut(0.6f, sceneName));
         StartCoroutine(SceneFader.Instance.SoundFadeOut(1f, GameObject.FindObjectsOfType<AudioSource>()));

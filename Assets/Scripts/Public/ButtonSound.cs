@@ -1,47 +1,48 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public class ButtonSound : MonoBehaviour
 {
     public SoundType type;
+
     public enum SoundType
     {
         BasicSound,
         BackSound
     }
-    AudioSource source;
-    Button button;
 
-    static AudioClip backSound;
-    static AudioClip basicSound;
+    private AudioSource source;
+    private Button button;
 
-    void Awake()
+    private static AudioClip backSound;
+    private static AudioClip basicSound;
+
+    private void Awake()
     {
         source = gameObject.AddComponent<AudioSource>();
         button = GetComponent<Button>();
 
         button.onClick.AddListener(OnClick);
 
-        if(backSound == null || basicSound == null)
+        if (backSound == null || basicSound == null)
         {
             backSound = Resources.Load<AudioClip>("Sound/Effect/BackClick");
             basicSound = Resources.Load<AudioClip>("Sound/Effect/BasicClick");
         }
 
-        switch(type)
+        switch (type)
         {
             case SoundType.BasicSound:
                 source.clip = basicSound;
                 break;
+
             case SoundType.BackSound:
                 source.clip = backSound;
                 break;
         }
     }
 
-    void OnClick()
+    private void OnClick()
     {
         source.Play();
     }

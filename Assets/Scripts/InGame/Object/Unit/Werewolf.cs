@@ -1,17 +1,21 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Werewolf : Warrior, ITouchable
 {
-    [SerializeField] private float jumpHeight;
-    [SerializeField] private float jumpTime;
-    [SerializeField] private float jumpDis;
+    [SerializeField]
+    private float jumpHeight;
+
+    [SerializeField]
+    private float jumpTime;
+
+    [SerializeField]
+    private float jumpDis;
 
     private Transform enemyCastlePos;
     private bool isEndPos = false;
     private float fixedX = 0.0f;
-        
+
     protected override void Awake()
     {
         base.Awake();
@@ -19,6 +23,7 @@ public class Werewolf : Warrior, ITouchable
             return;
         enemyCastlePos = battleMgr.enemyCastle.transform;
     }
+
     // Mathf.Abs(2 *  sin(x))
     public void OnTouch()
     {
@@ -30,12 +35,12 @@ public class Werewolf : Warrior, ITouchable
     }
 
     // skill
-    IEnumerator WarewolfSkill()
+    private IEnumerator WarewolfSkill()
     {
         float currTime = 0.0f;
         Vector3 orginPos = transform.position;
         Vector3 jumpVec = Vector3.zero;
-        while(currTime < jumpTime)
+        while (currTime < jumpTime)
         {
             currTime += Time.deltaTime;
 
@@ -62,7 +67,6 @@ public class Werewolf : Warrior, ITouchable
             fixedX = 0.0f;
 
         transform.position = new Vector2(transform.position.x, orginPos.y);
-
     }
 
     // Animation Event

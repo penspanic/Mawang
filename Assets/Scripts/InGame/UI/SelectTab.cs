@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectTab : MonoBehaviour
 {
@@ -15,6 +15,7 @@ public class SelectTab : MonoBehaviour
 
     [SerializeField]
     private float switchTime = 0.5f;
+
     private bool isMoving = false;
     private int switchFlag = 1;
 
@@ -32,7 +33,8 @@ public class SelectTab : MonoBehaviour
         get;
         set;
     }
-    void Awake()
+
+    private void Awake()
     {
         msgBox = FindObjectOfType<MessageBox>();
         goldMgr = FindObjectOfType<GoldManager>();
@@ -78,7 +80,6 @@ public class SelectTab : MonoBehaviour
             }
         }
 
-        
         // Button Onclick 추가
         for (int i = 0; i < unitButtonList.Count; i++)
         {
@@ -89,21 +90,16 @@ public class SelectTab : MonoBehaviour
         // upgButton Addlistener
         goldUpgBtn.onClick.AddListener(ClickedGoldUpgButton);
 
-
         lines = GameObject.FindGameObjectsWithTag("Line");
-        #endregion
 
-
+        #endregion Load
     }
-
-
 
     public void ClikcedUnitButton(int idx)
     {
         // 돈이 부족하면
         if (goldMgr.playerGold < unitPrefabs[idx].GetUnitCost())
             return;
-
 
         if (!isSelected) // 유닛이 선택 되지않을시
         {
@@ -114,7 +110,7 @@ public class SelectTab : MonoBehaviour
         }
         else  // 유닛이 선택되있을시
         {
-            if (prevIdx == idx) // 같은거 누르면 
+            if (prevIdx == idx) // 같은거 누르면
             {
                 isSelected = false;
                 unitButtonList[idx].color = Color.white;
@@ -135,13 +131,13 @@ public class SelectTab : MonoBehaviour
             lines[i].GetComponent<SpriteRenderer>().enabled = set;
     }
 
-    void ClickedGoldUpgButton()
+    private void ClickedGoldUpgButton()
     {
-        if(goldMgr.GetGoldUpgradeStep() >= GoldManager.MaxUpgradeStep)
+        if (goldMgr.GetGoldUpgradeStep() >= GoldManager.MaxUpgradeStep)
         {
             msgBox.PushMessage("최대 업그레이드에 도달했습니다.");
         }
-        else if(goldMgr.CanGoldUpgrade())
+        else if (goldMgr.CanGoldUpgrade())
         {
             msgBox.PushMessage("얻는 골드량이 증가합니다!");
             goldMgr.GoldUpgrade();
@@ -153,14 +149,13 @@ public class SelectTab : MonoBehaviour
         }
     }
 
-    void ClickedRoseButton()
+    private void ClickedRoseButton()
     {
-
         if (isMoving)
             return;
         roseButtonEffectSource.Play();
-        
-        if(isSelected)
+
+        if (isSelected)
         {
             isSelected = false;
             unitButtonList[prevIdx].color = Color.white;
@@ -169,7 +164,6 @@ public class SelectTab : MonoBehaviour
 
         StartCoroutine(RotateSelectTab());
     }
-
 
     public IEnumerator RotateSelectTab()
     {
@@ -198,12 +192,10 @@ public class SelectTab : MonoBehaviour
         float startX = upgButtonTrs.localPosition.x;
         float startY = unitButtonTrs.localPosition.y;
 
-
-        // 튜토리얼때도 움직이게하려면 unscaledTime 을 넣는다 
+        // 튜토리얼때도 움직이게하려면 unscaledTime 을 넣는다
         // -> 그러면 일시정지때도 움직이게됨..
         // -> 따로 일시정지될때를 함수로 뺀다...?
         // TODO: 일시정지 될때도 돌리게 만들기
-
 
         while (Time.unscaledTime - beginTime <= switchTime)
         {

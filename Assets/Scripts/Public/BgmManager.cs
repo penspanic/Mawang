@@ -1,24 +1,21 @@
 ﻿using UnityEngine;
-using System.Collections;
-
-
 
 public class BgmManager : MonoBehaviour
 {
     [SerializeField]
     private AudioClip bgm;
+
     private AudioSource audioSorce;
 
-    void Awake()
+    private void Awake()
     {
-        audioSorce   =   GetComponent<AudioSource>();
+        audioSorce = GetComponent<AudioSource>();
         StartBGM();
     }
 
-
     public void StartBGM()
     {
-        audioSorce.clip  =   bgm;
+        audioSorce.clip = bgm;
         audioSorce.Play();
     }
 
@@ -31,5 +28,4 @@ public class BgmManager : MonoBehaviour
     {
         audioSorce.UnPause();
     }
-    
 }

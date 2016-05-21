@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public abstract class ItemBase : MonoBehaviour
 {
     private int _amount;
+
     public string message
     {
         get;
         protected set;
     }
+
     public bool isUsing
     {
         get;
         protected set;
     }
+
     public int amount
     {
         get
@@ -28,11 +29,13 @@ public abstract class ItemBase : MonoBehaviour
             SetAmountText();
         }
     }
+
     public int coolTime
     {
         get;
         protected set;
     }
+
     protected MessageBox msgBox;
     protected Text amountText;
 
@@ -42,16 +45,17 @@ public abstract class ItemBase : MonoBehaviour
         PlayerData.instance.CheckInstance();
 
         amount = PlayerData.instance.itemStorage[name];
-
     }
+
     protected abstract void Useitem();
-    void SetAmountText()
+
+    private void SetAmountText()
     {
         if (amountText == null)
             amountText = GetComponentInChildren<Text>();
         amountText.text = _amount.ToString();
-
     }
+
     public void TryUseItem()
     {
         if (amount > 0)
@@ -64,4 +68,3 @@ public abstract class ItemBase : MonoBehaviour
         }
     }
 }
-

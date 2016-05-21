@@ -1,16 +1,21 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+
 public class Projectile : MonoBehaviour
 {
     [SerializeField]
     private float pjtileSpeed;
+
     [SerializeField]
     private Vector2 adjustPos;
+
     [SerializeField]
     private bool hitMultipleObject;
+
     [SerializeField]
     private int moveDistance;
+
     [SerializeField]
     private int canHitNum;
 
@@ -21,8 +26,7 @@ public class Projectile : MonoBehaviour
     private int damage;
     private ObjectBase target;
 
-
-    void Awake()
+    private void Awake()
     {
         battleMgr = GameObject.FindObjectOfType<BattleManager>();
         parent = transform.parent.GetComponent<Movable>();
@@ -31,7 +35,7 @@ public class Projectile : MonoBehaviour
         isMoveRight = parent.isOurForce ? true : false;
     }
 
-    void OnEnable() // 유닛이 켜질떄
+    private void OnEnable() // 유닛이 켜질떄
     {
         target = null;
 
@@ -67,7 +71,6 @@ public class Projectile : MonoBehaviour
         while (gameObject.activeSelf == true)
         {
             transform.Translate(Vector2.right * Time.deltaTime * pjtileSpeed * (isMoveRight ? 1 : -1), Space.World);
-
 
             if (target != null)
             {

@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public enum GameEvent
 {
@@ -8,10 +7,12 @@ public enum GameEvent
     FirstChapter0Cleared, // 처음으로 챕터 0 클리어 되었을 때
     AppRating
 }
+
 public class GameEventManager : MonoBehaviour
 {
     #region Singleton
-    static GameEventManager _instance;
+
+    private static GameEventManager _instance;
 
     public static GameEventManager instance
     {
@@ -25,35 +26,35 @@ public class GameEventManager : MonoBehaviour
             return _instance;
         }
     }
-    #endregion
 
-    List<GameEvent> eventList = new List<GameEvent>();
-    
+    #endregion Singleton
+
+    private List<GameEvent> eventList = new List<GameEvent>();
+
     public void CheckInstance()
     {
-
     }
 
-    void Awake()
+    private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
     }
-    
+
     public void PushEvent(GameEvent gameEvent)
     {
         if (eventList.Contains(gameEvent))
             return;
         eventList.Add(gameEvent);
     }
-    
+
     public bool EventExist(GameEvent gameEvent)
     {
         return eventList.Contains(gameEvent);
     }
-    
+
     public void EventReceived(GameEvent gameEvent)
     {
         if (eventList.Contains(gameEvent))
             eventList.Remove(gameEvent);
-    }   
+    }
 }

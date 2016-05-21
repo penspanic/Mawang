@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -12,13 +11,13 @@ public class SpawnManager : MonoBehaviour
     private SpriteOrderLayerManager orderMgr;
     private GameObject satanCastle;
 
-    private List<Vector2> ourForceLinePos   =   new List<Vector2>();
+    private List<Vector2> ourForceLinePos = new List<Vector2>();
 
-    void Awake()
+    private void Awake()
     {
-        gameMgr     = FindObjectOfType<GameManager>();
-        goldMgr     = FindObjectOfType<GoldManager>();
-        orderMgr    = FindObjectOfType<SpriteOrderLayerManager>();
+        gameMgr = FindObjectOfType<GameManager>();
+        goldMgr = FindObjectOfType<GoldManager>();
+        orderMgr = FindObjectOfType<SpriteOrderLayerManager>();
         satanCastle = GameObject.Find("SatanCastle");
 
         for (int i = 1; i <= 3; i++)
@@ -41,5 +40,4 @@ public class SpawnManager : MonoBehaviour
         Instantiate(obj, ourForceLinePos[line - 1], new Quaternion());
         orderMgr.UpdateOrder(line);
     }
-
 }

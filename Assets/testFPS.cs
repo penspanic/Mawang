@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
-public class testFPS : MonoBehaviour 
+public class testFPS : MonoBehaviour
 {
-    float deltaTime = 0.0f;
-    Text text;
+    private float deltaTime = 0.0f;
+    private Text text;
 
-    void Awake()
+    private void Awake()
     {
         text = GetComponent<Text>();
     }
-    void Update()
+
+    private void Update()
     {
         deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
         float fps = 1.0f / deltaTime;
 
         text.text = fps.ToString();
     }
-
-
 }

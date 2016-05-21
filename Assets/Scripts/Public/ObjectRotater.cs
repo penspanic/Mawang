@@ -1,20 +1,16 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class ObjectRotater : MonoBehaviour
 {
-
     public Vector3 rotateValue;
     public float rotateTime;
     public bool rotateWithScaledDeltaTime;
 
-
-    void Awake()
+    private void Awake()
     {
-
     }
 
-    void Update()
+    private void Update()
     {
         if (rotateWithScaledDeltaTime)
             transform.Rotate(rotateValue * Time.deltaTime / rotateTime);

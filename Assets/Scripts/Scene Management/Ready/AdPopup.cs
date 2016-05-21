@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class AdPopup : MonoBehaviour
 {
-    Ready ready;
+    private Ready ready;
 
-    void Awake()
+    private void Awake()
     {
         ready = GameObject.FindObjectOfType<Ready>();
     }
@@ -18,7 +17,7 @@ public class AdPopup : MonoBehaviour
     public void OnYesButtonDown()
     {
         // 광고 구현
-        
+
         //
 
         // 광고 다 봤을시 ->

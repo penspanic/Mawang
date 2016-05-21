@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections.Generic;
-using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using UnityEngine;
 
 public class NetworkManager : Singleton<NetworkManager>
 {
@@ -15,9 +15,8 @@ public class NetworkManager : Singleton<NetworkManager>
     private IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 5670);
     private byte[] receiveBuffer = new byte[1024];
 
-    void Awake()
+    private void Awake()
     {
-
     }
 
     public void ConnectRoom()
@@ -26,7 +25,6 @@ public class NetworkManager : Singleton<NetworkManager>
         {
             client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             client.BeginConnect(ipEndPoint, new AsyncCallback(Connected), client);
-            
         }
         catch (SocketException e)
         {
@@ -35,7 +33,7 @@ public class NetworkManager : Singleton<NetworkManager>
         }
     }
 
-    void Connected(IAsyncResult ar)
+    private void Connected(IAsyncResult ar)
     {
         host = (Socket)ar.AsyncState;
         Debug.Log(host.RemoteEndPoint.ToString() + "에 연결 완료");
@@ -46,7 +44,7 @@ public class NetworkManager : Singleton<NetworkManager>
             );
     }
 
-    void Receive(IAsyncResult ar)
+    private void Receive(IAsyncResult ar)
     {
         int byteSize = client.EndReceive(ar);
 
@@ -62,7 +60,7 @@ public class NetworkManager : Singleton<NetworkManager>
         client.Send(bytes);
     }
 
-    Room CreateRoom()
+    private Room CreateRoom()
     {
         Debug.Log("방 생성중...");
         return null;

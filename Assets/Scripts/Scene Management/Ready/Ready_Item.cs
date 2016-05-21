@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
-
 
 public class Ready_Item : MonoBehaviour
 {
@@ -13,15 +10,14 @@ public class Ready_Item : MonoBehaviour
     public Text itemDescriptionText;
     public Text obsidianText;
 
+    private Ready ready;
 
-    Ready ready;
+    private int selectedIndex;
 
-    int selectedIndex;
+    private int[] itemsCost;
+    private string[] itemsDescription;
 
-    int[] itemsCost;
-    string[] itemsDescription;
-
-    void Awake()
+    private void Awake()
     {
         JsonManager.instance.CheckInstance();
         PlayerData.instance.CheckInstance();
@@ -40,10 +36,11 @@ public class Ready_Item : MonoBehaviour
         SetBuyButtonState(false);
     }
 
-    void SetBuyButtonState(bool value)
+    private void SetBuyButtonState(bool value)
     {
         buyButton.interactable = value;
     }
+
     public void OnItemButtonDown(int index)
     {
         checkImages[selectedIndex].enabled = false;

@@ -1,14 +1,14 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class BattleManager : MonoBehaviour {
-
-	public List<ObjectBase> ourForceList = new List<ObjectBase>();
-    public List<ObjectBase> enemyList    = new List<ObjectBase>();
+public class BattleManager : MonoBehaviour
+{
+    public List<ObjectBase> ourForceList = new List<ObjectBase>();
+    public List<ObjectBase> enemyList = new List<ObjectBase>();
 
     public GameObject ourCastle { get; private set; }
     public GameObject enemyCastle { get; private set; }
+
     public static float fightDistance
     {
         get
@@ -17,13 +17,10 @@ public class BattleManager : MonoBehaviour {
         }
     }
 
-
-
-
-    void Awake()
+    private void Awake()
     {
-        ourCastle       =   GameObject.Find("SatanCastle");
-        enemyCastle     =   GameObject.Find("Outpost");
+        ourCastle = GameObject.Find("SatanCastle");
+        enemyCastle = GameObject.Find("Outpost");
     }
 
     public void AddObject(ObjectBase obj)
@@ -32,7 +29,6 @@ public class BattleManager : MonoBehaviour {
             ourForceList.Add(obj);
         else
             enemyList.Add(obj);
-
     }
 
     public void RemoveObject(ObjectBase obj)
@@ -42,7 +38,6 @@ public class BattleManager : MonoBehaviour {
         else
             enemyList.Remove(obj);
     }
-
 
     public ObjectBase[] GetTargets(ObjectBase obj, float attackRange, int canHitNum, bool isFindOur = false)
     {
@@ -56,7 +51,7 @@ public class BattleManager : MonoBehaviour {
         oppositeList = GetSameLine(oppositeList, obj.line);
         oppositeList = SelectInRange(oppositeList, obj.transform.position, attackRange, isFindOur);
 
-        if (oppositeList.Count == 0)    // 없을때는 성공격하거나 null 
+        if (oppositeList.Count == 0)    // 없을때는 성공격하거나 null
         {
             if (CanAttackCastle(oppositeList, obj))
                 return oppositeList.ToArray();
@@ -73,7 +68,6 @@ public class BattleManager : MonoBehaviour {
         return returnList.ToArray();
     }
 
-
     public List<ObjectBase> GetOpposite(bool isOur) // 맞은편 반환
     {
         if (isOur)
@@ -88,6 +82,7 @@ public class BattleManager : MonoBehaviour {
 
         return list;
     }
+
     public List<ObjectBase> SelectInRange(List<ObjectBase> list, Vector2 objPos, float range, bool isFindOur = false) // 거리되는애들 리턴
     {
         float attackRange = fightDistance * range;
@@ -106,7 +101,7 @@ public class BattleManager : MonoBehaviour {
 
                 if (isFindOur)
                 {
-                    if(obj.isOurForce)
+                    if (obj.isOurForce)
                         distX = obj.transform.position.x - objPos.x;
                     else
                         distX = objPos.x - obj.transform.position.x;
@@ -138,13 +133,14 @@ public class BattleManager : MonoBehaviour {
         switch (obj.line)
         {
             case 1:
-                if (obj.GetAttackRange() >= Mathf.Abs(obj.transform.position.x 
+                if (obj.GetAttackRange() >= Mathf.Abs(obj.transform.position.x
                     - IsOppositeCastle(obj).transform.FindChild("Spawn Line1").position.x))
                 {
                     list.Add(IsOppositeCastle(obj).GetComponent<ObjectBase>());
                     return true;
                 }
                 break;
+
             case 2:
                 if (obj.GetAttackRange() >= Mathf.Abs(obj.transform.position.x -
                     IsOppositeCastle(obj).transform.FindChild("Spawn Line2").position.x))
@@ -153,6 +149,7 @@ public class BattleManager : MonoBehaviour {
                     return true;
                 }
                 break;
+
             case 3:
                 if (obj.GetAttackRange() >= Mathf.Abs(obj.transform.position.x -
                     IsOppositeCastle(obj).transform.FindChild("Spawn Line3").position.x))
@@ -172,8 +169,4 @@ public class BattleManager : MonoBehaviour {
         else
             return ourCastle;
     }
-}   
-
-
-
-
+}

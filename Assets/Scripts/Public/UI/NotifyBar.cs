@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class NotifyBar : MonoBehaviour
 {
@@ -10,18 +9,19 @@ public class NotifyBar : MonoBehaviour
         private set;
     }
 
-    const float notifyShowTime = 2f;
-    Text notifyText;
+    private const float notifyShowTime = 2f;
+    private Text notifyText;
 
-    void Awake()
+    private void Awake()
     {
         notifyText = GetComponent<Text>();
         notifyText.enabled = false;
     }
 
-    float waitTime = 0f;
-    float elapsedTime = 0f;
-    void Update()
+    private float waitTime = 0f;
+    private float elapsedTime = 0f;
+
+    private void Update()
     {
         if (isShowing)
         {

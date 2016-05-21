@@ -1,17 +1,15 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-// binaryformatter를 하기위해서 namespace 추가
+﻿// binaryformatter를 하기위해서 namespace 추가
 using System;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
 using System.IO;
-
+using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-
     #region Singleton
-    static PlayerData _instance;
+
+    private static PlayerData _instance;
 
     public static PlayerData instance
     {
@@ -25,14 +23,13 @@ public class PlayerData : MonoBehaviour
             return _instance;
         }
     }
-    #endregion
 
+    #endregion Singleton
 
     public List<string> playerUnitList { get; private set; }
     public List<string> selectedUnitList { get; set; }
     public Dictionary<string, int> upgradePoint { get; private set; }
     public Dictionary<string, int> itemStorage { get; private set; }
-
 
     public int obsidian { get; set; }
     public string lastClearedStage { get; set; }     // 마지막으로 깬 스테이지( 스테이지 클리어시, 조건검사를 통해 finalStage에 값 수정 )
@@ -40,14 +37,18 @@ public class PlayerData : MonoBehaviour
     public bool isFirst { get; private set; }
     public int stageSelectPosIndex { get; set; }
     public bool appRated { get; set; }
+
     public void CheckInstance()
     {
-
     }
 
-    void Awake()
+    private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+
+        // Delete this
+        PlayerPrefs.DeleteAll();
+
 
         // 1
         playerUnitList = new List<string>();
@@ -63,15 +64,12 @@ public class PlayerData : MonoBehaviour
         {
             AddUnit("Skeleton");
             obsidian = 100; //Temp
-
         }
         selectedStage = "C0S1"; // Temp
     }
 
-
     private void LoadData()
     {
-
         if (!PlayerPrefs.HasKey("isFirst")) // 유닛 데이터가없을경우
         {
             isFirst = true;
@@ -114,7 +112,7 @@ public class PlayerData : MonoBehaviour
             playerUnitList = (List<string>)b.Deserialize(m);
         }
         data = PlayerPrefs.GetString("selectedUnitList");
-        if (data != null)
+        if (data != null && data.Length != 0)
         {
             using (var m = new MemoryStream(Convert.FromBase64String(data)))
             {
@@ -170,18 +168,16 @@ public class PlayerData : MonoBehaviour
         }
 
         PlayerPrefs.Save();
-
     }
 
     public void StageClear(string stage)
     {
-
         obsidian += 30;
         int c = int.Parse(stage[1].ToString());
         int s = int.Parse(stage[3].ToString());
         CheckAddUnit(c, s);
 
-        if (lastClearedStage == null)
+        if (lastClearedStage == null || lastClearedStage == "")
         {
             lastClearedStage = stage;
             return;
@@ -189,7 +185,6 @@ public class PlayerData : MonoBehaviour
 
         int LastC = int.Parse(lastClearedStage[1].ToString());
         int LastS = int.Parse(lastClearedStage[3].ToString());
-
 
         if (c > LastC)
         {
@@ -206,10 +201,9 @@ public class PlayerData : MonoBehaviour
         }
         else
             return;
-
     }
 
-    void CheckAddUnit(int c, int s)
+    private void CheckAddUnit(int c, int s)
     {
         if (c == 0 && s == 1)
             AddUnit("Goblin");

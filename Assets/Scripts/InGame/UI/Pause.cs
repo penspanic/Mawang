@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class Pause : MonoBehaviour
 {
-    private BgmManager  bgmMgr;
-    private Button      pauseBtn;
-    private GameObject  pauseUI;
-
+    private BgmManager bgmMgr;
+    private Button pauseBtn;
+    private GameObject pauseUI;
 
     private AudioSource[] sources;
 
@@ -16,11 +14,12 @@ public class Pause : MonoBehaviour
         get;
         private set;
     }
-    void Awake()
+
+    private void Awake()
     {
-        bgmMgr      =   GameObject.FindGameObjectWithTag("Manager").GetComponent<BgmManager>();
-        pauseBtn    =   GameObject.Find("PauseButton").GetComponent<Button>();
-        pauseUI     =   transform.FindChild("PauseUI").gameObject;
+        bgmMgr = GameObject.FindGameObjectWithTag("Manager").GetComponent<BgmManager>();
+        pauseBtn = GameObject.Find("PauseButton").GetComponent<Button>();
+        pauseUI = transform.FindChild("PauseUI").gameObject;
 
         pauseBtn.onClick.AddListener(PauseButtonDown);
     }
@@ -29,7 +28,7 @@ public class Pause : MonoBehaviour
     {
         Time.timeScale = 0;
         sources = GameObject.FindObjectsOfType<AudioSource>();
-        for (int i = 0; i < sources.Length;i++)
+        for (int i = 0; i < sources.Length; i++)
         {
             sources[i].Pause();
         }
@@ -51,6 +50,7 @@ public class Pause : MonoBehaviour
         sources = null;
         pauseUI.SetActive(false);
     }
+
     public void GoMainButtonDown()
     {
         if (isSceneChanging)
@@ -62,8 +62,8 @@ public class Pause : MonoBehaviour
         ButtonSound.PlaySound(ButtonSound.SoundType.BackSound);
 
         StartCoroutine(SceneFader.Instance.FadeOut(0.6f, "Main"));
-
     }
+
     public void RetryButtonDown()
     {
         if (isSceneChanging)
@@ -77,4 +77,3 @@ public class Pause : MonoBehaviour
         StartCoroutine(SceneFader.Instance.FadeOut(0.6f, PlayerData.instance.GetInGameSceneName()));
     }
 }
-

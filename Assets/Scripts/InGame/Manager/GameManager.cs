@@ -1,12 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using LitJson;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     public bool isRun { get; set; }
 
     public GameObject gameOver;
@@ -20,34 +17,36 @@ public class GameManager : MonoBehaviour
     private float earlyTimePatternCnt; // 약할때 추가시간 패턴 갯수
 
     private string stage;
-    private bool   isDefenceTurn;
+    private bool isDefenceTurn;
 
-    BgmManager      bgmMgr;
-    SpriteOrderLayerManager orderMgr;
-    BattleManager   battleMgr;
-    Pause pauseUI;
-    UnitInfo[] currUnits;
+    private BgmManager bgmMgr;
+    private SpriteOrderLayerManager orderMgr;
+    private BattleManager battleMgr;
+    private Pause pauseUI;
+    private UnitInfo[] currUnits;
 
-    void Awake()
+    private void Awake()
     {
         // tutorialMgr     =   GameObject.FindObjectOfType<TutorialManager>();
-        orderMgr        =   FindObjectOfType<SpriteOrderLayerManager>();
-        battleMgr       =   FindObjectOfType<BattleManager>();
-        bgmMgr          =   FindObjectOfType<BgmManager>();
-        isRun           =   true;
-        pauseUI         =   FindObjectOfType<Pause>();
-        isDefenceTurn   =   true;
+        orderMgr = FindObjectOfType<SpriteOrderLayerManager>();
+        battleMgr = FindObjectOfType<BattleManager>();
+        bgmMgr = FindObjectOfType<BgmManager>();
+        isRun = true;
+        pauseUI = FindObjectOfType<Pause>();
+        isDefenceTurn = true;
 
         PlayerData.instance.CheckInstance();
+
+        // ※ Delete this
+        PlayerData.instance.selectedStage = "C4S1";
+
         GameEventManager.instance.CheckInstance();
 
         StartCoroutine(SceneFader.Instance.FadeIn(0.6f));
         GameObject.FindObjectOfType<SceneFader>().transform.SetParent(Camera.main.transform, true);
-
-
     }
 
-    void Start()
+    private void Start()
     {
         LoadStage();
         if (PlayerData.instance.selectedStage == "C0S1")
@@ -56,12 +55,12 @@ public class GameManager : MonoBehaviour
             TutorialManager.instance.PlayTutorial(TutorialEvent.PrepareGame);
         }
 
-
         StartCoroutine(StageSpawnLoop());
     }
 
     #region stage
-    void LoadStage()
+
+    private void LoadStage()
     {
         stage = PlayerData.instance.selectedStage;
 
@@ -79,11 +78,11 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < pattern.patternsName.Length; i++)
         {
             stagePatternList.Add(
-                Resources.Load<GameObject>("Prefabs/Enemy Pattern/" + pattern.patternsName[i]));
+                Resources.Load<GameObject>("Prefabs/Enemy Pattern/Chapter" + stage[1] + "/" + pattern.patternsName[i]));
         }
     }
 
-    IEnumerator StageSpawnLoop()
+    private IEnumerator StageSpawnLoop()
     {
         while (true)
         {
@@ -97,7 +96,7 @@ public class GameManager : MonoBehaviour
                     TutorialManager.instance.PatternCnt--;
             }
 
-            #endregion
+            #endregion tutorial
 
             if (earlyTimePatternCnt > 0)
                 earlyTimePatternCnt--;
@@ -105,22 +104,21 @@ public class GameManager : MonoBehaviour
                 unitSpawnEarlyTime = 0;
 
             yield return new WaitForSeconds(unitSpawnInterval + unitSpawnEarlyTime);
-            
+
             SpawnPattern();
         }
     }
 
+    private int rand = 0;
+    private int prevRand = 99;
 
-    int rand = 0;
-    int prevRand = 99;
+    private int randLine = 0;
+    private int prevLine = 99;
+    private int prev2Line = 99;
+    private float spawnLine = 1;
 
-    int randLine = 0;
-    int prevLine = 99;
-    int prev2Line = 99;
-    float spawnLine = 1;
-    void SpawnPattern()
+    private void SpawnPattern()
     {
-
         // 첨엔 무조건 첫번째꺼 소환
         // pattern
         while (prevRand == rand)
@@ -146,7 +144,6 @@ public class GameManager : MonoBehaviour
             while (randLine == prevLine || randLine == prev2Line)
                 randLine = Random.Range(1, 4);
 
-
             if (isDefenceTurn)
             {
                 float minPos = 100f;
@@ -161,11 +158,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
         prev2Line = prevLine;
         prevLine = randLine;
 
-        float randPosY = ((isDefenceTurn ? spawnLine-1 : randLine - 1)) * -1.2f;
+        float randPosY = ((isDefenceTurn ? spawnLine - 1 : randLine - 1)) * -1.2f;
 
         GameObject parent = Instantiate(stagePatternList[rand], new Vector3(19, randPosY, 0), new Quaternion()) as GameObject;
         for (int j = 0; j < parent.transform.childCount; ++j)
@@ -182,11 +178,10 @@ public class GameManager : MonoBehaviour
 
         isDefenceTurn = !isDefenceTurn;
     }
-    #endregion
 
-    
+    #endregion stage
 
-    void GameClear()
+    private void GameClear()
     {
         gameClear.SetActive(true);
         if (PlayerData.instance.lastClearedStage == null)
@@ -195,32 +190,31 @@ public class GameManager : MonoBehaviour
         if (PlayerData.instance.selectedStage == "C0S3" && !PlayerData.instance.IsStageCleared("C0S3"))
             GameEventManager.instance.PushEvent(GameEvent.FirstChapter0Cleared);
 
-        if (PlayerData.instance.selectedStage[3] == '3' && 
+        if (PlayerData.instance.selectedStage[3] == '3' &&
             !PlayerData.instance.IsStageCleared(PlayerData.instance.selectedStage)) // 챕터 클리어
             GameEventManager.instance.PushEvent(GameEvent.AppRating);
         PlayerData.instance.StageClear(PlayerData.instance.selectedStage);
         StartCoroutine(TouchToMain());
     }
 
-    void GameOver()
+    private void GameOver()
     {
         bgmMgr.Pause();
         gameOver.SetActive(true);
         StartCoroutine(TouchToMain());
     }
 
-
-    IEnumerator TouchToMain()
+    private IEnumerator TouchToMain()
     {
-        // 터치 대기시간 
+        // 터치 대기시간
         float currTime = 0f;
         float waitTime = 2f;
-        while(currTime <= waitTime)
+        while (currTime <= waitTime)
         {
             currTime += Time.unscaledDeltaTime;
             yield return null;
         }
-        while(true)
+        while (true)
         {
             if (Input.GetMouseButtonDown(0))
                 break;
@@ -240,7 +234,7 @@ public class GameManager : MonoBehaviour
         isRun = false;
         Time.timeScale = 0f;
 
-        if(castle is SatanCastle) // Game Over
+        if (castle is SatanCastle) // Game Over
         {
             GameOver();
         }
@@ -249,7 +243,6 @@ public class GameManager : MonoBehaviour
             GameClear();
         }
     }
-
 
     public void OnApplicationPause(bool pause)
     {
@@ -261,5 +254,4 @@ public class GameManager : MonoBehaviour
             pauseUI.PauseButtonDown();
         }
     }
-
 }

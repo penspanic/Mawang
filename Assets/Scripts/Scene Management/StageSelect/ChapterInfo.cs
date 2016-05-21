@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public struct ChapterData
 {
@@ -10,9 +8,10 @@ public struct ChapterData
     public string skillName;
     public string skillDescription;
 }
+
 public class ChapterInfo : MonoBehaviour
 {
-    StageSelect stageSelect;
+    private StageSelect stageSelect;
 
     public bool isShowing;
     public Image princessIllust;
@@ -21,24 +20,26 @@ public class ChapterInfo : MonoBehaviour
     public Text skillNameText;
     public Text skillDescriptionText;
 
-    ChapterData selectedChapterData;
+    private ChapterData selectedChapterData;
 
-    TipUI tipUI;
-    void Awake()
+    private TipUI tipUI;
+
+    private void Awake()
     {
         stageSelect = GameObject.FindObjectOfType<StageSelect>();
         tipUI = GameObject.FindObjectOfType<TipUI>();
         JsonManager.instance.CheckInstance();
     }
 
-    void Start()
+    private void Start()
     {
         gameObject.SetActive(false);
     }
+
     public void ShowChapterInfo()
     {
         string chapterName = stageSelect.chapterName;
-        if(isShowing)
+        if (isShowing)
         {
             return;
         }
@@ -56,12 +57,12 @@ public class ChapterInfo : MonoBehaviour
             chapterDescriptionText.text = selectedChapterData.chapterDescription;
             skillNameText.text = selectedChapterData.skillName;
             skillDescriptionText.text = selectedChapterData.skillDescription;
-
         }
     }
+
     public void HideChapterInfo()
     {
-        if(isShowing)
+        if (isShowing)
         {
             isShowing = false;
             gameObject.SetActive(false);

@@ -1,47 +1,49 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Bandsman : Movable
 {
     [SerializeField]
     private float buffDuration;
+
     [SerializeField]
     private int growthAttack;
+
     [SerializeField]
     private GameObject buff_AS;
 
-    bool once = true;
+    private bool once = true;
 
-
-    private List<ObjectBase>    lineList = new List<ObjectBase>();
-    private GameObject          skillEffect;
+    private List<ObjectBase> lineList = new List<ObjectBase>();
+    private GameObject skillEffect;
 
     private static AudioClip[] attackSounds;
 
     protected override void Awake()
     {
         base.Awake();
-        
-        if(attackSounds == null)
+
+        if (attackSounds == null)
         {
             attackSounds = Resources.LoadAll<AudioClip>("Sound/Object/Enemy/Bandsman");
         }
     }
+
     protected override void Attack()
     {
         animator.Play("Attack", 0);
 
         if (once)
         {
-            PlaySound(attackSounds[Random.Range(0,attackSounds.Length)]);
+            PlaySound(attackSounds[Random.Range(0, attackSounds.Length)]);
             Vector2 spawnPos = transform.position;
             spawnPos += new Vector2(-1.2f, 0.4f);
             EffectManager.instance.PlayEffect(EffectKind.Bandsman_skill, spawnPos);
             once = false;
         }
-
     }
+
     public override void AttackEnd()
     {
         canAttack = false;
@@ -49,7 +51,7 @@ public class Bandsman : Movable
         StartCoroutine(BuffRoutine());
     }
 
-    IEnumerator BuffRoutine()
+    private IEnumerator BuffRoutine()
     {
         lineList = battleMgr.enemyList.FindAll(e => e.line == line &&
             this.attackRange * BattleManager.fightDistance > Mathf.Abs(transform.position.x - e.transform.position.x));
@@ -62,7 +64,7 @@ public class Bandsman : Movable
         BuffSet(false);
     }
 
-    void AddBuffsprRenderer()
+    private void AddBuffsprRenderer()
     {
         for (int i = 0; i < lineList.Count; i++)
         {
@@ -74,7 +76,6 @@ public class Bandsman : Movable
                 continue;
             }
 
-
             GameObject go = Instantiate(buff_AS);
             go.SetActive(true);
 
@@ -84,14 +85,14 @@ public class Bandsman : Movable
         }
     }
 
-    void BuffSet(bool set)
+    private void BuffSet(bool set)
     {
         for (int i = 0; i < lineList.Count; i++)
         {
-            if(lineList[i] == null)
+            if (lineList[i] == null)
                 continue;
 
-            if (set) 
+            if (set)
                 lineList[i].GetComponent<ObjectBase>().SetAddAttackDmg(growthAttack);
             else
                 lineList[i].GetComponent<ObjectBase>().SetAddAttackDmg(-growthAttack);
@@ -101,6 +102,5 @@ public class Bandsman : Movable
     public void OnAttackEnd()
     {
         AttackEnd();
-
     }
 }

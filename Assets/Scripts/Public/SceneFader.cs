@@ -1,18 +1,18 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.EventSystems;
+using UnityEngine;
 
 public class SceneFader : MonoBehaviour
 {
+    private SpriteRenderer sprRenderer;
+    private new BoxCollider2D collider;
+    private Sprite black;
+    private Sprite white;
 
-    SpriteRenderer sprRenderer;
-    new BoxCollider2D collider;
-    Sprite black;
-    Sprite white;
     #region Singleton
-    static SceneFader _instance;
+
+    private static SceneFader _instance;
+
     public static SceneFader Instance
     {
         get
@@ -27,9 +27,10 @@ public class SceneFader : MonoBehaviour
             return _instance;
         }
     }
-    #endregion
 
-    void Awake()
+    #endregion Singleton
+
+    private void Awake()
     {
         // DontDestroyOnLoad(this.gameObject);
         black = Resources.Load<Sprite>("Sprite/Black");
@@ -46,9 +47,9 @@ public class SceneFader : MonoBehaviour
     {
         float elapsedTime = 0f;
 
-        sprRenderer.enabled     =   true;
-        sprRenderer.sprite      =   black;
-        collider.enabled        =   true;
+        sprRenderer.enabled = true;
+        sprRenderer.sprite = black;
+        collider.enabled = true;
         while (elapsedTime < duration)
         {
             elapsedTime += Time.unscaledDeltaTime;
@@ -63,14 +64,13 @@ public class SceneFader : MonoBehaviour
             Application.LoadLevel(nextScene);
     }
 
-
     public IEnumerator FadeIn(float duration, string nextScene = null)
     {
         float elapsedTime = 0f;
-        
-        sprRenderer.enabled     =   true;
-        sprRenderer.sprite      =   black;
-        collider.enabled        =   true;
+
+        sprRenderer.enabled = true;
+        sprRenderer.sprite = black;
+        collider.enabled = true;
 
         while (elapsedTime < duration)
         {

@@ -1,15 +1,17 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using LitJson;
 using System.Collections.Generic;
-using LitJson;
+using UnityEngine;
+using UnityEngine.UI;
+
 public class TipUI : MonoBehaviour
 {
     public TextAsset tipDataFile;
     public Text tipText;
 
-    string[] tipData;
-    int currIndex;
-    void Awake()
+    private string[] tipData;
+    private int currIndex;
+
+    private void Awake()
     {
         JsonData dataObject = JsonMapper.ToObject(tipDataFile.text);
         int count = dataObject["Tip Data"].Count;
@@ -23,17 +25,17 @@ public class TipUI : MonoBehaviour
         SetTip(currIndex);
     }
 
-    void SetTip(int index)
+    private void SetTip(int index)
     {
         tipText.text = tipData[index];
-        
+
         // and
     }
 
     public void OnTouched()
     {
         int newIndex;
-        while(true)
+        while (true)
         {
             newIndex = Random.Range(0, tipData.Length);
             if (newIndex != currIndex)

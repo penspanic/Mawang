@@ -1,14 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class Castle : ObjectBase
 {
     private SpriteRenderer front;
-    [SerializeField] private Image      hpBar;
+
+    [SerializeField]
+    private Image hpBar;
+
     private float currAlpha;
 
-    GameManager gameMgr;
+    private GameManager gameMgr;
     protected SpriteRenderer spr;
     private Vector3 addRange;
 
@@ -16,8 +19,8 @@ public class Castle : ObjectBase
     {
         base.Awake();
         gameMgr = GameObject.FindObjectOfType<GameManager>();
-        front   =   transform.FindChild("Front").GetComponent<SpriteRenderer>();
-        spr     =   this.GetComponent<SpriteRenderer>();
+        front = transform.FindChild("Front").GetComponent<SpriteRenderer>();
+        spr = this.GetComponent<SpriteRenderer>();
 
         if (isOurForce)
             addRange = Vector3.left;
@@ -32,7 +35,7 @@ public class Castle : ObjectBase
             maxHP += 100 * stageNum;
             hp = maxHP;
         }
-         
+
         StartCoroutine(CastleProcess());
     }
 
@@ -43,9 +46,7 @@ public class Castle : ObjectBase
             ValueUpdate(hp, maxHP);
             CoveringCastle();
             yield return null;
-
         }
-
     }
 
     public override ObjectBase[] GetTargets()
@@ -66,7 +67,7 @@ public class Castle : ObjectBase
             currAlpha += Time.deltaTime * 3f;
 
         front.color = new Color(1, 1, 1, Mathf.Clamp(currAlpha, 0.5f, 1f));
-        currAlpha   = Mathf.Clamp(currAlpha, 0.5f, 1f);
+        currAlpha = Mathf.Clamp(currAlpha, 0.5f, 1f);
     }
 
     public override void Attacked(int damage)
@@ -81,26 +82,21 @@ public class Castle : ObjectBase
 
         if (!isBleed)
             StartCoroutine(ChangeDamageColor());
-
     }
-
 
     protected override IEnumerator ChangeDamageColor()
     {
-        isBleed  =   true;
+        isBleed = true;
 
         // 성 앞부분이 빨갛게 안되서.
-        spr.color   = Color.red;
+        spr.color = Color.red;
         front.color = Color.red;
 
         yield return new WaitForSeconds(damagedColorDuration);
 
-        spr.color   = Color.white;
+        spr.color = Color.white;
         front.color = Color.white;
 
-        isBleed  =   false;
+        isBleed = false;
     }
-
-
-
 }

@@ -1,4 +1,4 @@
-﻿interface ITouchable
+﻿internal interface ITouchable
 {
     void OnTouch();
 }

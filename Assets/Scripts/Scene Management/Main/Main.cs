@@ -1,10 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class Main : MonoBehaviour
 {
-
     public Button upgradeButton;
     public Button infoButton;
 
@@ -18,17 +17,18 @@ public class Main : MonoBehaviour
     public GameObject gameQuit;
     public AppRatingPopup appRatingPopup;
 
-    CastleUpgrade upgrade;
-    CastleInfo info;
+    private CastleUpgrade upgrade;
+    private CastleInfo info;
 
-    GameEventReceiver stageClearEventReceiver;
-    GameEventReceiver chapter0ClearEventReceiver;
-    GameEventReceiver appRatingEventReceiver;
+    private GameEventReceiver stageClearEventReceiver;
+    private GameEventReceiver chapter0ClearEventReceiver;
+    private GameEventReceiver appRatingEventReceiver;
 
-    bool eventHandling = false;
+    private bool eventHandling = false;
 
-    bool isChanging = false;
-    void Awake()
+    private bool isChanging = false;
+
+    private void Awake()
     {
         PlayerData.instance.CheckInstance();
 
@@ -43,10 +43,9 @@ public class Main : MonoBehaviour
         appRatingEventReceiver = new GameEventReceiver(GameEvent.AppRating, ShowAppRatingPopup);
 
         Invoke("CheckEvents", 1f);
-
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -54,12 +53,11 @@ public class Main : MonoBehaviour
         }
     }
 
-    void EscapeProcess()
+    private void EscapeProcess()
     {
         if (isChanging)
             return;
         gameQuit.SetActive(true);
-
     }
 
     public void GameQuitYes()
@@ -72,7 +70,7 @@ public class Main : MonoBehaviour
         gameQuit.SetActive(false);
     }
 
-    void CheckEvents()
+    private void CheckEvents()
     {
         stageClearEventReceiver.CheckEvent();
         chapter0ClearEventReceiver.CheckEvent();
@@ -105,29 +103,28 @@ public class Main : MonoBehaviour
         book.gameObject.SetActive(true);
     }
 
-    void OnFirstC0S1Cleared() // 마왕성 업그레이드 알려주기
+    private void OnFirstC0S1Cleared() // 마왕성 업그레이드 알려주기
     {
         StartCoroutine(ExplainCastleUpgrade());
     }
 
-    void OnFirstChapter0Cleared() // 공주 납치한 사실 알려주기
+    private void OnFirstChapter0Cleared() // 공주 납치한 사실 알려주기
     {
         StartCoroutine(ExplainPrincess());
     }
 
-    void ShowAppRatingPopup()
+    private void ShowAppRatingPopup()
     {
         if (PlayerData.instance.appRated)
             return;
         StartCoroutine(ShowAppRatingProcess());
     }
 
-    IEnumerator ExplainCastleUpgrade()
+    private IEnumerator ExplainCastleUpgrade()
     {
-        
         Image upgradeExplainImage = Instantiate(explainUpgradePrefab).GetComponent<Image>();
         upgradeExplainImage.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        
+
         yield return new WaitForSeconds(1f);
         while (true)
         {
@@ -151,7 +148,7 @@ public class Main : MonoBehaviour
         Destroy(upgradeExplainImage);
     }
 
-    IEnumerator ExplainPrincess()
+    private IEnumerator ExplainPrincess()
     {
         eventHandling = true;
         Image princessExplainImage = Instantiate(explainPrincessPrefab).GetComponent<Image>();
@@ -170,9 +167,9 @@ public class Main : MonoBehaviour
         eventHandling = false;
     }
 
-    IEnumerator ShowAppRatingProcess()
+    private IEnumerator ShowAppRatingProcess()
     {
-        while(true)
+        while (true)
         {
             if (eventHandling)
                 yield return null;
@@ -182,7 +179,7 @@ public class Main : MonoBehaviour
         appRatingPopup.ShowPopup();
     }
 
-    void GameStart()
+    private void GameStart()
     {
         isChanging = true;
         StartCoroutine(SceneFader.Instance.FadeOut(0.6f, "StageSelect"));

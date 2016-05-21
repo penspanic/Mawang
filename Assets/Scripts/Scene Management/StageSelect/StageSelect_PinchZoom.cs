@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class StageSelect_PinchZoom : MonoBehaviour
 {
@@ -12,16 +11,16 @@ public class StageSelect_PinchZoom : MonoBehaviour
         private set;
     }
 
-    Vector3 cameraOriginalScale;
-    float prevOrthoSize;
-    readonly Vector2 mapCenter = new Vector2(6.4f, 3.6f);
+    private Vector3 cameraOriginalScale;
+    private float prevOrthoSize;
+    private readonly Vector2 mapCenter = new Vector2(6.4f, 3.6f);
 
-    void Awake()
+    private void Awake()
     {
         cameraOriginalScale = Camera.main.transform.localScale;
     }
 
-    void Update()
+    private void Update()
     {
         // If there are two touches on the device...
         if (Input.touchCount == 2)
@@ -40,7 +39,6 @@ public class StageSelect_PinchZoom : MonoBehaviour
 
             // Find the difference in the distances between each frame.
             float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-
 
             Camera.main.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
 

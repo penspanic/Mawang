@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Lightnings : MonoBehaviour
 {
@@ -7,8 +7,9 @@ public class Lightnings : MonoBehaviour
     public Vector2 leftTop;
     public Vector2 rightBottom;
 
-    ObjectPool<GameObject> lightningPool;
-    void Awake()
+    private ObjectPool<GameObject> lightningPool;
+
+    private void Awake()
     {
         lightningPool = new ObjectPool<GameObject>(10, lightningPrefab, (GameObject original) =>
         {
@@ -19,7 +20,7 @@ public class Lightnings : MonoBehaviour
         StartCoroutine(LightningProcess());
     }
 
-    IEnumerator LightningProcess()
+    private IEnumerator LightningProcess()
     {
         GameObject currLightning = null;
         while (true)

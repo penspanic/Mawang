@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 //public enum PrincessType
 //{
@@ -11,27 +11,27 @@ using System.Collections.Generic;
 //    chapter3
 //}
 
-// 공주 이미지및 스킬 쿨타임 관리 ( 게임매니져로 프로세스 뺄수도있음 ) 
+// 공주 이미지및 스킬 쿨타임 관리 ( 게임매니져로 프로세스 뺄수도있음 )
 public class PrincessManager : MonoBehaviour
 {
-    private BattleManager   battleMgr;
-    private GameManager     gameMgr;
+    private BattleManager battleMgr;
+    private GameManager gameMgr;
 
-    private float       coolTime;
-    private float       buffDuration;
-    
-    private Image       skillName;
-    private Image       illust;
-    private Image       portrait;
-    private Image       portrait_gray;
-    private Image       castlesprRenderer;
+    private float coolTime;
+    private float buffDuration;
+
+    private Image skillName;
+    private Image illust;
+    private Image portrait;
+    private Image portrait_gray;
+    private Image castlesprRenderer;
 
     private string currChapter;
 
-    private GameObject  princessUI;
-    private List<Movable> ourList   =   new List<Movable>();
+    private GameObject princessUI;
+    private List<Movable> ourList = new List<Movable>();
 
-    private AudioClip   princessBGM;
+    private AudioClip princessBGM;
 
     public Color buffColor
     {
@@ -40,26 +40,23 @@ public class PrincessManager : MonoBehaviour
     }
 
     // 이미지 위치찾기
-    void Awake()
+    private void Awake()
     {
-        battleMgr       =   GetComponent<BattleManager>();
-        gameMgr         =   GetComponent<GameManager>();
-        princessUI      =   GameObject.Find("PrincessEvent");
-        skillName       =   princessUI.transform.FindChild("Event").FindChild("SkillName").GetComponent<Image>();
-        illust          =   princessUI.transform.FindChild("Event").FindChild("BigIllust").GetComponent<Image>();
-        portrait        =   GameObject.Find("Princess Image").GetComponent<Image>();
-        portrait_gray   =   GameObject.Find("Princess Gray").GetComponent<Image>();
-        castlesprRenderer       =   GameObject.Find("OutpostIcon").GetComponent<Image>();
-        buffColor       =   Color.white;
+        battleMgr = GetComponent<BattleManager>();
+        gameMgr = GetComponent<GameManager>();
+        princessUI = GameObject.Find("PrincessEvent");
+        skillName = princessUI.transform.FindChild("Event").FindChild("SkillName").GetComponent<Image>();
+        illust = princessUI.transform.FindChild("Event").FindChild("BigIllust").GetComponent<Image>();
+        portrait = GameObject.Find("Princess Image").GetComponent<Image>();
+        portrait_gray = GameObject.Find("Princess Gray").GetComponent<Image>();
+        castlesprRenderer = GameObject.Find("OutpostIcon").GetComponent<Image>();
+        buffColor = Color.white;
 
         PlayerData.instance.CheckInstance();
         currChapter = "C" + PlayerData.instance.GetSelectedChapter().ToString();
-
-
-
     }
 
-    void Start()
+    private void Start()
     {
         // 쿨타임 가져오기
         StagePattern pattern = JsonManager.instance.GetStagePattern(PlayerData.instance.selectedStage);
@@ -67,18 +64,17 @@ public class PrincessManager : MonoBehaviour
         buffDuration = pattern.buffDuration;
 
         InitUI();
-
     }
 
     // 이미지에 currPrincesse 받은걸로 대입하기
-    void InitUI()
+    private void InitUI()
     {
-        skillName.sprite        =   SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_SkillName");
-        illust.sprite           =   SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_L");
-        portrait.sprite         =   SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_Portait");
-        castlesprRenderer.sprite=   SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_CastleImg");
+        skillName.sprite = SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_SkillName");
+        illust.sprite = SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_L");
+        portrait.sprite = SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_Portait");
+        castlesprRenderer.sprite = SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_CastleImg");
 
-        portrait_gray.sprite    =   portrait.sprite;
+        portrait_gray.sprite = portrait.sprite;
 
         skillName.SetNativeSize();
         illust.SetNativeSize();
@@ -86,26 +82,27 @@ public class PrincessManager : MonoBehaviour
         SetPrincessBuff();
 
         StartCoroutine(PrincessCool());
-        
     }
 
-    void SetPrincessBuff()
+    private void SetPrincessBuff()
     {
-        switch(currChapter)
+        switch (currChapter)
         {
             case "C0":
-                buffColor   =   new Color(0.372f, 0.815f, 0.905f, 1);
+                buffColor = new Color(0.372f, 0.815f, 0.905f, 1);
                 break;
+
             case "C1":
-                buffColor   =   new Color(0.76f, 1, 0.73f, 1);
+                buffColor = new Color(0.76f, 1, 0.73f, 1);
                 break;
+
             case "C3":
-                buffColor   =   new Color(0.76f, 1, 0.73f, 1);
+                buffColor = new Color(0.76f, 1, 0.73f, 1);
                 break;
         }
     }
 
-    IEnumerator PrincessCool()
+    private IEnumerator PrincessCool()
     {
         float currTime = 0.0f;
         while (true)
@@ -138,10 +135,9 @@ public class PrincessManager : MonoBehaviour
         }
     }
 
-    SpriteRenderer[] currSprs;
+    private SpriteRenderer[] currSprs;
 
-
-    IEnumerator BuffRoutine()
+    private IEnumerator BuffRoutine()
     {
         SetBuff(true);
         yield return new WaitForSeconds(buffDuration);
@@ -159,45 +155,47 @@ public class PrincessManager : MonoBehaviour
 
         for (int i = 0; i < ourList.Count; i++)
         {
-            ourList[i].isEffecting  =   set;
-            currSprs                =   ourList[i].GetSprs();
+            ourList[i].isEffecting = set;
+            currSprs = ourList[i].GetSprs();
 
             for (int j = 0; j < currSprs.Length; j++)
             {
                 if (currSprs[j].name.Contains("Effect"))
                     continue;
 
-                if(set)
-                    currSprs[j].color   =   buffColor;
+                if (set)
+                    currSprs[j].color = buffColor;
                 else
-                    currSprs[j].color   =   Color.white;
+                    currSprs[j].color = Color.white;
             }
         }
 
         switch (currChapter)
         {
             case "C0":
-                AttackSpeedDown(ourList,set);
+                AttackSpeedDown(ourList, set);
                 break;
+
             case "C1":
                 FullHpAll(set);
                 break;
+
             case "C2":
                 AttackCastle(set);
                 break;
+
             case "C3":
                 HealAllOurForce();
                 break;
         }
     }
 
-
     // C0 Skill
-    void AttackSpeedDown(List<Movable> list, bool set)
+    private void AttackSpeedDown(List<Movable> list, bool set)
     {
         for (int i = 0; i < list.Count; i++)
         {
-            if(set)
+            if (set)
                 list[i].AddAttackSpeed(-40);
             else
                 list[i].AddAttackSpeed(40);
@@ -205,7 +203,7 @@ public class PrincessManager : MonoBehaviour
     }
 
     // C1 Skill : 아군적군 모두 체력회복
-    void FullHpAll(bool set)
+    private void FullHpAll(bool set)
     {
         if (!set)
             return;
@@ -215,23 +213,21 @@ public class PrincessManager : MonoBehaviour
 
         foreach (Movable eachUnit in battleMgr.enemyList)
             eachUnit.SetFullHP();
-
     }
 
     // C2 Skill : 우리팀 성 체력달게
-    void AttackCastle(bool set)
+    private void AttackCastle(bool set)
     {
         if (!set)
             return;
 
         battleMgr.ourCastle.GetComponent<SatanCastle>().Attacked(100);
     }
-    
 
     // C3 Skill : 아군만 체력회복
-    void HealAllOurForce()
+    private void HealAllOurForce()
     {
-        foreach(Movable eachUnit in battleMgr.ourForceList)
+        foreach (Movable eachUnit in battleMgr.ourForceList)
         {
             eachUnit.SetFullHP();
         }

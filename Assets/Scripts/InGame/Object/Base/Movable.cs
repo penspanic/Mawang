@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public enum MovableState
 {
@@ -11,26 +11,40 @@ public enum MovableState
     Skill
 }
 
-
 /// <summary>
 /// 움직이는 유닛들은 이 클래스를 상속받거나 사용한다.
-///             
+///
 /// 죽을땐 MovableState.Death 를 바꾼다.
 /// </summary>
 public class Movable : ObjectBase, System.IComparable<Movable>
 {
     #region GameDesign
 
-    [SerializeField]    private float           moveSpeed   = 1;
-    [SerializeField]    private float           attackSpeed = 1;
-    [SerializeField]    private int             unitCost    = 50;
-    [SerializeField]    private float           acCoolTime  =  0;
-    [SerializeField]    private Vector2         adjustPos;
-    [SerializeField]    protected AudioClip     attackSound;
-    [SerializeField]    protected AudioClip     skillSound;
-    [SerializeField]    protected int           deathReward = 50;
+    [SerializeField]
+    private float moveSpeed = 1;
 
-    #endregion
+    [SerializeField]
+    private float attackSpeed = 1;
+
+    [SerializeField]
+    private int unitCost = 50;
+
+    [SerializeField]
+    private float acCoolTime = 0;
+
+    [SerializeField]
+    private Vector2 adjustPos;
+
+    [SerializeField]
+    protected AudioClip attackSound;
+
+    [SerializeField]
+    protected AudioClip skillSound;
+
+    [SerializeField]
+    protected int deathReward = 50;
+
+    #endregion GameDesign
 
     #region Property
 
@@ -51,42 +65,48 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         get;
         protected set;
     }
+
     public bool isEffecting
     {
         get;
         set;
     }
+
     public bool isFreezed
     {
         get;
         protected set;
     }
-    #endregion
+
+    #endregion Property
 
     #region Obj Variable
 
-    protected SpawnManager              spawnMgr;
-    protected GoldManager               goldMgr;
-    protected Animator                  animator;
-    protected Collider2D                touchCollider;
-    protected SpriteOrderLayerManager   orderMgr;
-    protected PrincessManager           princessMgr;
-    protected AudioSource               audioSource;
+    protected SpawnManager spawnMgr;
+    protected GoldManager goldMgr;
+    protected Animator animator;
+    protected Collider2D touchCollider;
+    protected SpriteOrderLayerManager orderMgr;
+    protected PrincessManager princessMgr;
+    protected AudioSource audioSource;
 
     protected UnitHpBar hpBar;
-    protected bool  canAttack           = true;
-    protected float attackElapsedTime   = 0;
-    protected bool  isSkillMotion       = false;
-    protected bool  isOneShotSound      = false;
+    protected bool canAttack = true;
+    protected float attackElapsedTime = 0;
+    protected bool isSkillMotion = false;
+    protected bool isOneShotSound = false;
     protected SpriteRenderer[] sprs;
     protected SpriteRenderer shadowRenderer;
-    private   float disappearDuration   = 0.6f;
-    #endregion
+    private float disappearDuration = 0.6f;
+
+    #endregion Obj Variable
 
     #region static fields
-    static GameObject shadowPrefab;
-    static GameObject hpBarPrefab;
-    #endregion
+
+    private static GameObject shadowPrefab;
+    private static GameObject hpBarPrefab;
+
+    #endregion static fields
 
     protected override void Awake()
     {
@@ -109,27 +129,25 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
         battleMgr.AddObject(this);
 
-        goldMgr             =   GameObject.FindObjectOfType<GoldManager>();
-        orderMgr            =   GameObject.FindGameObjectWithTag("Manager").GetComponent<SpriteOrderLayerManager>();
-        spawnMgr            =   GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnManager>();
-        princessMgr         =   GameObject.FindGameObjectWithTag("Manager").GetComponent<PrincessManager>();
-        animator            =   GetComponent<Animator>();
-        audioSource         =   GetComponent<AudioSource>();
-        attackInterval      =   1f / attackSpeed;
-        isMoveRight         =   isOurForce ? true : false;
-        state               =   MovableState.Advance;
+        goldMgr = GameObject.FindObjectOfType<GoldManager>();
+        orderMgr = GameObject.FindGameObjectWithTag("Manager").GetComponent<SpriteOrderLayerManager>();
+        spawnMgr = GameObject.FindGameObjectWithTag("Manager").GetComponent<SpawnManager>();
+        princessMgr = GameObject.FindGameObjectWithTag("Manager").GetComponent<PrincessManager>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        attackInterval = 1f / attackSpeed;
+        isMoveRight = isOurForce ? true : false;
+        state = MovableState.Advance;
 
         if (isOurForce)
-            touchCollider   =   this.GetComponent<Collider2D>();
-
+            touchCollider = this.GetComponent<Collider2D>();
 
         SettingLine();
         if (!isOurForce)
         {
             CreateShadow();
-
         }
-        if(GetComponentInChildren<UnitHpBar>() == null)
+        if (GetComponentInChildren<UnitHpBar>() == null)
         {
             CreateHpBar();
         }
@@ -140,14 +158,13 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         StartCoroutine(UnitProcess());
     }
 
-
     public void SetStat(UnitInfo info)
     {
         attackDamage = info.AttackDamage;
-        attackSpeed  = info.AttackSpeed;
-        maxHP        = info.HealthPoint;
-        moveSpeed    = info.MoveSpeed;
-        canHitNum    = info.HitNum;
+        attackSpeed = info.AttackSpeed;
+        maxHP = info.HealthPoint;
+        moveSpeed = info.MoveSpeed;
+        canHitNum = info.HitNum;
 
         hp = maxHP;
     }
@@ -162,7 +179,6 @@ public class Movable : ObjectBase, System.IComparable<Movable>
                 continue;
             }
 
-
             attackInterval = (float)1f / attackSpeed;
 
             WaitForAttack();
@@ -175,12 +191,15 @@ public class Movable : ObjectBase, System.IComparable<Movable>
                 case MovableState.Advance:
                     Advance();
                     break;
+
                 case MovableState.Idle:
                     Idle();
                     break;
+
                 case MovableState.Attack:
                     Attack();
                     break;
+
                 case MovableState.Skill:
                     Skill();
                     break;
@@ -203,35 +222,34 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         }
 
         if (targets == null)
-            state   =   MovableState.Advance;
+            state = MovableState.Advance;
         else
         {
             if (canAttack)
-                state   =   MovableState.Attack;
+                state = MovableState.Attack;
             else
-                state   =   MovableState.Idle;
+                state = MovableState.Idle;
         }
     }
 
-    void WaitForActive()
+    private void WaitForActive()
     {
-        if(!isOurForce)
+        if (!isOurForce)
             return;
 
         if (canUseSkill == false)
         {
             skillElapsedTime += Time.deltaTime;
-            if(skillElapsedTime >= acCoolTime)
+            if (skillElapsedTime >= acCoolTime)
             {
-                canUseSkill         =   true;
-                skillElapsedTime    =   0;
+                canUseSkill = true;
+                skillElapsedTime = 0;
             }
         }
     }
 
+    private Vector3 deltaMove;
 
-
-    Vector3 deltaMove;
     protected void Advance()
     {
         animator.Play("Advance", 0);
@@ -241,7 +259,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
     protected void Idle()
     {
-        animator.Play("Idle",0);
+        animator.Play("Idle", 0);
     }
 
     protected virtual void Attack()
@@ -249,7 +267,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         if (name == "Medic")
             Debug.Log("attack");
 
-        animator.Play("Attack",0);
+        animator.Play("Attack", 0);
 
         if (!isOneShotSound)
         {
@@ -263,13 +281,14 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         if (isFreezed)
             animator.enabled = true;
 
-        animator.Play("Dead",0);
+        animator.Play("Dead", 0);
     }
 
     protected virtual void Skill()
     {
-        animator.Play("Skill",0);
+        animator.Play("Skill", 0);
     }
+
     // 공격 대기시간
     protected void WaitForAttack()
     {
@@ -305,11 +324,9 @@ public class Movable : ObjectBase, System.IComparable<Movable>
             audioSource.PlayOneShot(sound);
     }
 
-
     // 피격당했을 때 호출
     protected override IEnumerator ChangeDamageColor()
     {
-
         isBleed = true;
 
         SetColor(sprs, Color.red);
@@ -323,7 +340,6 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         if (isFreezed)
             SetColor(sprs, FreezeItem.freezedColor);
         isBleed = false;
-       
     }
 
     // FreezeItem 사용과 끝났을 때
@@ -343,11 +359,11 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         }
     }
 
-    void SetColor(SpriteRenderer[] sprs, Color color)
+    private void SetColor(SpriteRenderer[] sprs, Color color)
     {
         for (int i = 0; i < sprs.Length; i++)
         {
-            if(sprs[i].name.Contains("Effect"))
+            if (sprs[i].name.Contains("Effect"))
                 continue;
 
             sprs[i].color = color;
@@ -359,15 +375,13 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     // 공격모션 끝날때
     public virtual void AttackEnd()
     {
-        isOneShotSound  =   false;
+        isOneShotSound = false;
     }
-
-
 
     // 죽는모션 끝날때
     public void OnDeathEnd()
     {
-        if(!isOurForce)
+        if (!isOurForce)
             goldMgr.AddGold(deathReward);
 
         battleMgr.RemoveObject(this);
@@ -375,10 +389,12 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         StartCoroutine(WaitForDissappear());
     }
 
-    #endregion 
+    #endregion 애니메이션 이벤트 메서드
+
+
 
     // 지정된 시간만큼 죽고난뒤 투명화 되는거
-    IEnumerator WaitForDissappear()
+    private IEnumerator WaitForDissappear()
     {
         float beginTime = Time.time;
         float alpha = 1;
@@ -395,7 +411,8 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
         Destroy(gameObject);
     }
-    void SettingLine()
+
+    private void SettingLine()
     {
         if (transform.position.y > -1)
             this.line = 1;
@@ -410,7 +427,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         transform.position += new Vector3(0, Random.Range(0, 0.5f), 0);
     }
 
-    void CreateShadow()
+    private void CreateShadow()
     {
         if (shadowPrefab == null)
             shadowPrefab = Resources.Load<GameObject>("Prefabs/Shadow Prefab");
@@ -437,7 +454,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         newShadow.transform.localPosition = localPos;
     }
 
-    void CreateHpBar()
+    private void CreateHpBar()
     {
         if (hpBarPrefab == null)
             hpBarPrefab = Resources.Load<GameObject>("Prefabs/UI/Unit Hp Bar");
@@ -463,18 +480,17 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         hpBar.transform.localPosition = localPos;
 
         hpBar.GetComponent<UnitHpBar>().Init();
-
     }
 
     public void SetSortingLayer(string layerName, SpriteRenderer[] renderers = null)
     {
-        if(renderers != null)
+        if (renderers != null)
         {
             for (int i = 0; i < renderers.Length; i++)
                 renderers[i].sortingLayerName = layerName;
             return;
         }
-        for(int i =0;i<sprs.Length;i++)
+        for (int i = 0; i < sprs.Length; i++)
         {
             sprs[i].sortingLayerName = layerName;
         }
@@ -485,8 +501,8 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     protected void SkillMotionStart()
     {
         AudioClip sound;
-        isSkillMotion   =   true;
-        canUseSkill     =   false;
+        isSkillMotion = true;
+        canUseSkill = false;
         if (skillSound == null)
             sound = attackSound;
         else
@@ -496,13 +512,13 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
     protected void SkillMotionEnd()
     {
-        isSkillMotion   =   false;
+        isSkillMotion = false;
     }
 
-    #endregion
-
+    #endregion Skill Unit Func
 
     // gett
+
     #region Get
 
     public override ObjectBase[] GetTargets()
@@ -522,7 +538,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
     public SpriteRenderer[] GetSprs()
     {
-         return sprs;
+        return sprs;
     }
 
     public void AddAttackSpeed(float percent)
@@ -540,7 +556,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         moveSpeed += add;
     }
 
-    #endregion
+    #endregion Get
 
     public int CompareTo(Movable other)
     {

@@ -1,58 +1,165 @@
 ﻿{
-    "C0S1": [
-        "Pawn"
-    ],
-    "C0S2": [
-        "Pawn"
-    ],
-    "C0S3": [
-        "Pawn",
-        "Archer"
-    ],
-    "C1S1": [
-        "Pawn"
-    ],
-    "C1S2": [
-        "Pawn",
-        "Archer"
-    ],
-    "C1S3": [
-        "Pawn",
-        "Archer",
-		"Shielder"
-    ],
-    "C2S1": [
-        "Pawn",
-        "Archer"
-    ],
-    "C2S2": [
-        "Pawn",
-        "Archer",
-		"Shielder"
-    ],
-    "C2S3": [
-        "Pawn",
-        "Archer",
-		"Shielder",
-		"Bandsman"
-    ],
-    "C3S1": [
-		"Pawn",
-        "Archer",
-      "Shielder",
-      "Bandsman"
-    ],
-    "C3S2": [
-        "Pawn",
-        "Archer",
-		"Shielder",
-		"Bandsman"
-    ],
-    "C3S3": [
-        "Pawn",
-        "Archer",
-		"Shielder",
-		"Bandsman"
-    ]
-
+  "C0S1": [
+    "Pawn"
+  ],
+  "C0S2": [
+    "Pawn"
+  ],
+  "C0S3": [
+    "Pawn",
+    "Archer"
+  ],
+  "C1S1": [
+    "Pawn"
+  ],
+  "C1S2": [
+    "Pawn",
+    "Archer"
+  ],
+  "C1S3": [
+    "Pawn",
+    "Archer",
+    "Shielder"
+  ],
+  "C2S1": [
+    "Pawn",
+    "Archer"
+  ],
+  "C2S2": [
+    "Pawn",
+    "Archer",
+    "Shielder"
+  ],
+  "C2S3": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Bandsman"
+  ],
+  "C3S1": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Bandsman"
+  ],
+  "C3S2": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Bandsman"
+  ],
+  "C3S3": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Bandsman"
+  ],
+  "C4S1": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Medic"
+  ],
+  "C4S2": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Medic"
+  ],
+  "C4S3": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Medic"
+  ],
+  "C4S4": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Medic"
+  ],
+  "C5S1": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Lanceman"
+  ],
+  "C5S2": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Lanceman"
+  ],
+  "C5S3": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Lanceman"
+  ],
+  "C5S4": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Lanceman"
+  ],
+  "C6S1": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Medic",
+    "Lanceman"
+  ],
+  "C6S2": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Medic",
+    "Lanceman"
+  ],
+  "C6S3": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Medic",
+    "Lanceman"
+  ],
+  "C6S4": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Medic",
+    "Lanceman"
+  ],
+  "C7S1": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Bandsman",
+    "Medic",
+    "Lanceman"
+  ],
+  "C7S2": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Bandsman",
+    "Medic",
+    "Lanceman"
+  ],
+  "C7S3": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Bandsman",
+    "Medic",
+    "Lanceman"
+  ],
+  "C7S4": [
+    "Pawn",
+    "Archer",
+    "Shielder",
+    "Bandsman",
+    "Medic",
+    "Lanceman"
+  ]
 }

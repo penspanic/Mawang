@@ -1,12 +1,14 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-public class Skeleton : Warrior,ITouchable
+public class Skeleton : Warrior, ITouchable
 {
     [SerializeField]
     private int hpCost;
+
     [SerializeField]
     private int growthDmg;
+
     [SerializeField]
     private float duration;
 
@@ -28,7 +30,6 @@ public class Skeleton : Warrior,ITouchable
             spawnPos += new Vector2(-0.1f, 0.7f);
             EffectManager.instance.PlayEffect(EffectKind.Skeleton_skill, spawnPos, transform);
             StartCoroutine(SkeletonSkill());
-
         }
     }
 
@@ -39,11 +40,9 @@ public class Skeleton : Warrior,ITouchable
         else
             hp -= hpCost;
 
-
         attackDamage += growthDmg;
         yield return new WaitForSeconds(duration);
         attackDamage -= growthDmg;
-
 
         yield break;
     }

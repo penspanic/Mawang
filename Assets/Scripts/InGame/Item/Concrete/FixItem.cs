@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
+
 public class FixItem : ItemBase
 {
-    SatanCastle satanCastle;
-    float hpHealRate = 0.3f;
+    private SatanCastle satanCastle;
+    private float hpHealRate = 0.3f;
 
-    
     protected override void Awake()
     {
         base.Awake();

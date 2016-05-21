@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Grim : Warrior, ITouchable
 {
-    GameObject skillProjectile;
+    private GameObject skillProjectile;
 
     protected override void Awake()
     {
         base.Awake();
-        skillProjectile =   transform.FindChild("SkillProjectile").gameObject;
+        skillProjectile = transform.FindChild("SkillProjectile").gameObject;
     }
 
     protected override void Attack()
     {
         base.Attack();
-
-        
     }
+
     public void OnTouch()
     {
         if (/*state != MovableState.Advance && */canUseSkill && !isDestroyed)
@@ -38,7 +36,6 @@ public class Grim : Warrior, ITouchable
         Vector3 spawnPos = transform.position;
         spawnPos += new Vector3(1.1f, -0.4f, 0);
 
-        EffectManager.instance.PlayEffect(EffectKind.Grim_attack,spawnPos);
-
+        EffectManager.instance.PlayEffect(EffectKind.Grim_attack, spawnPos);
     }
 }

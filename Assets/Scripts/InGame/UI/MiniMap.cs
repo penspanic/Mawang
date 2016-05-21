@@ -1,44 +1,44 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniMap : MonoBehaviour
 {
-    private BattleManager   battleMgr;
+    private BattleManager battleMgr;
 
-    private Sprite      blueMark;
-    private Sprite      redMark;
-    private GameObject  markPrefab;
+    private Sprite blueMark;
+    private Sprite redMark;
+    private GameObject markPrefab;
 
     [SerializeField]
-    private float   markIntervalScale   =   7.5f;
+    private float markIntervalScale = 7.5f;
+
     [SerializeField]
-    private float   markAllPos   =   50;
+    private float markAllPos = 50;
 
-    List<Vector2>   ourForceDrawPos     = new List<Vector2>();
-    List<Vector2>   enemyDrawPos        = new List<Vector2>();
+    private List<Vector2> ourForceDrawPos = new List<Vector2>();
+    private List<Vector2> enemyDrawPos = new List<Vector2>();
 
-    List<Image>     ourForceMarkPool    = new List<Image>();
-    List<Image>     enemyMarkPool       = new List<Image>();
+    private List<Image> ourForceMarkPool = new List<Image>();
+    private List<Image> enemyMarkPool = new List<Image>();
 
-    void Awake()
+    private void Awake()
     {
-        battleMgr   = FindObjectOfType<BattleManager>();
+        battleMgr = FindObjectOfType<BattleManager>();
 
-        blueMark    = SpriteManager.instance.GetSprite(PackingType.UI,"MiniMap_blue");
-        redMark     = SpriteManager.instance.GetSprite(PackingType.UI, "MiniMap_red");
+        blueMark = SpriteManager.instance.GetSprite(PackingType.UI, "MiniMap_blue");
+        redMark = SpriteManager.instance.GetSprite(PackingType.UI, "MiniMap_red");
 
-        markPrefab  = Resources.Load<GameObject>("Prefabs/UI/Mark");
-        
+        markPrefab = Resources.Load<GameObject>("Prefabs/UI/Mark");
     }
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(MiniMapProcess());
     }
 
-    IEnumerator MiniMapProcess()
+    private IEnumerator MiniMapProcess()
     {
         while (true)
         {
@@ -50,27 +50,27 @@ public class MiniMap : MonoBehaviour
 
     #region FindPos
 
-    void FindDrawPos()
+    private void FindDrawPos()
     {
         ourForceDrawPos.Clear();
         enemyDrawPos.Clear();
 
-        FindUnitListPos(ourForceDrawPos,battleMgr.ourForceList);
-        FindUnitListPos(enemyDrawPos,battleMgr.enemyList);
+        FindUnitListPos(ourForceDrawPos, battleMgr.ourForceList);
+        FindUnitListPos(enemyDrawPos, battleMgr.enemyList);
     }
 
-    void FindUnitListPos(List<Vector2> miniMapPosList, List<ObjectBase> objList)
-    { 
+    private void FindUnitListPos(List<Vector2> miniMapPosList, List<ObjectBase> objList)
+    {
         Vector2 drawPos;
         for (int i = 0; i < objList.Count; i++)
         {
-                drawPos     =   GetMiniMapPos(objList[i].transform.position,
-                    objList[i].line);
-                miniMapPosList.Add(drawPos);
+            drawPos = GetMiniMapPos(objList[i].transform.position,
+                objList[i].line);
+            miniMapPosList.Add(drawPos);
         }
     }
 
-    Vector2 GetMiniMapPos(Vector2 pos,int line)
+    private Vector2 GetMiniMapPos(Vector2 pos, int line)
     {
         pos.x = (pos.x * markIntervalScale) - markAllPos;
         pos.y = 12;
@@ -79,23 +79,22 @@ public class MiniMap : MonoBehaviour
         return pos;
     }
 
-    #endregion
+    #endregion FindPos
 
     #region Draw
 
-    void DrawMark()
+    private void DrawMark()
     {
         for (int i = 0; i < ourForceMarkPool.Count; i++)
             ourForceMarkPool[i].gameObject.SetActive(false);
         for (int i = 0; i < enemyMarkPool.Count; i++)
             enemyMarkPool[i].gameObject.SetActive(false);
 
-
-        DrawUnit(ourForceDrawPos,ourForceMarkPool,true);
+        DrawUnit(ourForceDrawPos, ourForceMarkPool, true);
         DrawUnit(enemyDrawPos, enemyMarkPool, false);
     }
 
-    void DrawUnit(List<Vector2> drawPosList, List<Image> markPool,bool isBlue)
+    private void DrawUnit(List<Vector2> drawPosList, List<Image> markPool, bool isBlue)
     {
         for (int i = 0; i < drawPosList.Count; i++)
         {
@@ -106,7 +105,7 @@ public class MiniMap : MonoBehaviour
         }
     }
 
-    void CreateMark(bool isBlue)
+    private void CreateMark(bool isBlue)
     {
         GameObject newMark = Instantiate(markPrefab);
         newMark.transform.SetParent(transform, false);
@@ -123,7 +122,7 @@ public class MiniMap : MonoBehaviour
         }
     }
 
-    void MarkSpawn(Image pool,int idx,bool isBlue)
+    private void MarkSpawn(Image pool, int idx, bool isBlue)
     {
         pool.gameObject.SetActive(true);
 
@@ -133,5 +132,5 @@ public class MiniMap : MonoBehaviour
             pool.transform.localPosition = enemyDrawPos[idx];
     }
 
-    #endregion
+    #endregion Draw
 }

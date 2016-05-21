@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 /// <summary>
 ///   < 카메라 무빙 >
@@ -10,28 +9,29 @@ using System.Collections;
 
 public class TestMovingCam : MonoBehaviour
 {
-
     #region GameDesign
 
     [SerializeField]
     private float speed;
+
     public float pcSpeed = 5;
-    #endregion
+
+    #endregion GameDesign
 
     private Transform camTransform;
     private Vector2 wp;
     private Ray2D ray;
     private RaycastHit2D hit;
 
-    void Awake()
+    private void Awake()
     {
     }
 
-    void Update()
+    private void Update()
     {
         if (Time.timeScale == 0)
         {
-            if(!TutorialManager.instance.isPlaying)
+            if (!TutorialManager.instance.isPlaying)
                 return;
         }
 
@@ -44,11 +44,11 @@ public class TestMovingCam : MonoBehaviour
             {
                 if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(0))
                 {
-                    if(!TutorialManager.instance.isPlaying)
+                    if (!TutorialManager.instance.isPlaying)
                         return;
                 }
 
-                wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);    
+                wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
                 // 레이2d를 갖고옴
                 ray = new Ray2D(wp, Vector2.zero);
@@ -64,7 +64,7 @@ public class TestMovingCam : MonoBehaviour
                         transform.localPosition.y, transform.localPosition.z);
                 }
             }
-            // 끝날때 
+            // 끝날때
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
             }
@@ -85,7 +85,5 @@ public class TestMovingCam : MonoBehaviour
                     transform.localPosition.y, transform.localPosition.z);
             }
         }
-
     }
-
 }

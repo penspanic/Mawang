@@ -1,21 +1,21 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Title : MonoBehaviour
 {
     public GameObject touchTheScreen;
-    InfoPanel panel;
-    bool isChanging = false;
-    void Awake()
+    private InfoPanel panel;
+    private bool isChanging = false;
+
+    private void Awake()
     {
         panel = GameObject.FindObjectOfType<InfoPanel>();
         StartCoroutine(SceneFader.Instance.FadeIn(1f));
-        
-        StartCoroutine(Twinkle());
 
+        StartCoroutine(Twinkle());
     }
 
-    IEnumerator Twinkle()
+    private IEnumerator Twinkle()
     {
         bool isTurned = true;
         while (true)
@@ -30,7 +30,7 @@ public class Title : MonoBehaviour
         }
     }
 
-    void TouchProcess()
+    private void TouchProcess()
     {
         if (isChanging)
             return;

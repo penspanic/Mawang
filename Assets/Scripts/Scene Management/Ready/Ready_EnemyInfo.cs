@@ -1,28 +1,26 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
-
 
 public class Ready_EnemyInfo : MonoBehaviour
 {
-
     public ListView enemyView;
-    Ready ready;
-    GameObject[] enemysData;
-    Image[] enemyImage;
-    Text[] enemyDescription;
+    private Ready ready;
+    private GameObject[] enemysData;
+    private Image[] enemyImage;
+    private Text[] enemyDescription;
 
-    void Awake()
+    private void Awake()
     {
         ready = GameObject.FindObjectOfType<Ready>();
         PlayerData.instance.CheckInstance();
+        Debug.Log(PlayerData.instance.selectedStage);
         if (PlayerData.instance.selectedStage == null)
             PlayerData.instance.selectedStage = "C0S1";
         SetEnemyList();
     }
 
-    void SetEnemyList()
+    private void SetEnemyList()
     {
         string[] enemyName = JsonManager.instance.GetAppearEnemyName(PlayerData.instance.selectedStage);
 
@@ -46,12 +44,10 @@ public class Ready_EnemyInfo : MonoBehaviour
 
         for (int i = 0; i < enemysData.Length; i++)
         {
-
             enemysData[i].transform.localPosition = new Vector2(
                 enemysData[i].transform.localPosition.x - 120, enemysData[i].transform.localPosition.y);
             enemyImage[i].sprite = SpriteManager.instance.GetSprite(PackingType.UI, enemyName[i]);
             enemyDescription[i].text = JsonManager.instance.GetDescription(enemyName[i]);
-
         }
     }
 }

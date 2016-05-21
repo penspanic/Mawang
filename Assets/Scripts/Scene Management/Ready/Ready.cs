@@ -1,16 +1,15 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class Ready : MonoBehaviour
 {
+    private Text obsidianText;
 
-    Text obsidianText;
+    private Ready_UnitSelect unitSelect;
 
-    Ready_UnitSelect unitSelect;
-
-    void Awake()
+    private void Awake()
     {
         StartCoroutine(FadeIn());
         PlayerData.instance.CheckInstance();
@@ -21,14 +20,15 @@ public class Ready : MonoBehaviour
         ResetObsidianText();
     }
 
-    IEnumerator FadeIn()
+    private IEnumerator FadeIn()
     {
         isChanging = true;
         StartCoroutine(SceneFader.Instance.FadeIn(0.6f));
         yield return new WaitForSeconds(1f);
         isChanging = false;
     }
-    void Update()
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             EscapeProcess();
@@ -40,7 +40,7 @@ public class Ready : MonoBehaviour
         }
     }
 
-    bool isChanging = false; 
+    private bool isChanging = false;
 
     public void EscapeProcess()
     {
@@ -64,10 +64,9 @@ public class Ready : MonoBehaviour
 
         isChanging = true;
         ChangeScene(PlayerData.instance.GetInGameSceneName());
-
     }
 
-    void ChangeScene(string sceneName)
+    private void ChangeScene(string sceneName)
     {
         PlayerData.instance.selectedUnitList = new List<string>(unitSelect.GetSelectedUnit());
         PlayerData.instance.selectedUnitList.Sort((a, b) =>
@@ -76,9 +75,8 @@ public class Ready : MonoBehaviour
             Movable bUnit = Resources.Load<Movable>("Prefabs/OurForce/" + b);
             return Comparer<Movable>.Default.Compare(aUnit, bUnit);
         });
-        
+
         StartCoroutine(SceneFader.Instance.FadeOut(0.6f, sceneName));
         StartCoroutine(SceneFader.Instance.SoundFadeOut(1f, GameObject.FindObjectsOfType<AudioSource>()));
     }
-
 }

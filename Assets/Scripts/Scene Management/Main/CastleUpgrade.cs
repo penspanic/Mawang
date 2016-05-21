@@ -1,12 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
-
 
 public class CastleUpgrade : MonoBehaviour
 {
-
     public static readonly string[] upgradeDescriptions = new string[3]{
         "마왕성의 체력이 증가합니다!",
         "스킬의 공격력이 상승합니다!",
@@ -19,6 +15,7 @@ public class CastleUpgrade : MonoBehaviour
     public static readonly int[] originalValues = new int[3]{
         500, 100, 100
     };
+
     // 증가하는 업그레이드 수치
     public static readonly int[] upgradeIncreaseValues = new int[3]{
         100, 20, 5
@@ -29,20 +26,20 @@ public class CastleUpgrade : MonoBehaviour
     public Text allocateButtonText;
     public Button[] upgradeButtons;
     public Button allocateButton;
-    Image[,] gaugeImages;
+    private Image[,] gaugeImages;
 
     public bool isMoving;
     public bool isShowing;
 
-
-    Animator animator;
-    Main main;
+    private Animator animator;
+    private Main main;
 
     public int usableMaxPoint
     {
         get;
         private set;
     }
+
     public int usablePoint
     {
         get;
@@ -50,9 +47,9 @@ public class CastleUpgrade : MonoBehaviour
     }
 
     public int[] allocatedPoints = new int[3];
-    int selectedIndex;
+    private int selectedIndex;
 
-    void Awake()
+    private void Awake()
     {
         PlayerData.instance.CheckInstance();
 
@@ -61,12 +58,10 @@ public class CastleUpgrade : MonoBehaviour
             usableMaxPoint = 12;
         usablePoint = usableMaxPoint;
 
-
         animator = GetComponent<Animator>();
         main = GameObject.FindObjectOfType<Main>();
 
         // 포인트 배분 로드하는 부분 구현
-
 
         gaugeImages = new Image[upgradeButtons.Length, 6];
         int alreadyAllocatedPoints = 0;
@@ -86,8 +81,7 @@ public class CastleUpgrade : MonoBehaviour
         remainingPointText.text = usablePoint.ToString();
     }
 
-
-    void SetGauge(int index, int value)
+    private void SetGauge(int index, int value)
     {
         for (int i = 0; i < 6; i++)
         {
@@ -99,7 +93,7 @@ public class CastleUpgrade : MonoBehaviour
         }
     }
 
-    void SetAllocateButtonInteractive(bool value)
+    private void SetAllocateButtonInteractive(bool value)
     {
         if (value)
         {
@@ -113,7 +107,7 @@ public class CastleUpgrade : MonoBehaviour
         }
     }
 
-    void SaveUpgrade()
+    private void SaveUpgrade()
     {
         PlayerData.instance.upgradePoint["Hp"] = allocatedPoints[0];
         PlayerData.instance.upgradePoint["Damage"] = allocatedPoints[1];
@@ -123,7 +117,6 @@ public class CastleUpgrade : MonoBehaviour
     //Event
     public void OnInitButtonDown()
     {
-
         usablePoint = usableMaxPoint;
 
         remainingPointText.text = usablePoint.ToString();
@@ -177,7 +170,7 @@ public class CastleUpgrade : MonoBehaviour
         isMoving = true;
         animator.Play("Castle Upgrade Fall");
     }
-    
+
     public static int GetUpgradeIncreaseValue(string name)
     {
         if (name.Equals("Hp"))
@@ -188,6 +181,7 @@ public class CastleUpgrade : MonoBehaviour
             return upgradeIncreaseValues[2];
         throw new System.ArgumentException();
     }
+
     public static int GetOriginalValue(string name)
     {
         if (name.Equals("Hp"))
@@ -198,10 +192,11 @@ public class CastleUpgrade : MonoBehaviour
             return originalValues[2];
         throw new System.ArgumentException();
     }
+
     public static int GetUpgradeApplyedValue(string name)
     {
         PlayerData.instance.CheckInstance();
-        if(name == "Cool Time")
+        if (name == "Cool Time")
             return GetOriginalValue(name) - PlayerData.instance.upgradePoint[name] * GetUpgradeIncreaseValue(name);
         return GetOriginalValue(name) + PlayerData.instance.upgradePoint[name] * GetUpgradeIncreaseValue(name);
     }

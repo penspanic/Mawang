@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public class CastleInfo : MonoBehaviour
 {
-
     public Button infoButton;
     public Button closeButton;
 
@@ -15,22 +12,20 @@ public class CastleInfo : MonoBehaviour
 
     public Image[] castleIcons;
 
-    Animator animator;
-    CastleUpgrade upgrade;
-    Main main;
+    private Animator animator;
+    private CastleUpgrade upgrade;
+    private Main main;
     public bool isShowing;
     public bool isMoving;
 
-
-
-    void Awake()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         upgrade = GameObject.FindObjectOfType<CastleUpgrade>();
         main = GameObject.FindObjectOfType<Main>();
     }
 
-    void ResetInfo()
+    private void ResetInfo()
     {
         hpText.text = "마왕성 체력 : 500 + " + (upgrade.allocatedPoints[0] * CastleUpgrade.upgradeIncreaseValues[0]).ToString();
         skillText.text = "마왕성 스킬 공격력 : 100 + " + (upgrade.allocatedPoints[1] * CastleUpgrade.upgradeIncreaseValues[1]).ToString();
@@ -71,6 +66,7 @@ public class CastleInfo : MonoBehaviour
     {
         isMoving = false;
     }
+
     public void OnRiseEnd()
     {
         isShowing = false;

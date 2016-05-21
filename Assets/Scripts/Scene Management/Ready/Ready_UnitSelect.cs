@@ -1,7 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public class Ready_UnitSelect : MonoBehaviour
 {
@@ -11,16 +10,16 @@ public class Ready_UnitSelect : MonoBehaviour
     public Text unitDescription;
     public Text selectedCountText;
 
-    List<string> unitNameList;
-    Button[] unitButtons;
-    Image[] checkedImages;
-    Image[] selectedImages;
-    bool[] unitSelected;
+    private List<string> unitNameList;
+    private Button[] unitButtons;
+    private Image[] checkedImages;
+    private Image[] selectedImages;
+    private bool[] unitSelected;
 
-    int selectedCount = 0;
-    int selectedUnitIndex = 0;
+    private int selectedCount = 0;
+    private int selectedUnitIndex = 0;
 
-    void Awake()
+    private void Awake()
     {
         PlayerData.instance.CheckInstance();
         JsonManager.instance.CheckInstance();
@@ -32,7 +31,7 @@ public class Ready_UnitSelect : MonoBehaviour
         selectedCountText.text = selectedCount.ToString() + "/6";
     }
 
-    void SetUnitList()
+    private void SetUnitList()
     {
         Sprite portrait;
         List<Button> unitButtonList = new List<Button>();
@@ -44,7 +43,6 @@ public class Ready_UnitSelect : MonoBehaviour
         unitView.row = unitNameList.Count / 3 + ((unitNameList.Count % 3) == 0 ? 0 : 1);
         unitView.itemCount = unitNameList.Count;
         unitView.SetItems();
-
 
         Button newButton;
         Image checkedImage;
@@ -69,11 +67,11 @@ public class Ready_UnitSelect : MonoBehaviour
         selectedImages = selectedImageList.ToArray();
     }
 
-    void SetSelectedUnit()
+    private void SetSelectedUnit()
     {
-        if(PlayerData.instance.selectedUnitList.Count != 0)
+        if (PlayerData.instance.selectedUnitList.Count != 0)
         {
-            foreach(string eachName in PlayerData.instance.selectedUnitList)
+            foreach (string eachName in PlayerData.instance.selectedUnitList)
             {
                 selectedUnitIndex = unitNameList.IndexOf(eachName);
                 OnSelectButtonDown();
@@ -104,7 +102,7 @@ public class Ready_UnitSelect : MonoBehaviour
         unitSelectButton.GetComponentInChildren<Text>().text = unitSelected[selectedUnitIndex] ? "취소" : "선택";
 
         selectedCount = 0;
-        for(int i = 0;i<unitSelected.Length;i++)
+        for (int i = 0; i < unitSelected.Length; i++)
         {
             if (unitSelected[i])
                 selectedCount++;
@@ -117,7 +115,7 @@ public class Ready_UnitSelect : MonoBehaviour
     {
         List<string> unitsList = new List<string>();
         int i = 0;
-        foreach(string eachName in unitNameList)
+        foreach (string eachName in unitNameList)
         {
             if (unitSelected[i])
                 unitsList.Add(eachName);

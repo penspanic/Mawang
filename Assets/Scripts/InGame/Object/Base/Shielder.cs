@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Shielder : Movable
 {
@@ -7,24 +6,20 @@ public class Shielder : Movable
 
     protected override void Attack()
     {
-
-
-        if(prevPos == transform.position)
+        if (prevPos == transform.position)
             return;
 
-        prevPos     =   transform.position;
+        prevPos = transform.position;
         PlaySound(attackSound);
         animator.Play("Attack", 0);
-
     }
+
     public override void AttackEnd()
     {
-
     }
 
     public void OnAttackEnd()
     {
         AttackEnd();
-
     }
 }

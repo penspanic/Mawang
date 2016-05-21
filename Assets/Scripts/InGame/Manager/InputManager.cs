@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 /// <summary>
-/// 
+///
 /// </summary>
 
 public class InputManager : MonoBehaviour
@@ -12,17 +11,17 @@ public class InputManager : MonoBehaviour
     private Ray2D ray;
     private RaycastHit2D[] hit;
 
-    void Awake()
+    private void Awake()
     {
-        selectTab   =   FindObjectOfType<SelectTab>();
+        selectTab = FindObjectOfType<SelectTab>();
     }
-    void Update()
+
+    private void Update()
     {
         // Delete This
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Time.timeScale += 0.2f;
-            
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -37,8 +36,6 @@ public class InputManager : MonoBehaviour
         {
             Time.timeScale = 0;
         }
-
-
 
         if (Input.GetMouseButtonDown(0) && Application.platform == RuntimePlatform.WindowsEditor)
         {
@@ -76,7 +73,6 @@ public class InputManager : MonoBehaviour
                 return;
             wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
-
             hit = Physics2D.RaycastAll(wp, Vector2.zero);
 
             for (int i = 0; i < hit.Length; i++)
@@ -98,8 +94,5 @@ public class InputManager : MonoBehaviour
                 }
             }
         }
-
     }
-
-
 }
