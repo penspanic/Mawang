@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: 5272425abab781743b6a75982d416776
+timeCreated: 1463398421
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: hat
+    21300002: hair
+    21300004: head
+    21300006: arm_left
+    21300008: hand_right
+    21300010: hand_left
+    21300012: arm_right
+    21300014: body
+    21300016: leg
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: hat
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 232
+        width: 151
+        height: 70
+      alignment: 9
+      pivot: {x: .507818282, y: .224537}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hair
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 168
+        width: 102
+        height: 57
+      alignment: 9
+      pivot: {x: .901234567, y: .83828789}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: head
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 164
+        width: 66
+        height: 65
+      alignment: 9
+      pivot: {x: .0945566371, y: .294159651}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: arm_left
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 97
+        width: 38
+        height: 47
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hand_right
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 113
+        width: 45
+        height: 44
+      alignment: 9
+      pivot: {x: .123971388, y: .160143077}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hand_left
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 111
+        width: 69
+        height: 36
+      alignment: 9
+      pivot: {x: .642579257, y: .172067851}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: arm_right
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 98
+        width: 21
+        height: 45
+      alignment: 9
+      pivot: {x: .443782985, y: .841049194}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: body
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 7
+        width: 40
+        height: 66
+      alignment: 9
+      pivot: {x: .431134224, y: .476150215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: leg
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 4
+        width: 168
+        height: 77
+      alignment: 9
+      pivot: {x: .596037209, y: .663540125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

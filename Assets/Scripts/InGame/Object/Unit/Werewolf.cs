@@ -30,12 +30,12 @@ public class Werewolf : Warrior, ITouchable
         if (canUseSkill && !isDestroyed)
         {
             SkillMotionStart();
-            StartCoroutine(WarewolfSkill());
+            StartCoroutine(WerewolfSkill());
         }
     }
 
     // skill
-    private IEnumerator WarewolfSkill()
+    private IEnumerator WerewolfSkill()
     {
         float currTime = 0.0f;
         Vector3 orginPos = transform.position;
@@ -67,11 +67,5 @@ public class Werewolf : Warrior, ITouchable
             fixedX = 0.0f;
 
         transform.position = new Vector2(transform.position.x, orginPos.y);
-    }
-
-    // Animation Event
-    public void OnSkillMotionEvent()
-    {
-        SkillMotionEnd();
     }
 }

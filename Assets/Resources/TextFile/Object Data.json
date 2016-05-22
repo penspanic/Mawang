@@ -1,79 +1,97 @@
 ﻿{
-  /* 아군 유닛 */
-  "Skeleton": {
-    "Korean Name": "스켈레톤",
-    "Joke": "마왕성을 지키는 든든한 일반 병사.\n언제나 마왕님께 충성을 다한다.",
-    "Description": "체력을 소모하여 일시적으로 공격력을 높인다.",
-    "Type": "근거리"
-  },
-  "Goblin": {
-    "Korean Name": "고블린",
-    "Joke": "인간을 괴롭히길 좋아하는 장난꾸러기.\n작은 몸뚱이로 전장을 누빈다.",
-    "Description": "작은 짱돌이 아닌 큼직한 돌을 던진다.",
-    "Type": "원거리"
-  },
-  "Dullahan": {
-    "Korean Name": "듀라한",
-    "Joke": "낡은 갑옷에서 알 수 있듯 원래는 인간 병사였던 듯 하다.\n이들의 머리는 어디로 갔을까?",
-    "Description": "진격하여 일정 거리의 적군을 밀어낸다.",
-    "Type": "근거리"
-  },
-  "Harpy": {
-    "Korean Name": "하피",
-    "Joke": "매우 아름다운 외모를 가지고 있는 하피는 사실 인육을 먹는다.",
-    "Description": "근처 아군의 공격력을 일시적으로 높여준다.",
-    "Type": "원거리"
-  },
-  "Orc": {
-    "Korean Name": "오크",
-    "Joke": "마왕군 최저의 지능과 최고의 먹성을 자랑한다.\n먹을 만큼만 활약하면 좋을텐데.",
-    "Description": "앞을 가로막은 적들에게 강한 펀치를 날린다.",
-    "Type": "근거리"
-  },
-  "Grim": {
-    "Korean Name": "그림",
-    "Joke": "본업은 저승사자.\n비정규직으로 마왕군에 고용되어 활약중이다.",
-    "Description": "다수의 적들을 한꺼번에 공격한다.",
-    "Type": "근거리"
-  },
-  "Werewolf": {
-    "Korean Name": "웨어울프",
-    "Joke": "마왕의 능력으로 보름달이 뜨지 않아도 늑대가 될 수 있다.",
-    "Description": "도약하여 적들을 공격하며 진격한다.",
-    "Type": "근거리"
-  },
+    /* 아군 유닛 */
+    "Skeleton": {
+        "Korean Name": "스켈레톤",
+        "Joke": "마왕성을 지키는 든든한 일반 병사.\n언제나 마왕님께 충성을 다한다.",
+        "Description": "체력을 소모하여 일시적으로 공격력을 높인다.",
+        "Type": "근거리"
+    },
+    "Goblin": {
+        "Korean Name": "고블린",
+        "Joke": "인간을 괴롭히길 좋아하는 장난꾸러기.\n작은 몸뚱이로 전장을 누빈다.",
+        "Description": "작은 짱돌이 아닌 큼직한 돌을 던진다.",
+        "Type": "원거리"
+    },
+    "Dullahan": {
+        "Korean Name": "듀라한",
+        "Joke": "낡은 갑옷에서 알 수 있듯 원래는 인간 병사였던 듯 하다.\n이들의 머리는 어디로 갔을까?",
+        "Description": "진격하여 일정 거리의 적군을 밀어낸다.",
+        "Type": "근거리"
+    },
+    "Harpy": {
+        "Korean Name": "하피",
+        "Joke": "매우 아름다운 외모를 가지고 있는 하피는 사실 인육을 먹는다.",
+        "Description": "근처 아군의 공격력을 일시적으로 높여준다.",
+        "Type": "원거리"
+    },
+    "Orc": {
+        "Korean Name": "오크",
+        "Joke": "마왕군 최저의 지능과 최고의 먹성을 자랑한다.\n먹을 만큼만 활약하면 좋을텐데.",
+        "Description": "앞을 가로막은 적들에게 강한 펀치를 날린다.",
+        "Type": "근거리"
+    },
+    "Grim": {
+        "Korean Name": "그림",
+        "Joke": "본업은 저승사자.\n비정규직으로 마왕군에 고용되어 활약중이다.",
+        "Description": "다수의 적들을 한꺼번에 공격한다.",
+        "Type": "근거리"
+    },
+    "Werewolf": {
+        "Korean Name": "웨어울프",
+        "Joke": "마왕의 능력으로 보름달이 뜨지 않아도 늑대가 될 수 있다.",
+        "Description": "도약하여 적들을 공격하며 진격한다.",
+        "Type": "근거리"
+    },
+    "Marionette": {
+        "Korean Name": "인형술사",
+        "Joke": "가장 허약하다고 알려진 주제에 매일 밤 늦게까지 인형을 만든다.",
+        "Description": "소환수가 장거리 빔을 발사한다.",
+        "Type": "원거리"
+    },
+    "Aragog": {
+        "Korean Name": "아라고그",
+        "Joke": "마왕성 음지에 몰려 살던 마오아의 골칫거리.\n개똥도 약에 쓸 데가 있다더니.",
+        "Description": "일정 거리 굴러간 후 폭파된다.",
+        "Type": "근거리"
+    },
+    "Witch": {
+        "Korean Name": "마녀",
+        "Joke": "원래 개인 행동을 좋아하는 마녀들이지만 마왕이 엄청 매달린듯 하다.",
+        "Description": "아군에게 버프를, 적군에게 디버프를 주는 공간을 펼친다.",
+        "Type": "원거리"
+    },
 
-  /* 적군 유닛 */
-  "Pawn": {
-    "Description": "검과 방패를 쓰는 일반 병사"
-  },
-  "Archer": {
-    "Description": "유일하게 원거리 공격을 하는 병사"
-  },
-  "Shielder": {
-    "Description": "거대한 방패를 세우고 버티는 병사"
-  },
-  "Bandsman": {
-    "Description": "훌륭한 연주로 사기를 올리는 병사"
-  },
-  "Medic": {
-    "Description": "적군과 닿았을 때 적군을 천천히 치유한다."
-  },
-  "Lanceman": {
-    "Description": "긴 창으로 아군의 접근을 막는다."
-  },
+    /* 적군 유닛 */
+    "Pawn": {
+        "Description": "검과 방패를 쓰는 일반 병사"
+    },
+    "Archer": {
+        "Description": "유일하게 원거리 공격을 하는 병사"
+    },
+    "Shielder": {
+        "Description": "거대한 방패를 세우고 버티는 병사"
+    },
+    "Bandsman": {
+        "Description": "훌륭한 연주로 사기를 올리는 병사"
+    },
+    "Medic": {
+        "Description": "적군과 닿았을 때 적군을 천천히 치유한다."
+    },
+    "Lanceman": {
+        "Description": "긴 창으로 아군의 접근을 막는다."
+    },
 
-  /* 아이템 */
-  "Fix": {
-    "Description": "HP 30% 회복",
-    "Cost": 30
-  },
-  "Freeze": {
-    "Description": "적 유닛 5초간 정지",
-    "Cost": 40
-  },
-  "Defense": {
-    "Description": "10초간 마왕성 무적",
-    "Cost": 50
-  }
+    /* 아이템 */
+    "Fix": {
+        "Description": "HP 30% 회복",
+        "Cost": 30
+    },
+    "Freeze": {
+        "Description": "적 유닛 5초간 정지",
+        "Cost": 40
+    },
+    "Defense": {
+        "Description": "10초간 마왕성 무적",
+        "Cost": 50
+    }
 }

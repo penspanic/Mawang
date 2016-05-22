@@ -28,7 +28,7 @@ public class Medic : Movable
         healTargets = new List<ObjectBase>();
         base.Awake();
     }
-
+    
     protected override void Attack()
     {
         if (!isHealing)

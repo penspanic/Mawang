@@ -48,7 +48,10 @@ public class SelectTab : MonoBehaviour
 
         // Temp
         if (PlayerData.instance.selectedUnitList.Count == 0)
+        {
             PlayerData.instance.selectedUnitList.Add("Skeleton");
+            PlayerData.instance.selectedUnitList.Add("Witch");
+        }
 
         #region Load
 

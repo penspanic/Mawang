@@ -128,6 +128,25 @@ public class BattleManager : MonoBehaviour
         return tmplist;
     }
 
+    public Movable[] GetAllUnitInLine(int line)
+    {
+        List<Movable> returnList = new List<Movable>();
+
+        foreach(ObjectBase eachObj in ourForceList)
+        {
+            if (eachObj is Movable && eachObj.line == line)
+                returnList.Add(eachObj as Movable);
+        }
+
+        foreach(ObjectBase eachObj in enemyList)
+        {
+            if (eachObj is Movable && eachObj.line == line)
+                returnList.Add(eachObj as Movable);
+        }
+
+        return returnList.ToArray();
+    }
+
     public bool CanAttackCastle(List<ObjectBase> list, ObjectBase obj)   // 성이 공격 가능한 범위인지 판단하고 리스트에 추가
     {
         switch (obj.line)

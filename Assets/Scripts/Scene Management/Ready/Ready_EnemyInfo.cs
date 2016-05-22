@@ -14,7 +14,6 @@ public class Ready_EnemyInfo : MonoBehaviour
     {
         ready = GameObject.FindObjectOfType<Ready>();
         PlayerData.instance.CheckInstance();
-        Debug.Log(PlayerData.instance.selectedStage);
         if (PlayerData.instance.selectedStage == null)
             PlayerData.instance.selectedStage = "C0S1";
         SetEnemyList();
