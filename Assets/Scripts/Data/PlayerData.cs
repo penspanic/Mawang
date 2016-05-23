@@ -46,6 +46,7 @@ public class PlayerData : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
+        PlayerPrefs.DeleteAll();
         // 1
         playerUnitList = new List<string>();
         selectedUnitList = new List<string>();
@@ -223,6 +224,19 @@ public class PlayerData : MonoBehaviour
         }
         if (c == 2 && s == 3)
             AddUnit("Grim");
+
+        if (c == 4 && s == 1)
+            AddUnit("Werewolf");
+
+        // TODO : 유닛 나오면 주석 풀기
+        //if (c == 4 && s == 3)
+        //    AddUnit("Marionette");
+
+        //if (c == 5 && s == 1)
+        //    AddUnit("Aragog");
+
+        //if (c == 5 && s == 3)
+        //    AddUnit("Witch");
     }
 
     public bool IsStageCleared(string stage)
@@ -230,6 +244,7 @@ public class PlayerData : MonoBehaviour
         int c = int.Parse(stage[1].ToString());
         int s = int.Parse(stage[3].ToString());
 
+        Debug.Log("Last Stagee : " + lastClearedStage);
         int LastC = int.Parse(lastClearedStage[1].ToString());
         int LastS = int.Parse(lastClearedStage[3].ToString());
 

@@ -98,6 +98,8 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     protected SpriteRenderer[] sprs;
     protected SpriteRenderer shadowRenderer;
     private float disappearDuration = 0.6f;
+    private GameObject newShadow;
+    private GameObject hpBarObj;
 
     #endregion Obj Variable
 
@@ -146,9 +148,6 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         if (!isOurForce)
         {
             CreateShadow();
-        }
-        if (GetComponentInChildren<UnitHpBar>() == null)
-        {
             CreateHpBar();
         }
 
@@ -281,6 +280,12 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         if (isFreezed)
             animator.enabled = true;
 
+        if (!isOurForce)
+        {
+            hpBarObj.SetActive(false);
+            newShadow.SetActive(false);
+        }
+
         animator.Play("Dead", 0);
     }
 
@@ -385,7 +390,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
             goldMgr.AddGold(deathReward);
 
         battleMgr.RemoveObject(this);
-        Destroy(GetComponentInChildren<UnitHpBar>().gameObject);
+
         StartCoroutine(WaitForDissappear());
     }
 
@@ -432,7 +437,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         if (shadowPrefab == null)
             shadowPrefab = Resources.Load<GameObject>("Prefabs/Shadow Prefab");
 
-        GameObject newShadow = Instantiate<GameObject>(shadowPrefab);
+        newShadow = Instantiate<GameObject>(shadowPrefab);
         newShadow.transform.SetParent(this.transform, false);
         float ratio = 1f / newShadow.transform.lossyScale.magnitude;
         newShadow.transform.localScale = Vector3.one * ratio;
@@ -458,10 +463,11 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     {
         if (hpBarPrefab == null)
             hpBarPrefab = Resources.Load<GameObject>("Prefabs/UI/Unit Hp Bar");
-        GameObject hpBar = Instantiate<GameObject>(hpBarPrefab);
-        hpBar.transform.SetParent(transform, false);
-        float ratio = 1f / hpBar.transform.lossyScale.magnitude;
-        hpBar.transform.localScale = Vector3.one * ratio;
+
+        hpBarObj = Instantiate<GameObject>(hpBarPrefab);
+        hpBarObj.transform.SetParent(transform, false);
+        float ratio = 1f / hpBarObj.transform.lossyScale.magnitude;
+        hpBarObj.transform.localScale = Vector3.one * ratio;
 
         Vector2 localPos = Vector2.zero;
 
@@ -477,9 +483,9 @@ public class Movable : ObjectBase, System.IComparable<Movable>
             localPos = new Vector2(0.28f, 1.3f);
         else if (name.Contains("Lanceman"))
             localPos = new Vector2(0.33f, 1.33f);
-        hpBar.transform.localPosition = localPos;
+        hpBarObj.transform.localPosition = localPos;
 
-        hpBar.GetComponent<UnitHpBar>().Init();
+        hpBarObj.GetComponent<UnitHpBar>().Init();
     }
 
     public void SetSortingLayer(string layerName, SpriteRenderer[] renderers = null)

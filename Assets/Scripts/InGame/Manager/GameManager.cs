@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         PlayerData.instance.CheckInstance();
 
         // ※ Delete this
-        PlayerData.instance.selectedStage = "C4S1";
+        PlayerData.instance.selectedStage = "C4S4";
 
         GameEventManager.instance.CheckInstance();
 

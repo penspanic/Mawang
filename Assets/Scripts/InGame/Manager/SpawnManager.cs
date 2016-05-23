@@ -5,7 +5,7 @@ public class SpawnManager : MonoBehaviour
 {
     public float randomY_Min;
     public float randomY_Max;
-
+    
     private GameManager gameMgr;
     private GoldManager goldMgr;
     private SpriteOrderLayerManager orderMgr;

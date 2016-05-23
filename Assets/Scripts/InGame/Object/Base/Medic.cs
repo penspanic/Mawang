@@ -28,7 +28,7 @@ public class Medic : Movable
         healTargets = new List<ObjectBase>();
         base.Awake();
     }
-    
+
     protected override void Attack()
     {
         if (!isHealing)
@@ -65,24 +65,22 @@ public class Medic : Movable
         isHealing = false;
     }
 
+    private List<ObjectBase> targets = new List<ObjectBase>();
     protected override void FindTarget()
     {
         if (isHealing)
             return;
 
-        // 인접 아군 유닛 찾음
-        ObjectBase[] targets = battleMgr.GetTargets(this, attackRange, canHitNum, true);
-
         // 힐 받을 유닛 초기화
+        targets.Clear();
         healTargets.Clear();
-        if (targets == null)
-        {
-            targets = battleMgr.GetTargets(this, attackRange, canHitNum);
 
-        }
-        else
+        AddTargets(battleMgr.GetTargets(this, attackRange, canHitNum));
+        AddTargets(battleMgr.GetTargets(this, attackRange, canHitNum, true));
+
+        if (targets.Count > 0)
         {
-            for (int i = 0; i < targets.Length; ++i)
+            for (int i = 0; i < targets.Count; ++i)
             {
                 if (targets[i].GetHP() < targets[i].maxHP && !targets[i].isOurForce)
                 {
@@ -96,21 +94,27 @@ public class Medic : Movable
 
         if (isOverlapHeal)
         {
-            if (IsOverlapMedic(targets))
+            if (IsOverlapMedic(targets.ToArray()))
             {
                 state = MovableState.Advance;
                 return;
             }
-
         }
 
 
-        // 행동 분배
-        if(targets != null)
-            Debug.Log("targets: " + targets.Length);
-        // 아군도 적군도 없을 경우
-        if (targets == null || targets.Length == 0)
+
+        // 아군적군 둘다 들고있음
+        // * 움직일 경우 
+        // 1. 타겟들이 메딕밖에 없을경우
+        // 2. 타겟들이 하나도 없을경우
+        // * 아닐경우
+        // 1. 힐하거나
+        // 2. 가만히 있음
+
+        if (targets.Count == 0)
+        {
             state = MovableState.Advance;
+        }
         else
         {
             // 공격이 가능한 경우
@@ -123,12 +127,23 @@ public class Medic : Movable
 
     private bool IsOverlapMedic(ObjectBase[] targets)
     {
-        if (targets == null)
+        if (targets == null || targets.Length == 0)
             return false;
 
-        if (targets[0].name.Contains("Medic"))
-            return true;
+        for(int i = 0; i < targets.Length; ++i)
+        {
+            if (!targets[i].name.Contains("Medic"))
+                return false;
+        }
 
-        return false;
+        return true;
+    }
+
+    private void AddTargets(ObjectBase[] targetArr)
+    {
+        if(targetArr != null)
+        {
+            targets.AddRange(targetArr);
+        }
     }
 }
