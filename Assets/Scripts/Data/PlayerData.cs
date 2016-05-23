@@ -46,7 +46,6 @@ public class PlayerData : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-
         // 1
         playerUnitList = new List<string>();
         selectedUnitList = new List<string>();
@@ -131,6 +130,15 @@ public class PlayerData : MonoBehaviour
 
     public void SaveData()
     {
+        //for (int c = 0;c<8;c++)
+        //{
+        //    for(int s = 1;s<5;s++)
+        //    {
+        //        if (c < 4 && s == 4)
+        //            continue;
+        //        StageClear("C" + c.ToString() + "S" + s.ToString());
+        //    }
+        //}
         if (lastClearedStage != null)
             PlayerPrefs.SetString("lastClearedStage", lastClearedStage);
 
@@ -261,7 +269,8 @@ public class PlayerData : MonoBehaviour
             return 999;
         int lastChapter = int.Parse(lastClearedStage[1].ToString());
         int lastStage = int.Parse(lastClearedStage[3].ToString());
-        if (lastStage == 3)
+
+        if (lastChapter < 4 && lastStage == 3 || lastChapter >= 4 && lastStage == 4)
         {
             return lastChapter;
         }
@@ -279,8 +288,8 @@ public class PlayerData : MonoBehaviour
         int chapter = int.Parse(stageName[1].ToString());
         int stage = int.Parse(stageName[3].ToString());
 
-        if (stageName == "C3S3")
-            return "C3S3";
+        if (stageName == "C7S4")
+            return "C7S4";
 
         if (stage == 3)
         {

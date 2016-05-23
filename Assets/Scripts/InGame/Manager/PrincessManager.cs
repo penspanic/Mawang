@@ -71,7 +71,7 @@ public class PrincessManager : MonoBehaviour
     {
         skillName.sprite = SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_SkillName");
         illust.sprite = SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_L");
-        portrait.sprite = SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_Portait");
+        portrait.sprite = SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_Portrait");
         castlesprRenderer.sprite = SpriteManager.instance.GetSprite(PackingType.Princess, currChapter + "_CastleImg");
 
         portrait_gray.sprite = portrait.sprite;

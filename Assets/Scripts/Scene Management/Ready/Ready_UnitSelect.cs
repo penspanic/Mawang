@@ -73,8 +73,11 @@ public class Ready_UnitSelect : MonoBehaviour
         {
             foreach (string eachName in PlayerData.instance.selectedUnitList)
             {
-                selectedUnitIndex = unitNameList.IndexOf(eachName);
-                OnSelectButtonDown();
+                if (unitNameList.Contains(eachName))
+                {
+                    selectedUnitIndex = unitNameList.IndexOf(eachName);
+                    OnSelectButtonDown();
+                }
             }
         }
     }

@@ -19,12 +19,12 @@ public class PrincessReact : MonoBehaviour
 
     private void LoadPosition()
     {
-        princessTransforms = new RectTransform[2][];
-        princessExists = new bool[2][];
+        princessTransforms = new RectTransform[3][];
+        princessExists = new bool[3][];
 
         List<RectTransform> lineTransformList = new List<RectTransform>();
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             lineTransformList.Clear();
             GameObject lineParent = GameObject.Find("Line " + (i + 1).ToString());
@@ -62,7 +62,7 @@ public class PrincessReact : MonoBehaviour
             while (true)
             {
                 int randomX = Random.Range(0, 3);
-                int randomY = Random.Range(0, 2);
+                int randomY = Random.Range(0, 3);
                 if (princessExists[randomY][randomX])
                 {
                     continue;

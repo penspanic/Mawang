@@ -9,7 +9,7 @@ public class StageSelect : MonoBehaviour
 
     private ChapterInfo chapterInfo;
 
-    private Button[][] stageButtons = new Button[4][];
+    private Button[][] stageButtons = new Button[8][];
 
     private void Awake()
     {
@@ -18,10 +18,10 @@ public class StageSelect : MonoBehaviour
 
         chapterInfo = GameObject.FindObjectOfType<ChapterInfo>();
 
-        for (int c = 0; c < 4; c++)
+        for (int c = 0; c < 8; c++)
         {
             List<Button> stageButtonList = new List<Button>();
-            for (int s = 1; s <= 3; s++)
+            for (int s = 1; s <= 3 + (c > 3 ? 1 : 0); s++)
             {
                 stageButtonList.Add(GameObject.Find("C" + c.ToString() + "S" + s.ToString()).GetComponent<Button>());
             }
@@ -31,6 +31,8 @@ public class StageSelect : MonoBehaviour
         ButtonSet();
         GameObject.FindObjectOfType<SceneFader>().transform.SetParent(Camera.main.transform, true);
         GameObject.FindObjectOfType<SceneFader>().transform.localPosition = new Vector3(0, 0, 10);
+
+        GameObject.Find("World2").SetActive(false);
     }
 
     private IEnumerator FadeIn()
@@ -64,7 +66,7 @@ public class StageSelect : MonoBehaviour
 
         for (int c = 0; c <= chapter; c++)
         {
-            for (int s = 0; s < 3; s++)
+            for (int s = 0; s < 3 + (c > 3 ? 1 : 0); s++)
             {
                 if (c < chapter)
                     stageButtons[c][s].interactable = true;

@@ -95,6 +95,7 @@
     "PrincessCoolTime": 35,
     "BuffDuration": 0.7
   },
+  //// New World
   "C4S1": {
     "Interval": 9,
     "EarlyTimeInterval": 4.5,
@@ -119,7 +120,103 @@
     "PrincessCoolTime": 35,
     "BuffDuration": 8
   },
+  "C4S4": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "P1M1, P1A1M1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 8
+  },
   "C5S1": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "S1L1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 7
+  },
+  "C5S2": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "S1L1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 7
+  },
+  "C5S3": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "S1L1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 7
+  },
+  "C5S4": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "S1L1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 7
+  },
+  "C6S1": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "S1L1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 7
+  },
+  "C6S2": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "S1L1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 7
+  },
+  "C6S3": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "S1L1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 7
+  },
+  "C6S4": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "S1L1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 7
+  },
+  "C7S1": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "S1L1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 7
+  },
+  "C7S2": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "S1L1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 7
+  },
+  "C7S3": {
+    "Interval": 9,
+    "EarlyTimeInterval": 4.5,
+    "EarlyTimePatternCnt": 5,
+    "EnemyPattern": [ "S1L1" ],
+    "PrincessCoolTime": 35,
+    "BuffDuration": 7
+  },
+  "C7S4": {
     "Interval": 9,
     "EarlyTimeInterval": 4.5,
     "EarlyTimePatternCnt": 5,

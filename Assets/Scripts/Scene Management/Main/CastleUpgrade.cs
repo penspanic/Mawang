@@ -54,7 +54,7 @@ public class CastleUpgrade : MonoBehaviour
         PlayerData.instance.CheckInstance();
 
         usableMaxPoint = PlayerData.instance.GetClearedStageCount();
-        if (usableMaxPoint < 12) // World2에선 StageClear해도 포인트 안 줌
+        if (usableMaxPoint > 12) // World2에선 StageClear해도 포인트 안 줌
             usableMaxPoint = 12;
         usablePoint = usableMaxPoint;
 
