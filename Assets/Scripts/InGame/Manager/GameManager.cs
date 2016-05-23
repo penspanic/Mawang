@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // tutorialMgr     =   GameObject.FindObjectOfType<TutorialManager>();
         orderMgr = FindObjectOfType<SpriteOrderLayerManager>();
         battleMgr = FindObjectOfType<BattleManager>();
         bgmMgr = FindObjectOfType<BgmManager>();
@@ -36,9 +35,6 @@ public class GameManager : MonoBehaviour
         isDefenceTurn = true;
 
         PlayerData.instance.CheckInstance();
-
-        // ※ Delete this
-        PlayerData.instance.selectedStage = "C4S4";
 
         GameEventManager.instance.CheckInstance();
 

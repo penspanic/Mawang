@@ -19,6 +19,7 @@ public class Witch : Launcher, ITouchable
         if (canUseSkill && !isDestroyed)
         {
             SkillMotionStart();
+            EffectManager.instance.PlayEffect(EffectKind.Witch_skill, transform.position + new Vector3(0.3f, 1f, 0f));
             StartCoroutine(SkillProcess());
         }
     }

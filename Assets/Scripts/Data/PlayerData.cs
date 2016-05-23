@@ -46,7 +46,6 @@ public class PlayerData : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        PlayerPrefs.DeleteAll();
         // 1
         playerUnitList = new List<string>();
         selectedUnitList = new List<string>();
@@ -131,9 +130,9 @@ public class PlayerData : MonoBehaviour
 
     public void SaveData()
     {
-        //for (int c = 0;c<8;c++)
+        //for (int c = 0; c < 8; c++)   // 스테이지 전부 클리어하는 코드
         //{
-        //    for(int s = 1;s<5;s++)
+        //    for (int s = 1; s < 5; s++)
         //    {
         //        if (c < 4 && s == 4)
         //            continue;
@@ -235,8 +234,8 @@ public class PlayerData : MonoBehaviour
         //if (c == 5 && s == 1)
         //    AddUnit("Aragog");
 
-        //if (c == 5 && s == 3)
-        //    AddUnit("Witch");
+        if (c == 5 && s == 3)
+            AddUnit("Witch");
     }
 
     public bool IsStageCleared(string stage)

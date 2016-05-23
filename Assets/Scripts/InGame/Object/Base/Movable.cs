@@ -94,12 +94,14 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     protected bool canAttack = true;
     protected float attackElapsedTime = 0;
     protected bool isSkillMotion = false;
-    protected bool isOneShotSound = false;
+    //protected bool isOneShotSound = false;
     protected SpriteRenderer[] sprs;
     protected SpriteRenderer shadowRenderer;
     private float disappearDuration = 0.6f;
     private GameObject newShadow;
     private GameObject hpBarObj;
+    private bool soundPlayed;
+
 
     #endregion Obj Variable
 
@@ -116,7 +118,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         List<SpriteRenderer> sprList = new List<SpriteRenderer>(GetComponentsInChildren<SpriteRenderer>(true));
         sprList.RemoveAll((obj) =>
         {
-            if (obj.CompareTag("Skill Effect") || obj.CompareTag("Shadow") || obj.CompareTag("Hp Bar"))
+            if (obj.CompareTag("Skill Effect") || obj.CompareTag("Shadow") || obj.CompareTag("Hp Bar") || obj.CompareTag("Projectile"))
                 return true;
             else
                 return false;
@@ -263,16 +265,15 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
     protected virtual void Attack()
     {
-        if (name == "Medic")
-            Debug.Log("attack");
 
         animator.Play("Attack", 0);
 
-        if (!isOneShotSound)
-        {
-            isOneShotSound = true;
-            PlaySound(attackSound);
-        }
+        //if (!isOneShotSound)
+        //{
+        //    isOneShotSound = true;
+        //    PlaySound(attackSound);
+        //}
+        PlaySound(attackSound);
     }
 
     protected void Death()
@@ -325,8 +326,11 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         if (audioSource == null)
             return;
 
-        if (!audioSource.isPlaying && Time.timeScale == 1)
+        if (!audioSource.isPlaying && !soundPlayed && Time.timeScale != 0)
+        {
+            soundPlayed = true;
             audioSource.PlayOneShot(sound);
+        }
     }
 
     // 피격당했을 때 호출
@@ -380,7 +384,8 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     // 공격모션 끝날때
     public virtual void AttackEnd()
     {
-        isOneShotSound = false;
+        //isOneShotSound = false;
+        soundPlayed = false;
     }
 
     // 죽는모션 끝날때
@@ -509,6 +514,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         AudioClip sound;
         isSkillMotion = true;
         canUseSkill = false;
+        soundPlayed = false;
         if (skillSound == null)
             sound = attackSound;
         else
