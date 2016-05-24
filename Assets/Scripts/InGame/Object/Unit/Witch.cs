@@ -19,7 +19,8 @@ public class Witch : Launcher, ITouchable
         if (canUseSkill && !isDestroyed)
         {
             SkillMotionStart();
-            EffectManager.instance.PlayEffect(EffectKind.Witch_skill, transform.position + new Vector3(0.3f, 1f, 0f));
+            EffectManager.instance.PlayEffect(EffectKind.Witch_skill, transform.position + new Vector3(-1f, 1f, 0f));
+            EffectManager.instance.PlayEffect(EffectKind.Witch_skill, transform.position + new Vector3(1.6f, 1f, 0f));
             StartCoroutine(SkillProcess());
         }
     }
@@ -46,7 +47,7 @@ public class Witch : Launcher, ITouchable
                 }
                 else
                 { // 적군 독데미지
-                    targets[i].SetMinusHP(damageAmount / skillDuration);
+                    targets[i].Attacked(damageAmount / skillDuration);
                 }
             }
 

@@ -46,6 +46,8 @@ public class PlayerData : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
+        PlayerPrefs.DeleteAll();
+
         // 1
         playerUnitList = new List<string>();
         selectedUnitList = new List<string>();

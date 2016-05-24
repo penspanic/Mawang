@@ -40,4 +40,13 @@ public class SpawnManager : MonoBehaviour
         Instantiate(obj, ourForceLinePos[line - 1], new Quaternion());
         orderMgr.UpdateOrder(line);
     }
+
+    public Movable SpawnOurForce(Movable obj, int line, Vector2 pos)
+    {
+        Movable newObj = Instantiate(obj, ourForceLinePos[line - 1], new Quaternion()) as Movable;
+        orderMgr.UpdateOrder(line);
+        newObj.transform.position = pos;
+
+        return newObj;
+    }
 }

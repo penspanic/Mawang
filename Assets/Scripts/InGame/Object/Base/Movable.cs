@@ -24,7 +24,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     private float moveSpeed = 1;
 
     [SerializeField]
-    private float attackSpeed = 1;
+    protected float attackSpeed = 1;
 
     [SerializeField]
     private int unitCost = 50;
@@ -233,7 +233,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         }
     }
 
-    private void WaitForActive()
+    protected void WaitForActive()
     {
         if (!isOurForce)
             return;
@@ -276,7 +276,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         PlaySound(attackSound);
     }
 
-    protected void Death()
+    protected  virtual void Death()
     {
         if (isFreezed)
             animator.enabled = true;

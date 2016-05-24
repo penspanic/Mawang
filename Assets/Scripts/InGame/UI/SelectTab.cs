@@ -55,7 +55,8 @@ public class SelectTab : MonoBehaviour
             PlayerData.instance.selectedUnitList.Add("Dullahan");
             PlayerData.instance.selectedUnitList.Add("Grim");
             //PlayerData.instance.selectedUnitList.Add("Werewolf");
-            PlayerData.instance.selectedUnitList.Add("Witch");
+            //PlayerData.instance.selectedUnitList.Add("Witch");
+            PlayerData.instance.selectedUnitList.Add("Marionette");
         }
 
         #region Load

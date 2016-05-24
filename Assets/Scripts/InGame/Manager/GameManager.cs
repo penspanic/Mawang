@@ -45,11 +45,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         LoadStage();
-        if (PlayerData.instance.selectedStage == "C0S1")
-        {
-            Time.timeScale = 0;
-            TutorialManager.instance.PlayTutorial(TutorialEvent.PrepareGame);
-        }
+        //if (PlayerData.instance.selectedStage == "C0S1")
+        //{
+        //    Time.timeScale = 0;
+        //    TutorialManager.instance.PlayTutorial(TutorialEvent.PrepareGame);
+        //}
 
         StartCoroutine(StageSpawnLoop());
     }
