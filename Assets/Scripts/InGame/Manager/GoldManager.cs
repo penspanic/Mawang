@@ -32,6 +32,13 @@ public class GoldManager : MonoBehaviour
         SetUpgradeCostText();
     }
 
+    private void Start()
+    {
+        // 만약 챕터가 4 이상이라면 기본 골드를 400 을 주고 시작하고
+        // 업그레이드 상승폭을
+    }
+
+
     private IEnumerator UpdateGoldText()
     {
         while (gameMgr.isRun)

@@ -26,6 +26,9 @@ public class Doll : Warrior
     public void OnSkill()
     {
         ObjectBase[] targets = battleMgr.GetTargets(this, skillRange, 99);
+        if (targets == null)
+            return;
+
         for (int i = 0; i < targets.Length; i++)
         {
             targets[i].Attacked(skillDamage);
