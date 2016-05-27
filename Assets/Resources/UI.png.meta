@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9816f93ce8bcc2941885dffea981c1a7
-timeCreated: 1463967132
+timeCreated: 1464322842
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -106,6 +106,8 @@ TextureImporter:
     21300198: C5_Icon
     21300200: C7_Icon
     21300202: Stage4
+    21300204: Aragog
+    21300206: Marionette
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -332,7 +334,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Gauge_Enemy
+    - name: Gauge_Satan
       rect:
         serializedVersion: 2
         x: 2114
@@ -342,7 +344,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Gauge_Satan
+    - name: Gauge_Enemy
       rect:
         serializedVersion: 2
         x: 2114
@@ -382,7 +384,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: attack_icon
+    - name: time_icon
       rect:
         serializedVersion: 2
         x: 1795
@@ -392,7 +394,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: time_icon
+    - name: attack_icon
       rect:
         serializedVersion: 2
         x: 1946
@@ -402,7 +404,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bandsman
+    - name: Harpy
       rect:
         serializedVersion: 2
         x: 1949
@@ -412,7 +414,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Dullahan
+    - name: Skeleton
       rect:
         serializedVersion: 2
         x: 2097
@@ -422,7 +424,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Goblin
+    - name: Grim
       rect:
         serializedVersion: 2
         x: 2308
@@ -432,7 +434,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Portrait_empty
+    - name: Orc
       rect:
         serializedVersion: 2
         x: 2519
@@ -442,7 +444,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Skeleton
+    - name: Dullahan
       rect:
         serializedVersion: 2
         x: 2160
@@ -452,7 +454,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Harpy
+    - name: Bandsman
       rect:
         serializedVersion: 2
         x: 2371
@@ -462,7 +464,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Orc
+    - name: Portrait_empty
       rect:
         serializedVersion: 2
         x: 2582
@@ -472,7 +474,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Grim
+    - name: Goblin
       rect:
         serializedVersion: 2
         x: 2160
@@ -482,7 +484,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C2 Icon
+    - name: C6_Icon
       rect:
         serializedVersion: 2
         x: 2730
@@ -492,7 +494,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C1 Icon
+    - name: C4_Icon
       rect:
         serializedVersion: 2
         x: 1949
@@ -502,7 +504,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C0 Icon
+    - name: C5_Icon
       rect:
         serializedVersion: 2
         x: 2371
@@ -512,7 +514,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C3 Icon
+    - name: C7_Icon
       rect:
         serializedVersion: 2
         x: 2522
@@ -522,7 +524,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C4_Icon
+    - name: C1 Icon
       rect:
         serializedVersion: 2
         x: 2673
@@ -532,7 +534,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C6_Icon
+    - name: C2 Icon
       rect:
         serializedVersion: 2
         x: 2824
@@ -542,7 +544,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C7_Icon
+    - name: C3 Icon
       rect:
         serializedVersion: 2
         x: 2371
@@ -552,7 +554,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C5_Icon
+    - name: C0 Icon
       rect:
         serializedVersion: 2
         x: 2100
@@ -572,7 +574,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Upgrade_hp
+    - name: Upgrade_gold
       rect:
         serializedVersion: 2
         x: 2793
@@ -592,7 +594,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Upgrade_gold
+    - name: Upgrade_hp
       rect:
         serializedVersion: 2
         x: 1500
@@ -602,7 +604,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Castle_Lv3
+    - name: Castle_Lv1
       rect:
         serializedVersion: 2
         x: 1795
@@ -622,7 +624,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Castle_Lv1
+    - name: Castle_Lv3
       rect:
         serializedVersion: 2
         x: 1949
@@ -652,7 +654,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Left
+    - name: Right
       rect:
         serializedVersion: 2
         x: 2251
@@ -662,7 +664,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Right
+    - name: Left
       rect:
         serializedVersion: 2
         x: 2080
@@ -692,7 +694,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Fix
+    - name: Defense
       rect:
         serializedVersion: 2
         x: 1892
@@ -702,7 +704,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Defense
+    - name: Fix
       rect:
         serializedVersion: 2
         x: 1647
@@ -732,7 +734,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: book_left
+    - name: book_right
       rect:
         serializedVersion: 2
         x: 2648
@@ -742,7 +744,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: book_right
+    - name: book_left
       rect:
         serializedVersion: 2
         x: 1997
@@ -762,7 +764,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Witch
+    - name: Lanceman
       rect:
         serializedVersion: 2
         x: 2279
@@ -772,7 +774,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Archer
+    - name: Pawn
       rect:
         serializedVersion: 2
         x: 2385
@@ -782,7 +784,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Werewolf
+    - name: Aragog
       rect:
         serializedVersion: 2
         x: 1754
@@ -792,7 +794,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Medic
+    - name: Marionette
       rect:
         serializedVersion: 2
         x: 1860
@@ -812,7 +814,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Pawn
+    - name: Archer
       rect:
         serializedVersion: 2
         x: 2093
@@ -822,7 +824,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Lanceman
+    - name: Witch
       rect:
         serializedVersion: 2
         x: 2093
@@ -832,10 +834,30 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PrevFix
+    - name: Medic
       rect:
         serializedVersion: 2
         x: 2175
+        y: 1718
+        width: 105
+        height: 85
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Werewolf
+      rect:
+        serializedVersion: 2
+        x: 2199
+        y: 1804
+        width: 105
+        height: 85
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PrevDefense
+      rect:
+        serializedVersion: 2
+        x: 2281
         y: 1718
         width: 95
         height: 75
@@ -846,17 +868,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2199
-        y: 1794
+        y: 1890
         width: 95
         height: 75
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: PrevDefense
+    - name: PrevFix
       rect:
         serializedVersion: 2
-        x: 2271
-        y: 1718
+        x: 2199
+        y: 1966
         width: 95
         height: 75
       alignment: 9
@@ -912,7 +934,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stage1
+    - name: Stage2
       rect:
         serializedVersion: 2
         x: 2811
@@ -932,21 +954,21 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stage3
+    - name: Stage1
       rect:
         serializedVersion: 2
-        x: 2199
-        y: 1870
+        x: 2295
+        y: 1890
         width: 75
         height: 76
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Stage2
+    - name: Stage3
       rect:
         serializedVersion: 2
-        x: 2199
-        y: 1947
+        x: 2295
+        y: 1967
         width: 75
         height: 76
       alignment: 9
@@ -1012,7 +1034,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Star_2
+    - name: Star_1
       rect:
         serializedVersion: 2
         x: 2072
@@ -1032,11 +1054,11 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Star_1
+    - name: Star_2
       rect:
         serializedVersion: 2
-        x: 2275
-        y: 1870
+        x: 2305
+        y: 1794
         width: 97
         height: 24
       alignment: 9
@@ -1045,8 +1067,8 @@ TextureImporter:
     - name: MiniMap_blue
       rect:
         serializedVersion: 2
-        x: 2793
-        y: 1378
+        x: 2281
+        y: 1794
         width: 6
         height: 6
       alignment: 9
@@ -1055,8 +1077,8 @@ TextureImporter:
     - name: MiniMap_red
       rect:
         serializedVersion: 2
-        x: 2800
-        y: 1378
+        x: 2288
+        y: 1794
         width: 6
         height: 6
       alignment: 9

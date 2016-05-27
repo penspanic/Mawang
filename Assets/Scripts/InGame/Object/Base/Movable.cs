@@ -404,7 +404,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
 
     // 지정된 시간만큼 죽고난뒤 투명화 되는거
-    private IEnumerator WaitForDissappear()
+    protected IEnumerator WaitForDissappear()
     {
         float beginTime = Time.time;
         float alpha = 1;

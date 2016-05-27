@@ -46,8 +46,6 @@ public class PlayerData : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        PlayerPrefs.DeleteAll();
-
         // 1
         playerUnitList = new List<string>();
         selectedUnitList = new List<string>();
@@ -132,15 +130,26 @@ public class PlayerData : MonoBehaviour
 
     public void SaveData()
     {
-        //for (int c = 0; c < 8; c++)   // 스테이지 전부 클리어하는 코드
-        //{
-        //    for (int s = 1; s < 5; s++)
-        //    {
-        //        if (c < 4 && s == 4)
-        //            continue;
-        //        StageClear("C" + c.ToString() + "S" + s.ToString());
-        //    }
-        //}
+        for (int c = 0; c < 8; c++)   // 스테이지 전부 클리어하는 코드
+        {
+            for (int s = 1; s < 5; s++)
+            {
+                if (c < 4 && s == 4)
+                    continue;
+                StageClear("C" + c.ToString() + "S" + s.ToString());
+            }
+        }
+
+        AddUnit("Goblin");
+        AddUnit("Dullahan");
+        AddUnit("Harpy");
+        AddUnit("Orc");
+        AddUnit("Grim");
+        AddUnit("Werewolf");
+        AddUnit("Marionette");
+        AddUnit("Aragog");
+        AddUnit("Witch");
+
         if (lastClearedStage != null)
             PlayerPrefs.SetString("lastClearedStage", lastClearedStage);
 
@@ -229,12 +238,11 @@ public class PlayerData : MonoBehaviour
         if (c == 4 && s == 1)
             AddUnit("Werewolf");
 
-        // TODO : 유닛 나오면 주석 풀기
-        //if (c == 4 && s == 3)
-        //    AddUnit("Marionette");
+        if (c == 4 && s == 3)
+            AddUnit("Marionette");
 
-        //if (c == 5 && s == 1)
-        //    AddUnit("Aragog");
+        if (c == 5 && s == 1)
+            AddUnit("Aragog");
 
         if (c == 5 && s == 3)
             AddUnit("Witch");

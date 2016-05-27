@@ -40,6 +40,9 @@ public class Werewolf : Warrior, ITouchable
         float currTime = 0.0f;
         Vector3 orginPos = transform.position;
         Vector3 jumpVec = Vector3.zero;
+
+        EffectManager.instance.PlayEffect(EffectKind.Werewolf_Skill, transform.position + new Vector3(0.2f,0,0));
+
         while (currTime < jumpTime)
         {
             currTime += Time.deltaTime;
@@ -67,5 +70,11 @@ public class Werewolf : Warrior, ITouchable
             fixedX = 0.0f;
 
         transform.position = new Vector2(transform.position.x, orginPos.y);
+    }
+
+    protected override void JudgmentAttack()
+    {
+        base.JudgmentAttack();
+        EffectManager.instance.PlayEffect(EffectKind.Werewolf_Attack, transform.position + new Vector3(0.3f,0,0));
     }
 }

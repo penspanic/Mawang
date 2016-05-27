@@ -25,18 +25,23 @@ public class Doll : Warrior
 
     public void OnSkill()
     {
+        StartCoroutine(SkillProcess());
+    }
+
+    IEnumerator SkillProcess()
+    {
+
         ObjectBase[] targets = battleMgr.GetTargets(this, skillRange, 99);
         if (targets == null)
-            return;
+            yield break;
 
+        SkillMotionStart();
+
+        yield return new WaitForSeconds(1f);
+        EffectManager.instance.PlayEffect(EffectKind.Doll_SKill, transform.position + new Vector3(3f, -0.3f, 0));
         for (int i = 0; i < targets.Length; i++)
         {
             targets[i].Attacked(skillDamage);
         }
-    }
-
-    void SetOwnerState()
-    {
-        //owner.
     }
 }

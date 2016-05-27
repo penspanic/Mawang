@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8a550c97022c3b44b88f92537c9e7ff7
-timeCreated: 1463967476
+timeCreated: 1464322954
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -41,6 +41,10 @@ TextureImporter:
     21300068: C4_CastleImg
     21300070: C7_CastleImg
     21300072: C6_CastleImg
+    21300074: C7_SkillName
+    21300076: C4_SkillName
+    21300078: C6_SkillName
+    21300080: C5_SkillName
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -97,7 +101,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C5_L
+    - name: C2_L
       rect:
         serializedVersion: 2
         x: 0
@@ -107,7 +111,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C4_L
+    - name: C6_L
       rect:
         serializedVersion: 2
         x: 773
@@ -127,7 +131,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C2_L
+    - name: C5_L
       rect:
         serializedVersion: 2
         x: 1546
@@ -137,7 +141,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C6_L
+    - name: C4_L
       rect:
         serializedVersion: 2
         x: 1568
@@ -177,7 +181,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C3_S
+    - name: C2_S
       rect:
         serializedVersion: 2
         x: 2858
@@ -187,7 +191,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C2_S
+    - name: C3_S
       rect:
         serializedVersion: 2
         x: 2858
@@ -197,11 +201,31 @@ TextureImporter:
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C3_SkillName
+    - name: C7_SkillName
       rect:
         serializedVersion: 2
         x: 1546
         y: 1442
+        width: 578
+        height: 157
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C4_SkillName
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 1600
+        width: 568
+        height: 153
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C3_SkillName
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1620
         width: 550
         height: 154
       alignment: 9
@@ -210,38 +234,58 @@ TextureImporter:
     - name: C0_SkillName
       rect:
         serializedVersion: 2
-        x: 1546
-        y: 1597
+        x: 551
+        y: 1620
         width: 555
         height: 152
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C6_SkillName
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 1754
+        width: 490
+        height: 157
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: C1_SkillName
       rect:
         serializedVersion: 2
-        x: 2097
-        y: 1442
+        x: 551
+        y: 1773
         width: 491
         height: 152
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C4_S
+    - name: C5_SkillName
       rect:
         serializedVersion: 2
         x: 0
-        y: 1620
-        width: 218
-        height: 300
+        y: 1775
+        width: 485
+        height: 153
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: C7_S
       rect:
         serializedVersion: 2
-        x: 219
-        y: 1620
+        x: 2115
+        y: 1600
+        width: 218
+        height: 300
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C4_S
+      rect:
+        serializedVersion: 2
+        x: 2334
+        y: 1442
         width: 218
         height: 300
       alignment: 9
@@ -250,8 +294,8 @@ TextureImporter:
     - name: C6_S
       rect:
         serializedVersion: 2
-        x: 438
-        y: 1620
+        x: 2334
+        y: 1743
         width: 218
         height: 300
       alignment: 9
@@ -260,8 +304,8 @@ TextureImporter:
     - name: C5_S
       rect:
         serializedVersion: 2
-        x: 657
-        y: 1620
+        x: 2553
+        y: 1442
         width: 218
         height: 300
       alignment: 9
@@ -270,8 +314,8 @@ TextureImporter:
     - name: C1_S
       rect:
         serializedVersion: 2
-        x: 876
-        y: 1620
+        x: 2553
+        y: 1743
         width: 186
         height: 300
       alignment: 9
@@ -280,8 +324,8 @@ TextureImporter:
     - name: C0_S
       rect:
         serializedVersion: 2
-        x: 1063
-        y: 1620
+        x: 1598
+        y: 1754
         width: 174
         height: 286
       alignment: 9
@@ -290,28 +334,8 @@ TextureImporter:
     - name: C2_Portrait
       rect:
         serializedVersion: 2
-        x: 1238
-        y: 1620
-        width: 135
-        height: 135
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C7_Portrait
-      rect:
-        serializedVersion: 2
-        x: 1374
-        y: 1620
-        width: 135
-        height: 135
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C4_Portrait
-      rect:
-        serializedVersion: 2
-        x: 1063
-        y: 1907
+        x: 2125
+        y: 1442
         width: 135
         height: 135
       alignment: 9
@@ -320,18 +344,28 @@ TextureImporter:
     - name: C1_Portrait
       rect:
         serializedVersion: 2
-        x: 1199
-        y: 1907
+        x: 1043
+        y: 1912
         width: 135
         height: 135
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C5_Portrait
+    - name: C4_Portrait
       rect:
         serializedVersion: 2
-        x: 1238
-        y: 1756
+        x: 1179
+        y: 1912
+        width: 135
+        height: 135
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C7_Portrait
+      rect:
+        serializedVersion: 2
+        x: 1315
+        y: 1912
         width: 135
         height: 135
       alignment: 9
@@ -340,8 +374,18 @@ TextureImporter:
     - name: C6_Portrait
       rect:
         serializedVersion: 2
-        x: 1335
-        y: 1892
+        x: 1451
+        y: 1912
+        width: 135
+        height: 135
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C5_Portrait
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 1901
         width: 135
         height: 135
       alignment: 9
@@ -350,8 +394,8 @@ TextureImporter:
     - name: C3_Portrait
       rect:
         serializedVersion: 2
-        x: 1374
-        y: 1756
+        x: 1773
+        y: 1754
         width: 135
         height: 135
       alignment: 9
@@ -360,78 +404,18 @@ TextureImporter:
     - name: C0_Portrait
       rect:
         serializedVersion: 2
-        x: 1471
-        y: 1892
+        x: 1909
+        y: 1754
         width: 135
         height: 134
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C5_CastleImg
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1921
-        width: 58
-        height: 55
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C4_CastleImg
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1977
-        width: 58
-        height: 55
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C7_CastleImg
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 1921
-        width: 58
-        height: 55
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C6_CastleImg
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 1977
-        width: 58
-        height: 55
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C1_CastleImg
-      rect:
-        serializedVersion: 2
-        x: 118
-        y: 1921
-        width: 58
-        height: 55
-      alignment: 9
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: C3_CastleImg
-      rect:
-        serializedVersion: 2
-        x: 118
-        y: 1977
-        width: 58
-        height: 55
       alignment: 9
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: C2_CastleImg
       rect:
         serializedVersion: 2
-        x: 177
-        y: 1921
+        x: 1043
+        y: 1773
         width: 58
         height: 55
       alignment: 9
@@ -440,8 +424,68 @@ TextureImporter:
     - name: C0_CastleImg
       rect:
         serializedVersion: 2
-        x: 177
-        y: 1977
+        x: 1043
+        y: 1829
+        width: 58
+        height: 55
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C7_CastleImg
+      rect:
+        serializedVersion: 2
+        x: 2261
+        y: 1442
+        width: 58
+        height: 55
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C4_CastleImg
+      rect:
+        serializedVersion: 2
+        x: 2261
+        y: 1498
+        width: 58
+        height: 55
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C5_CastleImg
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 1775
+        width: 58
+        height: 55
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C3_CastleImg
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 1831
+        width: 58
+        height: 55
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C1_CastleImg
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 1887
+        width: 58
+        height: 55
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: C6_CastleImg
+      rect:
+        serializedVersion: 2
+        x: 2045
+        y: 1754
         width: 58
         height: 55
       alignment: 9
