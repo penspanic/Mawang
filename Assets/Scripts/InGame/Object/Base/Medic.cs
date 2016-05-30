@@ -18,6 +18,12 @@ public class Medic : Movable
     private int healPerSec;
     [SerializeField]
     private bool isOverlapHeal;
+    [SerializeField]
+    private GameObject healEffectPrefab;
+    private GameObject healEffect;
+    [SerializeField]
+    private Vector2 healLocalPos;
+
     private List<ObjectBase> healTargets;
 
     private bool isHealing = false;
@@ -26,7 +32,12 @@ public class Medic : Movable
     protected override void Awake()
     {
         healTargets = new List<ObjectBase>();
+        
         base.Awake();
+        healEffect = Instantiate<GameObject>(healEffectPrefab);
+        healEffect.transform.SetParent(transform);
+        healEffect.transform.localPosition = healLocalPos;
+
     }
 
     protected override void Attack()
@@ -51,6 +62,7 @@ public class Medic : Movable
 
     private IEnumerator HealProcess(ObjectBase healTarget)
     {
+        healEffect.SetActive(true);
         while (!healTarget.isDestroyed
             && Mathf.Abs(healTarget.transform.position.x - transform.position.x) <= attackRange * BattleManager.fightDistance
             && healTarget.GetHP() != healTarget.maxHP)
@@ -63,6 +75,7 @@ public class Medic : Movable
         }
         onceAttackAni = true;
         isHealing = false;
+        healEffect.SetActive(false);
     }
 
     private List<ObjectBase> targets = new List<ObjectBase>();
@@ -125,12 +138,17 @@ public class Medic : Movable
         }
     }
 
+    public override void Freeze(bool value)
+    {
+        base.Freeze(value);
+        healEffectPrefab.SetActive(!value);
+    }
     private bool IsOverlapMedic(ObjectBase[] targets)
     {
         if (targets == null || targets.Length == 0)
             return false;
 
-        for(int i = 0; i < targets.Length; ++i)
+        for (int i = 0; i < targets.Length; ++i)
         {
             if (!targets[i].name.Contains("Medic"))
                 return false;
@@ -141,7 +159,7 @@ public class Medic : Movable
 
     private void AddTargets(ObjectBase[] targetArr)
     {
-        if(targetArr != null)
+        if (targetArr != null)
         {
             targets.AddRange(targetArr);
         }

@@ -353,7 +353,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     }
 
     // FreezeItem 사용과 끝났을 때
-    public void Freeze(bool value)
+    public virtual void Freeze(bool value)
     {
         if (value)
         {
