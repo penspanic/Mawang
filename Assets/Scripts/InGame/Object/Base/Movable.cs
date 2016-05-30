@@ -161,11 +161,12 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
     public void SetStat(UnitInfo info)
     {
-        attackDamage = info.AttackDamage;
-        attackSpeed = info.AttackSpeed;
-        maxHP = info.HealthPoint;
-        moveSpeed = info.MoveSpeed;
-        canHitNum = info.HitNum;
+        attackDamage    = info.AttackDamage;
+        attackSpeed     = info.AttackSpeed;
+        maxHP           = info.HealthPoint;
+        moveSpeed       = info.MoveSpeed;
+        canHitNum       = info.HitNum;
+        deathReward     = info.deathReward;
 
         hp = maxHP;
     }

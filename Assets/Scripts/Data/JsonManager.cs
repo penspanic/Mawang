@@ -25,14 +25,15 @@ public struct StagePattern
 
 public struct UnitInfo
 {
-    public UnitInfo(string name, float AS, float MS, int AD, int HP, int HN)
+    public UnitInfo(string name, float AS, float MS, int AD, int HP, int HN, int DW)
     {
-        unitName = name;
-        AttackSpeed = AS;
-        MoveSpeed = MS;
-        AttackDamage = AD;
-        HealthPoint = HP;
-        HitNum = HN;
+        this.unitName = name;
+        this.AttackSpeed = AS;
+        this.MoveSpeed = MS;
+        this.AttackDamage = AD;
+        this.HealthPoint = HP;
+        this.HitNum = HN;
+        this.deathReward = DW;
     }
 
     public string unitName;
@@ -41,6 +42,7 @@ public struct UnitInfo
     public int AttackDamage;
     public int HealthPoint;
     public int HitNum;
+    public int deathReward;
 }
 
 public class JsonManager : MonoBehaviour
@@ -132,12 +134,14 @@ public class JsonManager : MonoBehaviour
 
         for (int i = 0; i < units.Length; ++i)
         {
-            units[i].unitName = unitsInfo[i]["Name"].ToString();
-            units[i].AttackDamage = int.Parse(unitsInfo[i]["AD"].ToString());
-            units[i].AttackSpeed = float.Parse(unitsInfo[i]["AS"].ToString());
-            units[i].HitNum = int.Parse(unitsInfo[i]["HN"].ToString());
-            units[i].HealthPoint = int.Parse(unitsInfo[i]["HP"].ToString());
-            units[i].MoveSpeed = float.Parse(unitsInfo[i]["MS"].ToString());
+            units[i].unitName       = unitsInfo[i]["Name"].ToString();
+            units[i].AttackDamage   = int.Parse(unitsInfo[i]["AD"].ToString());
+            units[i].AttackSpeed    = float.Parse(unitsInfo[i]["AS"].ToString());
+            units[i].HitNum         = int.Parse(unitsInfo[i]["HN"].ToString());
+            units[i].HealthPoint    = int.Parse(unitsInfo[i]["HP"].ToString());
+            units[i].MoveSpeed      = float.Parse(unitsInfo[i]["MS"].ToString());
+            units[i].deathReward    = int.Parse(unitsInfo[i]["DW"].ToString());
+
         }
         return units;
     }
@@ -156,6 +160,7 @@ public class JsonManager : MonoBehaviour
         float buffDuration = float.Parse(stageDesignData[stage]["BuffDuration"].ToString());
         float earlyTimeInterval = float.Parse(stageDesignData[stage]["EarlyTimeInterval"].ToString());
         float earlyTimePatternCnt = float.Parse(stageDesignData[stage]["EarlyTimePatternCnt"].ToString());
+        
 
         return new StagePattern(patternList.ToArray(), interval, princessCoolTime, buffDuration, earlyTimeInterval, earlyTimePatternCnt);
     }

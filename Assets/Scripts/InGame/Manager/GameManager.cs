@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
 
         // Delete this
-        PlayerData.instance.selectedStage = "C5S1";
+        PlayerData.instance.selectedStage = "C5S2";
 
 
 
