@@ -34,10 +34,26 @@ public class GoldManager : MonoBehaviour
 
     private void Start()
     {
-        // 만약 챕터가 4 이상이라면 기본 골드를 400 을 주고 시작하고
-        // 업그레이드 상승폭을
+        CheckChapter();
+        SetUpgradeCostText();
     }
 
+    private void CheckChapter()
+    {
+        if (PlayerData.instance.GetSelectedChapter() >= 4)
+        {
+            playerMaxGold       = 500;  // 기본 최대 골드량
+            goldUpgradeCost     = 350;  // 기본 업그레이드 코스트
+            goldIncreaseAmount  = 20;   // 기본 초당 골드 습득량
+
+
+            maxGoldAddAmount    = 150;   // 추가 최대 골드량
+            goldUpgradeAddCost  = 100;   // 추가 코스트 증가
+            goldUpgradeAddAmount = 10;   // 추가 골드 습득량
+
+            playerGold = 400;
+        }
+    }
 
     private IEnumerator UpdateGoldText()
     {

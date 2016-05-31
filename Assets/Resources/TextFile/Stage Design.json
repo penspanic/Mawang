@@ -97,33 +97,33 @@
   },
   //// New World
   "C4S1": {
-    "Interval": 9,
-    "EarlyTimeInterval": 4.5,
-    "EarlyTimePatternCnt": 5,
-    "EnemyPattern": [ "P1M1", "1PM1" ],
+    "Interval": 7,
+    "EarlyTimeInterval": 4,
+    "EarlyTimePatternCnt": 3,
+    "EnemyPattern": [ "P2M1", "1PM1" ],
     "PrincessCoolTime": 35,
     "BuffDuration": 6
   },
   "C4S2": {
-    "Interval": 8.5,
-    "EarlyTimeInterval": 4.5,
-    "EarlyTimePatternCnt": 5,
-    "EnemyPattern": [ "P1A1M1", "A1S1", "1PM1", "P1M1" ],
+    "Interval": 5,
+    "EarlyTimeInterval": 5,
+    "EarlyTimePatternCnt": 4,
+    "EnemyPattern": [ "P1A1M1", "A1S1", "1PM1", "P2M1" ],
     "PrincessCoolTime": 35,
     "BuffDuration": 7
   },
   "C4S3": {
-    "Interval": 7.5,
-    "EarlyTimeInterval": 4.5,
-    "EarlyTimePatternCnt": 5,
+    "Interval": 6,
+    "EarlyTimeInterval": 5,
+    "EarlyTimePatternCnt": 2,
     "EnemyPattern": [ "P1A1M1", "A1S1", "1PM1", "A3" ],
     "PrincessCoolTime": 35,
     "BuffDuration": 8
   },
   "C4S4": {
-    "Interval": 7,
-    "EarlyTimeInterval": 4.5,
-    "EarlyTimePatternCnt": 5,
+    "Interval": 6,
+    "EarlyTimeInterval": 4,
+    "EarlyTimePatternCnt": 2,
     "EnemyPattern": [ "A1S1M1", "1PM1", "A3", "P1A1M1" ],
     "PrincessCoolTime": 35,
     "BuffDuration": 8
