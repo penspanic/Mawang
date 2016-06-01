@@ -6,6 +6,8 @@ public class Aragog : Movable, ITouchable
 {
     [SerializeField]
     private float explosionRange;
+    [SerializeField]
+    private int explosionDamage;
 
     private Transform enemyCastle;
     private bool explosioned;
@@ -23,7 +25,8 @@ public class Aragog : Movable, ITouchable
     {
         if(!explosioned && !forDecoration)
         {
-            if (transform.position.x >= enemyCastle.position.x)
+            // 성에 닿았을 때 터진다
+            if (transform.position.x >= enemyCastle.position.x) 
                 OnTouch();
         }
     }
@@ -31,6 +34,10 @@ public class Aragog : Movable, ITouchable
     public void OnTouch()
     {
         //Play Effct
+
+        if (explosioned || isDestroyed)
+            return;
+
         EffectManager.instance.PlayEffect(EffectKind.Aragog_Effect, transform.position + new Vector3(0.5f, 1f, 0f));
 
         List<ObjectBase> targetList = battleMgr.GetSameLine(battleMgr.enemyList, line);
@@ -39,7 +46,7 @@ public class Aragog : Movable, ITouchable
         foreach(ObjectBase eachObj in targetList)
         {
             if (Mathf.Abs(eachObj.transform.position.x - transform.position.x) < explosionRange * BattleManager.fightDistance)
-                eachObj.Attacked(attackDamage);
+                eachObj.Attacked(explosionDamage);
         }
         explosioned = true;
 

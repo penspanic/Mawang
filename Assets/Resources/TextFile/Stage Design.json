@@ -129,31 +129,31 @@
     "BuffDuration": 8
   },
   "C5S1": {
-    "Interval": 9,
-    "EarlyTimeInterval": 5.5,
-    "EarlyTimePatternCnt": 5,
+    "Interval": 7,
+    "EarlyTimeInterval": 4,
+    "EarlyTimePatternCnt": 3,
     "EnemyPattern": [ "P1L1", "P1A2" ],
     "PrincessCoolTime": 35,
     "BuffDuration": 7
   },
   "C5S2": {
-    "Interval": 8.5,
-    "EarlyTimeInterval": 4.5,
-    "EarlyTimePatternCnt": 5,
+    "Interval": 9,
+    "EarlyTimeInterval": 4,
+    "EarlyTimePatternCnt": 4,
     "EnemyPattern": [ "S1L1", "1L" ],
     "PrincessCoolTime": 35,
     "BuffDuration": 7
   },
   "C5S3": {
-    "Interval": 8,
-    "EarlyTimeInterval": 4.5,
-    "EarlyTimePatternCnt": 5,
+    "Interval": 9,
+    "EarlyTimeInterval": 4,
+    "EarlyTimePatternCnt": 3,
     "EnemyPattern": [ "1L", "S1L1", "P1A1S1L1" ],
     "PrincessCoolTime": 35,
     "BuffDuration": 7
   },
   "C5S4": {
-    "Interval": 7.5,
+    "Interval": 8,
     "EarlyTimeInterval": 4.5,
     "EarlyTimePatternCnt": 5,
     "EnemyPattern": [ "S1L1", "1L2S1P", "P1A1S1L1", "1L" ],
