@@ -187,8 +187,22 @@ public class PrincessManager : MonoBehaviour
             case "C3":
                 HealAllOurForce();
                 break;
+            case "C4":
+                HealandASforEnemy(set);
+                break;
+            case "C5":
+                RandomDieWithLighting(set);
+                break;
+            case "C6":
+                RandomFreezeOurforce(set);
+                break;
+            case "C7":
+                RevivalOurforce(set);
+                break;
         }
     }
+
+    #region Skill Impl 
 
     // C0 Skill
     private void AttackSpeedDown(List<Movable> list, bool set)
@@ -233,6 +247,34 @@ public class PrincessManager : MonoBehaviour
         }
     }
 
+    // C4 Skill : 적군 체력 회복 공속 증가
+    private void HealandASforEnemy(bool set)
+    {
+
+    }
+    
+    // C5 Skill : 천둥번개 발생 ( 랜덤으로 천둥 뽑아서 사망 ) 
+    private void RandomDieWithLighting(bool set)
+    {
+        if (!set)
+            return;
+    }
+    
+    // C6 Skill : 일정확률로 아군 빙결
+    private void RandomFreezeOurforce(bool set)
+    {
+        if (!set)
+            return;
+
+    }
+
+    // C7 Skill : 공주 버프가 진행중일때 아군들 계속 부활
+    private void RevivalOurforce(bool set)
+    {
+        // 
+    }
+
+    #endregion
     public void PrincessEventSet(bool set)
     {
         princessUI.transform.GetChild(0).gameObject.SetActive(set);
