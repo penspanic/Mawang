@@ -77,6 +77,7 @@ public class Ready_UnitSelect : MonoBehaviour
                 {
                     selectedUnitIndex = unitNameList.IndexOf(eachName);
                     OnSelectButtonDown();
+                    checkedImages[selectedUnitIndex].enabled = false;
                 }
             }
         }
