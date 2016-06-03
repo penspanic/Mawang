@@ -21,3 +21,7 @@
 
 
 TODO :
+
+- 공주 스킬 구현
+	- PrincessManager 에서 로직 구현 
+	- Stage Design 에서 PrincessCoolTime 조절 
