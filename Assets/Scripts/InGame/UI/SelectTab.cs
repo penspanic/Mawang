@@ -247,4 +247,14 @@ public class SelectTab : MonoBehaviour
 
         LineSetActive(false);
     }
+    
+    public Movable GetPrefab(string name)
+    {
+        return unitPrefabs.Find((eachUnit) =>
+        {
+            if (eachUnit.name == name)
+                return true;
+            return false;
+        });
+    }
 }

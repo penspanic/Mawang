@@ -17,25 +17,48 @@ public class Lightnings : MonoBehaviour
             newLightning.SetActive(false);
             return newLightning;
         });
-        StartCoroutine(LightningProcess());
+        StartCoroutine(World2LightningProcess());
     }
 
-    private IEnumerator LightningProcess()
+    private IEnumerator World2LightningProcess()
     {
         GameObject currLightning = null;
         while (true)
         {
-            float nextTime = Random.Range(1, 2);
+            float nextTime = Random.Range(1f, 2f);
+
             yield return new WaitForSeconds(nextTime);
+
             currLightning = lightningPool.pop();
             currLightning.SetActive(true);
             Vector2 newPos = new Vector2();
             newPos.x = Random.Range(leftTop.x, rightBottom.x);
             newPos.y = Random.Range(rightBottom.y, leftTop.y);
             currLightning.transform.position = newPos;
+
             yield return new WaitForSeconds(1f);
+
             currLightning.SetActive(false);
             lightningPool.push(currLightning);
         }
     }
+
+    public IEnumerator ShowLightning(Vector2 pos, string sortingLayer = null)
+    {
+        float showTime = Random.Range(1f, 2f);
+
+        GameObject lightning = lightningPool.pop();
+        lightning.SetActive(true);
+        lightning.transform.position = pos;
+        if (sortingLayer != null)
+            lightning.GetComponent<SpriteRenderer>().sortingLayerName = sortingLayer;
+
+        yield return new WaitForSeconds(showTime);
+
+        lightning.GetComponent<SpriteRenderer>().sortingLayerName = "BackGround";
+        lightning.SetActive(false);
+        lightningPool.push(lightning);
+    }
+
+
 }

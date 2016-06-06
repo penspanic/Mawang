@@ -64,7 +64,7 @@ public class Medic : Movable
     {
         healEffect.SetActive(true);
         while (!healTarget.isDestroyed
-            && Mathf.Abs(healTarget.transform.position.x - transform.position.x) <= attackRange * BattleManager.fightDistance
+            && Mathf.Abs(healTarget.transform.position.x - transform.position.x) <= attackRange * BattleManager.tileSize
             && healTarget.GetHP() != healTarget.maxHP)
         {
             isHealing = true;

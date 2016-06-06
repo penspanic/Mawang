@@ -344,7 +344,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         yield return new WaitForSeconds(0.2f);
 
         if (isEffecting)
-            SetColor(sprs, princessMgr.buffColor);
+            SetColor(sprs, princessMgr.effectColor);
         else
             SetColor(sprs, Color.white);
         if (isFreezed)
@@ -352,7 +352,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         isBleed = false;
     }
 
-    // FreezeItem 사용과 끝났을 때
+
     public virtual void Freeze(bool value)
     {
         if (value)

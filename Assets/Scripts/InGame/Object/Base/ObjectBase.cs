@@ -33,8 +33,6 @@ public class ObjectBase : MonoBehaviour
 
     #endregion Obj Variable
 
-
-
     #region Property
 
     public bool isOurForce
@@ -46,7 +44,7 @@ public class ObjectBase : MonoBehaviour
     public bool isDestroyed
     {
         get;
-        protected set;
+        set;
     }
 
     /// <summary>

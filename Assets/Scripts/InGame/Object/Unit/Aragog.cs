@@ -45,7 +45,7 @@ public class Aragog : Movable, ITouchable
 
         foreach(ObjectBase eachObj in targetList)
         {
-            if (Mathf.Abs(eachObj.transform.position.x - transform.position.x) < explosionRange * BattleManager.fightDistance)
+            if (Mathf.Abs(eachObj.transform.position.x - transform.position.x) < explosionRange * BattleManager.tileSize)
                 eachObj.Attacked(explosionDamage);
         }
         explosioned = true;

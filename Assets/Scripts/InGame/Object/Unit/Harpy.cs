@@ -30,7 +30,7 @@ public class Harpy : Launcher, ITouchable
     private IEnumerator BuffRoutine()
     {
         lineList = battleMgr.ourForceList.FindAll(e => e.line == line &&
-            this.attackRange * BattleManager.fightDistance > Mathf.Abs(transform.position.x - e.transform.position.x));
+            this.attackRange * BattleManager.tileSize > Mathf.Abs(transform.position.x - e.transform.position.x));
 
         lineList.Remove(this);
         AddBuffsprRenderer();

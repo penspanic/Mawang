@@ -37,7 +37,7 @@ public class Doll : Warrior
 
         SkillMotionStart();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.2f);
         EffectManager.instance.PlayEffect(EffectKind.Doll_SKill, transform.position + new Vector3(3f, -0.3f, 0));
         for (int i = 0; i < targets.Length; i++)
         {

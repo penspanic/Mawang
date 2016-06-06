@@ -9,7 +9,7 @@ public class BattleManager : MonoBehaviour
     public GameObject ourCastle { get; private set; }
     public GameObject enemyCastle { get; private set; }
 
-    public static float fightDistance
+    public static float tileSize
     {
         get
         {
@@ -85,7 +85,7 @@ public class BattleManager : MonoBehaviour
 
     public List<ObjectBase> SelectInRange(List<ObjectBase> list, Vector2 objPos, float range, bool isFindOur = false) // 거리되는애들 리턴
     {
-        float attackRange = fightDistance * range;
+        float attackRange = tileSize * range;
 
         List<ObjectBase> tmplist = new List<ObjectBase>();
         float distX = 0;

@@ -57,7 +57,7 @@ public class Witch : Launcher, ITouchable
 
     bool IsInSkillRange(Movable target)
     {
-        if (Mathf.Abs(this.transform.position.x - target.transform.position.x) < skillRange * BattleManager.fightDistance)
+        if (Mathf.Abs(this.transform.position.x - target.transform.position.x) < skillRange * BattleManager.tileSize)
             return true;
         else
             return false;

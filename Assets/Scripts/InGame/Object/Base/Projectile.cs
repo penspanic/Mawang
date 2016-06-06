@@ -100,7 +100,7 @@ public class Projectile : MonoBehaviour
 
         Vector2 startPos = parent.transform.position;
         Vector2 endPos = startPos;
-        endPos.x += moveDistance * BattleManager.fightDistance;
+        endPos.x += moveDistance * BattleManager.tileSize;
 
         transform.position = startPos;
         while (gameObject.activeSelf == true)
