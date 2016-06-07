@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public abstract class PrincessSkillBase : MonoBehaviour
 {
     protected BattleManager battleMgr;
-    protected Color effectColor;
+    public Color effectColor { get; protected set; }
 
     protected virtual void Awake()
     {

@@ -45,22 +45,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
 
-
-        // Delete this
-        //PlayerData.instance.selectedStage = "C4S1";
-
-        
-
-
         LoadStage();
-
-        // 개발 다되면 주석 풀기
         
-        //if (PlayerData.instance.selectedStage == "C0S1")
-        //{
-        //    Time.timeScale = 0;
-        //    TutorialManager.instance.PlayTutorial(TutorialEvent.PrepareGame);
-        //}
+        if (PlayerData.instance.selectedStage == "C0S1")
+        {
+            Time.timeScale = 0;
+            TutorialManager.instance.PlayTutorial(TutorialEvent.PrepareGame);
+        }
 
         StartCoroutine(StageSpawnLoop());
     }

@@ -44,7 +44,6 @@ public class PrincessManager : MonoBehaviour
         portrait = GameObject.Find("Princess Image").GetComponent<Image>();
         portrait_gray = GameObject.Find("Princess Gray").GetComponent<Image>();
         castlesprRenderer = GameObject.Find("OutpostIcon").GetComponent<Image>();
-        effectColor = Color.white;
 
         PlayerData.instance.CheckInstance();
         currChapter = PlayerData.instance.GetSelectedChapter();
@@ -59,8 +58,6 @@ public class PrincessManager : MonoBehaviour
         buffDuration = pattern.buffDuration;
 
         InitUI();
-
-        SetPrincessBuff();
     }
 
     // 이미지에 currPrincesse 받은걸로 대입하기
@@ -78,26 +75,8 @@ public class PrincessManager : MonoBehaviour
         skillName.SetNativeSize();
         illust.SetNativeSize();
 
-
+        effectColor = currChapterSkill.effectColor;
         StartCoroutine(PrincessSkillLoop());
-    }
-
-    private void SetPrincessBuff()
-    {
-        switch (currChapter)
-        {
-            case 0:
-                effectColor = new Color(0.372f, 0.815f, 0.905f, 1);
-                break;
-
-            case 1:
-                effectColor = new Color(0.76f, 1, 0.73f, 1);
-                break;
-
-            case 3:
-                effectColor = new Color(0.76f, 1, 0.73f, 1);
-                break;
-        }
     }
 
     private IEnumerator PrincessSkillLoop()
@@ -110,6 +89,7 @@ public class PrincessManager : MonoBehaviour
             {
                 if (!gameMgr.isRun)
                     yield break;
+
                 // 여기서 공주에 따른 효과 발동
                 if (PlayerData.instance.selectedStage == "C0S1")
                 {
