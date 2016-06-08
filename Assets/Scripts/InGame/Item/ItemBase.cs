@@ -44,6 +44,7 @@ public abstract class ItemBase : MonoBehaviour
         msgBox = GameObject.FindObjectOfType<MessageBox>();
         PlayerData.instance.CheckInstance();
 
+        this.name = this.name.Remove(this.name.IndexOf("(")); // (Clone) 문자열 삭제
         amount = PlayerData.instance.itemStorage[name];
     }
 

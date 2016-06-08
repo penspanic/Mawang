@@ -301,7 +301,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     {
         if (canAttack == false)
         {
-            attackElapsedTime += Time.deltaTime * Time.timeScale;
+            attackElapsedTime += Time.deltaTime;
             if (attackElapsedTime >= attackInterval)
             {
                 canAttack = true;

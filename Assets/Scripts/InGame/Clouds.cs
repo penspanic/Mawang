@@ -42,7 +42,7 @@ public class Clouds : MonoBehaviour
 
             for (int i = 0; i < clouds.Length; i++)
             {
-                clouds[i].transform.Translate((isMovingRight ? 1 : -1) * randSpeed[i] * Time.deltaTime * Time.timeScale, 0, 0);
+                clouds[i].transform.Translate((isMovingRight ? 1 : -1) * randSpeed[i] * Time.deltaTime, 0, 0);
                 IsFinished(clouds[i]);
             }
             yield return null;

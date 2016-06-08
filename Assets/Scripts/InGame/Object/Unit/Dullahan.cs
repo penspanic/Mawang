@@ -35,7 +35,7 @@ public class Dullahan : Warrior, ITouchable
                 yield break;
             }
 
-            transform.Translate(skillDistance * Time.deltaTime * Time.timeScale, 0, 0);
+            transform.Translate(skillDistance * Time.deltaTime, 0, 0);
 
             for (int i = 0; i < lineList.Count; i++)
             {
@@ -47,7 +47,7 @@ public class Dullahan : Warrior, ITouchable
                         lineList[i].Attacked(attackDamage);
                         dmgUnitList.Add(lineList[i]);
                     }
-                    lineList[i].transform.Translate(skillDistance * Time.deltaTime * Time.timeScale, 0, 0);
+                    lineList[i].transform.Translate(skillDistance * Time.deltaTime, 0, 0);
                 }
             }
             yield return null;

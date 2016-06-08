@@ -21,6 +21,8 @@ public class Ready_Item : MonoBehaviour
 
     private int[] itemsCost;
     private string[] itemsDescription;
+    private List<int> selectedIndexList = new List<int>();
+    private List<string> itemNameList = new List<string>();
 
     private void Awake()
     {
@@ -56,6 +58,7 @@ public class Ready_Item : MonoBehaviour
 
         foreach(string eachName in PlayerData.instance.itemStorage.Keys)
         {
+            itemNameList.Add(eachName);
             itemsName[i] = eachName;
             itemSprite = SpriteManager.instance.GetSprite(PackingType.UI, eachName);
 
@@ -84,15 +87,42 @@ public class Ready_Item : MonoBehaviour
 
     public void OnItemButtonDown(int index)
     {
-        checkImages[selectedIndex].enabled = false;
         selectedIndex = index;
-        checkImages[selectedIndex].enabled = true;
         itemDescriptionText.text = "가격 : " + itemsCost[index].ToString() + "\n\n" + itemsDescription[index];
 
         if (PlayerData.instance.obsidian - itemsCost[index] >= 0)
             SetBuyButtonState(true);
         else
             SetBuyButtonState(false);
+
+        if (selectedIndexList.Contains(index)) // 이미 선택되었을 경우
+        {
+            selectedIndexList.Remove(index);
+            checkImages[index].enabled = false;
+        }
+        else
+        {
+            if (selectedIndexList.Count < 3)
+                selectedIndexList.Add(index);
+        }
+
+        SetCheckImages();
+    }
+
+    private void SetCheckImages()
+    {
+        PlayerData.instance.selectedItemList.Clear();
+
+        for(int i = 0;i<itemView.itemCount;i++)
+        {
+            if (selectedIndexList.Contains(i))
+            {
+                checkImages[i].enabled = true;
+                PlayerData.instance.selectedItemList.Add(itemNameList[i]);
+            }
+            else
+                checkImages[i].enabled = false;
+        }
     }
 
     public void OnItemBuyButtonDown()

@@ -93,5 +93,13 @@
     "Defense": {
         "Description": "10초간 마왕성 무적",
         "Cost": 50
-    }
+    },
+	"Gold Upgrade":{
+	    "Description": "골드 획득량 증가",
+        "Cost": 40
+	},
+	"Time Scale Up":{
+	    "Description": "게임 진행 속도 증가",
+        "Cost": 40
+	}
 }

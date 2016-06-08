@@ -14,7 +14,7 @@ public class FreezeItem : ItemBase
         base.Awake();
         battleMgr = GameObject.FindObjectOfType<BattleManager>();
         coolTime = 40;
-        skillImg = GetComponent<Image>();
+        skillImg = transform.FindChild("Freeze Image").GetComponent<Image>();
         message = "적 유닛의 이동을 막습니다.";
     }
 

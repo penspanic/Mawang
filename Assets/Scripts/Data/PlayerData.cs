@@ -28,6 +28,7 @@ public class PlayerData : MonoBehaviour
 
     public List<string> playerUnitList { get; private set; }
     public List<string> selectedUnitList { get; set; }
+    public List<string> selectedItemList { get; set; }
     public Dictionary<string, int> upgradePoint { get; private set; }
     public Dictionary<string, int> itemStorage { get; private set; }
 
@@ -35,7 +36,6 @@ public class PlayerData : MonoBehaviour
     public string lastClearedStage { get; set; }     // 마지막으로 깬 스테이지( 스테이지 클리어시, 조건검사를 통해 finalStage에 값 수정 )
     public string selectedStage { get; set; }  // StageSelect 씬에서 골라줌
     public bool isFirst { get; private set; }
-    public int stageSelectPosIndex { get; set; }
     public bool appRated { get; set; }
 
     public void CheckInstance()
@@ -50,6 +50,7 @@ public class PlayerData : MonoBehaviour
         // 1
         playerUnitList = new List<string>();
         selectedUnitList = new List<string>();
+        selectedItemList = new List<string>();
         upgradePoint = new Dictionary<string, int>();
         itemStorage = new Dictionary<string, int>();
 
@@ -67,32 +68,24 @@ public class PlayerData : MonoBehaviour
 
     private void LoadData()
     {
+        upgradePoint.Add("Hp", (int)GetValue<int>("Hp", 0));
+        upgradePoint.Add("Damage", (int)GetValue<int>("Damage", 0));
+        upgradePoint.Add("Cool Time", (int)GetValue<int>("Cool Time", 0));
+
+        itemStorage.Add("Fix", (int)GetValue<int>("Fix", 0));
+        itemStorage.Add("Freeze", (int)GetValue<int>("Freeze",0));
+        itemStorage.Add("Defense", (int)GetValue<int>("Defense",0));
+        itemStorage.Add("Gold Upgrade", (int)GetValue<int>("Gold Upgrade",0));
+        itemStorage.Add("Time Scale Up", (int)GetValue<int>("Time Scale Up", 0));
+
         if (!PlayerPrefs.HasKey("isFirst")) // 유닛 데이터가없을경우
         {
             isFirst = true;
-            stageSelectPosIndex = 0;
-            upgradePoint.Add("Hp", 0);
-            upgradePoint.Add("Damage", 0);
-            upgradePoint.Add("Cool Time", 0);
-
-            itemStorage.Add("Fix", 0);
-            itemStorage.Add("Freeze", 0);
-            itemStorage.Add("Defense", 0);
             return;
         }
 
         // 처음이 아닌경우
 
-        if (PlayerPrefs.HasKey("stageSelectPosIndex"))
-            stageSelectPosIndex = PlayerPrefs.GetInt("stageSelectPosIndex");
-
-        upgradePoint.Add("Hp", PlayerPrefs.GetInt("Hp"));
-        upgradePoint.Add("Damage", PlayerPrefs.GetInt("Damage"));
-        upgradePoint.Add("Cool Time", PlayerPrefs.GetInt("Cool Time"));
-
-        itemStorage.Add("Fix", PlayerPrefs.GetInt("Fix"));
-        itemStorage.Add("Freeze", PlayerPrefs.GetInt("Freeze"));
-        itemStorage.Add("Defense", PlayerPrefs.GetInt("Defense"));
 
         if (PlayerPrefs.HasKey("lastClearedStage"))
             lastClearedStage = PlayerPrefs.GetString("lastClearedStage");
@@ -131,7 +124,9 @@ public class PlayerData : MonoBehaviour
 
     public void SaveData()
     {
-        //for (int c = 0; c < 8; c++)   // 스테이지 전부 클리어하는 코드
+        #region Stage All Clear
+
+        //for (int c = 0; c < 8; c++)
         //{
         //    for (int s = 1; s < 5; s++)
         //    {
@@ -151,14 +146,13 @@ public class PlayerData : MonoBehaviour
         //AddUnit("Aragog");
         //AddUnit("Witch");
 
-        if (lastClearedStage != null)
-            PlayerPrefs.SetString("lastClearedStage", lastClearedStage);
+        #endregion
+
+        lastClearedStage = (string)GetValue<string>("lastClearedStage", null);
 
         PlayerPrefs.SetInt("isFirst", 1);
         PlayerPrefs.SetInt("appRated", appRated ? 1 : 0);
         PlayerPrefs.SetInt("obsidian", obsidian);
-
-        PlayerPrefs.SetInt("stageSelectPosIndex", stageSelectPosIndex);
 
         PlayerPrefs.SetInt("Hp", upgradePoint["Hp"]);
         PlayerPrefs.SetInt("Damage", upgradePoint["Damage"]);
@@ -167,6 +161,9 @@ public class PlayerData : MonoBehaviour
         PlayerPrefs.SetInt("Fix", itemStorage["Fix"]);
         PlayerPrefs.SetInt("Freeze", itemStorage["Freeze"]);
         PlayerPrefs.SetInt("Defense", itemStorage["Defense"]);
+        PlayerPrefs.SetInt("Gold Upgrade", itemStorage["Gold Upgrade"]);
+        PlayerPrefs.SetInt("Time Scale Up", itemStorage["Time Scale Up"]);
+
 
         // Deserialize - Serialize
         var b = new BinaryFormatter();
@@ -175,6 +172,7 @@ public class PlayerData : MonoBehaviour
             b.Serialize(m, playerUnitList);
             PlayerPrefs.SetString("playerUnitList", Convert.ToBase64String(m.GetBuffer()));
         }
+
         if (selectedUnitList != null && selectedUnitList.Count != 0)
         {
             using (var m = new MemoryStream())
@@ -360,4 +358,33 @@ public class PlayerData : MonoBehaviour
         else
             playerUnitList.Add(name);
     }
+
+    #region Util
+
+    public object GetValue<T>(string key, T defaultValue)
+    {
+        if (PlayerPrefs.HasKey(key))
+        {
+            if (typeof(T) == typeof(string))
+            {
+                return PlayerPrefs.GetString(key);
+            }
+            else if (typeof(T) == typeof(int))
+            {
+                return PlayerPrefs.GetInt(key);
+            }
+            else if (typeof(T) == typeof(float))
+            {
+                return PlayerPrefs.GetFloat(key);
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+        }
+        else
+            return defaultValue;
+    }
+
+    #endregion
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool isRun { get; set; }
+    public float userTimeScale = 1f;
 
     public GameObject gameOver;
     public GameObject gameClear;

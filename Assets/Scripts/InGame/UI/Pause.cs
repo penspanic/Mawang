@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Pause : MonoBehaviour
 {
     private BgmManager bgmMgr;
+    private GameManager gameMgr;
     private Button pauseBtn;
     private GameObject pauseUI;
 
@@ -17,7 +18,8 @@ public class Pause : MonoBehaviour
 
     private void Awake()
     {
-        bgmMgr = GameObject.FindGameObjectWithTag("Manager").GetComponent<BgmManager>();
+        bgmMgr = GameObject.FindObjectOfType<BgmManager>();
+        gameMgr = GameObject.FindObjectOfType<GameManager>();
         pauseBtn = GameObject.Find("PauseButton").GetComponent<Button>();
         pauseUI = transform.FindChild("PauseUI").gameObject;
 
@@ -40,7 +42,8 @@ public class Pause : MonoBehaviour
 
     public void ResumeButtonDown()
     {
-        Time.timeScale = 1;
+        Time.timeScale = gameMgr.userTimeScale;
+
         for (int i = 0; i < sources.Length; i++)
         {
             sources[i].Play();

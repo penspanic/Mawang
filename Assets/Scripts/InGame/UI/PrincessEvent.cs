@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class PrincessEvent : MonoBehaviour
 {
     private BgmManager bgmMgr;
+    private GameManager gameMgr;
     private Image skillName;
     private Image illust;
 
@@ -26,7 +27,8 @@ public class PrincessEvent : MonoBehaviour
 
     private void Awake()
     {
-        bgmMgr = GameObject.FindGameObjectWithTag("Manager").GetComponent<BgmManager>();
+        bgmMgr = GameObject.FindObjectOfType<BgmManager>();
+        gameMgr = GameObject.FindObjectOfType<GameManager>();
         skillName = GameObject.Find("SkillName").GetComponent<Image>();
         illust = GameObject.Find("BigIllust").GetComponent<Image>();
         illustStartPos = new Vector2(1000, illustPos.y);
@@ -61,7 +63,7 @@ public class PrincessEvent : MonoBehaviour
         yield return StartCoroutine(sprRendererWidthMove(skillName, skillNamePos, skillNameStartPos));
 
         // 비활성화
-        Time.timeScale = 1;
+        Time.timeScale = gameMgr.userTimeScale;
         bgmMgr.Resume();
         gameObject.SetActive(false);
     }
