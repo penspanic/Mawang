@@ -31,7 +31,7 @@ public class Ready_EnemyInfo : MonoBehaviour
         List<GameObject> dataList = new List<GameObject>();
         List<Image> imageList = new List<Image>();
         List<Text> textList = new List<Text>();
-        for (int i = 0; i < enemyView.itemCount; i++)
+        for (int i = 0; i < enemyView.itemCount; ++i)
         {
             dataList.Add(enemyView.GetItem(i));
             imageList.Add(dataList[i].GetComponentInChildren<Image>());
@@ -41,7 +41,7 @@ public class Ready_EnemyInfo : MonoBehaviour
         enemyImage = imageList.ToArray();
         enemyDescription = textList.ToArray();
 
-        for (int i = 0; i < enemysData.Length; i++)
+        for (int i = 0; i < enemysData.Length; ++i)
         {
             enemysData[i].transform.localPosition = new Vector2(
                 enemysData[i].transform.localPosition.x - 120, enemysData[i].transform.localPosition.y);

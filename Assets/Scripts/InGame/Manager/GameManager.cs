@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private BgmManager bgmMgr;
     private SpriteOrderLayerManager orderMgr;
     private BattleManager battleMgr;
+    private ItemManager itemMgr;
     private Pause pauseUI;
     private UnitInfo[] currUnits;
 
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         orderMgr = FindObjectOfType<SpriteOrderLayerManager>();
         battleMgr = FindObjectOfType<BattleManager>();
+        itemMgr = FindObjectOfType<ItemManager>();
         bgmMgr = FindObjectOfType<BgmManager>();
         isRun = true;
         pauseUI = FindObjectOfType<Pause>();
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
         if (PlayerData.instance.selectedStage == "C0S1")
         {
             Time.timeScale = 0;
+            itemMgr.SetItem(new string[] { "Fix", "Defense", "Freeze" });
             TutorialManager.instance.PlayTutorial(TutorialEvent.PrepareGame);
         }
 
@@ -74,7 +77,7 @@ public class GameManager : MonoBehaviour
             unitSpawnInterval = 2.5f;
 
         // 적군 패턴 갖고오기
-        for (int i = 0; i < pattern.patternsName.Length; i++)
+        for (int i = 0; i < pattern.patternsName.Length; ++i)
         {
             stagePatternList.Add(
                 Resources.Load<GameObject>("Prefabs/Enemy Pattern/Chapter" + stage[1] + "/" + pattern.patternsName[i]));
@@ -146,7 +149,7 @@ public class GameManager : MonoBehaviour
             if (isDefenceTurn)
             {
                 float minPos = 100f;
-                for (int i = 0; i < battleMgr.ourForceList.Count; i++)
+                for (int i = 0; i < battleMgr.ourForceList.Count; ++i)
                 {
                     if (battleMgr.enemyCastle.transform.position.x - battleMgr.ourForceList[i].transform.position.x < minPos)
                     {
@@ -172,7 +175,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        for (int i = 1; i <= 3; i++)
+        for (int i = 1; i <= 3; ++i)
             orderMgr.UpdateOrder(i);
 
         isDefenceTurn = !isDefenceTurn;

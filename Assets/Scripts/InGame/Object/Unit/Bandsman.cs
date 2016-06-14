@@ -66,7 +66,7 @@ public class Bandsman : Movable
 
     private void AddBuffsprRenderer()
     {
-        for (int i = 0; i < lineList.Count; i++)
+        for (int i = 0; i < lineList.Count; ++i)
         {
             if (lineList[i].transform.FindChild("Bandsman_buff(Clone)") != null)
             {
@@ -87,7 +87,7 @@ public class Bandsman : Movable
 
     private void BuffSet(bool set)
     {
-        for (int i = 0; i < lineList.Count; i++)
+        for (int i = 0; i < lineList.Count; ++i)
         {
             if (lineList[i] == null)
                 continue;

@@ -30,7 +30,7 @@ public class Pause : MonoBehaviour
     {
         Time.timeScale = 0;
         sources = GameObject.FindObjectsOfType<AudioSource>();
-        for (int i = 0; i < sources.Length; i++)
+        for (int i = 0; i < sources.Length; ++i)
         {
             sources[i].Pause();
         }
@@ -44,7 +44,7 @@ public class Pause : MonoBehaviour
     {
         Time.timeScale = gameMgr.userTimeScale;
 
-        for (int i = 0; i < sources.Length; i++)
+        for (int i = 0; i < sources.Length; ++i)
         {
             sources[i].Play();
         }

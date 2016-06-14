@@ -41,7 +41,7 @@ public class Harpy : Launcher, ITouchable
 
     private void AddBuffsprRenderer()
     {
-        for (int i = 0; i < lineList.Count; i++)
+        for (int i = 0; i < lineList.Count; ++i)
         {
             if (lineList[i].transform.FindChild("Harpy_buff(Clone)") != null)
             {
@@ -63,7 +63,7 @@ public class Harpy : Launcher, ITouchable
 
     private void BuffSet(bool set)
     {
-        for (int i = 0; i < lineList.Count; i++)
+        for (int i = 0; i < lineList.Count; ++i)
         {
             if (lineList[i] == null)
                 continue;

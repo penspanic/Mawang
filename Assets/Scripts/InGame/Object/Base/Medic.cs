@@ -70,8 +70,7 @@ public class Medic : Movable
             isHealing = true;
             yield return new WaitForSeconds(1f);
 
-            // 단일
-            healTarget.SetMinusHP(-healPerSec);
+            healTarget.SetHP(healTarget.GetHP() + healPerSec);
         }
         onceAttackAni = true;
         isHealing = false;

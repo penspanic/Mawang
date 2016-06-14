@@ -11,7 +11,7 @@ public class PatternControl : MonoBehaviour
 
     private void Awake()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; ++i)
             enemyList.Add(transform.GetChild(i));
 
         StartCoroutine(EnmeyLiveCheck());
@@ -21,7 +21,7 @@ public class PatternControl : MonoBehaviour
     {
         while (enemyList.Count != 0)
         {
-            for (int i = 0; i < enemyList.Count; i++)
+            for (int i = 0; i < enemyList.Count; ++i)
             {
                 if (enemyList[i] == null)
                     enemyList.RemoveAt(i);

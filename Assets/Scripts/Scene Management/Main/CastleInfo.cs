@@ -35,7 +35,7 @@ public class CastleInfo : MonoBehaviour
         int castleIndex = upgradeValue / 5;
         if (castleIndex > 2)
             castleIndex = 2;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; ++i)
         {
             castleIcons[i].color = new Color(0.3f, 0.3f, 0.3f, 1f);
         }

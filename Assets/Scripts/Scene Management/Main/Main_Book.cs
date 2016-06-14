@@ -30,8 +30,12 @@ public class Main_Book : MonoBehaviour
 
         Text nameText;
         Text descriptionText;
-        foreach (Movable eachUnit in unitList)
+        Movable eachUnit = null;
+
+        for(int i = 0;i<unitList.Count;++i)
         {
+            eachUnit = unitList[i];
+
             GameObject currPage = Instantiate(pagePrefab);
             currPage.transform.SetParent(this.transform, false);
             currPage.transform.SetAsFirstSibling();
@@ -56,8 +60,8 @@ public class Main_Book : MonoBehaviour
             if (!PlayerData.instance.playerUnitList.Contains(eachUnit.name)) // 캐릭터를 보유하고 있지 않을 때
             {
                 SpriteRenderer[] sprs = newUnit.GetSprs();
-                for (int i = 0; i < sprs.Length; i++)
-                    sprs[i].color = Color.black;
+                for (int j = 0; j < sprs.Length; ++j)
+                    sprs[j].color = Color.black;
             }
 
             pageList.Add(currPage);
@@ -68,13 +72,15 @@ public class Main_Book : MonoBehaviour
     {
         if (soundPlay)
             bookEffectSource.Play();
-        int i = 0;
-        foreach (GameObject eachPage in pageList)
+
+        GameObject eachPage = null;
+        for(int i = 0;i<pageList.Count;++i)
         {
+            eachPage = pageList[i];
+
             eachPage.SetActive(false);
-            if (index == i)
+            if (i == index)
                 eachPage.SetActive(true);
-            i++;
         }
 
         if (selectedIndex == 0)

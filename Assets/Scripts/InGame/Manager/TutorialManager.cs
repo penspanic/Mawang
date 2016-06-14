@@ -97,7 +97,7 @@ public class TutorialManager : Singleton<TutorialManager>
     {
         Sprite[] sprites = Resources.LoadAll<Sprite>("Sprite/Tutorial/" + folderName);
 
-        for (int i = 0; i < sprites.Length; i++)
+        for (int i = 0; i < sprites.Length; ++i)
             imgList.Add(sprites[i]);
     }
 

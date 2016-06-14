@@ -46,7 +46,7 @@ public class InputManager : MonoBehaviour
 
             // 레이캐스트 사용
             RaycastHit2D[] hitInfo = Physics2D.RaycastAll(touchPos, Vector2.zero);
-            for (int i = 0; i < hitInfo.Length; i++)
+            for (int i = 0; i < hitInfo.Length; ++i)
             {
                 if (hitInfo[i].collider != null)
                 {
@@ -75,7 +75,7 @@ public class InputManager : MonoBehaviour
 
             hit = Physics2D.RaycastAll(wp, Vector2.zero);
 
-            for (int i = 0; i < hit.Length; i++)
+            for (int i = 0; i < hit.Length; ++i)
             {
                 if (hit[i].collider != null)
                 {

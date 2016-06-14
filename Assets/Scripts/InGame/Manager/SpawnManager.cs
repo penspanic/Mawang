@@ -20,7 +20,7 @@ public class SpawnManager : MonoBehaviour
         orderMgr = FindObjectOfType<SpriteOrderLayerManager>();
         satanCastle = GameObject.Find("SatanCastle");
 
-        for (int i = 1; i <= 3; i++)
+        for (int i = 1; i <= 3; ++i)
         {
             ourForceLinePos.Add(satanCastle.transform.FindChild(string.Format("Spawn Line{0}", i)).position);
         }

@@ -45,7 +45,7 @@ public class FreezeItem : ItemBase
                 return obj.CompareTag("Enemy") && !obj.isDestroyed;
             });
 
-        for (int i = 0; i < enemys.Length; i++)
+        for (int i = 0; i < enemys.Length; ++i)
             enemys[i].Freeze(true);
 
         yield return new WaitForSeconds(duration);
@@ -60,7 +60,7 @@ public class FreezeItem : ItemBase
                 return !obj.isDestroyed;
         });
 
-        for (int i = 0; i < enemys.Length; i++)
+        for (int i = 0; i < enemys.Length; ++i)
             enemys[i].Freeze(false);
     }
 

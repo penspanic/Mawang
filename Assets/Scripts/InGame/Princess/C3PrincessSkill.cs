@@ -16,15 +16,14 @@ public sealed class C3PrincessSkill : PrincessSkillBase
     protected override IEnumerator SkillStart()
     {
         targetUnits = new List<Movable>();
-        foreach (Movable eachUnit in battleMgr.ourForceList)
-            targetUnits.Add(eachUnit);
+
+        for (int i = 0; i < targetUnits.Count; ++i)
+            targetUnits.Add(targetUnits[i]);
 
         SetEffectColor(true, targetUnits);
 
-        foreach(Movable eachUnit in targetUnits)
-        {
-            eachUnit.SetFullHP();
-        }
+        for (int i = 0; i < targetUnits.Count; ++i)
+            targetUnits[i].SetHP(targetUnits[i].maxHP);
 
         yield break;
     }

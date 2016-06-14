@@ -28,7 +28,7 @@ public class Clouds : MonoBehaviour
             startX = 13;
 
         // 랜덤 스피드
-        for (int i = 0; i < clouds.Length; i++)
+        for (int i = 0; i < clouds.Length; ++i)
             randSpeed[i] = Random.Range(0.2f, 0.3f);
 
         StartCoroutine(CloudUpdate());
@@ -40,7 +40,7 @@ public class Clouds : MonoBehaviour
         {
             currTime += Time.deltaTime;
 
-            for (int i = 0; i < clouds.Length; i++)
+            for (int i = 0; i < clouds.Length; ++i)
             {
                 clouds[i].transform.Translate((isMovingRight ? 1 : -1) * randSpeed[i] * Time.deltaTime, 0, 0);
                 IsFinished(clouds[i]);

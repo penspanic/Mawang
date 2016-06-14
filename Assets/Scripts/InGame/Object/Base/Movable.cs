@@ -314,7 +314,8 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     {
         damage = ApplyDefensive(damage);
 
-        SetMinusHP(damage);
+        SetHP(hp - damage);
+
         if (GetHP() <= 0)
             isDestroyed = true;
 
@@ -371,7 +372,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
 
     private void SetColor(SpriteRenderer[] sprs, Color color)
     {
-        for (int i = 0; i < sprs.Length; i++)
+        for (int i = 0; i < sprs.Length; ++i)
         {
             if (sprs[i].name.Contains("Effect"))
                 continue;
@@ -414,7 +415,7 @@ public class Movable : ObjectBase, System.IComparable<Movable>
         {
             alpha = EasingUtil.linear(1, 0, (Time.time - beginTime) / disappearDuration);
 
-            for (int i = 0; i < sprs.Length; i++)
+            for (int i = 0; i < sprs.Length; ++i)
                 sprs[i].color = new Color(1, 1, 1, alpha);
 
             yield return null;
@@ -498,11 +499,11 @@ public class Movable : ObjectBase, System.IComparable<Movable>
     {
         if (renderers != null)
         {
-            for (int i = 0; i < renderers.Length; i++)
+            for (int i = 0; i < renderers.Length; ++i)
                 renderers[i].sortingLayerName = layerName;
             return;
         }
-        for (int i = 0; i < sprs.Length; i++)
+        for (int i = 0; i < sprs.Length; ++i)
         {
             sprs[i].sortingLayerName = layerName;
         }

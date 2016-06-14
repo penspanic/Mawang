@@ -68,7 +68,7 @@ public class SatanCastle : Castle
         canUseSkill = false;
 
         SatanSkill skill;
-        for (int i = 0; i < skillCnt; i++)
+        for (int i = 0; i < skillCnt; ++i)
         {
             // 스킬 구현
             if (i == targets.Length)
@@ -148,7 +148,7 @@ public class SatanCastle : Castle
     {
         List<ObjectBase> oppositeList = battleMgr.GetOpposite(true);
 
-        oppositeList = battleMgr.SelectInRange(oppositeList, transform.position + Vector3.left, this.attackRange);
+        oppositeList = battleMgr.SelectInRange(oppositeList, transform.position.x + Vector3.left.x, this.attackRange);
         return oppositeList.ToArray();
     }
 

@@ -23,11 +23,10 @@ public sealed class C7PrincessSkill : PrincessSkillBase
 
     protected override IEnumerator SkillStart()
     {
-
         targetUnits = new List<Movable>();
-        foreach (Movable eachUnit in battleMgr.ourForceList)
-            targetUnits.Add(eachUnit);
 
+        for (int i = 0; i < battleMgr.ourForceList.Count; ++i)
+            targetUnits.Add(battleMgr.ourForceList[i] as Movable);
         SetEffectColor(true, targetUnits);
 
         skillProcessing = true;
@@ -51,16 +50,17 @@ public sealed class C7PrincessSkill : PrincessSkillBase
 
         while(skillProcessing)
         {
-            foreach(Movable eachUnit in targetUnits)
+            Movable eachUnit = null;
+            for(int i = 0;i<targetUnits.Count;++i)
             {
-                if(eachUnit.isDestroyed)
-                {
+                eachUnit = targetUnits[i];
+                if (eachUnit.isDestroyed)
                     deadUnits.Add(eachUnit);
-                }
             }
 
-            foreach(Movable eachUnit in deadUnits)
+            for(int i = 0;i<deadUnits.Count;++i)
             {
+                eachUnit = deadUnits[i];
                 string name = eachUnit.name.Remove(eachUnit.name.IndexOf('(')); // (Clone) 문자열 삭제
                 Movable spawnTarget = selectTab.GetPrefab(name);
                 if (spawnTarget != null)

@@ -12,15 +12,20 @@ public sealed class C4PrincessSkill : PrincessSkillBase
     protected override IEnumerator SkillStart()
     {
         targetUnits = new List<Movable>();
-        foreach (Movable eachUnit in battleMgr.enemyList)
-            targetUnits.Add(eachUnit);
+
+        for (int i = 0; i < battleMgr.enemyList.Count; ++i)
+        {
+            targetUnits.Add(battleMgr.enemyList[i] as Movable);
+        }
 
         SetEffectColor(true, targetUnits);
 
-        foreach (Movable eachUnit in targetUnits)
+        for (int i = 0; i < targetUnits.Count; ++i)
         {
-            eachUnit.AddAttackSpeed(ASIncreasePercent);
-            eachUnit.SetMinusHP(-(int)((float)eachUnit.maxHP * HPHealRatio));
+            targetUnits[i].AddAttackSpeed(ASIncreasePercent);
+
+            int newHP = targetUnits[i].GetHP() + (int)((float)targetUnits[i].maxHP * HPHealRatio);
+            targetUnits[i].SetHP(newHP);
         }
 
         yield break;
@@ -28,10 +33,10 @@ public sealed class C4PrincessSkill : PrincessSkillBase
 
     protected override IEnumerator SkillEnd()
     {
-        foreach(Movable eachUnit in targetUnits)
+        for (int i = 0; i < targetUnits.Count; ++i)
         {
-            if (eachUnit != null)
-                eachUnit.AddAttackSpeed(-ASIncreasePercent);
+            if (targetUnits[i] != null)
+                targetUnits[i].AddAttackSpeed(-ASIncreasePercent);
         }
 
         yield break;

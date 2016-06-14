@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneFader : MonoBehaviour
 {
@@ -61,7 +62,7 @@ public class SceneFader : MonoBehaviour
         sprRenderer.color = new Color(0, 0, 0, 1);
         collider.enabled = true;
         if (nextScene != null)
-            Application.LoadLevel(nextScene);
+            SceneManager.LoadScene(nextScene);
     }
 
     public IEnumerator FadeIn(float duration, string nextScene = null)
@@ -84,7 +85,7 @@ public class SceneFader : MonoBehaviour
         sprRenderer.enabled = false;
         collider.enabled = false;
         if (nextScene != null)
-            Application.LoadLevel(nextScene);
+            SceneManager.LoadScene(nextScene);
     }
 
     public IEnumerator SoundFadeOut(float duration, AudioSource[] audioSources) // 점점 작아지게
@@ -92,14 +93,14 @@ public class SceneFader : MonoBehaviour
         float fadeVolume = 1;
 
         List<float> originalVolumeList = new List<float>();
-        for (int i = 0; i < audioSources.Length; i++)
+        for (int i = 0; i < audioSources.Length; ++i)
             originalVolumeList.Add(audioSources[i].volume);
 
         // 0.5f~ 0
         while (fadeVolume != 0)
         {
             fadeVolume = Mathf.MoveTowards(fadeVolume, 0, Time.unscaledDeltaTime * (1 / duration));
-            for (int i = 0; i < audioSources.Length; i++)
+            for (int i = 0; i < audioSources.Length; ++i)
             {
                 try
                 {

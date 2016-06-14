@@ -43,14 +43,24 @@ public class Aragog : Movable, ITouchable
         List<ObjectBase> targetList = battleMgr.GetSameLine(battleMgr.enemyList, line);
         targetList.Add(battleMgr.enemyCastle.GetComponent<ObjectBase>());
 
-        foreach(ObjectBase eachObj in targetList)
+        ObjectBase eachObj = null;
+        for(int i = 0;i<targetList.Count;++i)
         {
-            if (Mathf.Abs(eachObj.transform.position.x - transform.position.x) < explosionRange * BattleManager.tileSize)
+            eachObj = targetList[i];
+            if (HitRangeIn(eachObj.transform.position.x))
                 eachObj.Attacked(explosionDamage);
         }
+
         explosioned = true;
 
         OnDeathEnd();
+    }
+
+    bool HitRangeIn(float targetX)
+    {
+        if (Mathf.Abs(targetX - transform.position.x) < explosionRange * BattleManager.tileSize)
+            return true;
+        return false;
     }
 
     protected override void Death()

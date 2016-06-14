@@ -62,7 +62,7 @@ public class MiniMap : MonoBehaviour
     private void FindUnitListPos(List<Vector2> miniMapPosList, List<ObjectBase> objList)
     {
         Vector2 drawPos;
-        for (int i = 0; i < objList.Count; i++)
+        for (int i = 0; i < objList.Count; ++i)
         {
             drawPos = GetMiniMapPos(objList[i].transform.position,
                 objList[i].line);
@@ -85,9 +85,9 @@ public class MiniMap : MonoBehaviour
 
     private void DrawMark()
     {
-        for (int i = 0; i < ourForceMarkPool.Count; i++)
+        for (int i = 0; i < ourForceMarkPool.Count; ++i)
             ourForceMarkPool[i].gameObject.SetActive(false);
-        for (int i = 0; i < enemyMarkPool.Count; i++)
+        for (int i = 0; i < enemyMarkPool.Count; ++i)
             enemyMarkPool[i].gameObject.SetActive(false);
 
         DrawUnit(ourForceDrawPos, ourForceMarkPool, true);
@@ -96,7 +96,7 @@ public class MiniMap : MonoBehaviour
 
     private void DrawUnit(List<Vector2> drawPosList, List<Image> markPool, bool isBlue)
     {
-        for (int i = 0; i < drawPosList.Count; i++)
+        for (int i = 0; i < drawPosList.Count; ++i)
         {
             if (markPool.Count < drawPosList.Count)
                 CreateMark(isBlue);

@@ -150,7 +150,7 @@ public class JsonManager : MonoBehaviour
     {
         List<string> patternList = new List<string>();
 
-        for (int i = 0; i < stageDesignData[stage]["EnemyPattern"].Count; i++)
+        for (int i = 0; i < stageDesignData[stage]["EnemyPattern"].Count; ++i)
         {
             patternList.Add(stageDesignData[stage]["EnemyPattern"][i].ToString());
         }
@@ -170,7 +170,7 @@ public class JsonManager : MonoBehaviour
         JsonData currStageData = stageData[stageName];
 
         List<string> enemyNameList = new List<string>();
-        for (int i = 0; i < currStageData.Count; i++)
+        for (int i = 0; i < currStageData.Count; ++i)
         {
             enemyNameList.Add(currStageData[i].ToString());
         }
@@ -182,7 +182,7 @@ public class JsonManager : MonoBehaviour
         chapterData = JsonMapper.ToObject(chapterDataJson.text)[chapterName];
         List<string> scriptList = new List<string>();
 
-        for (int i = 0; i < chapterData["Princess Scripts"].Count; i++)
+        for (int i = 0; i < chapterData["Princess Scripts"].Count; ++i)
             scriptList.Add(chapterData["Princess Scripts"][i].ToString());
 
         return scriptList.ToArray();

@@ -43,10 +43,10 @@ public class SpriteOrderLayerManager : MonoBehaviour
                 return 0;
         });
 
-        for (int i = 0; i < lineListArr.Count; i++)
+        for (int i = 0; i < lineListArr.Count; ++i)
         {
             SpriteRenderer[] sprs = lineListArr[i].GetComponent<Movable>().GetSprs();
-            for (int j = 0; j < sprs.Length; j++)
+            for (int j = 0; j < sprs.Length; ++j)
             {
                 sprs[j].sortingOrder += i * orderInterval;
             }

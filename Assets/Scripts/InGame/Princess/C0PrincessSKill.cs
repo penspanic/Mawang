@@ -17,14 +17,15 @@ public sealed class C0PrincessSkill : PrincessSkillBase
     protected override IEnumerator SkillStart()
     {
         targetUnits = new List<Movable>();
-        foreach (Movable eachUnit in battleMgr.ourForceList)
-            targetUnits.Add(eachUnit);
+
+        for (int i = 0; i < battleMgr.ourForceList.Count; ++i)
+            targetUnits.Add(battleMgr.ourForceList[i] as Movable);
 
         SetEffectColor(true, targetUnits);
 
-        foreach(Movable eachUnit in targetUnits)
+        for(int i = 0;i<targetUnits.Count;++i)
         {
-            eachUnit.AddAttackSpeed(-ASDecreasePercent);
+            targetUnits[i].AddAttackSpeed(-ASDecreasePercent);
         }
 
         yield break;
@@ -34,10 +35,10 @@ public sealed class C0PrincessSkill : PrincessSkillBase
     {
         SetEffectColor(false, targetUnits);
 
-        foreach(Movable eachUnit in targetUnits)
+        for(int i = 0;i<targetUnits.Count;++i)
         {
-            if (eachUnit != null)
-                eachUnit.AddAttackSpeed(ASDecreasePercent);
+            if (targetUnits[i] != null)
+                targetUnits[i].AddAttackSpeed(ASDecreasePercent);
         }
 
         yield break;

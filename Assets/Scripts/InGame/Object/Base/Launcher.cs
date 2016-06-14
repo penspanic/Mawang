@@ -19,7 +19,7 @@ public class Launcher : Movable
 
     public void OnProjectile()
     {
-        for (int i = 0; i < targets.Length; i++)   // canHitNum이 1인 우선 전제하에
+        for (int i = 0; i < targets.Length; ++i)   // canHitNum이 1인 우선 전제하에
         {
             projectile.SetActive(true); // OnEnable, OnDisalbe 쓸꺼(바꿀수도있음)
         }

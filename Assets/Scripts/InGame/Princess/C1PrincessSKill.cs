@@ -17,17 +17,16 @@ public sealed class C1PrincessSkill : PrincessSkillBase
     {
         targetUnits = new List<Movable>();
 
-        foreach (Movable eachUnit in battleMgr.ourForceList)
-            targetUnits.Add(eachUnit);
-        foreach (Movable eachUnit in battleMgr.enemyList)
-            targetUnits.Add(eachUnit);
+        for (int i = 0; i < battleMgr.ourForceList.Count; ++i)
+            targetUnits.Add(battleMgr.ourForceList[i] as Movable);
+
+        for (int i = 0; i < battleMgr.enemyList.Count; ++i)
+            targetUnits.Add(battleMgr.enemyList[i] as Movable);
 
         SetEffectColor(true, targetUnits);
 
-        foreach(Movable eachUnit in targetUnits)
-        {
-            eachUnit.SetFullHP();
-        }
+        for (int i = 0; i < targetUnits.Count; ++i)
+            targetUnits[i].SetHP(targetUnits[i].maxHP);
 
         yield break;
     }

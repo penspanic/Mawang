@@ -25,3 +25,9 @@ TODO :
 - 공주 스킬 구현
 	- PrincessManager 에서 로직 구현 
 	- Stage Design 에서 PrincessCoolTime 조절 
+
+
+
+REFACTORING :
+ - 오브젝트 풀링
+ - PlayerData 분리(저장 관리자, 데이터 구조체)

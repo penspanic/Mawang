@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class ObjectBase : MonoBehaviour
+public abstract class ObjectBase : MonoBehaviour
 {
     #region GameDesign
 
@@ -47,9 +47,6 @@ public class ObjectBase : MonoBehaviour
         set;
     }
 
-    /// <summary>
-    /// Line : 1, 2, 3
-    /// </summary>
     public int line
     {
         get;
@@ -97,22 +94,12 @@ public class ObjectBase : MonoBehaviour
         defensivePower = value;
     }
 
-    protected virtual IEnumerator ChangeDamageColor()
-    {
-        yield break;
-    }
+    protected abstract IEnumerator ChangeDamageColor();
 
-    public virtual void Attacked(int damage)
-    {
-    }
+    public abstract void Attacked(int damage);
 
-    public virtual ObjectBase[] GetTargets()
-    {
-        return null;
-    }
+    public abstract ObjectBase[] GetTargets();
 
-    //--------------------------------------------------------
-    // 프로퍼티로 보호하면서 인스펙터에 보여지게 하면 Delete
     public float GetAttackRange()
     {
         return attackRange;
@@ -136,20 +123,15 @@ public class ObjectBase : MonoBehaviour
             attackDamage += addDmg;
     }
 
-    public void SetMinusHP(int minusHP)
+    public void SetHP(int hp)
     {
-        if (hp - minusHP >= 0)
-            hp -= minusHP;
-        else
-            hp = 0;
-
         if (hp >= maxHP)
-            hp = maxHP;
-    }
+            this.hp = maxHP;
+        else
+            this.hp = hp;
 
-    public void SetFullHP()
-    {
-        hp = maxHP;
+        if (this.hp < 0)
+            this.hp = 0;
     }
 
     public int GetHP()

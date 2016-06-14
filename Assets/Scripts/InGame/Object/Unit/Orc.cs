@@ -25,7 +25,7 @@ public class Orc : Warrior, ITouchable
         ObjectBase[] targets = battleMgr.GetTargets(this, attackRange, skillHitNum);
         if (targets != null)
         {
-            for (int i = 0; i < targets.Length; i++)
+            for (int i = 0; i < targets.Length; ++i)
                 targets[i].Attacked(this.attackDamage * skillMultiplicationDmg);
         }
 

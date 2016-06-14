@@ -37,7 +37,7 @@ public class Dullahan : Warrior, ITouchable
 
             transform.Translate(skillDistance * Time.deltaTime, 0, 0);
 
-            for (int i = 0; i < lineList.Count; i++)
+            for (int i = 0; i < lineList.Count; ++i)
             {
                 if (this.attackRange > Mathf.Abs(transform.position.x - lineList[i].transform.position.x))
                 {

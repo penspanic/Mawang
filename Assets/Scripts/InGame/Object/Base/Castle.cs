@@ -61,7 +61,7 @@ public class Castle : ObjectBase
 
     private void CoveringCastle()
     {
-        if (battleMgr.SelectInRange(battleMgr.GetOpposite(!isOurForce), transform.position + addRange, 0.8f).Count != 0)
+        if (battleMgr.SelectInRange(battleMgr.GetOpposite(!isOurForce), transform.position.x + addRange.x, 0.8f).Count != 0)
             currAlpha -= Time.deltaTime * 5f;
         else
             currAlpha += Time.deltaTime * 3f;

@@ -47,7 +47,7 @@ public class Ready_UnitSelect : MonoBehaviour
         Button newButton;
         Image checkedImage;
         Image selectedImage;
-        for (int i = 0; i < unitNameList.Count; i++)
+        for (int i = 0; i < unitNameList.Count; ++i)
         {
             portrait = SpriteManager.instance.GetSprite(PackingType.UI, unitNameList[i]);
             newButton = unitView.GetItem(i).GetComponent<Button>();
@@ -71,9 +71,11 @@ public class Ready_UnitSelect : MonoBehaviour
     {
         if (PlayerData.instance.selectedUnitList.Count != 0)
         {
-            foreach (string eachName in PlayerData.instance.selectedUnitList)
+            for(int i = 0;i<PlayerData.instance.selectedUnitList.Count;++i)
             {
-                if (unitNameList.Contains(eachName))
+                string eachName = PlayerData.instance.selectedUnitList[i];
+                
+                if(unitNameList.Contains(eachName))
                 {
                     selectedUnitIndex = unitNameList.IndexOf(eachName);
                     OnSelectButtonDown();
@@ -106,7 +108,7 @@ public class Ready_UnitSelect : MonoBehaviour
         unitSelectButton.GetComponentInChildren<Text>().text = unitSelected[selectedUnitIndex] ? "취소" : "선택";
 
         selectedCount = 0;
-        for (int i = 0; i < unitSelected.Length; i++)
+        for (int i = 0; i < unitSelected.Length; ++i)
         {
             if (unitSelected[i])
                 selectedCount++;
@@ -118,13 +120,13 @@ public class Ready_UnitSelect : MonoBehaviour
     public string[] GetSelectedUnit()
     {
         List<string> unitsList = new List<string>();
-        int i = 0;
-        foreach (string eachName in unitNameList)
+
+        for(int i = 0;i<unitNameList.Count;++i)
         {
             if (unitSelected[i])
-                unitsList.Add(eachName);
-            i++;
+                unitsList.Add(unitNameList[i]);
         }
+
         return unitsList.ToArray();
     }
 }

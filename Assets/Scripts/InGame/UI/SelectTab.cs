@@ -63,23 +63,23 @@ public class SelectTab : MonoBehaviour
         #region Load
 
         // 선택된 유닛들 스프라이트 로드
-        for (int i = 0; i < PlayerData.instance.selectedUnitList.Count; i++)
+        for (int i = 0; i < PlayerData.instance.selectedUnitList.Count; ++i)
             unitPortaitList.Add(SpriteManager.instance.GetSprite(PackingType.UI,
                 PlayerData.instance.selectedUnitList[i]));
 
         // 유닛버튼들 로드
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; ++i)
             unitButtonList.Add(transform.FindChild("UnitsButton").GetChild(i).GetComponent<Image>());
 
         // 유닛 prefab 추가
-        for (int i = 0; i < unitPortaitList.Count; i++)
+        for (int i = 0; i < unitPortaitList.Count; ++i)
         {
             unitPrefabs.Add(Resources.Load<Movable>("Prefabs/OurForce/" +
                 PlayerData.instance.selectedUnitList[i]));
         }
 
         // 유닛버튼에 스프라이트 대입
-        for (int i = 0; i < unitButtonList.Count; i++)
+        for (int i = 0; i < unitButtonList.Count; ++i)
         {
             if (i > unitPortaitList.Count - 1)
                 unitButtonList[i].GetComponent<Button>().interactable = false;
@@ -91,7 +91,7 @@ public class SelectTab : MonoBehaviour
         }
 
         // Button Onclick 추가
-        for (int i = 0; i < unitButtonList.Count; i++)
+        for (int i = 0; i < unitButtonList.Count; ++i)
         {
             int param = i;
             unitButtonList[i].GetComponent<Button>().onClick.AddListener(() => ClikcedUnitButton(param));
@@ -137,7 +137,7 @@ public class SelectTab : MonoBehaviour
 
     public void LineSetActive(bool set)
     {
-        for (int i = 0; i < lines.Length; i++)
+        for (int i = 0; i < lines.Length; ++i)
             lines[i].GetComponent<SpriteRenderer>().enabled = set;
     }
 
@@ -202,11 +202,6 @@ public class SelectTab : MonoBehaviour
         float startX = upgButtonTrs.localPosition.x;
         float startY = unitButtonTrs.localPosition.y;
 
-        // 튜토리얼때도 움직이게하려면 unscaledTime 을 넣는다
-        // -> 그러면 일시정지때도 움직이게됨..
-        // -> 따로 일시정지될때를 함수로 뺀다...?
-        // TODO: 일시정지 될때도 돌리게 만들기
-
         while (Time.unscaledTime - beginTime <= switchTime)
         {
             float t = (Time.unscaledTime - beginTime) / switchTime;
@@ -243,7 +238,6 @@ public class SelectTab : MonoBehaviour
     {
         unitButtonList[prevIdx].color = Color.white;
         isSelected = false;
-        // prevIdx                         =   99;             // 이게 문제
 
         LineSetActive(false);
     }

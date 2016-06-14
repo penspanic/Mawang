@@ -45,10 +45,12 @@ public class StageSelect : MonoBehaviour
 
     private void ButtonSet()
     {
-        foreach (Button[] buttons in stageButtons)
+        for(int i = 0;i<stageButtons.Length;++i)
         {
-            foreach (Button eachButton in buttons)
-                eachButton.interactable = false;
+            for(int j = 0;j<stageButtons[i].Length;++j)
+            {
+                stageButtons[i][j].interactable = false;
+            }
         }
 
         if (PlayerData.instance.lastClearedStage == null || PlayerData.instance.lastClearedStage == "") // 클리어 한게 아무것도 없을 경우

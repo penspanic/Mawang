@@ -94,7 +94,7 @@ public class Projectile : MonoBehaviour
 
         if (targets != null)
         {
-            for (int i = 0; i < targets.Length; i++)
+            for (int i = 0; i < targets.Length; ++i)
                 targets[i].Attacked(damage);
         }
 

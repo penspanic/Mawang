@@ -17,7 +17,7 @@ public class TipUI : MonoBehaviour
         int count = dataObject["Tip Data"].Count;
 
         List<string> tipList = new List<string>();
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < count; ++i)
             tipList.Add(dataObject["Tip Data"][i].ToString());
         tipData = tipList.ToArray();
 

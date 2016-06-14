@@ -24,11 +24,11 @@ public class PrincessReact : MonoBehaviour
 
         List<RectTransform> lineTransformList = new List<RectTransform>();
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; ++i)
         {
             lineTransformList.Clear();
             GameObject lineParent = GameObject.Find("Line " + (i + 1).ToString());
-            for (int j = 0; j < lineParent.transform.childCount; j++)
+            for (int j = 0; j < lineParent.transform.childCount; ++j)
             {
                 lineTransformList.Add(lineParent.transform.GetChild(j).GetComponent<RectTransform>());
             }
@@ -44,7 +44,7 @@ public class PrincessReact : MonoBehaviour
             return;
         List<Main_Princess> princessList = new List<Main_Princess>();
         Main_Princess newPrincess;
-        for (int i = 0; i <= lastChapter; i++)
+        for (int i = 0; i <= lastChapter; ++i)
         {
             newPrincess = Instantiate(Resources.Load<Main_Princess>("Prefabs/Main/C" + i.ToString() + " Main Princess"));
             newPrincess.SetScripts(JsonManager.instance.GetPrincessScript("C" + i.ToString()));
@@ -57,7 +57,7 @@ public class PrincessReact : MonoBehaviour
     {
         if (princesses == null)
             return;
-        for (int i = 0; i < princesses.Length; i++)
+        for (int i = 0; i < princesses.Length; ++i)
         {
             while (true)
             {

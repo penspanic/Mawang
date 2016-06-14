@@ -49,7 +49,7 @@ public class BattleManager : MonoBehaviour
             oppositeList = GetOpposite(obj.isOurForce);
 
         oppositeList = GetSameLine(oppositeList, obj.line);
-        oppositeList = SelectInRange(oppositeList, obj.transform.position, attackRange, isFindOur);
+        oppositeList = SelectInRange(oppositeList, obj.transform.position.x, attackRange, isFindOur);
 
         if (oppositeList.Count == 0)    // 없을때는 성공격하거나 null
         {
@@ -60,7 +60,7 @@ public class BattleManager : MonoBehaviour
 
         List<ObjectBase> returnList = new List<ObjectBase>();
 
-        for (int i = 0; i < oppositeList.Count; i++)
+        for (int i = 0; i < oppositeList.Count; ++i)
         {
             if (i < canHitNum)
                 returnList.Add(oppositeList[i]);
@@ -83,39 +83,24 @@ public class BattleManager : MonoBehaviour
         return list;
     }
 
-    public List<ObjectBase> SelectInRange(List<ObjectBase> list, Vector2 objPos, float range, bool isFindOur = false) // 거리되는애들 리턴
+    public List<ObjectBase> SelectInRange(List<ObjectBase> list, float xPivot, float range, bool findSameForce = false) // 거리되는애들 리턴
     {
-        float attackRange = tileSize * range;
+        List<ObjectBase> returnList = new List<ObjectBase>();
 
-        List<ObjectBase> tmplist = new List<ObjectBase>();
-        float distX = 0;
+        ObjectBase target = null;
 
-        foreach (ObjectBase obj in list)
+        for (int i = 0; i < list.Count; ++i)
         {
-            if (!obj.isDestroyed)
-            {
-                if (obj.isOurForce)
-                    distX = objPos.x - obj.transform.position.x;
-                else
-                    distX = obj.transform.position.x - objPos.x;
+            target = list[i];
 
-                if (isFindOur)
-                {
-                    if (obj.isOurForce)
-                        distX = obj.transform.position.x - objPos.x;
-                    else
-                        distX = objPos.x - obj.transform.position.x;
-                }
-
-                if (0 < distX && distX < attackRange)
-                    tmplist.Add(obj);
-            }
+            if (IsInRange(target, xPivot, range, findSameForce))
+                returnList.Add(target);
         }
 
-        tmplist.Sort((a, b) =>
+        returnList.Sort((a, b) =>
         {
-            float A = Mathf.Abs(objPos.x - a.transform.position.x);
-            float B = Mathf.Abs(objPos.x - b.transform.position.x);
+            float A = Mathf.Abs(xPivot - a.transform.position.x);
+            float B = Mathf.Abs(xPivot - b.transform.position.x);
 
             if (A > B)
                 return 1;
@@ -125,26 +110,57 @@ public class BattleManager : MonoBehaviour
                 return 0;
         });
 
-        return tmplist;
+        return returnList;
+    }
+
+    bool IsInRange(ObjectBase target, float xPivot, float range, bool findSameForce)
+    {
+        float realRange = range * tileSize;
+
+        float distX = 0;
+        if (!target.isDestroyed)
+        {
+            if (target.isOurForce)
+                distX = xPivot - target.transform.position.x;
+            else
+                distX = target.transform.position.x - xPivot;
+
+            if (findSameForce)
+            {
+                if (target.isOurForce)
+                    distX = target.transform.position.x - xPivot;
+                else
+                    distX = xPivot - target.transform.position.x;
+            }
+
+            if (0 < distX && distX < realRange)
+                return true;
+        }
+        return false;
     }
 
     public Movable[] GetAllUnitInLine(int line)
     {
         List<Movable> returnList = new List<Movable>();
 
-        foreach(ObjectBase eachObj in ourForceList)
-        {
-            if (eachObj is Movable && eachObj.line == line)
-                returnList.Add(eachObj as Movable);
-        }
-
-        foreach(ObjectBase eachObj in enemyList)
-        {
-            if (eachObj is Movable && eachObj.line == line)
-                returnList.Add(eachObj as Movable);
-        }
+        InsertSameLineMovable(ourForceList, returnList, line);
+        InsertSameLineMovable(enemyList, returnList, line);
 
         return returnList.ToArray();
+    }
+
+    void InsertSameLineMovable(List<ObjectBase> srcList, List<Movable> destList, int line)
+    {
+        for (int i = 0; i < srcList.Count; ++i)
+        {
+            if (SameLineAndMovable(srcList[i], line))
+                destList.Add(srcList[i] as Movable);
+        }
+    }
+
+    bool SameLineAndMovable(ObjectBase obj, int line)
+    {
+        return obj is Movable && obj.line == line;
     }
 
     public bool CanAttackCastle(List<ObjectBase> list, ObjectBase obj)   // 성이 공격 가능한 범위인지 판단하고 리스트에 추가

@@ -39,7 +39,7 @@ public class Doll : Warrior
 
         yield return new WaitForSeconds(1.2f);
         EffectManager.instance.PlayEffect(EffectKind.Doll_SKill, transform.position + new Vector3(3f, -0.3f, 0));
-        for (int i = 0; i < targets.Length; i++)
+        for (int i = 0; i < targets.Length; ++i)
         {
             targets[i].Attacked(skillDamage);
         }

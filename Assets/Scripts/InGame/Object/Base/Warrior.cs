@@ -19,7 +19,7 @@ public class Warrior : Movable
             if (targets == null)
                 return;
 
-            for (int i = 0; i < targets.Length; i++)
+            for (int i = 0; i < targets.Length; ++i)
                 targets[i].Attacked(this.attackDamage);
         }
 
@@ -44,7 +44,7 @@ public class Warrior : Movable
         if (targets == null)
             return;
 
-        for (int i = 0; i < targets.Length; i++)
+        for (int i = 0; i < targets.Length; ++i)
             targets[i].Attacked(this.attackDamage);
     }
 }

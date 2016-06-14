@@ -75,9 +75,8 @@ public class Ready_Item : MonoBehaviour
             int param = i;
             itemButtons[i].onClick.AddListener(() => OnItemButtonDown(param));
 
-            i++;
+            ++i;
         }
-        
     }
 
     private void SetBuyButtonState(bool value)
@@ -113,7 +112,7 @@ public class Ready_Item : MonoBehaviour
     {
         PlayerData.instance.selectedItemList.Clear();
 
-        for(int i = 0;i<itemView.itemCount;i++)
+        for(int i = 0;i<itemView.itemCount;++i)
         {
             if (selectedIndexList.Contains(i))
             {

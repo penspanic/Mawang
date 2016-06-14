@@ -65,11 +65,11 @@ public class CastleUpgrade : MonoBehaviour
 
         gaugeImages = new Image[upgradeButtons.Length, 6];
         int alreadyAllocatedPoints = 0;
-        for (int i = 0; i < upgradeButtons.Length; i++)
+        for (int i = 0; i < upgradeButtons.Length; ++i)
         {
             allocatedPoints[i] = PlayerData.instance.upgradePoint[upgradeButtons[i].name];
             alreadyAllocatedPoints += allocatedPoints[i];
-            for (int j = 0; j < 6; j++)
+            for (int j = 0; j < 6; ++j)
             {
                 gaugeImages[i, j] = upgradeButtons[i].transform.FindChild("Gauge" + (j + 1).ToString()).GetComponent<Image>();
             }
@@ -83,11 +83,11 @@ public class CastleUpgrade : MonoBehaviour
 
     private void SetGauge(int index, int value)
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; ++i)
         {
             gaugeImages[index, i].gameObject.SetActive(false);
         }
-        for (int i = 0; i < value; i++)
+        for (int i = 0; i < value; ++i)
         {
             gaugeImages[index, i].gameObject.SetActive(true);
         }
@@ -121,7 +121,7 @@ public class CastleUpgrade : MonoBehaviour
 
         remainingPointText.text = usablePoint.ToString();
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; ++i)
         {
             allocatedPoints[i] = 0;
             SetGauge(i, 0);

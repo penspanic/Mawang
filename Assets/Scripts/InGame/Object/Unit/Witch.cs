@@ -8,9 +8,9 @@ public class Witch : Launcher, ITouchable
     private int skillDuration;
 
     [SerializeField]
-    private int healAmount;
+    private float healAmount;
     [SerializeField]
-    private int damageAmount;
+    private float damageAmount;
     [SerializeField]
     private int skillRange;
 
@@ -36,18 +36,20 @@ public class Witch : Launcher, ITouchable
 
             targets = battleMgr.GetAllUnitInLine(line);
             
-            for (int i = 0; i < targets.Length; i++)
+            for (int i = 0; i < targets.Length; ++i)
             {
                 if (!IsInSkillRange(targets[i]))
                     continue;
 
                 if(targets[i].isOurForce)
                 { // 아군 힐
-                    targets[i].SetMinusHP(-(healAmount / skillDuration));
+                    int newHP = targets[i].GetHP() + (int)(healAmount / skillDuration);
+                    targets[i].SetHP(newHP);
                 }
                 else
                 { // 적군 독데미지
-                    targets[i].Attacked(damageAmount / skillDuration);
+                    int newHP = targets[i].GetHP() - (int)(damageAmount / skillDuration);
+                    targets[i].SetHP(newHP);
                 }
             }
 

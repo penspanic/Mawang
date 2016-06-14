@@ -60,7 +60,7 @@ public class UITexturePacker
     public static Rect[] PackTextures(Texture2D texture, Texture2D[] textures, int padding, int maxSize)
     {
         int area = 0;
-        for (int i = 0; i < textures.Length; i++)
+        for (int i = 0; i < textures.Length; ++i)
         {
             if (textures[i] != null)
                 area += (textures[i].width * textures[i].height);
@@ -92,7 +92,7 @@ public class UITexturePacker
         UITexturePacker bp = new UITexturePacker(width, height, false);
         Storage[] storage = new Storage[textures.Length];
 
-        for (int i = 0; i < textures.Length; i++)
+        for (int i = 0; i < textures.Length; ++i)
         {
             Texture2D tex = textures[i];
             if (!tex) continue;
@@ -132,7 +132,7 @@ public class UITexturePacker
         // The returned rects
         Rect[] rects = new Rect[textures.Length];
 
-        for (int i = 0; i < textures.Length; i++)
+        for (int i = 0; i < textures.Length; ++i)
         {
             Texture2D tex = textures[i];
             if (!tex) continue;

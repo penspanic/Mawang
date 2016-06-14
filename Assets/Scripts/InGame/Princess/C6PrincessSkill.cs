@@ -20,16 +20,17 @@ public sealed class C6PrincessSkill : PrincessSkillBase
                 freezeList.Add(battleMgr.ourForceList[randomIndex] as Movable);
         }
 
-        foreach (Movable eachUnit in freezeList)
-        {
-            eachUnit.Freeze(true);
-        }
+        for (int i = 0; i < freezeList.Count; ++i)
+            freezeList[i].Freeze(true);
 
         yield return new WaitForSeconds(5);
 
-        foreach (Movable eachUnit in battleMgr.ourForceList)
+        Movable eachUnit = null;
+        for (int i = 0; i < freezeList.Count; ++i)
         {
-            eachUnit.Freeze(false);
+            eachUnit = freezeList[i];
+            if (eachUnit != null && !eachUnit.isDestroyed)
+                eachUnit.Freeze(false);
         }
     }
 
