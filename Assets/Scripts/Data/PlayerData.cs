@@ -60,10 +60,16 @@ public class PlayerData : MonoBehaviour
         // 3
         if (isFirst) // 제일 처음일때
         {
-            AddUnit("Skeleton");
-            obsidian = 100; //Temp
+            Init();
         }
+
         selectedStage = "C0S1"; // Temp
+    }
+
+    void Init()
+    {
+        AddUnit("Skeleton");
+        obsidian = 100;
     }
 
     private void LoadData()
@@ -86,9 +92,7 @@ public class PlayerData : MonoBehaviour
 
         // 처음이 아닌경우
 
-
-        if (PlayerPrefs.HasKey("lastClearedStage"))
-            lastClearedStage = PlayerPrefs.GetString("lastClearedStage");
+        lastClearedStage = (string)GetValue<string>("lastClearedStage", null);
 
         isFirst = PlayerPrefs.GetInt("isFirst") == 0 ? true : false;
         appRated = PlayerPrefs.GetInt("appRated") == 1 ? true : false;
@@ -101,12 +105,22 @@ public class PlayerData : MonoBehaviour
         {
             playerUnitList = (List<string>)b.Deserialize(m);
         }
+
         data = PlayerPrefs.GetString("selectedUnitList");
         if (data != null && data.Length != 0)
         {
             using (var m = new MemoryStream(Convert.FromBase64String(data)))
             {
                 selectedUnitList = (List<string>)b.Deserialize(m);
+            }
+        }
+
+        data = PlayerPrefs.GetString("selectedItemList");
+        if(data != null && data.Length != 0)
+        {
+            using (var m = new MemoryStream(Convert.FromBase64String(data)))
+            {
+                selectedItemList = (List<string>)b.Deserialize(m);
             }
         }
     }
@@ -148,7 +162,8 @@ public class PlayerData : MonoBehaviour
 
         #endregion
 
-        lastClearedStage = (string)GetValue<string>("lastClearedStage", null);
+        if (lastClearedStage != null)
+            PlayerPrefs.SetString("lastClearedStage", lastClearedStage);
 
         PlayerPrefs.SetInt("isFirst", 1);
         PlayerPrefs.SetInt("appRated", appRated ? 1 : 0);
@@ -173,12 +188,21 @@ public class PlayerData : MonoBehaviour
             PlayerPrefs.SetString("playerUnitList", Convert.ToBase64String(m.GetBuffer()));
         }
 
-        if (selectedUnitList != null && selectedUnitList.Count != 0)
+        if (selectedUnitList != null && selectedUnitList.Count != 0) // 선택된 유닛 저장
         {
             using (var m = new MemoryStream())
             {
                 b.Serialize(m, selectedUnitList);
                 PlayerPrefs.SetString("selectedUnitList", Convert.ToBase64String(m.GetBuffer()));
+            }
+        }
+
+        if (selectedItemList != null && selectedItemList.Count != 0) // 선택된 아이템 저장
+        {
+            using (var m = new MemoryStream())
+            {
+                b.Serialize(m, selectedItemList);
+                PlayerPrefs.SetString("selectedItemList", Convert.ToBase64String(m.GetBuffer()));
             }
         }
 

@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public abstract class ItemBase : MonoBehaviour
 {
+    public Image coolTimeImage;
+
     private int _amount;
 
     public string message
@@ -39,6 +42,7 @@ public abstract class ItemBase : MonoBehaviour
     protected MessageBox msgBox;
     protected Text amountText;
 
+
     protected virtual void Awake()
     {
         msgBox = GameObject.FindObjectOfType<MessageBox>();
@@ -67,5 +71,20 @@ public abstract class ItemBase : MonoBehaviour
         {
             msgBox.PushMessage("아이템이 없습니다!");
         }
+    }
+
+    protected IEnumerator CoolTimeProcess()
+    {
+        float currTime = 0.0f;
+
+        while (currTime < coolTime)
+        {
+            currTime += Time.deltaTime;
+
+            coolTimeImage.fillAmount = currTime / coolTime;
+            yield return null;
+        }
+
+        isUsing = false;
     }
 }

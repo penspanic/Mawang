@@ -6,7 +6,7 @@ public class FreezeItem : ItemBase
 {
     private BattleManager battleMgr;
     private int duration = 5;
-    public static Color freezedColor = new Color(58f / 255f, 215f / 255f, 259f / 255f);
+    public readonly static Color freezedColor = new Color(58f / 255f, 215f / 255f, 259f / 255f);
     private Image skillImg;
 
     protected override void Awake()
@@ -26,17 +26,20 @@ public class FreezeItem : ItemBase
         }
         else
         {
+            msgBox.PushMessage(message);
+
+            amount--;
             isUsing = true;
             PlayerData.instance.UseItem(name);
-            amount--;
-            msgBox.PushMessage(message);
+
             StartCoroutine(FreezeProcess());
         }
     }
 
     private IEnumerator FreezeProcess()
     {
-        StartCoroutine(CoolTiming());
+
+        StartCoroutine(CoolTimeProcess());
 
         // 얼릴 적 찾기
         Movable[] enemys = System.Array.FindAll<Movable>
@@ -62,20 +65,5 @@ public class FreezeItem : ItemBase
 
         for (int i = 0; i < enemys.Length; ++i)
             enemys[i].Freeze(false);
-    }
-
-    private IEnumerator CoolTiming()
-    {
-        float currTime = 0.0f;
-
-        while (currTime < coolTime)
-        {
-            currTime += Time.deltaTime;
-
-            skillImg.fillAmount = currTime / coolTime;
-            yield return null;
-        }
-
-        isUsing = false;
     }
 }

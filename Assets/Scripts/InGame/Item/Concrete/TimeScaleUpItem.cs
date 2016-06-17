@@ -9,6 +9,8 @@ public class TimeScaleUpItem : ItemBase
     protected override void Awake()
     {
         base.Awake();
+        coolTime = (int)durationTime + 5;
+
         gameMgr = GameObject.FindObjectOfType<GameManager>();
     }
 
@@ -19,15 +21,19 @@ public class TimeScaleUpItem : ItemBase
             msgBox.PushMessage("아직 사용할 수 없습니다.");
             return;
         }
-        amount--;
         msgBox.PushMessage("게임 진행 속도가 빨라집니다!");
+
+        amount--;
+        isUsing = true;
+        PlayerData.instance.UseItem(name);
+
         StartCoroutine(TimeScaleUpProcess());
     }
 
     IEnumerator TimeScaleUpProcess()
     {
-        isUsing = true;
-        
+        StartCoroutine(CoolTimeProcess());
+
         float elaspedTIme = 0f;
 
         while(elaspedTIme < 5f)
@@ -54,6 +60,5 @@ public class TimeScaleUpItem : ItemBase
 
         Time.timeScale = 1f;
         gameMgr.userTimeScale = Time.timeScale;
-        isUsing = false;
     }
 }

@@ -31,6 +31,7 @@ public class Ready_Item : MonoBehaviour
         ready = GameObject.FindObjectOfType<Ready>();
 
         SetItemList();
+        SetSelectedItem();
         SetBuyButtonState(false);
     }
 
@@ -77,6 +78,17 @@ public class Ready_Item : MonoBehaviour
 
             ++i;
         }
+    }
+
+    private void SetSelectedItem()
+    {
+        string[] selectedItems = PlayerData.instance.selectedItemList.ToArray();
+
+        for(int i = 0;i<selectedItems.Length;++i)
+        {
+            selectedIndexList.Add(itemNameList.IndexOf(selectedItems[i]));
+        }
+        SetCheckImages();
     }
 
     private void SetBuyButtonState(bool value)
