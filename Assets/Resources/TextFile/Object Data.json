@@ -96,7 +96,7 @@
     },
 	"Gold Upgrade":{
 	    "Description": "골드 획득량 증가",
-        "Cost": 40
+        "Cost": 60
 	},
 	"Time Scale Up":{
 	    "Description": "게임 진행 속도 증가",

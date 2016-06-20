@@ -7,14 +7,12 @@ public class FreezeItem : ItemBase
     private BattleManager battleMgr;
     private int duration = 5;
     public readonly static Color freezedColor = new Color(58f / 255f, 215f / 255f, 259f / 255f);
-    private Image skillImg;
 
     protected override void Awake()
     {
         base.Awake();
         battleMgr = GameObject.FindObjectOfType<BattleManager>();
         coolTime = 40;
-        skillImg = transform.FindChild("Freeze Image").GetComponent<Image>();
         message = "적 유닛의 이동을 막습니다.";
     }
 
