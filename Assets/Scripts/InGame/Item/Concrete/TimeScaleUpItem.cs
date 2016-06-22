@@ -23,7 +23,7 @@ public class TimeScaleUpItem : ItemBase
         }
         msgBox.PushMessage("게임 진행 속도가 빨라집니다!");
 
-        amount--;
+        --amount;
         isUsing = true;
         PlayerData.instance.UseItem(name);
 

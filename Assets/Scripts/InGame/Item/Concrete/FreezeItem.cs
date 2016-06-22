@@ -26,7 +26,7 @@ public class FreezeItem : ItemBase
         {
             msgBox.PushMessage(message);
 
-            amount--;
+            --amount;
             isUsing = true;
             PlayerData.instance.UseItem(name);
 

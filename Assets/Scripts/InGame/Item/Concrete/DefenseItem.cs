@@ -19,7 +19,7 @@ public class DefenseItem : ItemBase
     protected override void Useitem()
     {
         PlayerData.instance.UseItem(name);
-        amount--;
+        --amount;
         if (isUsing) // 사용중일 때에는 지속시간만 초기화
         {
             msgBox.PushMessage("지속시간이 초기화되었습니다.");

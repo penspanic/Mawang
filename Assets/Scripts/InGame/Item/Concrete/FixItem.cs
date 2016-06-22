@@ -15,7 +15,7 @@ public class FixItem : ItemBase
     protected override void Useitem()
     {
         PlayerData.instance.UseItem(name);
-        amount--;
+        --amount;
         msgBox.PushMessage(message);
         satanCastle.UseFixItem(hpHealRate);
     }
