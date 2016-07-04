@@ -1,15 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class ObsidianBuyPopup : MonoBehaviour
 {
-    private Ready ready;
-
-    void Awake()
-    {
-        ready = GameObject.FindObjectOfType<Ready>();
-    }
-
     public void ShowPopup()
     {
         gameObject.SetActive(true);
@@ -30,5 +22,4 @@ public class ObsidianBuyPopup : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-    
 }

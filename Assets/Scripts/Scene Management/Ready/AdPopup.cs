@@ -2,13 +2,6 @@
 
 public class AdPopup : MonoBehaviour
 {
-    private Ready ready;
-
-    private void Awake()
-    {
-        ready = GameObject.FindObjectOfType<Ready>();
-    }
-
     public void ShowPopup()
     {
         gameObject.SetActive(true);

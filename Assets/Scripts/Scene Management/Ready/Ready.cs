@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Ready : MonoBehaviour
 {
     private Text obsidianText;
-
     private Ready_UnitSelect unitSelect;
 
     private void Awake()
